@@ -7,8 +7,6 @@ function NavBar(props) {
     <Nav>
       <NavList>
         <NavItem label="Home" />
-        <NavItem label="Advise" />
-        <NavItem label="About" />
       </NavList>
 
       <NavList extraClasses="ms-auto">
