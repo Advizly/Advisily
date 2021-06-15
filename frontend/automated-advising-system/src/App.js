@@ -1,14 +1,14 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter } from "react-router-dom";
-import SignUpForm from "./components/SignupForm";
+import LoginForm from "./components/LoginForm";
 
 function App() {
   return (
     <BrowserRouter>
       <NavBar />
       <main className="container">
-        <SignUpForm />
+        <LoginForm />
       </main>
     </BrowserRouter>
   );
