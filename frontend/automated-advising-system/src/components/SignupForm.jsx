@@ -1,28 +1,38 @@
-import React, { Component } from "react";
-import Input from "./common/Input";
-import Form from "./common/Form";
+import React from "react";
+import * as Yup from "yup";
+import { FormInput, Form } from "./common/form";
+import SubmitButton from "./common/form/SubmitButton";
 
-class SignUpForm extends Component {
-  state = {};
-  handleSubmit(e) {
-    e.preventDefault();
-    console.log("Submitted");
-  }
-  render() {
-    return (
-      <>
-        <Form title={"Sign Up"} onSubmit={this.handleSubmit}>
-          <Input label="First Name" name="fname" />
-          <Input label="Last Name" name="lname" />
-          <Input label="AUC Email" name="email" type="email" />
-          <Input label="Student ID" name="studentId" type="number" />
-          <button className="btn m-2 " type="submit">
-            Sign Up
-          </button>
-        </Form>
-      </>
-    );
-  }
-}
+const SignUpForm = () => {
+  const initialValues = { firstName: "", lastName: "", email: "" };
+
+  const validationSchema = Yup.object({
+    firstName: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    lastName: Yup.string()
+      .max(20, "Must be 20 characters or less")
+      .required("Required"),
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required."),
+  });
+
+  const onSubmit = (values) => alert(JSON.stringify(values, null, 2));
+
+  return (
+    <Form
+      validationSchema={validationSchema}
+      onSubmit={onSubmit}
+      initialValues={initialValues}
+      title="Sign Up"
+    >
+      <FormInput label="First Name" name="firstName" />
+      <FormInput label="Last Name" name="lastName" />
+      <FormInput label="Email " name="email" />
+      <SubmitButton />
+    </Form>
+  );
+};
 
 export default SignUpForm;
