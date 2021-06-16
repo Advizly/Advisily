@@ -2,11 +2,11 @@ import { useFormikContext } from "formik";
 import React from "react";
 
 function SubmitButton(props) {
-  const { isSubmitting, isValid, dirty } = useFormikContext();
+  const { isSubmitting, isValid, dirty, touched } = useFormikContext();
   console.log(isSubmitting);
   return (
     <button
-      disabled={isSubmitting || !isValid || !dirty}
+      disabled={isSubmitting || !isValid}
       className="btn btn-submit"
       type="submit"
       {...props}

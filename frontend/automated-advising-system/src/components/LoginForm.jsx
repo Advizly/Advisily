@@ -25,15 +25,15 @@ function LoginForm(props) {
         <FormInput label="Student ID" name="studentId" type="number" />
         <FormInput label="Password" name="password" type="password" />
         <div className="d-flex my-2 ">
-          <a href="#">Forgot password?</a>
+          <a href="/#">Forgot password?</a>
           <p className="ms-auto">
-            New user?<a href="#"> Sign up</a>
+            New user?<a href="/#"> Sign up</a>
           </p>
         </div>
         <SubmitButton />
         <div className="d-flex justify-content-end">
           <p>
-            Or login in using <a href="#"> Google</a>
+            Or login in using <a href="/#"> Google</a>
           </p>
         </div>
       </Form>
