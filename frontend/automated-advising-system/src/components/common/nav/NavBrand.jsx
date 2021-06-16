@@ -6,13 +6,30 @@ import { NavLink } from "react-router-dom";
 function NavBrand() {
   return (
     <NavLink className="navbar-brand" to="#">
-      <img
-        src={logo}
-        width={150}
-        height={70}
-        alt="The American University in Cairo logo"
-      />
-      AAS
+      <div
+        className="container bg-light rounded"
+        style={{
+          display: "inline-block",
+          width: "fit-content",
+          marginRight: 10,
+        }}
+      >
+        <img
+          src={logo}
+          width={100}
+          height={50}
+          alt="The American University in Cairo logo"
+        />
+      </div>
+      <div
+        style={{
+          display: "inline-block",
+          fontFamily: "cursive",
+          fontSize: 30,
+        }}
+      >
+        Autify
+      </div>
     </NavLink>
   );
 }

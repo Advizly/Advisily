@@ -9,7 +9,7 @@ function SubmitButton(props) {
       disabled={isSubmitting || !isValid || !dirty}
       className="btn"
       type="submit"
-      style={{ marginTop: 10 }}
+      style={{ marginTop: 10, marginBottom: 10, width: "100%" }}
       {...props}
     >
       Submit

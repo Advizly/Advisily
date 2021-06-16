@@ -31,7 +31,7 @@ function LoginForm(props) {
           </p>
         </div>
         <SubmitButton />
-        <div className="my-3 d-flex justify-content-end">
+        <div className="d-flex justify-content-end">
           <p>
             Or login in using <a href="#"> Google</a>
           </p>
