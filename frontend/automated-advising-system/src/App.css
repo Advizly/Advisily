@@ -5,6 +5,7 @@
   width: 30%;
   max-width: 100%;
   min-width: 500px;
+  margin: 1em;
 }
 .app-header {
   margin-bottom: 20px;
@@ -17,6 +18,11 @@
 .btn {
   background-color: var(--clr-primary) !important;
   color: var(--clr-font) !important;
+}
+.btn-submit {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 100%;
 }
 
 /* Footer */
