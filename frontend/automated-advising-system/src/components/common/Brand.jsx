@@ -4,9 +4,7 @@ import { NavLink } from "react-router-dom";
 function Brand(props) {
   return (
     <div className="navbar-item brand-title">
-      <NavLink id="brand" className="nav-link" to="/">
-        Autify
-      </NavLink>
+      <h1 id="brand">Advisify</h1>
     </div>
   );
 }

@@ -1,6 +1,5 @@
 /* Header */
 .app-header {
-  margin-bottom: 20px;
   border-bottom: 3px solid var(--clr-primary);
   justify-content: space-between !important;
 }
@@ -19,21 +18,23 @@
   width: fit-content;
   height: fit-content;
 }
-.brand-title {
-  font-family: "cursive" !important;
-  font-size: 50px;
-}
+
 .nav-list {
   font-size: 22px;
   align-items: center;
 }
 
 /* Buttons */
-.btn {
+.app-btn {
   background-color: var(--clr-primary) !important;
   color: var(--clr-font) !important;
 }
-.btn:hover {
+.app-btn-secondary {
+  background-color: var(--clr-secondary) !important;
+  color: var(--clr-font) !important;
+}
+
+.app-btn:hover {
   background-color: #227565 !important;
 }
 .btn-submit {
@@ -127,4 +128,52 @@
 
 .content-wrapper {
   padding-bottom: 100px;
+}
+
+#brand {
+  color: #fff;
+  font-family: "cursive";
+  font-size: 50px;
+}
+
+/* Home page */
+
+.home-container {
+  background-color: #000;
+  color: var(--clr-font);
+  font-size: 20px;
+  width: 100%;
+  max-height: 100%;
+  height: 35rem;
+  padding-top: 50px;
+}
+
+.vertical-line {
+  height: 500px;
+  width: 10px;
+  margin: 0 5px 0 5px;
+  background: var(--clr-primary);
+}
+
+.home-buttons button {
+  width: 22rem;
+}
+
+#home-login-btn {
+  background-color: #000 !important;
+  border: 2px solid var(--clr-primary);
+}
+#home-login-btn:hover {
+  background-color: var(--clr-primary) !important;
+  border: 2px solid var(--clr-primary);
+}
+
+#home-signup-btn {
+  background-color: transparent !important;
+  border: 2px solid var(--clr-secondary);
+  color: var(--clr-font) !important;
+}
+
+#home-signup-btn:hover {
+  background-color: var(--clr-secondary) !important;
 }
