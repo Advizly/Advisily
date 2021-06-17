@@ -4,11 +4,12 @@ import { NavLink } from "react-router-dom";
 import { Nav, NavItem, NavList } from "./common/nav";
 import Logo from "./common/Logo";
 import Brand from "./common/Brand";
+import { ColMedium } from "./common/grid";
 
 function Header(props) {
   return (
     <Nav>
-      <div className="d-flex col-4">
+      <ColMedium numOfCols="4" className="d-flex">
         <NavLink className="navbar-brand " to="/">
           <Logo />
         </NavLink>
@@ -17,16 +18,16 @@ function Header(props) {
           <NavItem label="Home" to="/" />
           <NavItem label="Discover" to="/courses-form" />
         </NavList>
-      </div>
-      <div className="col-4">
+      </ColMedium>
+      <ColMedium numOfCols="4">
         <Brand />
-      </div>
-      <div className="col-auto">
+      </ColMedium>
+      <ColMedium numOfCols="auto">
         <NavList extraClasses="nav-right">
           <NavItem to="/login" label="Login" />
           <NavItem to="/sign-up" label="Sign Up" extraClasses="nav-btn" />
         </NavList>
-      </div>
+      </ColMedium>
     </Nav>
   );
 }

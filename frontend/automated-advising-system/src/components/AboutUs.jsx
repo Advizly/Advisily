@@ -4,14 +4,16 @@ import sherifPic from "../assets/sherif.jpg";
 import RoundedPicture from "./common/RoundedPicture";
 import CardBody from "./common/card/CardBody";
 import Card from "./common/card/Card";
+
+import { Row, ColMedium } from "./common/grid";
 function AboutUs(props) {
   return (
     <>
       <h1>About</h1>
-      <div className="row">
-        <div className="col-md-6">
+      <Row>
+        <ColMedium numOfCols="6">
           <Card>
-            <RoundedPicture src={sherifPic} />
+            <RoundedPicture src={sherifPic} alt="Sherif Aly" />
             <CardBody
               title="Sherif Aly"
               subtitle="Professor and Chair (American University in Cairo)"
@@ -21,10 +23,10 @@ function AboutUs(props) {
               experience.
             </CardBody>
           </Card>
-        </div>
-        <div className="col-md-6">
+        </ColMedium>
+        <ColMedium numOfCols="6">
           <Card>
-            <RoundedPicture src={youssefPic} />
+            <RoundedPicture src={youssefPic} alt="Youssef Agiza" />
             <CardBody
               title="Youssef Agiza"
               subtitle="Undergraduate Student (American University in Cairo)"
@@ -33,8 +35,8 @@ function AboutUs(props) {
               University in Cairo majoring in computer science and mathematics.
             </CardBody>
           </Card>
-        </div>
-      </div>
+        </ColMedium>
+      </Row>
     </>
   );
 }

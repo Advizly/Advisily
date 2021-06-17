@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, useField } from "formik";
+import { useField } from "formik";
 import ErrorMessage from "./FormError";
 
 function FormCheckbox({ label, ...props }) {
