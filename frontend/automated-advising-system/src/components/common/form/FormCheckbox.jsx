@@ -1,17 +1,18 @@
 import React from "react";
-import { Field } from "formik";
+import { Field, useField } from "formik";
+import ErrorMessage from "./FormError";
 
-function FormCheckbox({ label, name, ...rest }) {
+function FormCheckbox({ label, ...props }) {
+  const [field, meta] = useField(props);
+  const className = meta.error
+    ? "form-check-input is-invalid"
+    : " form-check-input";
+
   return (
     <div className="form-check">
-      <Field
-        type="checkbox"
-        id={name}
-        name={name}
-        {...rest}
-        className="form-check-input"
-      />
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={props.name}>{label}</label>
+      <input type="checkbox" className={className} {...field} {...props} />
+      {<ErrorMessage error={meta.error} visible={meta.error && meta.touched} />}
     </div>
   );
 }

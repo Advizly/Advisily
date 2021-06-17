@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import * as Yup from "yup";
 
 import { FormInput, Form, FormSelect } from "./common/form";
@@ -15,8 +14,6 @@ const catalogs = [
 ];
 
 const SignUpForm = () => {
-  const [selectCatalog, setSelectCatalog] = useState(null);
-
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -46,16 +43,15 @@ const SignUpForm = () => {
       .min(100000000, "Studnet ID must be positive and consist of 9 digits")
       .max(999999999, "Studnet ID must consist of no more than 9 digits")
       .required("Student ID is required"),
-    catalog: Yup.string().required("Catalog is required"),
 
     password: Yup.string()
       .min(5)
       .matches(/^\S*$/, "Password can't contain spaces")
       .required("Password is required"),
-    passwordConfirmation: Yup.string().oneOf(
-      [Yup.ref("password"), null],
-      "Passwords must match"
-    ),
+    passwordConfirmation: Yup.string()
+      .required("Password Confirmation is required")
+      .oneOf([Yup.ref("password"), null], "Passwords don't match"),
+    catalog: Yup.string().required("You need to select a catalog"),
   });
 
   const onSubmit = (values) => {
@@ -69,17 +65,36 @@ const SignUpForm = () => {
       initialValues={initialValues}
       title="Sign Up"
     >
-      <FormInput label="First Name" name="firstName" />
-      <FormInput label="Last Name" name="lastName" />
-      <FormInput label="AUC Email " name="email" type="email" />
-      <FormInput label="Student ID" name="studentId" type="number" />
-      <FormInput label="Password" name="password" type="password" />
+      <FormInput label="First Name" name="firstName" aria-required="true" />
+      <FormInput label="Last Name" name="lastName" aria-required="true" />
+      <FormInput
+        label="AUC Email "
+        name="email"
+        type="email"
+        aria-required="true"
+      />
+      <FormInput
+        label="Student ID"
+        name="studentId"
+        type="number"
+        aria-required="true"
+      />
+      <FormInput
+        label="Password"
+        name="password"
+        type="password"
+        aria-required="true"
+      />
       <FormInput
         label="Confirm Password"
         name="passwordConfirmation"
         type="password"
       />
-      <FormSelect label="Declaration Catalog" name="catalog">
+      <FormSelect
+        label="Declaration Catalog"
+        name="catalog"
+        aria-required="true"
+      >
         <option value="" disabled>
           --select a catalog---
         </option>

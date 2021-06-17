@@ -22,8 +22,18 @@ function LoginForm(props) {
         initialValues={initialValues}
         validationSchema={validationSchema}
       >
-        <FormInput label="Student ID" name="studentId" type="number" />
-        <FormInput label="Password" name="password" type="password" />
+        <FormInput
+          label="Student ID"
+          name="studentId"
+          type="number"
+          aria-required="true"
+        />
+        <FormInput
+          label="Password"
+          name="password"
+          type="password"
+          aria-required="true"
+        />
         <div className="d-flex my-2 ">
           <a href="/#">Forgot password?</a>
           <p className="ms-auto">

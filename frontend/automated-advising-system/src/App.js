@@ -1,7 +1,9 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
 import { BrowserRouter } from "react-router-dom";
-// import LoginForm from "./components/LoginForm";
+
+import NavBar from "./components/NavBar";
+import LoginForm from "./components/LoginForm";
+import SignUpForm from "./components/SignupForm";
 import Footer from "./components/Footer";
 import CoursesForm from "./components/CoursesForm";
 
@@ -11,7 +13,8 @@ function App() {
       <div className="page-container">
         <NavBar />
         <main className="container content-wrapper">
-          {/* <LoginForm /> */}
+          <LoginForm />
+          <SignUpForm />
           <CoursesForm />
         </main>
         <Footer />

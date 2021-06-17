@@ -8,7 +8,7 @@ const courses = getCourses();
 function CoursesForm(props) {
   const initialValues = { courses: [] };
   const validationSchema = Yup.object({
-    courses: Yup.array(),
+    courses: Yup.array().required(),
   });
 
   const groupCourses = (coursesPerRow = 2) => {
@@ -32,10 +32,10 @@ function CoursesForm(props) {
         {row.map((course) => {
           const courseId = course.courseLongNumber;
           return (
-            <div className="col form-check" key={courseId}>
+            <div className="col" key={courseId}>
               <FormCheckbox
                 label={course.courseTitle}
-                name={"courses"}
+                name="courses"
                 value={courseId}
               />
             </div>
@@ -48,6 +48,14 @@ function CoursesForm(props) {
     ));
   };
 
+  const handleSubmit = (values, { setSubmitting, ...others }) => {
+    console.log(values, others);
+
+    setInterval(() => {
+      setSubmitting(false);
+    }, 2000);
+  };
+
   const groupedCourses = groupCourses(2);
   return (
     <>
@@ -55,6 +63,7 @@ function CoursesForm(props) {
         initialValues={initialValues}
         validationSchema={validationSchema}
         title={"Courses Taken"}
+        onSubmit={handleSubmit}
       >
         <h4 className="strike-through">
           Please select all the courses you have taken so far:
