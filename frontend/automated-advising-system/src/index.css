@@ -24,7 +24,9 @@ nav {
   padding: 20px;
 }
 
-a,
-h1 {
+a {
   color: var(--clr-primary) !important;
+}
+main {
+  padding: 20px;
 }

@@ -65,6 +65,33 @@
   min-width: 500px;
   margin: 1em;
 }
+
+/* Cards */
+.card {
+  margin-top: 60px;
+  border: 3px solid #ccc !important;
+  border-radius: 8% !important;
+  min-height: 400px !important;
+  max-width: 450px;
+  text-align: center;
+}
+.card-image-rounded {
+  overflow: hidden;
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+  margin: -60px auto 0 auto;
+}
+.card-image-rounded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding-top: 30px !important;
+}
+
 /* Footer */
 
 .app-footer {
@@ -85,8 +112,11 @@
 }
 
 .app-footer a {
-  color: var(--clr-font);
-  font-size: medium;
+  font-size: large;
+}
+
+.app-footer a:hover {
+  color: var(--clr-font) !important ;
 }
 
 /* To ensure footer stays at the bottom */
