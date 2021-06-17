@@ -1,5 +1,4 @@
 import React from "react";
-import NavBrand from "./NavBrand";
 
 function Nav({ children }) {
   return (

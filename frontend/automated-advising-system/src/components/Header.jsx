@@ -15,7 +15,7 @@ function Header(props) {
 
         <NavList>
           <NavItem label="Home" to="/" />
-          <NavItem label="Discover" to="/discover" />
+          <NavItem label="Discover" to="/courses-form" />
         </NavList>
       </div>
       <div className="col-4">
@@ -24,7 +24,7 @@ function Header(props) {
       <div className="col-auto">
         <NavList extraClasses="nav-right">
           <NavItem to="/login" label="Login" />
-          <NavItem to="/sign-up" label="Sign Up" extraClasses="btn btn-lg" />
+          <NavItem to="/sign-up" label="Sign Up" extraClasses="nav-btn" />
         </NavList>
       </div>
     </Nav>

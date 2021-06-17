@@ -7,6 +7,10 @@
 .app-header a {
   color: #fff !important;
 }
+.app-header a:hover {
+  color: var(--clr-primary) !important;
+}
+
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -29,11 +33,28 @@
   background-color: var(--clr-primary) !important;
   color: var(--clr-font) !important;
 }
+.btn:hover {
+  background-color: #227565 !important;
+}
 .btn-submit {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
 }
+
+.nav-btn {
+  font-size: 1.3rem !important;
+  border-radius: 0.3rem !important;
+  background-color: var(--clr-primary);
+  line-height: 2.5rem;
+  color: red !important;
+}
+.nav-btn a:hover {
+  color: #fff !important;
+  background-color: #227565;
+  border-radius: 0.3rem;
+}
+
 /* Forms */
 .form-border {
   border: 1px solid grey;
