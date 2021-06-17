@@ -3,10 +3,8 @@ import NavBrand from "./NavBrand";
 
 function Nav({ children }) {
   return (
-    <nav className="navbar app-header  navbar-expand-lg navbar-dark ">
-      <NavBrand />
-
-      <div className="collapse navbar-collapse">{children}</div>
+    <nav className="navbar app-header navbar-expand-lg navbar-dark ">
+      {children}
     </nav>
   );
 }

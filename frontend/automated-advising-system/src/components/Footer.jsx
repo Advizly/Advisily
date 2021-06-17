@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Footer(props) {
   return (
@@ -15,10 +16,10 @@ function Footer(props) {
       <div className="footer-links ">
         <div className="row">
           <div className="col-md-auto">
-            <a href="/#">About Us</a>
+            <NavLink to="/about-us">About Us</NavLink>
           </div>
           <div className="col-md-auto">
-            <a href="/#">Contact Us</a>
+            <NavLink to="/contact-us">Contact Us</NavLink>
           </div>
         </div>
       </div>

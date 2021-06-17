@@ -11,7 +11,12 @@ function FormSelect({ label, ...props }) {
     <>
       <div className="form-group">
         <label>{label}</label>
-        <select className={className} {...field} {...props} />
+        <select
+          className={className}
+          aria-invalid={meta.error}
+          {...field}
+          {...props}
+        />
       </div>
 
       <ErrorMessage error={meta.error} visible={meta.touched && meta.error} />

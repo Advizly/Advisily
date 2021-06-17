@@ -2,7 +2,7 @@ import React from "react";
 
 function NavList({ children, extraClasses = "", ...others }) {
   return (
-    <ul className={"navbar-nav " + extraClasses} {...others}>
+    <ul className={"navbar-nav nav-list " + extraClasses} {...others}>
       {children}
     </ul>
   );
