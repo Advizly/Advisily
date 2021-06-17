@@ -2,7 +2,7 @@ import React from "react";
 
 function ContactUs(props) {
   return (
-    <div className="container text-center">
+    <div className=" text-center p-5">
       <h1>Contact Us</h1>
       <p>
         For inquiries or issues, contact us at{" "}

@@ -9,6 +9,9 @@
 .app-header a:hover {
   color: var(--clr-primary) !important;
 }
+.app-header .btn a:hover {
+  color: #fff !important;
+}
 
 .navbar-brand {
   display: flex;
@@ -35,8 +38,12 @@
 }
 
 .app-btn:hover {
-  background-color: #227565 !important;
+  background-color: var(--clr-primary-shadow) !important;
 }
+.app-btn-secondary:hover {
+  background-color: var(--clr-secondary-shadow) !important;
+}
+
 .btn-submit {
   margin-top: 10px;
   margin-bottom: 10px;

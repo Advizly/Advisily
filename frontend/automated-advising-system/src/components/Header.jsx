@@ -24,8 +24,12 @@ function Header(props) {
       </ColMedium>
       <ColMedium numOfCols="auto">
         <NavList extraClasses="nav-right">
-          <NavItem to="/login" label="Login" />
-          <NavItem to="/sign-up" label="Sign Up" extraClasses="nav-btn" />
+          <NavItem to="/login" label="Login" extraClasses="btn app-btn" />
+          <NavItem
+            to="/sign-up"
+            label="Sign Up"
+            extraClasses="btn app-btn-secondary"
+          />
         </NavList>
       </ColMedium>
     </Nav>

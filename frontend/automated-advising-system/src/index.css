@@ -3,6 +3,8 @@
   --clr-font: #fff;
   --clr-primary: #339c87;
   --clr-secondary: #b11c1c;
+  --clr-primary-shadow: #227565;
+  --clr-secondary-shadow: #8f0e0e;
 }
 
 body {
