@@ -10,12 +10,12 @@ function Home() {
       </p>
       <div className="home-buttons d-flex justify-content-center">
         <Link to="/login">
-          <button id="home-login-btn" className="btn app-btn mx-2">
+          <button id="home-login-btn" className="btn  mx-2">
             Login
           </button>
         </Link>
         <Link to="/sign-up">
-          <button id="home-signup-btn" className="btn app-btn-secondary ">
+          <button id="home-signup-btn" className="btn nav-btn ">
             Sign Up
           </button>
         </Link>

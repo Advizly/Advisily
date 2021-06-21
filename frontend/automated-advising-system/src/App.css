@@ -1,16 +1,15 @@
 /* Header */
 .app-header {
-  border-bottom: 3px solid var(--clr-primary);
   justify-content: space-between !important;
 }
 .app-header a {
   color: #fff !important;
 }
-.app-header a:hover {
+.nav-link:hover {
   color: var(--clr-primary) !important;
 }
 .app-header .btn a:hover {
-  color: #fff !important;
+  color: var(--clr-primary) !important;
 }
 
 .navbar-brand {
@@ -26,41 +25,33 @@
   font-size: 22px;
   align-items: center;
 }
+#nav-signup-btn {
+  background-color: var(--clr-primary) !important;
+  color: #fff !important;
+}
+#nav-signup-btn:hover {
+  background-color: var(--clr-secondary) !important;
+  color: var(--clr-primary) !important;
+}
+
+#nav-signup-btn:hover a {
+  color: var(--clr-primary) !important;
+}
 
 /* Buttons */
-.app-btn {
-  background-color: var(--clr-primary) !important;
-  color: var(--clr-font) !important;
-}
-.app-btn-secondary {
-  background-color: var(--clr-secondary) !important;
+.btn {
+  background-color: var(--clr-bcg) !important;
   color: var(--clr-font) !important;
 }
 
-.app-btn:hover {
-  background-color: var(--clr-primary-shadow) !important;
-}
-.app-btn-secondary:hover {
-  background-color: var(--clr-secondary-shadow) !important;
+.btn:hover {
+  background-color: var(--clr-bcg-shadow) !important;
 }
 
 .btn-submit {
   margin-top: 10px;
   margin-bottom: 10px;
   width: 100%;
-}
-
-.nav-btn {
-  font-size: 1.3rem !important;
-  border-radius: 0.3rem !important;
-  background-color: var(--clr-primary);
-  line-height: 2.5rem;
-  color: red !important;
-}
-.nav-btn a:hover {
-  color: #fff !important;
-  background-color: #227565;
-  border-radius: 0.3rem;
 }
 
 /* Forms */
@@ -100,6 +91,15 @@
   padding-top: 30px !important;
 }
 
+.form-check {
+  border-radius: 2px;
+  margin: 5px;
+  border: 5px solid #fff;
+}
+.form-check-disabled {
+  border-color: lightgrey;
+  background-color: lightgrey;
+}
 /* Footer */
 
 .app-footer {
@@ -122,7 +122,13 @@
 .app-footer a {
   font-size: large;
 }
-
+.footer-links a {
+  color: var(--clr-font) !important;
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
 .app-footer a:hover {
   color: var(--clr-font) !important ;
 }
@@ -146,7 +152,7 @@
 /* Home page */
 
 .home-container {
-  background-color: #000;
+  background-color: var(--clr-bcg);
   color: var(--clr-font);
   font-size: 20px;
   width: 100%;
@@ -167,7 +173,7 @@
 }
 
 #home-login-btn {
-  background-color: #000 !important;
+  background-color: transparent !important;
   border: 2px solid var(--clr-primary);
 }
 #home-login-btn:hover {
@@ -183,4 +189,5 @@
 
 #home-signup-btn:hover {
   background-color: var(--clr-secondary) !important;
+  color: var(--clr-primary) !important;
 }

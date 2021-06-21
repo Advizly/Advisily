@@ -1,10 +1,11 @@
 :root {
-  --clr-bcg: #000000;
+  --clr-bcg: #075b81;
+  --clr-bcg-shadow: #094a68;
   --clr-font: #fff;
-  --clr-primary: #339c87;
-  --clr-secondary: #b11c1c;
-  --clr-primary-shadow: #227565;
-  --clr-secondary-shadow: #8f0e0e;
+  --clr-primary: #f5650b;
+  --clr-secondary: #fff;
+  --clr-primary-shadow: #b34a0a;
+  --clr-secondary-shadow: rgb(238, 235, 235);
 }
 
 body {

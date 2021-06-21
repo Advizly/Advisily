@@ -8,7 +8,7 @@ function SubmitButton(props) {
   return (
     <button
       disabled={isSubmitting || !isValid}
-      className="btn app-btn btn-submit"
+      className="btn btn-submit"
       type="submit"
       {...props}
     >

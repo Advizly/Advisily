@@ -27,18 +27,23 @@ function CoursesForm(props) {
   };
 
   const renderCourses = () => {
+    let myIndex = 0;
     return groupedCourses.map((row, index, arr) => (
       <div className="row" key={"key" + row[0].longNumber}>
-        {row.map(({ longNumber, shortNumber, title, prefix }) => {
+        {row.map(({ longNumber, shortNumber, title, prefix }, index) => {
           const courseId = longNumber;
           const formatedTitle =
             prefix + " " + shortNumber + "/" + longNumber + " " + title;
+          const disabled = myIndex % 3 !== 0 ? true : false;
+          myIndex++;
           return (
             <div className="col" key={courseId}>
               <FormCheckbox
                 label={formatedTitle}
                 name="courses"
                 value={courseId}
+                disabled={disabled}
+                checked={disabled}
               />
             </div>
           );

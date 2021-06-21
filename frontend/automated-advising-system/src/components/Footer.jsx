@@ -6,7 +6,7 @@ function Footer(props) {
   return (
     <footer className="d-flex justify-content-between app-footer">
       <CopyRight />
-      <Row className="footer-links  ">
+      <Row className="footer-links ">
         <ColMedium numOfCols="auto">
           <NavLink to="/about-us">About Us</NavLink>
         </ColMedium>
