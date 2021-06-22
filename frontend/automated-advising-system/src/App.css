@@ -4,6 +4,7 @@
 }
 .app-header a {
   color: #fff !important;
+  font-size: 1.3rem;
 }
 .nav-link:hover {
   color: var(--clr-primary) !important;
@@ -59,10 +60,18 @@
   border: 1px solid grey;
   padding: 20px;
   border-radius: 20px;
-  width: auto;
-  max-width: 100%;
-  min-width: 500px;
+  min-width: 40rem;
+  max-width: 60rem;
   margin: 1em;
+}
+.form-check {
+  border-radius: 2px;
+  margin: 5px;
+  border: 5px solid #fff;
+}
+.form-check-disabled {
+  border-color: lightgrey;
+  background-color: lightgrey;
 }
 
 /* Cards */
@@ -91,15 +100,6 @@
   padding-top: 30px !important;
 }
 
-.form-check {
-  border-radius: 2px;
-  margin: 5px;
-  border: 5px solid #fff;
-}
-.form-check-disabled {
-  border-color: lightgrey;
-  background-color: lightgrey;
-}
 /* Footer */
 
 .app-footer {

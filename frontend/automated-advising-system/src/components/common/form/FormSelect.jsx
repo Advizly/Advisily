@@ -1,6 +1,6 @@
 import React from "react";
 import { useField } from "formik";
-import ErrorMessage from "./FormError";
+import FormError from "./FormError";
 
 function FormSelect({ label, ...props }) {
   const [field, meta] = useField(props);
@@ -19,7 +19,7 @@ function FormSelect({ label, ...props }) {
         />
       </div>
 
-      <ErrorMessage error={meta.error} visible={meta.touched && meta.error} />
+      <FormError error={meta.error} visible={meta.touched && meta.error} />
     </>
   );
 }

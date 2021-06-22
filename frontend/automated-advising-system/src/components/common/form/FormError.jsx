@@ -1,6 +1,6 @@
 import React from "react";
 
-function ErrorMessage({ error, visible, ...props }) {
+function FormError({ error, visible, ...props }) {
   if (!error || !visible) return null;
   return (
     <div className="alert alert-danger" {...props}>
@@ -9,4 +9,4 @@ function ErrorMessage({ error, visible, ...props }) {
   );
 }
 
-export default ErrorMessage;
+export default FormError;

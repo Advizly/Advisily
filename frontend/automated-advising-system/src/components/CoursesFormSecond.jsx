@@ -1,58 +1,45 @@
 import React from "react";
 import * as Yup from "yup";
 import { Form, SubmitButton, FormCheckbox } from "./common/form";
-import { getCourses } from "../services/courses";
+import { getAllCourses, getTakenCourses } from "../services/coursesService";
+import * as CourseUtil from "../utils/coursesUtils";
+import { ColLarge, Row } from "./common/grid";
 
-const courses = getCourses();
+const courses = getAllCourses();
+const taken = getTakenCourses();
 
 function CoursesForm(props) {
-  const initialValues = { courses: [] };
+  const initialValues = { coursesIds: taken };
   const validationSchema = Yup.object({
-    courses: Yup.array().required(),
+    coursesIds: Yup.array().required(),
   });
 
-  const groupCourses = (coursesPerRow = 2) => {
-    const groupedCourses = [];
-    let row = [];
-    for (let i = 1; i <= courses.length; i++) {
-      row.push(courses[i - 1]);
-
-      if ((i !== 0 && i % coursesPerRow === 0) || i === courses.length) {
-        groupedCourses.push(row);
-        row = [];
-        //update
-      }
-    }
-    return groupedCourses;
+  const renderCourseRow = (row) => {
+    return row.map((course) => {
+      const { courseId, formatedTitle } = CourseUtil.formatCourseData(course);
+      return (
+        <ColLarge key={courseId}>
+          <FormCheckbox
+            label={formatedTitle}
+            name="coursesIds"
+            value={courseId}
+          />
+        </ColLarge>
+      );
+    });
   };
 
   const renderCourses = () => {
-    let myIndex = 0;
-    return groupedCourses.map((row, index, arr) => (
-      <div className="row" key={"key" + row[0].longNumber}>
-        {row.map(({ longNumber, shortNumber, title, prefix }, index) => {
-          const courseId = longNumber;
-          const formatedTitle =
-            prefix + " " + shortNumber + "/" + longNumber + " " + title;
-          const disabled = myIndex % 3 !== 0 ? true : false;
-          myIndex++;
-          return (
-            <div className="col" key={courseId}>
-              <FormCheckbox
-                label={formatedTitle}
-                name="courses"
-                value={courseId}
-                disabled={disabled}
-                checked={disabled}
-              />
-            </div>
-          );
-        })}
-        {index !== 0 && !(index % 5) && index !== arr.length - 1 ? (
-          <hr />
-        ) : null}
-      </div>
-    ));
+    return groupedCourses.map((row, index, arr) => {
+      const horizontalLine =
+        index !== 0 && !(index % 5) && index !== arr.length - 1;
+      return (
+        <Row key={"key" + row[0].longNumber}>
+          {renderCourseRow(row)}
+          {horizontalLine ? <hr /> : null}
+        </Row>
+      );
+    });
   };
 
   const handleSubmit = (values, { setSubmitting, ...others }) => {
@@ -63,7 +50,7 @@ function CoursesForm(props) {
     }, 2000);
   };
 
-  const groupedCourses = groupCourses(2);
+  const groupedCourses = CourseUtil.groupCourses(courses, 2);
   return (
     <>
       <Form

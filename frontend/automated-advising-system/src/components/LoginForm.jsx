@@ -34,9 +34,9 @@ function LoginForm(props) {
           type="password"
           aria-required="true"
         />
-        <div className="d-flex my-2 ">
+        <div className="d-flex justify-content-between ">
           <a href="/#">Forgot password?</a>
-          <p className="ms-auto">
+          <p>
             New user?<a href="/#"> Sign up</a>
           </p>
         </div>
