@@ -61,8 +61,7 @@
   border-width: 0 !important;
 }
 
-/* Forms */
-.form-border {
+.frame {
   border: 1px solid grey;
   padding: 20px;
   border-radius: 20px;
@@ -70,6 +69,7 @@
   max-width: 60rem;
   margin: 1em;
 }
+/* Forms */
 .form-check {
   border-radius: 2px;
   margin: 5px;

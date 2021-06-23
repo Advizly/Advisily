@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useFormikContext } from "formik";
 
-import {
-  FormPolarRadioGroup,
-  FormSelectGroup,
-  FormSelect,
-} from "../common/form";
+import { FormPolarRadioGroup, FormSelectGroup } from "../common/form";
 
 import { stringToBool } from "../../utils/stringUtils";
 

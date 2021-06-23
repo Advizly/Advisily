@@ -3,14 +3,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
-import CoursesFormSecond from "./components/CoursesFormSecond";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignupForm";
-import AdvisingForm from "./components/advisingForm/AdvisingForm";
-
+import { Advising, AdvisingForm, AdvisingResults } from "./components/advising";
 function App() {
   return (
     <BrowserRouter>
@@ -21,9 +19,10 @@ function App() {
 
         <main className="container content-wrapper">
           <Switch>
+            <Route path="/advising/results" component={AdvisingResults} />
+            <Route path="/advising/form" component={AdvisingForm} />
+            <Route path="/advising" component={Advising} />
             <Route path="/login" component={LoginForm} />
-            <Route path="/courses-form" component={AdvisingForm} />
-            <Route path="/courses-form-test" component={CoursesFormSecond} />
             <Route path="/sign-up" component={SignUpForm} />
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/about-us" component={AboutUs} />

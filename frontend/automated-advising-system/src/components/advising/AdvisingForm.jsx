@@ -83,12 +83,14 @@ function AdvisingForm(props) {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    if (window.confirm("Are you sure you want to submit this answer?"))
-      console.log(values);
+    if (!window.confirm("Are you sure you want to submit this answer?")) return;
+    console.log(values);
     alert(JSON.stringify(values, null, 2));
     setInterval(() => {
       setSubmitting(false);
     }, 2000);
+
+    props.history.replace("/advising/results");
   };
 
   const getFormChild = () => {
