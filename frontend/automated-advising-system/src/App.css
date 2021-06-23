@@ -204,3 +204,10 @@
   background-color: var(--clr-secondary) !important;
   color: var(--clr-primary) !important;
 }
+
+.modal {
+  background-color: rgb(0, 0, 0, 0.4);
+  align-items: center;
+  justify-content: center;
+  display: flex !important;
+}

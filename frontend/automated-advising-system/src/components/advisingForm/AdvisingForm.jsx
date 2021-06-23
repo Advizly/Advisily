@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 
-import { Form, SubmitButton } from "../common/form";
+import { Form } from "../common/form";
 import TakenCourses from "./TakenCourses";
 import PreferencesInfo from "./PreferencesInfo";
 import MajorInfo from "./MajorInfo";
@@ -83,50 +83,41 @@ function AdvisingForm(props) {
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
-    console.log(values);
+    if (window.confirm("Are you sure you want to submit this answer?"))
+      console.log(values);
     alert(JSON.stringify(values, null, 2));
     setInterval(() => {
       setSubmitting(false);
     }, 2000);
   };
 
-  switch (step) {
-    case 1:
-      return (
-        <Form
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          title={"Major Info"}
-          onSubmit={handleSubmit}
-        >
-          <MajorInfo onNext={next} />
-        </Form>
-      );
-    case 2:
-      return (
-        <Form
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          title={"Prefernces"}
-          onSubmit={handleSubmit}
-        >
-          <PreferencesInfo onNext={next} onBack={back} />
-        </Form>
-      );
-    case 3:
-      return (
-        <Form
-          initialValues={initialValues}
-          validationSchema={validationSchema}
-          title={"Courses Taken"}
-          onSubmit={handleSubmit}
-        >
-          <TakenCourses onBack={back} />
-        </Form>
-      );
-    default:
-      return null;
-  }
+  const getFormChild = () => {
+    switch (step) {
+      case 1:
+        return <MajorInfo onNext={next} />;
+      case 2:
+        return <PreferencesInfo onNext={next} onBack={back} />;
+      case 3:
+        return <TakenCourses onBack={back} />;
+      default:
+        return null;
+    }
+  };
+  const getFormTitle = () => {
+    if (step === 1) return "Major Info";
+
+    return step === 2 ? "Preferences" : "Finished Courses";
+  };
+  return (
+    <Form
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      title={getFormTitle()}
+      onSubmit={handleSubmit}
+    >
+      {getFormChild()}
+    </Form>
+  );
 }
 
 export default AdvisingForm;

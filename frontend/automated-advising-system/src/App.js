@@ -10,11 +10,13 @@ import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignupForm";
 import AdvisingForm from "./components/advisingForm/AdvisingForm";
+
 function App() {
   return (
     <BrowserRouter>
       <div className="page-container">
         <Header />
+
         <Route path="/" exact component={Home} />
 
         <main className="container content-wrapper">
