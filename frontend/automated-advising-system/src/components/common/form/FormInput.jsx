@@ -2,8 +2,9 @@ import { useField } from "formik";
 import React from "react";
 import FormError from "./FormError";
 
-function FormInput({ label, ...props }) {
+function FormInput({ label, visible = true, ...props }) {
   const [field, meta] = useField(props);
+  if (!visible) return null;
   const className =
     meta.error && meta.touched ? "form-control is-invalid" : "form-control";
   return (

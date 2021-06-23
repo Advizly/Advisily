@@ -1,6 +1,5 @@
 import React from "react";
 import { useField } from "formik";
-import FormError from "./FormError";
 
 function FormCheckbox({ label, ...props }) {
   const [field, meta] = useField(props);

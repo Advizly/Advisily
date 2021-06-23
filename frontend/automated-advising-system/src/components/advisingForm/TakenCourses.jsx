@@ -6,7 +6,7 @@ import * as CoursesUtils from "../../utils/coursesUtils";
 
 const courses = getAllCourses();
 
-function CoursesForm({ onNext }) {
+function TakenCourses({ onBack }) {
   const renderCourseRow = (row) => {
     return row.map((course) => {
       const { courseId, formatedTitle } = CoursesUtils.formatCourseData(course);
@@ -43,11 +43,11 @@ function CoursesForm({ onNext }) {
       </h5>
       <br />
       {renderCourses()}
-      <button className="btn m-2 ms-auto" onClick={onNext}>
-        Next
+      <button className="btn m-2 ms-auto" onClick={onBack}>
+        Back
       </button>
     </>
   );
 }
 
-export default CoursesForm;
+export default TakenCourses;

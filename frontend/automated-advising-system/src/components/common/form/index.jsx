@@ -5,3 +5,5 @@ export { default as SubmitButton } from "./SubmitButton";
 export { default as FormCheckbox } from "./FormCheckbox";
 export { default as FormRadio } from "./FormRadio";
 export { default as FormGroup } from "./FormGroup";
+export { default as FormPolarRadioGroup } from "./FormPolarRadioGroup";
+export { default as FormSelectGroup } from "./FormSelectGroup";

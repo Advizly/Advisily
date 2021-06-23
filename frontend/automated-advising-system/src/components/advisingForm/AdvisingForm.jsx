@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import CoursesForm from "./CoursesForm";
-import AdvisingQuestions from "./AdvisingQuestions";
-import { Form } from "../common/form";
 import * as Yup from "yup";
 
-function AdvisingForm(props) {
-  const [step, setStep] = useState(2);
-  const [showAdvanced, setShowAdvanced] = useState(false);
+import { Form, SubmitButton } from "../common/form";
+import TakenCourses from "./TakenCourses";
+import PreferencesInfo from "./PreferencesInfo";
+import MajorInfo from "./MajorInfo";
 
-  const handleShowAdvanced = () => setShowAdvanced(!showAdvanced);
+function AdvisingForm(props) {
+  const [step, setStep] = useState(1);
+
   const next = () => {
     setStep(step + 1);
   };
@@ -17,27 +17,46 @@ function AdvisingForm(props) {
   };
 
   const initialValues = {
-    courseId: ["1000"],
+    //MajorInfo
+    major: "",
+    catalog: "",
+    isMinoring: "",
+    minors: [],
+    isDoubleMajoring: "",
+    secondMajor: "",
+    secondMajorCatalog: "",
+    //Prefernces
+    pace: "2",
     takingSummer: "",
     takingWinter: "",
-    overloading: "",
+    isOverloading: "",
     winterCredits: "",
     summerCredits: "",
-    nextSemesterCrdits: 15,
-    isMinoring: false,
-    isDoubleMajoring: false,
-    minors: [],
-    doubleMajors: [],
+    //takenCourses
+    courseId: [],
   };
+
   const validationSchema = Yup.object({
-    courseId: Yup.array().required(),
-    takingSummer: Yup.boolean().required().label("This"),
-    takingWinter: Yup.boolean().required().label("This"),
-    overloading: Yup.boolean().required().label("This"),
+    //Major Info
+    major: Yup.string().required("You must select a major"),
+    isMinoring: Yup.boolean(),
+    minors: Yup.array().required(),
+    isDoubleMajoring: Yup.boolean(),
+    secondMajor: Yup.string()
+      .notRequired()
+      .when("isDoubleMajoring", {
+        is: true,
+        then: Yup.string().required("Select your second major"),
+      }),
+    //Preferences
+    pace: Yup.string().required("You must select a pace for your plan"),
+    takingSummer: Yup.boolean().required("Taking courses this summer?"),
+    takingWinter: Yup.boolean().required("Taking courses this Winter?"),
+    isOverloading: Yup.boolean().required("Are you overloading?"),
     winterCredits: Yup.number().when("takingWinter", {
       is: true,
       then: Yup.number()
-        .required()
+        .required("how many credis are you taking?")
         .min(1)
         .max(4)
         .label("Number of credits in winter"),
@@ -47,16 +66,17 @@ function AdvisingForm(props) {
       .max(7)
       .when("takingSummer", {
         is: true,
-        then: Yup.number().required().min(1).max(7).label("Number of credits"),
+        then: Yup.number()
+          .required("how many credis are you taking?")
+          .min(1)
+          .max(7)
+          .label("Number of credits"),
       }),
-    nextSemesterCrdits: Yup.number().min(12).max(21).label("Number of credits"),
-    isMinoring: Yup.boolean(),
-    isDoubleMajoring: Yup.boolean(),
-    minorrs: Yup.array(),
-    doubleMajors: Yup.array(),
+    //taken courses
+    courseId: Yup.array().required(),
   });
 
-  const handleSubmit = (values, { setSubmitting, ...others }) => {
+  const handleSubmit = (values, { setSubmitting }) => {
     console.log(values);
 
     setInterval(() => {
@@ -70,10 +90,11 @@ function AdvisingForm(props) {
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
-          title={"Advising"}
+          title={"Major Info"}
           onSubmit={handleSubmit}
         >
-          <CoursesForm onNext={next} />
+          <MajorInfo onNext={next} />
+          <SubmitButton />
         </Form>
       );
     case 2:
@@ -81,16 +102,27 @@ function AdvisingForm(props) {
         <Form
           initialValues={initialValues}
           validationSchema={validationSchema}
-          title={"Advising"}
+          title={"Prefernces"}
           onSubmit={handleSubmit}
         >
-          <AdvisingQuestions
-            onBack={back}
-            showSpecialOptions={showAdvanced}
-            onShowAdvanced={handleShowAdvanced}
-          />
+          <PreferencesInfo onNext={next} onBack={back} />
+          <SubmitButton />
         </Form>
       );
+    case 3:
+      return (
+        <Form
+          initialValues={initialValues}
+          validationSchema={validationSchema}
+          title={"Courses Taken"}
+          onSubmit={handleSubmit}
+        >
+          <TakenCourses onBack={back} />
+          <SubmitButton />
+        </Form>
+      );
+    default:
+      return null;
   }
 }
 
