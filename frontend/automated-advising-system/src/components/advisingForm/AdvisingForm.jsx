@@ -18,8 +18,8 @@ function AdvisingForm(props) {
 
   const initialValues = {
     //MajorInfo
-    major: "",
-    catalog: "",
+    major: "2",
+    catalog: "1",
     isMinoring: "",
     minors: [],
     isDoubleMajoring: "",
@@ -47,6 +47,12 @@ function AdvisingForm(props) {
       .when("isDoubleMajoring", {
         is: true,
         then: Yup.string().required("Select your second major"),
+      }),
+    secondMajorCatalog: Yup.string()
+      .notRequired()
+      .when("isDoubleMajoring", {
+        is: true,
+        then: Yup.string().required("Required"),
       }),
     //Preferences
     pace: Yup.string().required("You must select a pace for your plan"),
@@ -78,7 +84,7 @@ function AdvisingForm(props) {
 
   const handleSubmit = (values, { setSubmitting }) => {
     console.log(values);
-
+    alert(JSON.stringify(values, null, 2));
     setInterval(() => {
       setSubmitting(false);
     }, 2000);
@@ -94,7 +100,6 @@ function AdvisingForm(props) {
           onSubmit={handleSubmit}
         >
           <MajorInfo onNext={next} />
-          <SubmitButton />
         </Form>
       );
     case 2:
@@ -106,7 +111,6 @@ function AdvisingForm(props) {
           onSubmit={handleSubmit}
         >
           <PreferencesInfo onNext={next} onBack={back} />
-          <SubmitButton />
         </Form>
       );
     case 3:
@@ -118,7 +122,6 @@ function AdvisingForm(props) {
           onSubmit={handleSubmit}
         >
           <TakenCourses onBack={back} />
-          <SubmitButton />
         </Form>
       );
     default:

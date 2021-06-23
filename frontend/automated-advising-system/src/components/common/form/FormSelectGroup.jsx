@@ -2,21 +2,16 @@ import React from "react";
 import { FormSelect } from "./";
 
 function FormSelectGroup({
-  name,
-  label,
-  visible,
-  title,
   defaultOption,
   items,
   idSelector = "id",
-  valueSelector = "value",
   nameSelector = "name",
+  valueSelector = "value",
   ...props
 }) {
   return (
     <>
-      {title && <h5>{title}</h5>}
-      <FormSelect label={label} name={name} visible={visible} {...props}>
+      <FormSelect {...props}>
         {defaultOption && (
           <option value="" disabled>
             {defaultOption}

@@ -1,5 +1,7 @@
 import React from "react";
-import { FormCheckbox } from "../common/form";
+import { useFormikContext } from "formik";
+
+import { FormCheckbox, FormGroup, SubmitButton } from "../common/form";
 import { Row, ColMedium } from "../common/grid";
 import { getAllCourses } from "../../services/coursesService";
 import * as CoursesUtils from "../../utils/coursesUtils";
@@ -7,6 +9,16 @@ import * as CoursesUtils from "../../utils/coursesUtils";
 const courses = getAllCourses();
 
 function TakenCourses({ onBack }) {
+  const { values, setFieldValue } = useFormikContext();
+  const handleCourseCheck = (target) => {
+    const { name, checked, value } = target;
+    if (checked) setFieldValue(name, [...values[name], value]);
+    else {
+      if (window.confirm("Are you sure you want to uncheck this course?"))
+        setFieldValue(name, [...values[name].filter((v) => v !== value)]);
+    }
+  };
+
   const renderCourseRow = (row) => {
     return row.map((course) => {
       const { courseId, formatedTitle } = CoursesUtils.formatCourseData(course);
@@ -16,6 +28,9 @@ function TakenCourses({ onBack }) {
             label={formatedTitle}
             name="courseId"
             value={courseId}
+            onChange={({ target }) => {
+              handleCourseCheck(target);
+            }}
           />
         </ColMedium>
       );
@@ -37,15 +52,20 @@ function TakenCourses({ onBack }) {
   const groupedCourses = CoursesUtils.groupCourses(courses, 2);
   return (
     <>
-      <h5>
-        Please select all the courses you will have finished by the end of the
-        current semester:
-      </h5>
-      <br />
-      {renderCourses()}
-      <button className="btn m-2 ms-auto" onClick={onBack}>
-        Back
-      </button>
+      <FormGroup
+        name="courseId"
+        label="Please select all the courses you will have finished by the end of the
+    current semester:"
+      >
+        {renderCourses()}
+      </FormGroup>
+
+      <div className="d-flex justify-content-between ">
+        <button className="btn my-3" onClick={onBack} type="button">
+          Back
+        </button>
+        <SubmitButton />
+      </div>
     </>
   );
 }

@@ -9,7 +9,7 @@ function FormWrapper({ title, children }) {
       }}
     >
       <div className="form-border">
-        <h1 className="text-center test">{title}</h1>
+        <h1 className="text-center mb-4">{title}</h1>
         {children}
       </div>
     </div>

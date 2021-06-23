@@ -3,14 +3,15 @@ import { FormGroup, FormRadio } from ".";
 
 function FormPolarRadioGroup({
   name,
-  title,
+  label,
   trueLabel = "yes",
   falseLabel = "no",
+  ...props
 }) {
   return (
-    <FormGroup name={name} title={title}>
-      <FormRadio label={trueLabel} name={name} value={true} />
-      <FormRadio label={falseLabel} name={name} value={false} />
+    <FormGroup name={name} label={label}>
+      <FormRadio label={trueLabel} name={name} value={"true"} {...props} />
+      <FormRadio label={falseLabel} name={name} value={"false"} {...props} />
     </FormGroup>
   );
 }

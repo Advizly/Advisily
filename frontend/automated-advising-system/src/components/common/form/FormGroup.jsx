@@ -2,12 +2,14 @@ import React from "react";
 import { useField } from "formik";
 import FormError from "./FormError";
 
-function FormGroup({ title, ...props }) {
+function FormGroup({ label, ...props }) {
   const [field, meta] = useField(props);
   return (
     <>
-      <h5>{title}</h5>
-      <div className="form-group">{props.children}</div>
+      <div className="form-group">
+        {label && <label className="form-label">{label}</label>}
+        {props.children}
+      </div>
       {<FormError error={meta.error} visible={meta.error && meta.touched} />}
     </>
   );

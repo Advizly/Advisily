@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormikContext } from "formik";
 
-import { FormPolarRadioGroup, FormSelectGroup } from "../common/form";
+import {
+  FormPolarRadioGroup,
+  FormSelectGroup,
+  FormSelect,
+} from "../common/form";
 
 import { stringToBool } from "../../utils/stringUtils";
 
@@ -10,6 +14,9 @@ import { getMinors } from "../../services/minorsService";
 import { getCatalogs } from "../../services/catalogsService";
 
 function MajorInfo({ onNext }) {
+  const [changeMajor, setChangeMajor] = useState(false);
+  const [changeCatalog, setChangeCatalog] = useState(false);
+
   const { values } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
   const majors = getMajors();
@@ -18,25 +25,31 @@ function MajorInfo({ onNext }) {
   return (
     <>
       <FormSelectGroup
-        title={"What is your major?"}
-        name="major"
+        label="What is your major?"
         items={majors}
+        name="major"
         valueSelector="id"
-        defaultOption={"--select a major--"}
+        disabled={!changeMajor}
+        changeButton={true}
+        onChange={() => setChangeMajor(!changeMajor)}
       />
+
       <br />
 
       <FormSelectGroup
-        title={"Which catalog are you follwoing?"}
+        label={"Which catalog are you follwoing?"}
         name="catalog"
         items={catalogs}
         valueSelector="id"
         defaultOption={"--select a catalog--"}
+        disabled={!changeCatalog}
+        changeButton={true}
+        onChange={() => setChangeCatalog(!changeCatalog)}
       />
       <br />
 
       {/* Minor(s) */}
-      <FormPolarRadioGroup name="isMinoring" title="Are you taking minor(s)?" />
+      <FormPolarRadioGroup name="isMinoring" label="Are you taking minor(s)?" />
 
       <FormSelectGroup
         name="minors"
@@ -49,13 +62,13 @@ function MajorInfo({ onNext }) {
 
       {stringToBool(isMinoring) && (
         <p className="my-1">
-          <strong>Tip: </strong>press ctrl to select multiple minors
+          <strong>Tip: </strong>hole ctrl to select multiple minors
         </p>
       )}
       {/* Double Major */}
       <FormPolarRadioGroup
         name="isDoubleMajoring"
-        title="Are you double majoring?"
+        label="Are you double majoring?"
       />
 
       <FormSelectGroup
@@ -67,10 +80,18 @@ function MajorInfo({ onNext }) {
         valueSelector="id"
       />
 
+      <FormSelectGroup
+        label="Second Major Catalog:"
+        name="secondMajorCatalog"
+        visible={stringToBool(isDoubleMajoring)}
+        defaultOption={"---select a catalog---"}
+        items={catalogs}
+        valueSelector="id"
+      />
       <hr />
 
       <div className="d-flex ">
-        <button className="btn my-3 ms-auto" onClick={onNext}>
+        <button className="btn my-3 ms-auto" onClick={onNext} type="button">
           Next
         </button>
       </div>

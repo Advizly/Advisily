@@ -3,7 +3,7 @@ import React from "react";
 function FormError({ error, visible, ...props }) {
   if (!error || !visible) return null;
   return (
-    <div className="alert alert-danger" {...props}>
+    <div style={{ color: "#dc3545" }} className="" {...props}>
       {error}
     </div>
   );

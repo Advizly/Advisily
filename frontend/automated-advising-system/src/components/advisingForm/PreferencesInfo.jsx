@@ -10,14 +10,13 @@ import { stringToBool } from "../../utils/stringUtils";
 import { getPaces } from "../../services/pacesService";
 
 function PreferencesInfo({ onBack, onNext }) {
-  const { values } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
   const { takingSummer, takingWinter } = values;
   const paces = getPaces();
-
   return (
     <>
       <FormSelectGroup
-        title={"What pace would you like follow?"}
+        label={"What pace would you like follow?"}
         name="pace"
         items={paces}
         valueSelector="id"
@@ -26,14 +25,17 @@ function PreferencesInfo({ onBack, onNext }) {
 
       <FormPolarRadioGroup
         name="isOverloading"
-        title="Are you willing to overload in the next semester?"
+        label="Are you willing to overload in the next semester?"
+        onChange={({ target }) => {
+          setFieldValue(target.name, target.value);
+        }}
       />
 
       <hr />
 
       <FormPolarRadioGroup
         name="takingSummer"
-        title="Are you planning to take course(s) next Summer?"
+        label="Are you planning to take course(s) next Summer?"
       />
 
       <FormInput
@@ -47,7 +49,7 @@ function PreferencesInfo({ onBack, onNext }) {
       <hr />
       <FormPolarRadioGroup
         name="takingWinter"
-        title="Are you planning to take course(s) next Winter?"
+        label="Are you planning to take course(s) next Winter?"
       />
       <FormInput
         type="number"
@@ -60,10 +62,10 @@ function PreferencesInfo({ onBack, onNext }) {
       <hr />
 
       <div className="d-flex justify-content-between ">
-        <button className="btn my-3" onClick={onBack}>
+        <button className="btn my-3" onClick={onBack} type="button">
           Back
         </button>
-        <button className="btn my-3" onClick={onNext}>
+        <button className="btn my-3" onClick={onNext} type="button">
           Next
         </button>
       </div>

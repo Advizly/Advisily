@@ -2,24 +2,17 @@ import React from "react";
 import { useField } from "formik";
 
 function FormCheckbox({ label, ...props }) {
-  const [field, meta] = useField(props);
-  const checked = field.value.includes(props.value);
+  const [field, meta] = useField({ ...props, type: "checkbox" });
   const inputClassName = meta.error
     ? "form-check-input is-invalid"
     : " form-check-input";
-  const divClassName = checked ? "form-check-disabled" : "";
+  const divClassName = field.checked ? "form-check-disabled" : "";
   return (
     <div className={"form-check " + divClassName}>
       <label htmlFor={props.name} className="form-check-label">
         {label}
       </label>
-      <input
-        type="checkbox"
-        className={inputClassName}
-        checked={checked}
-        {...field}
-        {...props}
-      />
+      <input type="checkbox" className={inputClassName} {...field} {...props} />
     </div>
   );
 }
