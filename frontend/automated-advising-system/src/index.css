@@ -12,10 +12,12 @@ body {
   background-color: #fff !important;
   margin: 0;
   padding: 0;
-  font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body,
+html {
+  font-family: "Montserrat", "DejaVu Sans", "Verdana", "sans‑serif" !important;
 }
 
 code {
@@ -33,4 +35,32 @@ a {
 }
 main {
   padding: 20px;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Avro";
+} */
+
+/* 
+===============
+    Fonts
+===============
+*/
+
+@font-face {
+  font-family: "Avro";
+  src: url("./fonts/Arvo/Arvo-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Comfortaa";
+  src: url("./fonts/Comfortaa/static/Comfortaa-Medium.ttf");
+}
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat/Montserrat-Regular.ttf");
 }

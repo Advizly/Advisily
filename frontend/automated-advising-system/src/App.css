@@ -4,7 +4,7 @@
 }
 .app-header a {
   color: #fff !important;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .nav-link:hover {
   color: var(--clr-primary) !important;
@@ -29,6 +29,7 @@
 #nav-signup-btn {
   background-color: var(--clr-primary) !important;
   color: #fff !important;
+  width: fit-content;
 }
 #nav-signup-btn:hover {
   background-color: var(--clr-secondary) !important;
@@ -45,6 +46,13 @@
   color: var(--clr-font) !important;
   min-width: 5rem;
   min-height: 2rem;
+}
+.btn-primary {
+  background-color: var(--clr-primary) !important;
+  border-color: var(--clr-primary) !important;
+}
+.btn.btn-primary:hover {
+  background-color: var(--clr-primary-shadow) !important;
 }
 
 .btn:hover {
@@ -133,7 +141,7 @@
 }
 
 .app-footer a {
-  font-size: large;
+  font-size: 1.2rem;
 }
 .footer-links a {
   color: var(--clr-font) !important;
@@ -158,7 +166,6 @@
 
 #brand {
   color: #fff;
-  font-family: "cursive";
   font-size: 50px;
 }
 
@@ -174,17 +181,12 @@
   padding-top: 50px;
 }
 
-.vertical-line {
-  height: 500px;
-  width: 10px;
-  margin: 0 5px 0 5px;
-  background: var(--clr-primary);
-}
-
 .home-buttons button {
   width: 22rem;
 }
-
+.home-text {
+  font-style: italic;
+}
 #home-login-btn {
   background-color: transparent !important;
   border: 2px solid var(--clr-primary);
@@ -210,4 +212,27 @@
   align-items: center;
   justify-content: center;
   display: flex !important;
+}
+
+.google-login {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid #ccc;
+  padding: 5px 10px;
+  background-color: #fff;
+}
+.google-login:hover {
+  box-shadow: 2px 1px #ccc;
+}
+
+.google-login img {
+  width: fit-content;
+  height: fit-content;
+}
+
+.google-login strong {
+  margin: 0 10px;
+  font-size: 1.3rem;
 }

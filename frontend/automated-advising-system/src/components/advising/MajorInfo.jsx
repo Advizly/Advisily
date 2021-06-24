@@ -13,17 +13,26 @@ function MajorInfo({ onNext }) {
   const [changeMajor, setChangeMajor] = useState(false);
   const [changeCatalog, setChangeCatalog] = useState(false);
 
-  const { values } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
   const majors = getMajors();
   const minors = getMinors();
   const catalogs = getCatalogs();
+
+  const handleOnChange = (target, fieldToResetName = [], resetValue = "") => {
+    setFieldValue(target.name, target.value);
+    if (stringToBool(target.value) === false)
+      fieldToResetName.forEach((fieldName) =>
+        setFieldValue(fieldName, resetValue)
+      );
+  };
+
   return (
     <>
       <FormSelectGroup
         label="What is your major?"
         items={majors}
-        name="major"
+        name="majorId"
         valueSelector="id"
         disabled={!changeMajor}
         changeButton={true}
@@ -34,7 +43,7 @@ function MajorInfo({ onNext }) {
 
       <FormSelectGroup
         label={"Which catalog are you follwoing?"}
-        name="catalog"
+        name="catalogId"
         items={catalogs}
         valueSelector="id"
         defaultOption={"--select a catalog--"}
@@ -45,10 +54,16 @@ function MajorInfo({ onNext }) {
       <br />
 
       {/* Minor(s) */}
-      <FormPolarRadioGroup name="isMinoring" label="Are you taking minor(s)?" />
+      <FormPolarRadioGroup
+        name="isMinoring"
+        label="Are you taking minor(s)?"
+        onChange={({ target }) => {
+          handleOnChange(target, ["minors"], []);
+        }}
+      />
 
       <FormSelectGroup
-        name="minors"
+        name="minorsId"
         label="Select minor(s):"
         visible={stringToBool(isMinoring)}
         multiple
@@ -65,11 +80,14 @@ function MajorInfo({ onNext }) {
       <FormPolarRadioGroup
         name="isDoubleMajoring"
         label="Are you double majoring?"
+        onChange={({ target }) => {
+          handleOnChange(target, ["secondMajor", "secondMajorCatalog"]);
+        }}
       />
 
       <FormSelectGroup
         label="Second Major:"
-        name="secondMajor"
+        name="secondMajorId"
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a major---"}
         items={majors}
@@ -78,7 +96,7 @@ function MajorInfo({ onNext }) {
 
       <FormSelectGroup
         label="Second Major Catalog:"
-        name="secondMajorCatalog"
+        name="secondMajorCatalogId"
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
         items={catalogs}

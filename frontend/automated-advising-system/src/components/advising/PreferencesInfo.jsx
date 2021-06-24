@@ -1,34 +1,24 @@
 import React from "react";
 import { useFormikContext } from "formik";
 
-import {
-  FormInput,
-  FormPolarRadioGroup,
-  FormSelectGroup,
-} from "../common/form";
+import { FormInput, FormPolarRadioGroup } from "../common/form";
 import { stringToBool } from "../../utils/stringUtils";
-import { getPaces } from "../../services/pacesService";
 
 function PreferencesInfo({ onBack, onNext }) {
   const { values, setFieldValue } = useFormikContext();
   const { takingSummer, takingWinter } = values;
-  const paces = getPaces();
+
+  const handleOnChange = (target, fieldToResetName, resetValue = 0) => {
+    setFieldValue(target.name, target.value);
+    if (stringToBool(target.value) === false)
+      setFieldValue(fieldToResetName, resetValue);
+  };
+
   return (
     <>
-      <FormSelectGroup
-        label={"What pace would you like follow?"}
-        name="pace"
-        items={paces}
-        valueSelector="id"
-      />
-      <br />
-
       <FormPolarRadioGroup
         name="isOverloading"
         label="Are you willing to overload in the next semester?"
-        onChange={({ target }) => {
-          setFieldValue(target.name, target.value);
-        }}
       />
 
       <hr />
@@ -36,6 +26,9 @@ function PreferencesInfo({ onBack, onNext }) {
       <FormPolarRadioGroup
         name="takingSummer"
         label="Are you planning to take course(s) next Summer?"
+        onChange={({ target }) => {
+          handleOnChange(target, "summerCredits");
+        }}
       />
 
       <FormInput
@@ -50,6 +43,9 @@ function PreferencesInfo({ onBack, onNext }) {
       <FormPolarRadioGroup
         name="takingWinter"
         label="Are you planning to take course(s) next Winter?"
+        onChange={({ target }) => {
+          handleOnChange(target, "winterCredits");
+        }}
       />
       <FormInput
         type="number"

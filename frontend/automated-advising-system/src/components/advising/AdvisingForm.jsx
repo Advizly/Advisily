@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import * as Yup from "yup";
 
 import { Form } from "../common/form";
-import TakenCourses from "./TakenCourses";
+import FinishedCourses from "./FinishedCourses";
 import PreferencesInfo from "./PreferencesInfo";
 import MajorInfo from "./MajorInfo";
+import CustomizationsInfo from "./CustomizationsInfo";
 
-function AdvisingForm(props) {
+function AdvisingHome(props) {
   const [step, setStep] = useState(1);
 
   const next = () => {
@@ -18,68 +19,73 @@ function AdvisingForm(props) {
 
   const initialValues = {
     //MajorInfo
-    major: "2",
-    catalog: "1",
+    majorId: "2",
+    catalogId: "1",
     isMinoring: "",
-    minors: [],
+    minorsId: [],
     isDoubleMajoring: "",
-    secondMajor: "",
-    secondMajorCatalog: "",
+    secondMajorId: "",
+    secondMajorCatalogId: "",
     //Prefernces
-    pace: "2",
-    takingSummer: "",
-    takingWinter: "",
     isOverloading: "",
-    winterCredits: "",
-    summerCredits: "",
+    takingSummer: "",
+    summerCredits: 0,
+    takingWinter: "",
+    winterCredits: 0,
     //takenCourses
-    courseId: [],
+    finishedCoursesId: [],
+    //Customizations
+    paceId: "2",
+    semestersToPlan: "1",
   };
 
   const validationSchema = Yup.object({
     //Major Info
-    major: Yup.string().required("You must select a major"),
-    isMinoring: Yup.boolean(),
-    minors: Yup.array().required(),
-    isDoubleMajoring: Yup.boolean(),
-    secondMajor: Yup.string()
+    majorId: Yup.string().required("Required"),
+    catalogId: Yup.string().required("Required"),
+    isMinoring: Yup.boolean().required("Required"),
+    minorsId: Yup.array().required(),
+    isDoubleMajoring: Yup.boolean().required("Required"),
+    secondMajorId: Yup.string()
       .notRequired()
       .when("isDoubleMajoring", {
         is: true,
         then: Yup.string().required("Select your second major"),
       }),
-    secondMajorCatalog: Yup.string()
+    secondMajorCatalogId: Yup.string()
       .notRequired()
       .when("isDoubleMajoring", {
         is: true,
         then: Yup.string().required("Required"),
       }),
     //Preferences
-    pace: Yup.string().required("You must select a pace for your plan"),
-    takingSummer: Yup.boolean().required("Taking courses this summer?"),
-    takingWinter: Yup.boolean().required("Taking courses this Winter?"),
     isOverloading: Yup.boolean().required("Are you overloading?"),
+    takingSummer: Yup.boolean().required("Taking courses this summer?"),
     winterCredits: Yup.number().when("takingWinter", {
       is: true,
       then: Yup.number()
-        .required("how many credis are you taking?")
+        .required("how many credits are you taking?")
         .min(1)
         .max(4)
         .label("Number of credits in winter"),
     }),
+    takingWinter: Yup.boolean().required("Taking courses this Winter?"),
     summerCredits: Yup.number()
       .min(0)
       .max(7)
       .when("takingSummer", {
         is: true,
         then: Yup.number()
-          .required("how many credis are you taking?")
+          .required("how many credits are you taking?")
           .min(1)
           .max(7)
           .label("Number of credits"),
       }),
     //taken courses
-    courseId: Yup.array().required(),
+    finishedCoursesId: Yup.array().required(),
+    //Customizations
+    paceId: Yup.string().required("You must select a pace for your plan"),
+    semestersToPlan: Yup.number().required("Required").min(1),
   });
 
   const handleSubmit = (values, { setSubmitting }) => {
@@ -100,15 +106,26 @@ function AdvisingForm(props) {
       case 2:
         return <PreferencesInfo onNext={next} onBack={back} />;
       case 3:
-        return <TakenCourses onBack={back} />;
+        return <FinishedCourses onNext={next} onBack={back} />;
+      case 4:
+        return <CustomizationsInfo onBack={back} />;
       default:
         return null;
     }
   };
   const getFormTitle = () => {
-    if (step === 1) return "Major Info";
-
-    return step === 2 ? "Preferences" : "Finished Courses";
+    switch (step) {
+      case 1:
+        return "Major Info";
+      case 2:
+        return "Preferences Info";
+      case 3:
+        return "Finished Courses";
+      case 4:
+        return "Customizations";
+      default:
+        return "Advising";
+    }
   };
   return (
     <Form
@@ -122,4 +139,4 @@ function AdvisingForm(props) {
   );
 }
 
-export default AdvisingForm;
+export default AdvisingHome;
