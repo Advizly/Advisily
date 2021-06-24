@@ -48,9 +48,12 @@ function AdvisingResults(props) {
           </ul>
         </ol>
         <hr />
-        <Link to="/advising/form" replace>
-          <button className="btn ">New Advising Session?</button>
-        </Link>
+        <div className="d-flex justify-content-between">
+          <button className="btn ">Email me</button>
+          <Link to="/advising/form" replace>
+            <button className="btn btn-primary">New Advising Session?</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

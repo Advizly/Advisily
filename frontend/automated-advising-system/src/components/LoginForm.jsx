@@ -16,7 +16,7 @@ function LoginForm(props) {
     password: Yup.string().required("Password is required"),
   });
   return (
-    <div className="m-auto" s>
+    <div className="m-auto">
       <Form
         title="Login"
         initialValues={initialValues}

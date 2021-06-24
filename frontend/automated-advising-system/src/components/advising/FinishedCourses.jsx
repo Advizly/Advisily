@@ -10,13 +10,21 @@ const courses = getAllCourses();
 
 function FinishedCourses({ onBack, onNext }) {
   const { values, setFieldValue } = useFormikContext();
+
   const handleCourseCheck = (target) => {
     const { name, checked, value } = target;
-    if (checked) setFieldValue(name, [...values[name], value]);
+    const selectedIds = { ...values[name] };
+
+    if (checked) setFieldValue(name, [selectedIds, value]);
     else {
       if (window.confirm("Are you sure you want to uncheck this course?"))
-        setFieldValue(name, [...values[name].filter((v) => v !== value)]);
+        setFieldValue(name, [selectedIds.filter((v) => v !== value)]);
     }
+  };
+
+  const handleUncheckAll = () => {
+    if (window.confirm("Are you sure you want to uncheck all the courses?"))
+      setFieldValue("finishedCoursesId", []);
   };
 
   const renderCourseRow = (row) => {
@@ -52,10 +60,17 @@ function FinishedCourses({ onBack, onNext }) {
   const groupedCourses = CoursesUtils.groupCourses(courses, 2);
   return (
     <>
+      <button
+        type="button"
+        onClick={handleUncheckAll}
+        className=" btn btn-sm float-end my-2"
+      >
+        Uncheck all?
+      </button>
+      <br />
       <FormGroup
-        name="courseId"
-        label="Please select all the courses you will have finished by the end of the
-    current semester:"
+        name="finishedCoursesId"
+        label="Please select all the courses you will have finished by the end of the current semester:"
       >
         {renderCourses()}
       </FormGroup>
