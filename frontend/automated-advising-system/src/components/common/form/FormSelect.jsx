@@ -1,6 +1,6 @@
 import React from "react";
 import { useField } from "formik";
-import FormError from "./FormError";
+import FieldError from "./FieldError";
 
 function FormSelect({
   label,
@@ -35,7 +35,7 @@ function FormSelect({
         </div>
       </div>
 
-      <FormError name={props.name} />
+      <FieldError name={props.name} />
     </>
   );
 }

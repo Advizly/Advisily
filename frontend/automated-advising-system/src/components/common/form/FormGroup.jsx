@@ -1,5 +1,5 @@
 import React from "react";
-import FormError from "./FormError";
+import FieldError from "./FieldError";
 
 function FormGroup({ label, ...props }) {
   return (
@@ -8,7 +8,7 @@ function FormGroup({ label, ...props }) {
         {label && <label className="form-label">{label}</label>}
         {props.children}
       </div>
-      {<FormError name={props.name} />}
+      {<FieldError name={props.name} />}
     </>
   );
 }

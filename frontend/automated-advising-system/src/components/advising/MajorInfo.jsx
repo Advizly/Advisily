@@ -8,6 +8,7 @@ import { stringToBool } from "../../utils/stringUtils";
 import { getMajors } from "../../services/majorsService";
 import { getMinors } from "../../services/minorsService";
 import { getCatalogs } from "../../services/catalogsService";
+import { useEffect } from "react";
 
 function MajorInfo({ onNext }) {
   const [changeMajor, setChangeMajor] = useState(false);
@@ -19,13 +20,19 @@ function MajorInfo({ onNext }) {
   const minors = getMinors();
   const catalogs = getCatalogs();
 
-  const handleOnChange = (target, fieldToResetName = [], resetValue = "") => {
-    setFieldValue(target.name, target.value);
-    if (stringToBool(target.value) === false)
-      fieldToResetName.forEach((fieldName) =>
-        setFieldValue(fieldName, resetValue)
-      );
-  };
+  useEffect(() => {
+    let mounted = true; //prevents memory leak
+
+    if (!stringToBool(isMinoring) && mounted) setFieldValue("minorsId", []);
+
+    if (!stringToBool(isDoubleMajoring) && mounted) {
+      setFieldValue("secondMajorId", "");
+      setFieldValue("secondMajorCatalogId", "");
+    }
+    return () => {
+      mounted = false;
+    };
+  }, [isDoubleMajoring, isMinoring, setFieldValue]);
 
   return (
     <>
@@ -54,13 +61,7 @@ function MajorInfo({ onNext }) {
       <br />
 
       {/* Minor(s) */}
-      <FormPolarRadioGroup
-        name="isMinoring"
-        label="Are you taking minor(s)?"
-        onChange={({ target }) => {
-          handleOnChange(target, ["minors"], []);
-        }}
-      />
+      <FormPolarRadioGroup name="isMinoring" label="Are you taking minor(s)?" />
 
       <FormSelectGroup
         name="minorsId"
@@ -80,9 +81,6 @@ function MajorInfo({ onNext }) {
       <FormPolarRadioGroup
         name="isDoubleMajoring"
         label="Are you double majoring?"
-        onChange={({ target }) => {
-          handleOnChange(target, ["secondMajor", "secondMajorCatalog"]);
-        }}
       />
 
       <FormSelectGroup

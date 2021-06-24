@@ -6,9 +6,10 @@ function AdvisingResults(props) {
     <div className="d-flex justify-content-center">
       <div className="frame ">
         <h1 className="text-center">Your results are here!</h1>
+        <h5>Status:</h5>
         <p>
-          <h5>Status:</h5> <strong>On track</strong>. Keep it going! you are
-          currently moving on track and expected to graduate after 4 semester.
+          <strong>On track</strong>. Keep it going! you are currently moving on
+          track and expected to graduate after 4 semester.
         </p>
         <h5>Recomended courses:</h5>
         <ul>

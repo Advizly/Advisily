@@ -6,6 +6,7 @@
   --clr-secondary: #fff;
   --clr-primary-shadow: #b34a0a;
   --clr-secondary-shadow: rgb(238, 235, 235);
+  --clr-danger: #dc3545;
 }
 
 body {

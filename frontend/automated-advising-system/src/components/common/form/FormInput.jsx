@@ -1,6 +1,6 @@
 import { useField } from "formik";
 import React from "react";
-import FormError from "./FormError";
+import FieldError from "./FieldError";
 
 function FormInput({ label, visible = true, ...props }) {
   const [field, { error, touched }] = useField(props);
@@ -20,7 +20,7 @@ function FormInput({ label, visible = true, ...props }) {
           {...props}
         />
       </div>
-      <FormError name={props.name} />
+      <FieldError name={props.name} />
     </>
   );
 }

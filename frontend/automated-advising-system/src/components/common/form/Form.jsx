@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form as FormikForm } from "formik";
 import FormWrapper from "./FormWrapper";
+import FormError from "./FormError";
 function Form({
   initialValues,
   validationSchema,
@@ -18,6 +19,7 @@ function Form({
     >
       <FormWrapper title={title}>
         <FormikForm>{children}</FormikForm>
+        <FormError />
       </FormWrapper>
     </Formik>
   );
