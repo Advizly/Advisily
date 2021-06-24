@@ -8,7 +8,12 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
 import SignUpForm from "./components/SignupForm";
-import { Advising, AdvisingForm, AdvisingResults } from "./components/advising";
+import ForgotPassword from "./components/ForgotPassword";
+import {
+  AdvisingHome,
+  AdvisingForm,
+  AdvisingResults,
+} from "./components/advising";
 function App() {
   return (
     <BrowserRouter>
@@ -19,9 +24,11 @@ function App() {
 
         <main className="container content-wrapper">
           <Switch>
+            <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/advising/results" component={AdvisingResults} />
             <Route path="/advising/results" component={AdvisingResults} />
             <Route path="/advising/form" component={AdvisingForm} />
-            <Route path="/advising" component={Advising} />
+            <Route path="/advising" component={AdvisingHome} />
             <Route path="/login" component={LoginForm} />
             <Route path="/sign-up" component={SignUpForm} />
             <Route path="/contact-us" component={ContactUs} />
