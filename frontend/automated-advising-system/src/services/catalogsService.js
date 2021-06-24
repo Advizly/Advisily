@@ -1,5 +1,5 @@
 const catalogs = [
-  { id: "1", name: "Fall2019" },
+  { id: "1", name: "Fall 2019" },
   { id: "2", name: "Spring 2019" },
   { id: "3", name: "Fall 2020" },
   { id: "4", name: "Spring 2020" },
