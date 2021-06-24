@@ -9,14 +9,13 @@ function FormSelect({
   visible = true,
   ...props
 }) {
-  const [field, meta] = useField(props);
+  const [field, { error, touched }] = useField(props);
   if (!visible) return null;
   const className =
-    meta.error && meta.touched && !props.disabled
+    error && touched && !props.disabled
       ? "form-control is-invalid"
       : "form-control";
 
-  console.log(meta.touched);
   return (
     <>
       <div className="form-group">
@@ -24,7 +23,7 @@ function FormSelect({
         <div className="d-flex">
           <select
             className={className}
-            aria-invalid={meta.error}
+            aria-invalid={error}
             {...field}
             {...props}
           />
@@ -36,10 +35,7 @@ function FormSelect({
         </div>
       </div>
 
-      <FormError
-        error={meta.error}
-        visible={meta.touched && meta.error && !props.disabled}
-      />
+      <FormError name={props.name} />
     </>
   );
 }

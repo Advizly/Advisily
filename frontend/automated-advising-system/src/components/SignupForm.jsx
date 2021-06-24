@@ -1,17 +1,12 @@
 import React from "react";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
-import { FormInput, Form, FormSelect } from "./common/form";
+import { FormInput, Form, FormSelectGroup } from "./common/form";
+import GoogleLogin from "./GoogleLogin";
 import SubmitButton from "./common/form/SubmitButton";
-
-const catalogs = [
-  { id: "1", name: "Fall2019" },
-  { id: "2", name: "Spring 2019" },
-  { id: "3", name: "Fall 2020" },
-  { id: "4", name: "Spring 2020" },
-  { id: "5", name: "Fall 2021" },
-  { id: "6", name: "Spring 2021" },
-];
+import { getCatalogs } from "../services/catalogsService";
+import { getMajors } from "../services/majorsService";
 
 const SignUpForm = () => {
   const initialValues = {
@@ -20,9 +15,12 @@ const SignUpForm = () => {
     email: "",
     studentId: "",
     catalog: "",
+    major: "",
     password: "",
     passwordConfirmation: "",
   };
+  const catalogs = getCatalogs();
+  const majors = getMajors();
 
   const validationSchema = Yup.object({
     firstName: Yup.string()
@@ -45,11 +43,13 @@ const SignUpForm = () => {
       .required("Student ID is required"),
 
     password: Yup.string()
-      .min(5)
+      .min(8, "You password must contain at least 8 characters")
       .matches(/^\S*$/, "Password can't contain spaces")
+      .matches(/[a-zA-Z]/, "Password must have at least one letter")
+      .matches(/\d/, "Password must have at least one number")
       .required("Password is required"),
     passwordConfirmation: Yup.string()
-      .required("Password Confirmation is required")
+      .required("Required")
       .oneOf([Yup.ref("password"), null], "Passwords don't match"),
     catalog: Yup.string().required("You need to select a catalog"),
   });
@@ -65,8 +65,14 @@ const SignUpForm = () => {
       initialValues={initialValues}
       title="Sign Up"
     >
-      <FormInput label="First Name" name="firstName" aria-required="true" />
-      <FormInput label="Last Name" name="lastName" aria-required="true" />
+      <div className="d-flex">
+        <div>
+          <FormInput label="First Name" name="firstName" aria-required="true" />
+        </div>
+        <div className="mx-3">
+          <FormInput label="Last Name" name="lastName" aria-required="true" />
+        </div>
+      </div>
       <FormInput
         label="AUC Email "
         name="email"
@@ -90,20 +96,36 @@ const SignUpForm = () => {
         name="passwordConfirmation"
         type="password"
       />
-      <FormSelect
+
+      <FormSelectGroup
         label="Declaration Catalog"
         name="catalog"
         aria-required="true"
-      >
-        <option value="" disabled>
-          --select a catalog---
-        </option>
-        {catalogs.map((catalog) => (
-          <option key={catalog.id}>{catalog.name}</option>
-        ))}
-      </FormSelect>
+        defaultOption="--select a catalog--"
+        items={catalogs}
+        valueSelector="id"
+      />
+      <FormSelectGroup
+        label="Major"
+        name="major"
+        aria-required="true"
+        defaultOption="--select a major--"
+        items={majors}
+        valueSelector="id"
+      />
 
-      <SubmitButton />
+      <SubmitButton label="Sign Up" />
+      <div className="d-flex align-items-center">
+        <p className="ms-auto ">
+          Already a user? <Link to="/login">Login</Link>
+        </p>
+      </div>
+      <div className="d-flex justify-content-center">
+        <strong className="text-center">
+          Or login in using
+          <GoogleLogin />
+        </strong>
+      </div>
     </Form>
   );
 };
