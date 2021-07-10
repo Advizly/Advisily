@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import { websiteName } from "../constant/websiteName";
 function Home() {
   return (
     <div className="text-center home-container">
       <h1> Your new academic advisor is here!</h1>
       <p className="home-text font-italic my-4">
-        Advisly is an automated advisor to help you choose your courses.
+        {websiteName} is an automated advisor to help you choose your courses.
       </p>
       <div className="home-buttons d-flex justify-content-center">
         {/* <Link to="/login">

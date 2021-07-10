@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { websiteName } from "../../constant/websiteName";
 function AdvisingHome(props) {
   return (
     <div className="d-flex justify-content-center">
       <div className="frame">
         <h1 className="text-center mb-3">Advising</h1>
-        <h3>Why Advisly?</h3>
+        <h3>Why {websiteName}?</h3>
         <ul>
           <li>
             <strong>No more waiting!</strong>
