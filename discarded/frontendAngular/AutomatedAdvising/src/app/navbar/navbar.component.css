@@ -1,0 +1,13 @@
+a {
+  color: white;
+}
+
+nav {
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.nav-right-items {
+  margin-right: 0;
+  margin-left: auto;
+}
