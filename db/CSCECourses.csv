@@ -1,0 +1,76 @@
+course_number,name,no_of_credits,department_id
+1000,Introduction to Computers and their Applications,3,1
+1001,Fundamentals of Computing I,3,1
+1101,Fundamentals of Computing II,3,1
+1102,Fundamentals of Computing II Lab,1,1
+2202,Analysis and Design of Algorithms,3,1
+2203,Analysis and Design of Algorithms Lab,1,1
+2301,Digital Design I,3,1
+2302,Digital Design I Lab,1,1
+2303,Computer Organization and Assembly Language Programming,3,1
+2501,Fundamentals of Database Systems,3,1
+2502,Information Technology,3,1
+3102,Programming in Java,3,1
+3103,Object Oriented Programming,3,1
+3104,Concepts of Programming Languages,3,1
+3301,Computer Architecture,3,1
+3302,Computer Architecture Lab,1,1
+3303,Fundamental Microelectronics,3,1
+3304,Digital Design II,3,1
+3311,Data and Computer Communications,3,1
+3312,Computer Networks,3,1
+3313,Computer Networks Lab,1,1
+3401,Operating Systems,3,1
+3402,Operating Systems Lab,1,1
+3421,Fundamentals of Computing and Communication Systems,3,1
+3422,Introduction to Information Security,3,1
+3601,Artificial Intelligence,3,1
+3611,Digital Signal Processing,3,1
+3701,Software Engineering,3,1
+4101,Compiler Design,3,1
+4201,Theory of Computing,3,1
+4301,Embedded Systems,3,1
+4302,Embedded Systems Lab,1,1
+4313,Local and Metropolitan Area Networks,3,1
+4314,Local Area Networks Lab,1,1
+4411,Fundamentals of Distributed Systems,3,1
+4421,Computer Security,3,1
+4501,Database Systems,3,1
+4502,Design of Web-based Systems,3,1
+4503,Internet-based Information Systems,3,1
+4602,Introduction to Artificial Neural Networks,3,1
+4603,Fundamentals of Computer Vision,3,1
+4604,Practical Machine Deep Learning,3,1
+4621,Computer Graphics,3,1
+4701,Object-Oriented Analysis and Design,3,1
+4702,Secure Systems Engineering,3,1
+4950,Industrial Training,1,1
+4980,Senior Project I,1,1
+4981,Senior Project II,2,1
+5221,Algorithms and Complexity Theory,3,1
+5222,Design and Analysis of Parallel Algorithms,3,1
+5231,Advanced Processor Architecture,3,1
+5232,High Speed Networks,3,1
+5241,Distributed Systems,3,1
+5242,Parallel Computer Architecture,3,1
+5243,Information and System Security,3,1
+5245,Embedded Real-Time Systems,3,1
+5261,Advanced Artificial Intelligence,3,1
+5262,Neural Networks and Genetic Algorithms,3,1
+5263,Knowledge Engineering,3,1
+5264,Natural Language Processing and Machine Translation,3,1
+5265,Web Mining,3,1
+5266,Computer Vision,3,1
+5267,Digital Image Processing,3,1
+5268,Computer Graphics and Animation,3,1
+5269,Pattern Analysis,3,1
+5271,Advanced Software Engineering,3,1
+5272,Advanced Software Quality,3,1
+5930,Selected Topics in Computer Science and Engineering,3,1
+5940,Seminar,1,1
+5980,Capstone Project in Computing,3,1
+5981,Graduate Thesis,3,1
+6231,Mobile and Pervasive Computing,3,1
+6261,Advanced Data Mining,3,1
+6930,Advanced Selected Topics in Computer Science,3,1
+6980,Research Guidance Dissertation,3,1
