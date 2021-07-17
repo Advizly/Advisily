@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.2.5"
+  },
+  "name": "advisily-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Youssef-Agiza/Advisily.git"
+  },
+  "author": "Youssef Agiza",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Youssef-Agiza/Advisily/issues"
+  },
+  "homepage": "https://github.com/Youssef-Agiza/Advisily#readme",
+  "description": ""
+}
