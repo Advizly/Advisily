@@ -1,4 +1,4 @@
-course_number,name,no_of_credits,department_id
+course_number,title,no_of_credits,department_id
 1000,Introduction to Computers and their Applications,3,1
 1001,Fundamentals of Computing I,3,1
 1101,Fundamentals of Computing II,3,1
@@ -74,3 +74,21 @@ course_number,name,no_of_credits,department_id
 6261,Advanced Data Mining,3,1
 6930,Advanced Selected Topics in Computer Science,3,1
 6980,Research Guidance Dissertation,3,1
+1010,Freshman Writing,3,2
+1020,Research Writing,3,2
+1010,Freshman Seminar,3,3
+1020,Libraries & Learning Technologies,0,6
+1020,Scientific Thinking,3,7
+1012,General Physics Laboratory I,1,5
+1011,Classical Mechanics, Sound and Heat,3,5
+1021,Electricity and Magnetism,3,5
+1022,General Physics Laboratory II,1,5
+2211,Introduction to Electronics,3,5
+2213,Electronics Lab for Computer Scientists & Computer Engineers,1,5
+1122,Caclulus II,3,4
+2123,Caclulus III,3,4
+2131,Discrete Mathematics,3,4
+2132,Linear Algebra,3,4
+3211,Applied Probability,3,4
+3223,Statistical Inference,3,4
+2100,Philosophical Thinking,3,8
