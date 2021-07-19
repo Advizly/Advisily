@@ -1,13 +1,12 @@
 use advisily;
 
-
-
-INSERT INTO advisily.departments (title,prefix) VALUES("Computer Science and Engineering", "CSCE"),
-                                                      ("Rhetoric and Composition", "RHET"),
-                                                      ("Core Curriculum", "CORE"),
+INSERT INTO advisily.departments (title,prefix) VALUES("Template Department","XXX"),
+													  ("Computer Science and Engineering", "CSCE"),
                                                       ("Mathematics and Actuarial Science", "MACT"),
                                                       ("Physics", "PHYS"),
-                                                      ("Libraries and Learning Technologies", "LALT",
+                                                      ("Rhetoric and Composition", "RHET"),
+                                                      ("Core Curriculum", "CORE"),
+                                                      ("Libraries and Learning Technologies", "LALT"),
                                                       ("Sciences", "SCI"),
                                                       ("Philosophy", "PHIL");
 

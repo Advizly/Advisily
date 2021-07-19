@@ -45,12 +45,18 @@ void output_column_names(std::ofstream &outs, const cols_vector &columns, std::s
     outs << std::setw(25) << "VALUES";
 }
 
-bool contains_space(const std::string &str)
+bool isNumber(const std::string &str)
 {
-    for (auto letter : str)
-        if (letter == ' ')
-            return true;
-    return false;
+    if (str.empty())
+        return false;
+    if (!isdigit(str[0]) && str[0] != '-')
+        return false;
+
+    for (int i = 1; i < str.size(); i++)
+        if (!isdigit(str[i]))
+            return false;
+
+    return true;
 }
 
 void output_col_values(std::ofstream &outs, std::stringstream &ss, int col_count)
@@ -59,7 +65,7 @@ void output_col_values(std::ofstream &outs, std::stringstream &ss, int col_count
     for (int i = 0; i < col_count; i++)
     {
         std::getline(ss, col_value, ',');
-        if (contains_space(col_value) || !isdigit(col_value[0]))
+        if (!isNumber(col_value))
             col_value = "\"" + col_value + "\"";
         if (i == col_count - 1)
             outs << col_value;
@@ -127,7 +133,7 @@ int main(int argc, char *argv[])
         if (!ins.eof())
             outs << "),\n";
         else
-            outs << ")\n";
+            outs << ");\n";
     }
 
     return 0;
