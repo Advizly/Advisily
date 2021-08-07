@@ -1,0 +1,9 @@
+department_id,title,prefix
+1, Computer Science and Engineering    , CSCE   
+2, Mathematics and Actuarial Science   , MACT   
+3, Physics                             , PHYS   
+4, Rhetoric and Composition            , RHET   
+5, Core Curriculum                     , CORE   
+6, Libraries and Learning Technologies , LALT   
+7, Sciences                            , SCI    
+8, Philosophy                          , PHIL   

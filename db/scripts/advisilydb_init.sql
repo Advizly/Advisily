@@ -28,10 +28,6 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students` (
   PRIMARY KEY (`student_id`))
 ENGINE = InnoDB;
 
-CREATE UNIQUE INDEX `student_id_UNIQUE` ON `advisily`.`students` (`student_id` ASC) VISIBLE;
-
-CREATE UNIQUE INDEX `email_UNIQUE` ON `advisily`.`students` (`email` ASC) VISIBLE;
-
 
 -- -----------------------------------------------------
 -- Table `advisily`.`departments`
@@ -63,7 +59,6 @@ CREATE TABLE IF NOT EXISTS `advisily`.`majors` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_majors_1_idx` ON `advisily`.`majors` (`department_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -104,9 +99,7 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students_majors` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `student_id_idx` ON `advisily`.`students_majors` (`student_id` ASC) VISIBLE;
 
-CREATE INDEX `major_id_idx` ON `advisily`.`students_majors` (`major_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -129,9 +122,6 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students_minors` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `student_id_idx` ON `advisily`.`students_minors` (`student_id` ASC) VISIBLE;
-
-CREATE INDEX `minor_id_idx` ON `advisily`.`students_minors` (`minor_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -151,9 +141,6 @@ CREATE TABLE IF NOT EXISTS `advisily`.`courses` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE INDEX `department_id_idx` ON `advisily`.`courses` (`department_id` ASC) VISIBLE;
-
 
 -- -----------------------------------------------------
 -- Table `advisily`.`courses_prerequisites`
@@ -177,75 +164,31 @@ CREATE TABLE IF NOT EXISTS `advisily`.`courses_prerequisites` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `course_number_idx` ON `advisily`.`courses_prerequisites` (`course_code` ASC, `course_department_id` ASC) VISIBLE;
-
-CREATE INDEX `prerequisite_course_number_idx` ON `advisily`.`courses_prerequisites` (`prerequisite_course_code` ASC, `prerequisite_department_id` ASC) VISIBLE;
-
 
 -- -----------------------------------------------------
 -- Table `advisily`.`plan_concrete_coruses`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`plan_concrete_coruses` ;
+DROP TABLE IF EXISTS `advisily`.`plan_courses` ;
 
-CREATE TABLE IF NOT EXISTS `advisily`.`plan_concrete_coruses` (
+CREATE TABLE IF NOT EXISTS `advisily`.`plan_courses` (
+`plan_course_id`INT AUTO_INCREMENT NOT NULL,
   `catalog_year` YEAR NOT NULL,
   `course_code` INT NOT NULL,
-  `major_id` INT NOT NULL,
+  `course_department_id` INT NOT NULL,
+  `plan_major_id` INT NOT NULL,
   `semester_number` INT NULL,
-  PRIMARY KEY (`catalog_year`, `course_code`, `major_id`),
-  CONSTRAINT `course_number`
-    FOREIGN KEY (`course_code`)
-    REFERENCES `advisily`.`courses` (`course_code`)
+  PRIMARY KEY (`plan_course_id`),
+  CONSTRAINT `fk_plan_courses_1`
+    FOREIGN KEY (`course_code`,`course_department_id`)
+    REFERENCES `advisily`.`courses` (`course_code`,`department_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_plan_concrete_courses_1`
-    FOREIGN KEY (`major_id`)
+  CONSTRAINT `fk_plan_courses_2`
+    FOREIGN KEY (`plan_major_id`)
     REFERENCES `advisily`.`majors` (`major_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-CREATE INDEX `course_number_idx` ON `advisily`.`plan_concrete_coruses` (`course_code` ASC) VISIBLE;
-
-CREATE INDEX `fk_plan_concrete_courses_1_idx` ON `advisily`.`plan_concrete_coruses` (`major_id` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
--- Table `advisily`.`template_courses`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`template_courses` ;
-
-CREATE TABLE IF NOT EXISTS `advisily`.`template_courses` (
-  `template_course_id` INT NOT NULL AUTO_INCREMENT,
-  `template_courses_title` VARCHAR(45) NULL,
-  PRIMARY KEY (`template_course_id`))
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `advisily`.`plan_template_courses`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`plan_template_courses` ;
-
-CREATE TABLE IF NOT EXISTS `advisily`.`plan_template_courses` (
-  `catalog_year` YEAR NOT NULL,
-  `template_course_id` INT NOT NULL,
-  `major_id` INT NOT NULL,
-  `semester_number` INT NULL,
-  PRIMARY KEY (`template_course_id`, `catalog_year`, `major_id`),
-  CONSTRAINT `fk_plan_template_courses`
-    FOREIGN KEY (`template_course_id`)
-    REFERENCES `advisily`.`template_courses` (`template_course_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_plan_template_departments`
-    FOREIGN KEY (`major_id`)
-    REFERENCES `advisily`.`majors` (`major_id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-CREATE INDEX `fk_plan_template_departments_idx` ON `advisily`.`plan_template_courses` (`major_id` ASC) VISIBLE;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
