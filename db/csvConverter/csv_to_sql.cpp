@@ -59,13 +59,25 @@ bool isNumber(const std::string &str)
     return true;
 }
 
+bool isNull(const std::string &str)
+{
+    if (str.size() != 4)
+        return false;
+
+    std::string temp;
+    for (auto letter : str)
+        temp += toupper(letter);
+
+    return temp == "NULL";
+}
+
 void output_col_values(std::ofstream &outs, std::stringstream &ss, int col_count)
 {
     std::string col_value;
     for (int i = 0; i < col_count; i++)
     {
         std::getline(ss, col_value, ',');
-        if (!isNumber(col_value))
+        if (!isNumber(col_value) && !isNull(col_value))
             col_value = "\"" + col_value + "\"";
         if (i == col_count - 1)
             outs << col_value;
