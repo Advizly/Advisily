@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 const courses = [
   {
     prefix: "CSCE",
@@ -528,8 +530,15 @@ const courses = [
   //     title: "Research Guidance Dissertation (3 cr.)",
   //   taken:false},
 ];
+const baseUrl = "http://localhost:5000/api";
+const getAllCourses = async () => {
+  const { data: courses } = await axios.get(
+    "http://localhost:5000/api/plans/1/2020"
+  );
+  console.log("HERE FROM SERVICE:", courses);
+  return courses;
+};
 
-const getAllCourses = () => courses;
 const getTakenCourses = () =>
   courses.filter((c) => c.taken === true).map((c) => c.longNumber);
 

@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
 
 import { FormCheckbox, FormGroup } from "../common/form";
 import { Row, ColMedium } from "../common/grid";
 import { getAllCourses } from "../../services/coursesService";
-import * as CoursesUtils from "../../utils/coursesUtils";
-
-const courses = getAllCourses();
+import { groupCourses, formatCourseData } from "../../utils/coursesUtils";
 
 function FinishedCourses({ onBack, onNext }) {
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    getAllCourses().then((courses) => setCourses(groupCourses(courses, 2)));
+  }, []);
+
   const { values, setFieldValue } = useFormikContext();
 
   const handleCourseCheck = (target) => {
@@ -29,7 +33,7 @@ function FinishedCourses({ onBack, onNext }) {
 
   const renderCourseRow = (row) => {
     return row.map((course) => {
-      const { courseId, formatedTitle } = CoursesUtils.formatCourseData(course);
+      const { courseId, formatedTitle } = formatCourseData(course);
       return (
         <ColMedium key={courseId}>
           <FormCheckbox
@@ -46,7 +50,7 @@ function FinishedCourses({ onBack, onNext }) {
   };
 
   const renderCourses = () => {
-    return groupedCourses.map((row, index, arr) => {
+    return courses.map((row, index, arr) => {
       const horizontalSeparator = index !== 0 && !(index % 5);
       return (
         <Row key={"key" + row[0].longNumber}>
@@ -57,7 +61,6 @@ function FinishedCourses({ onBack, onNext }) {
     });
   };
 
-  const groupedCourses = CoursesUtils.groupCourses(courses, 2);
   return (
     <>
       <button

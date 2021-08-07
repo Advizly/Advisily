@@ -8,7 +8,7 @@ import MajorInfo from "./MajorInfo";
 import CustomizationsInfo from "./CustomizationsInfo";
 
 function AdvisingHome(props) {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(3);
 
   const next = () => {
     setStep(step + 1);

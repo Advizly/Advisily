@@ -26,7 +26,6 @@ function App() {
           <Switch>
             <Route path="/forgot-password" component={ForgotPassword} />
             <Route path="/advising/results" component={AdvisingResults} />
-            <Route path="/advising/results" component={AdvisingResults} />
             <Route path="/advising/form" component={AdvisingForm} />
             <Route path="/advising" component={AdvisingHome} />
             <Route path="/login" component={LoginForm} />
