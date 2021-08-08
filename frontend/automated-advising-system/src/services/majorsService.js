@@ -1,11 +1,9 @@
-const majors = [
-  { id: "1", name: "Computer Engineer" },
-  { id: "2", name: "Computer Science" },
-  { id: "3", name: "Elecotronics" },
-  { id: "4", name: "Physics" },
-  { id: "5", name: "Maths" },
-];
+const axios = require("axios");
 
-const getMajors = () => majors;
+const baseUrl = "http://localhost:5000/api/majors";
+const getMajors = async () => {
+  const { data: majors } = await axios.get(baseUrl);
+  return majors;
+};
 
 export { getMajors };

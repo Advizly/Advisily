@@ -1,5 +1,5 @@
 import React from "react";
-import { FormSelectGroup, SubmitButton } from "../common/form";
+import { FormSelectGroup } from "../common/form";
 import { getPaces } from "../../services/pacesService";
 
 const semestersToPlan = [
@@ -15,7 +15,7 @@ const semestersToPlan = [
   { id: "10", name: 10 },
 ];
 
-function CustomizationsInfo({ onBack }) {
+function CustomizationsInfo() {
   const paces = getPaces();
   return (
     <>
@@ -34,12 +34,6 @@ function CustomizationsInfo({ onBack }) {
       />
 
       <hr />
-      <div className="d-flex justify-content-between ">
-        <button className="btn my-3" onClick={onBack} type="button">
-          Back
-        </button>
-        <SubmitButton label="Generate Plan" />
-      </div>
     </>
   );
 }

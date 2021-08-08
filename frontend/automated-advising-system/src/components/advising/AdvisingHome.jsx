@@ -50,7 +50,7 @@ function AdvisingHome(props) {
             </button>
           </Link>
           <Link to="/advising/results">
-            <button className="btn btn-lg"> previous result</button>
+            <button className="btn btn-lg"> Previous result</button>
           </Link>
         </div>
       </div>

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 
-import { Form } from "../common/form";
+import { Form, SubmitButton } from "../common/form";
 import FinishedCourses from "./FinishedCourses";
 import PreferencesInfo from "./PreferencesInfo";
 import MajorInfo from "./MajorInfo";
 import CustomizationsInfo from "./CustomizationsInfo";
 
 function AdvisingHome(props) {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
 
   const next = () => {
     setStep(step + 1);
@@ -135,6 +135,20 @@ function AdvisingHome(props) {
       onSubmit={handleSubmit}
     >
       {getFormChild()}
+
+      <div className="d-flex justify-content-between ">
+        {step > 1 && (
+          <button className="btn my-3" onClick={back} type="button">
+            Back
+          </button>
+        )}
+        {step < 4 && (
+          <button className="btn my-3" onClick={next} type="button">
+            Next
+          </button>
+        )}
+        {step === 4 && <SubmitButton label="Generate Plan" />}
+      </div>
     </Form>
   );
 }

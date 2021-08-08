@@ -4,7 +4,7 @@ import { useFormikContext } from "formik";
 import { FormInput, FormPolarRadioGroup } from "../common/form";
 import { stringToBool } from "../../utils/stringUtils";
 
-function PreferencesInfo({ onBack, onNext }) {
+function PreferencesInfo() {
   const { values, setFieldValue } = useFormikContext();
   const { takingSummer, takingWinter } = values;
 
@@ -56,15 +56,6 @@ function PreferencesInfo({ onBack, onNext }) {
         visible={stringToBool(takingWinter)}
       />
       <hr />
-
-      <div className="d-flex justify-content-between ">
-        <button className="btn my-3" onClick={onBack} type="button">
-          Back
-        </button>
-        <button className="btn my-3" onClick={onNext} type="button">
-          Next
-        </button>
-      </div>
     </>
   );
 }
