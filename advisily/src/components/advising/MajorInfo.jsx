@@ -11,12 +11,7 @@ import { getCatalogs } from "../../services/catalogsService";
 import { useEffect } from "react";
 import { formatCatalogs } from "../../utils/catalogUtils";
 
-function MajorInfo() {
-  const [changeMajor, setChangeMajor] = useState(false);
-  const [changeCatalog, setChangeCatalog] = useState(false);
-
-  const { values, setFieldValue } = useFormikContext();
-  const { isMinoring, isDoubleMajoring } = values;
+function MajorInfo(changeButton = false) {
   const [majors, setMajors] = useState([]);
   const [minors, setMinors] = useState([]);
   const [catalogs, setCatalogs] = useState([]);
@@ -30,6 +25,8 @@ function MajorInfo() {
     });
   }, []);
 
+  const { values, setFieldValue } = useFormikContext();
+  const { isMinoring, isDoubleMajoring } = values;
   useEffect(() => {
     let mounted = true; //prevents memory leak
 
@@ -53,9 +50,8 @@ function MajorInfo() {
         idSelector="major_id"
         nameSelector="title"
         valueSelector="id"
-        disabled={!changeMajor}
-        changeButton={true}
-        onChange={() => setChangeMajor(!changeMajor)}
+        defaultOption={"--select a major--"}
+        changeButton={changeButton}
       />
 
       <br />
@@ -66,9 +62,7 @@ function MajorInfo() {
         items={catalogs}
         valueSelector="id"
         defaultOption={"--select a catalog--"}
-        disabled={!changeCatalog}
-        changeButton={true}
-        onChange={() => setChangeCatalog(!changeCatalog)}
+        changeButton={changeButton}
       />
       <br />
 
@@ -84,6 +78,7 @@ function MajorInfo() {
         multiple
         items={minors}
         valueSelector="id"
+        changeButton={changeButton}
       />
 
       {stringToBool(isMinoring) && (
@@ -106,7 +101,8 @@ function MajorInfo() {
         idSelector="major_id"
         nameSelector="title"
         items={majors}
-        valueSelector="id"
+        valueSelector="major_id"
+        changeButton={changeButton}
       />
 
       <FormSelectGroup
@@ -116,6 +112,7 @@ function MajorInfo() {
         defaultOption={"---select a catalog---"}
         items={catalogs}
         valueSelector="id"
+        changeButton={changeButton}
       />
       <hr />
     </>

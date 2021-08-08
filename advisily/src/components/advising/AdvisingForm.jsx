@@ -21,11 +21,11 @@ function AdvisingHome(props) {
     //MajorInfo
     majorId: "2",
     catalogId: "1",
-    isMinoring: "",
+    isMinoring: "false",
     minorsId: [],
-    isDoubleMajoring: "",
-    secondMajorId: "",
-    secondMajorCatalogId: "",
+    isDoubleMajoring: "true",
+    secondMajorId: "3",
+    secondMajorCatalogId: "1",
     //Prefernces
     isOverloading: "",
     takingSummer: "",
@@ -102,13 +102,22 @@ function AdvisingHome(props) {
   const getFormChild = () => {
     switch (step) {
       case 1:
-        return <MajorInfo onNext={next} />;
+        return (
+          <>
+            <h5>
+              We retrieved the data you entered while signing up, but you can
+              change any of them!
+            </h5>
+            <br />
+            <MajorInfo changeButton={true} />
+          </>
+        );
       case 2:
-        return <PreferencesInfo onNext={next} onBack={back} />;
+        return <PreferencesInfo />;
       case 3:
-        return <FinishedCourses onNext={next} onBack={back} />;
+        return <FinishedCourses />;
       case 4:
-        return <CustomizationsInfo onBack={back} />;
+        return <CustomizationsInfo />;
       default:
         return null;
     }
@@ -143,7 +152,7 @@ function AdvisingHome(props) {
           </button>
         )}
         {step < 4 && (
-          <button className="btn my-3" onClick={next} type="button">
+          <button className="btn my-3 ms-auto" onClick={next} type="button">
             Next
           </button>
         )}

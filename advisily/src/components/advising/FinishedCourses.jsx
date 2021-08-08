@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
 
-import { FormCheckbox, FormGroup } from "../common/form";
+import { FormCheckbox, FormGroup, FormInput } from "../common/form";
 import { Row, ColMedium } from "../common/grid";
 import {
-  // getCatalogCourses,
   getCoreCourses,
   getConcCourses,
   getCollateralCourses,
@@ -13,14 +12,12 @@ import {
 import { groupCourses, formatCourseData } from "../../utils/coursesUtils";
 
 function FinishedCourses() {
-  // const [courses, setCourses] = useState([]);
   const [coreCourses, setCoreCourses] = useState([]);
   const [concCourses, setConcCourses] = useState([]);
   const [collateralCourses, setCollateralCourses] = useState([]);
   const [electiveCourses, setElectiveCourses] = useState([]);
 
   useEffect(() => {
-    // getCatalogCourses(1).then((courses) => setCourses(groupCourses(courses)));
     getCoreCourses(1).then((courses) =>
       setCoreCourses(groupCourses(courses, 3))
     );
@@ -35,23 +32,19 @@ function FinishedCourses() {
     );
   }, []);
 
-  const { values, setFieldValue, getFieldProps } = useFormikContext();
+  const { values, setFieldValue } = useFormikContext();
 
   const handleCourseCheck = (target) => {
     const { name, checked } = target;
     const value = parseInt(target.value);
     const selectedIds = values[name].map((id) => parseInt(id));
-    const props = getFieldProps(name);
-    console.log(props, values[name], ...selectedIds);
 
     if (checked) setFieldValue(name, [...selectedIds, value]);
-    else {
-      if (window.confirm("Are you sure you want to uncheck this course?"))
-        setFieldValue(
-          name,
-          selectedIds.filter((v) => v !== value)
-        );
-    }
+    else if (window.confirm("Are you sure you want to uncheck this course?"))
+      setFieldValue(
+        name,
+        selectedIds.filter((v) => v !== value)
+      );
   };
 
   const handleUncheckAll = () => {
@@ -79,7 +72,7 @@ function FinishedCourses() {
 
   const renderCourses = (courses) => {
     return courses.map((row, index, arr) => {
-      const horizontalSeparator = index !== 0 && !(index % 5);
+      // const horizontalSeparator = index !== 0 && !(index % 5);
       return (
         <Row key={"key" + row[0].course_id}>
           {renderCourseRow(row)}
@@ -116,9 +109,17 @@ function FinishedCourses() {
         {renderCourses(collateralCourses)}
         <hr />
 
-        {/* <h5>Major Electives</h5>
+        <h5>Major Electives</h5>
         {renderCourses(electiveCourses)}
-        <hr /> */}
+        <hr />
+        <h5>General Electives</h5>
+        <FormInput
+          type="number"
+          name="generalElectiveCredits"
+          label="How many credits did you use from the general elective credits?"
+          min={0}
+        />
+        <hr />
       </FormGroup>
     </>
   );

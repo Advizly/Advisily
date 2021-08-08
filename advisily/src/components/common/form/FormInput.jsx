@@ -1,5 +1,5 @@
-import { useField } from "formik";
 import React from "react";
+import { useField } from "formik";
 import FieldError from "./FieldError";
 
 function FormInput({ label, visible = true, ...props }) {
@@ -7,6 +7,7 @@ function FormInput({ label, visible = true, ...props }) {
   if (!visible) return null;
   const className =
     error && touched ? "form-control is-invalid" : "form-control";
+
   return (
     <>
       <div className="form-group">

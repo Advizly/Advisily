@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
-import SignUpForm from "./components/SignupForm";
+import SignUpForm from "./components/signUp/SignupForm";
 import ForgotPassword from "./components/ForgotPassword";
 import {
   AdvisingHome,
