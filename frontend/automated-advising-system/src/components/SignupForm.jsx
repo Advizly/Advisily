@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
@@ -7,8 +7,21 @@ import GoogleLogin from "./GoogleLogin";
 import SubmitButton from "./common/form/SubmitButton";
 import { getCatalogs } from "../services/catalogsService";
 import { getMajors } from "../services/majorsService";
+import { formatCatalogs } from "../utils/catalogUtils";
 
 const SignUpForm = () => {
+  const [catalogs, setCatalogs] = useState([]);
+  const [majors, setMajors] = useState([]);
+
+  useEffect(() => {
+    getCatalogs().then((catalogs) => {
+      setCatalogs(formatCatalogs(catalogs));
+    });
+    getMajors().then((majors) => {
+      setMajors(majors);
+    });
+  }, []);
+
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -19,8 +32,6 @@ const SignUpForm = () => {
     password: "",
     passwordConfirmation: "",
   };
-  const catalogs = getCatalogs();
-  const majors = getMajors();
 
   const validationSchema = Yup.object({
     firstName: Yup.string()
@@ -114,6 +125,8 @@ const SignUpForm = () => {
           name="major"
           aria-required="true"
           defaultOption="--select a major--"
+          idSelector="major_id"
+          nameSelector="title"
           items={majors}
           valueSelector="id"
         />
