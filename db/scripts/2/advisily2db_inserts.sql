@@ -132,6 +132,15 @@ INSERT INTO majors (title,department_id)
                         ("Mathematics and Actuarial Science",3),
                         ("Physics",4);
 
+-- -----------------------------------------------
+--   MINORS
+-- -----------------------------------------------		
+INSERT INTO minors (title,department_id)
+                   VALUES("Computer Science Minor",2),
+                        ("Mathematics Minor",3),
+                        ("Philosophy Minor",9),
+                        ("Physics Minor",4);
+
 
 
 -- -----------------------------------------------

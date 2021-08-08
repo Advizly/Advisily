@@ -92,13 +92,14 @@ DROP TABLE IF EXISTS `advisily`.`catalogs` ;
 
 CREATE TABLE IF NOT EXISTS `advisily`.`catalogs` (
   `catalog_id` INT NOT NULL AUTO_INCREMENT,
+  `major_id` INT NOT NULL,
+  `season` VARCHAR(15) NOT NULL,
   `year` YEAR NOT NULL,
   `core_credits` INT NULL,
   `conc_req_credits` INT NULL,
   `conc_elec_credits` INT NULL,
   `collateral_credits` INT NULL,
   `general_elec_credits` INT NULL,
-  `major_id` INT NULL,
   PRIMARY KEY (`catalog_id`),
   CONSTRAINT `fk_catalogs_1`
     FOREIGN KEY (`major_id`)
@@ -242,9 +243,9 @@ DROP TABLE IF EXISTS `advisily`.`catalog_courses` ;
 
 CREATE TABLE IF NOT EXISTS `advisily`.`catalog_courses` (
   `catalog_id` INT NOT NULL,
-  `course_id` INT NULL,
+  `course_id` INT NOT NULL,
   `course_type_id` INT NULL,
-  `semester_number`TINYINT NOT NULL,
+  `semester_number` TINYINT NOT NULL,
   CONSTRAINT `fk_catalog_courses_1`
     FOREIGN KEY (`catalog_id`)
     REFERENCES `advisily`.`catalogs` (`catalog_id`)
