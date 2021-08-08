@@ -1,9 +1,10 @@
 department_id,title,prefix
-1, Computer Science and Engineering    , CSCE   
-2, Mathematics and Actuarial Science   , MACT   
-3, Physics                             , PHYS   
-4, Rhetoric and Composition            , RHET   
-5, Core Curriculum                     , CORE   
-6, Libraries and Learning Technologies , LALT   
-7, Sciences                            , SCI    
-8, Philosophy                          , PHIL   
+1,Template Department,XXX
+2,Computer Science and Engineering,CSCE
+3,Mathematics and Actuarial Science,MACT
+4,Physics,PHYS
+5,Rhetoric and Composition,RHET
+6,Core Curriculum,CORE
+7,Libraries and Learning Technologies,LALT
+8,Sciences,SCI
+9,Philosophy,PHIL
