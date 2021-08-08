@@ -23,8 +23,8 @@ router.get("/", (req, res) => {
       return res.send("Error");
     }
     res.send(results);
-    connection.end();
   });
+  connection.end();
 });
 
 router.get("/:catalog_id", (req, res) => {
@@ -41,8 +41,8 @@ router.get("/:catalog_id", (req, res) => {
       return res.send("Error");
     }
     res.send(results);
-    connection.end();
   });
+  connection.end();
 });
 
 router.get("/:catalog_id/:course_type_id", (req, res) => {
@@ -59,8 +59,8 @@ router.get("/:catalog_id/:course_type_id", (req, res) => {
       return res.send("Error");
     }
     res.send(results);
-    connection.end();
   });
+  connection.end();
 });
 
 module.exports = router;

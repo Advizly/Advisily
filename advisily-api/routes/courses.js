@@ -12,7 +12,10 @@ const getConnection = () =>
 
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query = "select * from courses";
+  const query =
+    "select c.title,c.course_id,d.prefix,c.course_code\
+     FROM courses as c JOIN departments as d\
+     ON c.department_id=d.department_id";
   connection.query(query, (err, results) => {
     if (err) {
       console.log("Error in quyring data", err);
@@ -20,14 +23,18 @@ router.get("/", (req, res) => {
     }
 
     res.send(results);
-    connection.end();
   });
+  connection.end();
 });
 
 router.get("/:course_id", (req, res) => {
   const connection = getConnection();
   const { course_id } = req.params;
-  const query = "select * from courses where course_id=?";
+  const query =
+    "SELECT c.title,c.course_id,d.prefix,c.course_code\
+     FROM courses as c JOIN departments as d\
+     ON c.department_id=d.department_id\
+     WHERE course_id=?";
   connection.query(query, [course_id], (err, results) => {
     if (err) {
       console.log("Error in quyring data", err);
@@ -35,8 +42,8 @@ router.get("/:course_id", (req, res) => {
     }
 
     res.send(results);
-    connection.end();
   });
+  connection.end();
 });
 
 module.exports = router;
