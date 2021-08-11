@@ -1,0 +1,9 @@
+{
+  "jwtPrivateKey": "",
+  "db": {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "advisily"
+  }
+}

@@ -1,14 +1,8 @@
 const express = require("express");
-const mysql = require("mysql");
+
 const router = express.Router();
 
-const getConnection = () =>
-  mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.DB_PASSWORD,
-    database: "advisily",
-  });
+const { getConnection } = require("../utils/mysqlUtils");
 
 router.get("/", (req, res) => {
   const connection = getConnection();

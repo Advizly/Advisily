@@ -1,14 +1,8 @@
 const express = require("express");
-const mysql = require("mysql");
+
 const router = express.Router();
 
-const getConnection = () =>
-  mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.DB_PASSWORD,
-    database: "advisily",
-  });
+const { getConnection } = require("../utils/mysqlUtils");
 
 router.get("/", (req, res) => {
   const connection = getConnection();
@@ -17,10 +11,7 @@ router.get("/", (req, res) => {
      FROM courses as c JOIN departments as d\
      ON c.department_id=d.department_id";
   connection.query(query, (err, results) => {
-    if (err) {
-      console.log("Error in quyring data", err);
-      return res.send("Error");
-    }
+    if (err) res.status(400).send(err);
 
     res.send(results);
   });
@@ -36,10 +27,7 @@ router.get("/:course_id", (req, res) => {
      ON c.department_id=d.department_id\
      WHERE course_id=?";
   connection.query(query, [course_id], (err, results) => {
-    if (err) {
-      console.log("Error in quyring data", err);
-      return res.send("Error");
-    }
+    if (err) res.status(400).send(err);
 
     res.send(results);
   });

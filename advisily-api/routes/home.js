@@ -1,14 +1,6 @@
 const express = require("express");
-const mysql = require("mysql");
 const router = express.Router();
-
-const getConnection = () =>
-  mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: process.env.DB_PASSWORD,
-    database: "advisily",
-  });
+const { getConnection } = require("../utils/mysqlUtils");
 
 router.get("/", (req, res) => {
   const connection = getConnection();
@@ -20,10 +12,8 @@ router.get("/", (req, res) => {
         WHERE  catalog_year= ?\
         ORDER BY semester_number ";
   connection.query(query, [2021], (err, results, fields) => {
-    if (err) {
-      console.log("Error in quyring data", err);
-      return res.send("Error");
-    }
+    if (err) res.status(400).send(err);
+
     results.forEach((r, index, arr) => {
       arr[index] = r.course_code < 0 ? { ...r, course_code: "XXX" } : r;
       console.log("R is:", arr[index]);
