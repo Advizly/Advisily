@@ -1,4 +1,10 @@
 use advisily;
+INSERT INTO course_types
+					VALUES(1,'Core Curriculum'),
+						  (2,'Concentration Requirements'),
+						  (3,'Concentration Electives'),
+						  (4,'Collateral Requirements'),
+						  (5,'General Electives');
 INSERT INTO courses (course_code,title,credits,department_id)
                    VALUES(-1,"Pathways I: Scientific Encounters",3,1),
                         (-2,"Pathways II: Cultural Exploration",3,1),

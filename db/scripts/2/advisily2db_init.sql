@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students` (
   `fname` VARCHAR(125) NOT NULL,
   `lname` VARCHAR(125) NOT NULL,
   `email` VARCHAR(125) NOT NULL,
-  `catalog_year` YEAR NULL,
+  `password` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`student_id`))
 ENGINE = InnoDB;
 
@@ -112,11 +112,11 @@ CREATE INDEX `fk_catalogs_1_idx` ON `advisily`.`catalogs` (`major_id` ASC) VISIB
 
 
 -- -----------------------------------------------------
--- Table `advisily`.`students_majors`
+-- Table `advisily`.`student_majors`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`students_majors` ;
+DROP TABLE IF EXISTS `advisily`.`student_majors` ;
 
-CREATE TABLE IF NOT EXISTS `advisily`.`students_majors` (
+CREATE TABLE IF NOT EXISTS `advisily`.`student_majors` (
   `student_id` INT NOT NULL,
   `major_id` INT NOT NULL,
   `catalog_id` INT NOT NULL,
@@ -137,21 +137,19 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students_majors` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `student_id_idx` ON `advisily`.`students_majors` (`student_id` ASC) VISIBLE;
+CREATE INDEX `student_id_idx` ON `advisily`.`student_majors` (`student_id` ASC) VISIBLE;
 
-CREATE INDEX `major_id_idx` ON `advisily`.`students_majors` (`major_id` ASC) VISIBLE;
+CREATE INDEX `major_id_idx` ON `advisily`.`student_majors` (`major_id` ASC) VISIBLE;
 
-CREATE INDEX `fk_students_majors_3_idx` ON `advisily`.`students_majors` (`catalog_id` ASC) VISIBLE;
-
-CREATE UNIQUE INDEX `student_id_UNIQUE` ON `advisily`.`students_majors` (`student_id` ASC) VISIBLE;
+CREATE INDEX `fk_students_majors_3_idx` ON `advisily`.`student_majors` (`catalog_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
--- Table `advisily`.`students_minors`
+-- Table `advisily`.`student_minors`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`students_minors` ;
+DROP TABLE IF EXISTS `advisily`.`student_minors` ;
 
-CREATE TABLE IF NOT EXISTS `advisily`.`students_minors` (
+CREATE TABLE IF NOT EXISTS `advisily`.`student_minors` (
   `student_id` INT NOT NULL,
   `minor_id` INT NOT NULL,
   `catalog_id` INT NULL,
@@ -172,11 +170,11 @@ CREATE TABLE IF NOT EXISTS `advisily`.`students_minors` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `student_id_idx` ON `advisily`.`students_minors` (`student_id` ASC) VISIBLE;
+CREATE INDEX `student_id_idx` ON `advisily`.`student_minors` (`student_id` ASC) VISIBLE;
 
-CREATE INDEX `minor_id_idx` ON `advisily`.`students_minors` (`minor_id` ASC) VISIBLE;
+CREATE INDEX `minor_id_idx` ON `advisily`.`student_minors` (`minor_id` ASC) VISIBLE;
 
-CREATE INDEX `fk_students_minors_3_idx` ON `advisily`.`students_minors` (`catalog_id` ASC) VISIBLE;
+CREATE INDEX `fk_students_minors_3_idx` ON `advisily`.`student_minors` (`catalog_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -245,7 +243,7 @@ CREATE TABLE IF NOT EXISTS `advisily`.`catalog_courses` (
   `catalog_id` INT NOT NULL,
   `course_id` INT NOT NULL,
   `course_type_id` INT NULL,
-  `semester_number` TINYINT NOT NULL,
+  `semester_number` TINYINT NULL,
   CONSTRAINT `fk_catalog_courses_1`
     FOREIGN KEY (`catalog_id`)
     REFERENCES `advisily`.`catalogs` (`catalog_id`)
@@ -294,25 +292,53 @@ CREATE INDEX `fk_student_courses_1_idx` ON `advisily`.`student_courses` (`studen
 
 
 -- -----------------------------------------------------
--- Table `advisily`.`student_advising`
+-- Table `advisily`.`advising_sessions`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `advisily`.`student_advising` ;
+DROP TABLE IF EXISTS `advisily`.`advising_sessions` ;
 
-CREATE TABLE IF NOT EXISTS `advisily`.`student_advising` (
-  `student_advising_id` INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `advisily`.`advising_sessions` (
+  `advising_session_id` INT NOT NULL AUTO_INCREMENT,
+  `student_id` INT NULL,
   `overloading_credits` TINYINT NULL DEFAULT 0,
   `summer_credits` TINYINT NULL DEFAULT 0,
   `winter_credits` TINYINT NULL DEFAULT 0,
-  `student_id` INT NULL,
-  PRIMARY KEY (`student_advising_id`),
-  CONSTRAINT `fk_student_advising_1`
+  `session_date` TIMESTAMP NULL DEFAULT current_timestamp,
+  PRIMARY KEY (`advising_session_id`),
+  CONSTRAINT `fk_advising_session_1`
     FOREIGN KEY (`student_id`)
     REFERENCES `advisily`.`students` (`student_id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-CREATE INDEX `fk_student_advising_1_idx` ON `advisily`.`student_advising` (`student_id` ASC) VISIBLE;
+CREATE INDEX `fk_advising_session_1_idx` ON `advisily`.`advising_sessions` (`student_id` ASC) VISIBLE;
+
+CREATE UNIQUE INDEX `student_id_UNIQUE` ON `advisily`.`advising_sessions` (`student_id` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `advisily`.`advising_courses`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `advisily`.`advising_courses` ;
+
+CREATE TABLE IF NOT EXISTS `advisily`.`advising_courses` (
+  `advising_session_id` INT NOT NULL,
+  `course_id` INT NOT NULL,
+  CONSTRAINT `fk_advising_courses_1`
+    FOREIGN KEY (`course_id`)
+    REFERENCES `advisily`.`courses` (`course_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_advising_courses_2`
+    FOREIGN KEY (`advising_session_id`)
+    REFERENCES `advisily`.`advising_sessions` (`advising_session_id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+CREATE INDEX `fk_advising_courses_2_idx` ON `advisily`.`advising_courses` (`advising_session_id` ASC) VISIBLE;
+
+CREATE INDEX `fk_advising_courses_1_idx` ON `advisily`.`advising_courses` (`course_id` ASC) VISIBLE;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
