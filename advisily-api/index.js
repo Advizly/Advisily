@@ -32,7 +32,4 @@ app.use("/api/students", students);
 app.use("/api/advising", advising);
 app.use("/api/auth", auth);
 
-if (!config.get("jwtPrivateKey")) {
-  console.error("Error private key");
-} else console.log(config.get("jwtPrivateKey"));
 app.listen(port, () => console.log(`App listening on port ${port}....`));
