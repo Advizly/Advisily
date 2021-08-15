@@ -37,7 +37,7 @@ function Header({ user }) {
           )}
           {user && (
             <>
-              <NavItem to="/profile" label={user.firstName} />
+              <NavItem to="/me" label={user.firstName} />
               <NavItem to="/logout" label="Logout" extraClasses="btn" />
             </>
           )}

@@ -1,10 +1,14 @@
 import React from "react";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Form, FormInput, SubmitButton } from "./common/form";
 import GoogleLogin from "./GoogleLogin";
 import auth from "../services/authService";
+import useAuth from "../hooks/useAuth";
 function LoginForm(props) {
+  const { user } = useAuth();
+  if (user) return <Redirect to="/" />;
+
   const initialValues = {
     studentId: "",
     password: "",
@@ -13,19 +17,25 @@ function LoginForm(props) {
     // email: Yup.string()
     //   .email("Invalid email")
     //   .required("Student Email is required"),
-    studentId: Yup.number()
-      .positive()
-      .integer()
-      .min(100000000, "Studnet ID must be positive and consist of 9 digits")
-      .max(999999999, "Studnet ID must consist of no more than 9 digits")
-      .required("Student ID is required"),
-    password: Yup.string().required("Password is required"),
+    // studentId: Yup.number()
+    //   .positive()
+    //   .integer()
+    //   .min(100000000, "Studnet ID must be positive and consist of 9 digits")
+    //   .max(999999999, "Studnet ID must consist of no more than 9 digits")
+    //   .required("Student ID is required"),
+    // password: Yup.string().required("Password is required"),
   });
-  const onSubmit = async (values, { setSubmitting, setErrors }) => {
+  const onSubmit = async (values, { setErrors }) => {
     try {
-      const { studentId, password } = values;
+      // const { studentId, password } = values;
+      const studentId = 900192240,
+        password = "abcd1234";
       await auth.login(studentId, password);
+      const user = auth.getCurrentUser();
+      console.log("User from login: ", user);
+
       window.location = "/advising";
+      // console.log(location);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         console.log(ex.response.data);

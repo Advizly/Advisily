@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import _ from "lodash";
 
 import { Form } from "../common/form";
@@ -15,11 +15,14 @@ import {
 } from "../../services/userService";
 import auth from "../../services/authService";
 import useFormStep from "../../hooks/useFormStep";
+import useAuth from "../../hooks/useAuth";
 const SignUpForm = () => {
   const [errorMessage, setErrorMessage] = useState(
     "one or more required field(s) is invalid."
   );
   const { next, back, step } = useFormStep();
+  const { user } = useAuth();
+  if (user) return <Redirect to="/" />;
   const initialValues = {
     firstName: "",
     lastName: "",

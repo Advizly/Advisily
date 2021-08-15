@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { websiteName } from "../../constant/websiteName";
+import useAuth from "../../hooks/useAuth";
 function AdvisingHome(props) {
+  const { user } = useAuth();
+  if (!user) console.log(props);
   return (
     <div className="d-flex justify-content-center">
       <div className="frame">
