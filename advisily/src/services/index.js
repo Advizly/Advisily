@@ -1,0 +1,9 @@
+export { default as advisingService } from "./advisingService";
+export { default as authService } from "./authService";
+export { default as catalogsService } from "./catalogsService";
+export { default as coursesService } from "./coursesService";
+export { default as httpService } from "./httpService";
+export { default as majorsService } from "./majorsService";
+export { default as minorsService } from "./minorsService";
+export { default as pacesService } from "./pacesService";
+export { default as userService } from "./userService";

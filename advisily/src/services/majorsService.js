@@ -12,5 +12,5 @@ export const getMajor = async (majorId) => {
   return major;
 };
 
-const exported = { getMajors, getMajor };
-export default exported;
+const majorsService = { getMajors, getMajor };
+export default majorsService;
