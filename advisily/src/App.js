@@ -1,4 +1,5 @@
 import "./App.css";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AboutUs from "./components/AboutUs";
@@ -7,6 +8,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import LoginForm from "./components/LoginForm";
+import Logout from "./components/Logout";
 import SignUpForm from "./components/signUp/SignupForm";
 import ForgotPassword from "./components/ForgotPassword";
 import {
@@ -14,13 +16,21 @@ import {
   AdvisingForm,
   AdvisingResults,
 } from "./components/advising";
+
+import auth from "./services/authService";
 function App() {
+  const [user, setUser] = useState();
+
+  useEffect(() => {
+    setUser(auth.getCurrentUser());
+  }, []);
+
   return (
     <BrowserRouter>
       <div className="page-container">
-        <Header />
+        <Header user={user} />
 
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={() => <Home user={user} />} />
 
         <main className="container content-wrapper">
           <Switch>
@@ -29,6 +39,7 @@ function App() {
             <Route path="/advising/form" component={AdvisingForm} />
             <Route path="/advising" component={AdvisingHome} />
             <Route path="/login" component={LoginForm} />
+            <Route path="/logout" component={Logout} />
             <Route path="/sign-up" component={SignUpForm} />
             <Route path="/contact-us" component={ContactUs} />
             <Route path="/about-us" component={AboutUs} />

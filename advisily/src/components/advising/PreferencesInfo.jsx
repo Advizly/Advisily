@@ -6,7 +6,7 @@ import { stringToBool } from "../../utils/stringUtils";
 
 function PreferencesInfo() {
   const { values, setFieldValue } = useFormikContext();
-  const { takingSummer, takingWinter } = values;
+  const { takingSummer, takingWinter, overloading } = values;
 
   const handleOnChange = (target, fieldToResetName, resetValue = 0) => {
     setFieldValue(target.name, target.value);
@@ -17,12 +17,20 @@ function PreferencesInfo() {
   return (
     <>
       <FormPolarRadioGroup
-        name="isOverloading"
+        name="overloading"
         label="Are you willing to overload in the next semester?"
+        onChange={({ target }) => {
+          handleOnChange(target, "overloadingCredits");
+        }}
       />
-
+      <FormInput
+        type="number"
+        name="overloadingCredits"
+        label="How many crdeits:"
+        min={1}
+        visible={stringToBool(overloading)}
+      />
       <hr />
-
       <FormPolarRadioGroup
         name="takingSummer"
         label="Are you planning to take course(s) next Summer?"
@@ -30,7 +38,6 @@ function PreferencesInfo() {
           handleOnChange(target, "summerCredits");
         }}
       />
-
       <FormInput
         type="number"
         name="summerCredits"
@@ -55,6 +62,7 @@ function PreferencesInfo() {
         max={4}
         visible={stringToBool(takingWinter)}
       />
+
       <hr />
     </>
   );

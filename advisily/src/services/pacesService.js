@@ -1,9 +1,10 @@
-const paces = [
-  { id: "1", name: "fast(higher workload, less years till graduations)" },
-  { id: "2", name: "normal" },
-  { id: "3", name: "slow(lighter workload, more years till graduations)" },
-];
+import { apiBaseUrl } from "../config";
+import http from "./httpService";
+const apiEndPoint = apiBaseUrl + "/advising/paces";
 
-const getPaces = () => paces;
+const getPaces = async () => {
+  const { data: paces } = await http.get(apiEndPoint);
+  return paces;
+};
 
 export { getPaces };

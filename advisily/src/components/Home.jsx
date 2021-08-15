@@ -2,7 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { websiteName } from "../constant/websiteName";
-function Home() {
+
+function Home({ user }) {
+  const redirectTo = user ? "/advising" : "sign-up";
   return (
     <div className="text-center home-container">
       <h1> Your new academic advisor is here!</h1>
@@ -15,7 +17,7 @@ function Home() {
             Login
           </button>
         </Link> */}
-        <Link to="/sign-up">
+        <Link to={redirectTo}>
           <button id="home-signup-btn" className="btn nav-btn ">
             Get Started!
           </button>

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FormSelectGroup } from "../common/form";
 import { getPaces } from "../../services/pacesService";
 
-const semestersToPlan = [
+const semestersPlanned = [
   { id: "1", name: 1 },
   { id: "2", name: 2 },
   { id: "3", name: 3 },
@@ -16,20 +16,26 @@ const semestersToPlan = [
 ];
 
 function CustomizationsInfo() {
-  const paces = getPaces();
+  const [paces, setPaces] = useState([]);
+  useEffect(() => {
+    getPaces().then((res) => setPaces(res));
+  }, []);
+
   return (
     <>
       <FormSelectGroup
-        label={"What pace would you like follow?"}
+        label={"What pace would you like to follow?"}
         name="paceId"
         items={paces}
-        valueSelector="id"
+        valueSelector="pace_id"
+        idSelector="pace_id"
+        nameSelector="pace_title"
       />
       <br />
       <FormSelectGroup
         label={"Up to how many semester would you like to be planned?"}
-        name="semestersToPlan"
-        items={semestersToPlan}
+        name="semestersPlanned"
+        items={semestersPlanned}
         valueSelector="id"
       />
 

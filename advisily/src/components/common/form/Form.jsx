@@ -7,6 +7,7 @@ function Form({
   validationSchema,
   onSubmit,
   title,
+  errorMessage,
   children,
   ...rest
 }) {
@@ -19,7 +20,7 @@ function Form({
     >
       <FormWrapper title={title}>
         <FormikForm>{children}</FormikForm>
-        <FormError />
+        <FormError errorMessage={errorMessage} />
       </FormWrapper>
     </Formik>
   );

@@ -32,7 +32,7 @@ const AccountInfo = () => {
       />
       <FormInput
         label="Confirm Password"
-        name="passwordConfirmation"
+        name="repeatPassword"
         type="password"
       />
     </>

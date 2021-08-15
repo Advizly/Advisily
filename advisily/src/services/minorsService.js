@@ -1,19 +1,14 @@
-const axios = require("axios");
-// const minors = [
-//   { id: "1", name: "Accounting Minor" },
-//   { id: "2", name: "Business Administration Minor" },
-//   { id: "3", name: "Computer Science Minor" },
-//   { id: "4", name: "Electronics Minor" },
-//   { id: "5", name: "Mathematics Minor" },
-// ];
+import { apiBaseUrl } from "../config";
+import http from "axios";
 
-const baseUrl = "http://localhost:5000/api/minors";
+const apiEndPoint = apiBaseUrl + "/minors";
+
 const getMinors = async () => {
-  const { data: minors } = await axios.get(baseUrl);
+  const { data: minors } = await http.get(apiEndPoint);
   return minors;
 };
-const getMinor = async (minor_id) => {
-  const { data: minor } = await axios.get(baseUrl + "/" + minor_id);
+const getMinor = async (minorId) => {
+  const { data: minor } = await http.get(`${apiEndPoint}/${minorId}`);
   return minor;
 };
 

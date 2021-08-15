@@ -6,7 +6,7 @@ import Logo from "./common/Logo";
 import Brand from "./common/Brand";
 import { ColMedium } from "./common/grid";
 
-function Header(props) {
+function Header({ user }) {
   return (
     <Nav>
       <ColMedium numOfCols="4" className="d-flex">
@@ -16,7 +16,7 @@ function Header(props) {
 
         <NavList>
           <NavItem label="Home" to="/" />
-          <NavItem label="Advise" to="/advising" />
+          {user && <NavItem label="Advise" to="/advising" />}
         </NavList>
       </ColMedium>
       <ColMedium numOfCols="4">
@@ -24,13 +24,23 @@ function Header(props) {
       </ColMedium>
       <ColMedium numOfCols="auto">
         <NavList extraClasses="nav-right">
-          <NavItem to="/login" label="Login" />
-          <NavItem
-            to="/sign-up"
-            label="Sign Up"
-            extraClasses="btn"
-            id="nav-signup-btn"
-          />
+          {!user && (
+            <>
+              <NavItem to="/login" label="Login" />
+              <NavItem
+                to="/sign-up"
+                label="Sign Up"
+                extraClasses="btn"
+                id="nav-signup-btn"
+              />
+            </>
+          )}
+          {user && (
+            <>
+              <NavItem to="/profile" label={user.firstName} />
+              <NavItem to="/logout" label="Logout" extraClasses="btn" />
+            </>
+          )}
         </NavList>
       </ColMedium>
     </Nav>

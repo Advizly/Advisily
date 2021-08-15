@@ -16,6 +16,7 @@
     "bootstrap-icons": "^1.5.0",
     "formik": "^2.2.9",
     "joi-browser": "^13.4.0",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-confirm-alert": "^2.7.0",
     "react-dom": "^17.0.2",

@@ -1,9 +1,16 @@
-const axios = require("axios");
+import { apiBaseUrl } from "../config";
+import http from "./httpService";
 
-const baseUrl = "http://localhost:5000/api/majors";
-const getMajors = async () => {
-  const { data: majors } = await axios.get(baseUrl);
+const apiEndPoint = apiBaseUrl + "/majors";
+export const getMajors = async () => {
+  const { data: majors } = await http.get(apiEndPoint);
   return majors;
 };
 
-export { getMajors };
+export const getMajor = async (majorId) => {
+  const { data: major } = await http.get(`${apiEndPoint}/${majorId}`);
+  return major;
+};
+
+const exported = { getMajors, getMajor };
+export default exported;

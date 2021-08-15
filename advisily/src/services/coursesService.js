@@ -1,5 +1,7 @@
-const axios = require("axios");
+import { apiBaseUrl } from "../config";
+import http from "./httpService";
 
+const apiEndPoint = apiBaseUrl + "/courses";
 // const courses = [
 //   {
 //     prefix: "CSCE",
@@ -530,15 +532,13 @@ const axios = require("axios");
 //   //     title: "Research Guidance Dissertation (3 cr.)",
 //   //   taken:false},
 // ];
-const baseUrl = "http://localhost:5000/api/courses";
 const getAllCourses = async () => {
-  const { data: courses } = await axios.get(baseUrl);
-  console.log(courses);
+  const { data: courses } = await http.get(apiEndPoint);
   return courses;
 };
 
 const getCourse = async (course_id) => {
-  const { data: course } = await axios.get(baseUrl + "/" + course_id);
+  const { data: course } = await http.get(`${apiEndPoint}/${course_id}`);
   return course;
 };
 

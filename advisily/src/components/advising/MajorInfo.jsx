@@ -1,40 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { useFormikContext } from "formik";
 
 import { FormPolarRadioGroup, FormSelectGroup } from "../common/form";
-
 import { stringToBool } from "../../utils/stringUtils";
+import useMajorInfo from "../../hooks/useMajorInfo";
 
-import { getMajors } from "../../services/majorsService";
-import { getMinors } from "../../services/minorsService";
-import { getCatalogs } from "../../services/catalogsService";
-import { useEffect } from "react";
-import { formatCatalogs } from "../../utils/catalogUtils";
-
-function MajorInfo(changeButton = false) {
-  const [majors, setMajors] = useState([]);
-  const [minors, setMinors] = useState([]);
-  const [catalogs, setCatalogs] = useState([]);
-
-  useEffect(() => {
-    getMinors().then((minors) => setMinors(minors));
-    getCatalogs().then((catalogs) => setCatalogs(formatCatalogs(catalogs)));
-    getMajors().then((majors) => {
-      console.log(majors);
-      setMajors(majors);
-    });
-  }, []);
-
+function MajorInfo({ showChangeButton = false }) {
+  const { majors, catalogs, minors } = useMajorInfo();
   const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
   useEffect(() => {
     let mounted = true; //prevents memory leak
 
-    if (!stringToBool(isMinoring) && mounted) setFieldValue("minorsId", []);
+    if (!stringToBool(isMinoring) && mounted) setFieldValue("minorIds", []);
 
     if (!stringToBool(isDoubleMajoring) && mounted) {
       setFieldValue("secondMajorId", "");
-      setFieldValue("secondMajorCatalogId", "");
+      setFieldValue("secondCatalogId", "");
     }
     return () => {
       mounted = false;
@@ -49,9 +31,9 @@ function MajorInfo(changeButton = false) {
         name="majorId"
         idSelector="major_id"
         nameSelector="title"
-        valueSelector="id"
+        valueSelector="major_id"
         defaultOption={"--select a major--"}
-        changeButton={changeButton}
+        changeButton={showChangeButton}
       />
 
       <br />
@@ -62,7 +44,7 @@ function MajorInfo(changeButton = false) {
         items={catalogs}
         valueSelector="id"
         defaultOption={"--select a catalog--"}
-        changeButton={changeButton}
+        changeButton={showChangeButton}
       />
       <br />
 
@@ -70,15 +52,15 @@ function MajorInfo(changeButton = false) {
       <FormPolarRadioGroup name="isMinoring" label="Are you taking minor(s)?" />
 
       <FormSelectGroup
-        name="minorsId"
+        name="minorIds"
         label="Select minor(s):"
         visible={stringToBool(isMinoring)}
         nameSelector="title"
         idSelector="minor_id"
         multiple
         items={minors}
-        valueSelector="id"
-        changeButton={changeButton}
+        valueSelector="minor_id"
+        changeButton={showChangeButton}
       />
 
       {stringToBool(isMinoring) && (
@@ -102,17 +84,17 @@ function MajorInfo(changeButton = false) {
         nameSelector="title"
         items={majors}
         valueSelector="major_id"
-        changeButton={changeButton}
+        changeButton={showChangeButton}
       />
 
       <FormSelectGroup
         label="Second Major Catalog:"
-        name="secondMajorCatalogId"
+        name="secondCatalogId"
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
         items={catalogs}
         valueSelector="id"
-        changeButton={changeButton}
+        changeButton={showChangeButton}
       />
       <hr />
     </>

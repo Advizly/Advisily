@@ -1,43 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useFormikContext } from "formik";
 
 import { FormCheckbox, FormGroup, FormInput } from "../common/form";
 import { Row, ColMedium } from "../common/grid";
-import {
-  getCoreCourses,
-  getConcCourses,
-  getCollateralCourses,
-  getElectiveCourses,
-} from "../../services/catalogsService";
-import { groupCourses, formatCourseData } from "../../utils/coursesUtils";
+import { formatCourseData } from "../../utils/coursesUtils";
+import useCourses from "../../hooks/useCourses";
 
 function FinishedCourses() {
-  const [coreCourses, setCoreCourses] = useState([]);
-  const [concCourses, setConcCourses] = useState([]);
-  const [collateralCourses, setCollateralCourses] = useState([]);
-  const [electiveCourses, setElectiveCourses] = useState([]);
-
-  useEffect(() => {
-    getCoreCourses(1).then((courses) =>
-      setCoreCourses(groupCourses(courses, 3))
-    );
-    getCollateralCourses(1).then((courses) =>
-      setCollateralCourses(groupCourses(courses, 3))
-    );
-    getConcCourses(1).then((courses) =>
-      setConcCourses(groupCourses(courses, 3))
-    );
-    getElectiveCourses(1).then((courses) =>
-      setElectiveCourses(groupCourses(courses, 3))
-    );
-  }, []);
-
+  const { concCourses, collateralCourses, coreCourses, electiveCourses } =
+    useCourses();
   const { values, setFieldValue } = useFormikContext();
 
   const handleCourseCheck = (target) => {
     const { name, checked } = target;
-    const value = parseInt(target.value);
-    const selectedIds = values[name].map((id) => parseInt(id));
+    const value = target.value;
+    const selectedIds = values[name].map((id) => id);
 
     if (checked) setFieldValue(name, [...selectedIds, value]);
     else if (window.confirm("Are you sure you want to uncheck this course?"))
@@ -49,7 +26,7 @@ function FinishedCourses() {
 
   const handleUncheckAll = () => {
     if (window.confirm("Are you sure you want to uncheck all the courses?"))
-      setFieldValue("finishedCoursesId", []);
+      setFieldValue("coursesIds", []);
   };
   const renderCourseRow = (row) => {
     return row.map((course) => {
@@ -59,8 +36,8 @@ function FinishedCourses() {
         <ColMedium key={courseId}>
           <FormCheckbox
             label={formatedTitle}
-            name="finishedCoursesId"
-            value={courseId}
+            name="coursesIds"
+            value={JSON.stringify(courseId)}
             onChange={({ target }) => {
               handleCourseCheck(target);
             }}
@@ -70,16 +47,10 @@ function FinishedCourses() {
     });
   };
 
-  const renderCourses = (courses) => {
-    return courses.map((row, index, arr) => {
-      // const horizontalSeparator = index !== 0 && !(index % 5);
-      return (
-        <Row key={"key" + row[0].course_id}>
-          {renderCourseRow(row)}
-          {/* {horizontalSeparator ? <hr /> : null} */}
-        </Row>
-      );
-    });
+  const renderCoursesTabular = (courses) => {
+    return courses.map((row) => (
+      <Row key={"key" + row[0].course_id}>{renderCourseRow(row)}</Row>
+    ));
   };
 
   return (
@@ -94,23 +65,23 @@ function FinishedCourses() {
       <br />
 
       <FormGroup
-        name="finishedCoursesId"
+        name="coursesIds"
         label="Please select all the courses you will have finished by the end of the current semester:"
       >
         <h5>Core Requirements</h5>
-        {renderCourses(coreCourses)}
+        {renderCoursesTabular(coreCourses)}
         <hr />
 
         <h5>Concenteration Requirements</h5>
-        {renderCourses(concCourses)}
+        {renderCoursesTabular(concCourses)}
         <hr />
 
         <h5>Collateral Requirements</h5>
-        {renderCourses(collateralCourses)}
+        {renderCoursesTabular(collateralCourses)}
         <hr />
 
         <h5>Major Electives</h5>
-        {renderCourses(electiveCourses)}
+        {renderCoursesTabular(electiveCourses)}
         <hr />
         <h5>General Electives</h5>
         <FormInput

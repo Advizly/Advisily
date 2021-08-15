@@ -1,33 +1,40 @@
 import React, { useState } from "react";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
 import { Form } from "../common/form";
 import GoogleLogin from "../GoogleLogin";
 import SubmitButton from "../common/form/SubmitButton";
 import AccountInfo from "./AccountInfo";
 import MajorInfo from "../advising/MajorInfo";
-
+import {
+  register,
+  addStudentMajor,
+  addStudentMinor,
+} from "../../services/userService";
+import auth from "../../services/authService";
+import useFormStep from "../../hooks/useFormStep";
 const SignUpForm = () => {
-  const [step, setStep] = useState(1);
-  const next = () => setStep((step) => step + 1);
-  const back = () => setStep((step) => step - 1);
-
+  const [errorMessage, setErrorMessage] = useState(
+    "one or more required field(s) is invalid."
+  );
+  const { next, back, step } = useFormStep();
   const initialValues = {
     firstName: "",
     lastName: "",
     email: "",
     studentId: "",
     password: "",
-    passwordConfirmation: "",
+    repeatPassword: "",
 
     majorId: "",
     catalogId: "",
     isDoubleMajoring: "",
     secondMajorId: "",
-    secondMajorCatalogId: "",
+    secondCatalogId: "",
     isMinoring: "",
-    minorsId: [],
+    minorIds: [],
   };
 
   const validationSchema = Yup.object({
@@ -54,14 +61,13 @@ const SignUpForm = () => {
       .matches(/[a-zA-Z]/, "Password must have at least one letter")
       .matches(/\d/, "Password must have at least one number")
       .required("Required"),
-    passwordConfirmation: Yup.string()
+    repeatPassword: Yup.string()
       .required("Required")
       .oneOf([Yup.ref("password"), null], "Passwords don't match"),
 
     catalogId: Yup.string().required("Required"),
-    majorId: Yup.string().required("Required Major"),
     isMinoring: Yup.boolean().required("Required"),
-    minorsId: Yup.array().required(),
+    minorIds: Yup.array().required(),
     isDoubleMajoring: Yup.boolean().required("Required"),
     secondMajorId: Yup.string()
       .notRequired()
@@ -74,7 +80,7 @@ const SignUpForm = () => {
             "You can't select the same major"
           ),
       }),
-    secondMajorCatalogId: Yup.string()
+    secondCatalogId: Yup.string()
       .notRequired()
       .when("isDoubleMajoring", {
         is: true,
@@ -82,9 +88,36 @@ const SignUpForm = () => {
       }),
   });
 
-  const onSubmit = (values, { setSubmitting }) => {
-    alert(JSON.stringify(values, null, 2));
-    setInterval(() => setSubmitting(false), 2000);
+  const submitMajorInfo = (values) => {
+    const { studentId } = auth.getCurrentUser();
+    const { majorId, catalogId, secondMajorId, secondCatalogId, minorIds } =
+      _.pick(values, [
+        "majorId",
+        "catalogId",
+        "minorIds",
+        "secondMajorId",
+        "secondCatalogId",
+      ]);
+    addStudentMajor(studentId, majorId, catalogId);
+    if (secondMajorId)
+      addStudentMajor(studentId, secondMajorId, secondCatalogId);
+    minorIds.forEach((id) => addStudentMinor(studentId, id));
+  };
+
+  const onSubmit = async (values, { setErrors }) => {
+    // alert(JSON.stringify(values, null, 2));
+    try {
+      const res = await register(values);
+      auth.loginWithJwt(res.headers["x-auth-token"]);
+      submitMajorInfo(values);
+      window.location = "/advising";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        setErrorMessage("Email or ID already registered");
+        setErrors({ email: " ", studentId: " " });
+        console.log(ex.response.data);
+      }
+    }
   };
 
   return (
@@ -93,6 +126,7 @@ const SignUpForm = () => {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
         initialValues={initialValues}
+        errorMessage={errorMessage}
         title={"Sign Up"}
       >
         {step === 1 && <AccountInfo />}
