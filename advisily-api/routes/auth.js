@@ -10,7 +10,7 @@ const { getConnection } = require("../utils/mysqlUtils");
 
 router.post("/", (req, res) => {
   const { error } = validate(req.body);
-  if (error) return res.send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
   const connection = getConnection();
   const usrQuery = "SELECT * from students WHERE student_id=?";
@@ -19,18 +19,25 @@ router.post("/", (req, res) => {
 
     //student not found
     if (!results || results.length === 0)
-      return res.status(400).send("Student ID not found");
+      return res.status(400).send("Invalid ID");
 
     //check password is correct
     const validPassword = await bcrypt.compare(
       req.body.password,
       results[0].password
     );
-    if (!validPassword) return res.status(400).send("Invalid password");
+    if (!validPassword)
+      return res.status(400).send("Invalid password and ID combination");
 
     //generate auth token
-    const { student_id: studentId, email } = results[0];
-    const token = generateToken({ studentId, email });
+    const {
+      student_id: studentId,
+      email,
+      fname: firstName,
+      lname: lastName,
+    } = results[0];
+    const token = generateToken({ studentId, email, firstName, lastName });
+
     res.send(token);
   });
   connection.end();

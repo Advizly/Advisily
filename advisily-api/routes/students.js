@@ -1,12 +1,12 @@
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
+const { JoiPassword } = require("joi-password");
 const _ = require("lodash");
-const mysql = require("mysql");
 const express = require("express");
 const router = express.Router();
 
 const generateToken = require("../utils/tokenGenerator");
-const { getConnection, getPool } = require("../utils/mysqlUtils");
+const { getConnection } = require("../utils/mysqlUtils");
 
 /* Nested routes*/
 const studentMinors = require("./student_minors");
@@ -45,97 +45,69 @@ router.get("/:student_id", (req, res) => {
 
 router.post("/", async (req, res) => {
   const { error } = validateStudent(req.body);
-  if (error) return res.send(error.details[0].message);
+  if (error) return res.status(400).send(error.details[0].message);
 
-  const { studentId: student_id } = req.body;
   const student = {
-    student_id,
+    student_id: req.body.studentId,
     fname: req.body.firstName,
     lname: req.body.lastName,
     email: req.body.email,
     password: req.body.password,
   };
-  const majorInfo = {
-    student_id,
-    major_id: req.body.majorId,
-    catalog_id: req.body.catalogId,
-  };
-  const secondMajorInfo = {
-    student_id,
-    major_id: req.body.secondMajorId,
-    catalog_id: req.body.secondCatalogId,
-  };
-
   const salt = await bcrypt.genSalt(10);
   student.password = await bcrypt.hash(req.body.password, salt);
 
   const connection = getConnection();
   const studentQuery = "INSERT INTO students SET ?";
+  const getStudentQuery =
+    "SELECT student_id,fname, lname, email from students WHERE student_id=? ";
 
-  let token;
-
-  connection.query(studentQuery, [student], (err, studentRows) => {
+  connection.query(studentQuery, [student], (err, results) => {
     if (err) {
-      res.status(400).send(err);
-      throw err;
+      return res.status(400).send(err);
     }
 
-    token = generateToken({ student_id: student.student_id });
-
-    const majorQuery = "INSERT INTO student_majors SET ?";
-    connection.query(majorQuery, majorInfo, (err, results) => {
-      if (err) {
-        res.status(400).send(err);
-        throw err;
-      }
-
-      if (secondMajorInfo.major_id)
-        connection.query(majorQuery, secondMajorInfo, (err, results) => {
-          if (err) {
-            res.status(400).send(err);
-            throw err;
-          }
-        });
-
-      const minorIds = req.body.minorIds;
-      const minorQuery = "INSERT INTO student_minors SET ?";
-      if (minorIds && minorIds.length)
-        minorIds.forEach((minor_id) => {
-          options = {
-            student_id: student.student_id,
-            minor_id,
-          };
-          connection.query(minorQuery, options, (err, results) => {
-            if (err) {
-              res.status(400).send(err);
-              throw err;
-            }
-          });
-        });
+    const {
+      fname: firstName,
+      lname: lastName,
+      student_id: studentId,
+      email,
+    } = student;
+    const token = generateToken({ firstName, lastName, studentId, email });
+    connection.query(getStudentQuery, [student.student_id], (err, student) => {
+      console.log(student);
+      res
+        .header("x-auth-token", token)
+        .header("access-control-expose-headers", "x-auth-token")
+        .send(student);
     });
-
-    res.send(studentRows);
   });
 });
 
 const validateStudent = (student) => {
   const schema = Joi.object({
     studentId: Joi.number().positive().integer().required(),
-    firstName: Joi.string().alphanum().min(3).max(30).required(),
-    lastName: Joi.string().alphanum().min(3).max(30).required(),
-    password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{8,30}$")),
-    passwordConfirmation: Joi.ref("password"),
+    firstName: Joi.string().alphanum().min(1).max(30).required(),
+    lastName: Joi.string().alphanum().min(1).max(30).required(),
+    password: JoiPassword.string()
+      .min(8)
+      .max(30)
+      .minOfNumeric(1)
+      .noWhiteSpaces()
+      .pattern(new RegExp("^.*[a-zA-Z]+.*$"))
+      .required(),
+    repeatPassword: Joi.ref("password"),
     email: Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
       .required(),
-    majorId: Joi.number().positive().integer().required(),
-    catalogId: Joi.number().positive().integer().required(),
-    secondMajorId: Joi.number().positive().integer(),
-    secondCatalogId: Joi.number()
-      .positive()
-      .integer()
-      .when("secondMajorId", { is: Joi.exist(), then: Joi.required() }),
-    minorIds: Joi.array().items(Joi.number().positive().integer()),
+    // majorId: Joi.number().positive().integer().required(),
+    // catalogId: Joi.number().positive().integer().required(),
+    // secondMajorId: Joi.number().positive().integer(),
+    // secondCatalogId: Joi.number()
+    //   .positive()
+    //   .integer()
+    //   .when("secondMajorId", { is: Joi.exist(), then: Joi.required() }),
+    // minorIds: Joi.array().items(Joi.number().positive().integer()),
   });
 
   return schema.validate(student);

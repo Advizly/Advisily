@@ -3,36 +3,38 @@ const Joi = require("joi");
 
 const express = require("express");
 const router = express.Router();
-router.use(auth);
+// router.use(auth);
 
 const { getConnection } = require("../utils/mysqlUtils");
 
-const baseQuery =
-  " SELECT sc.*,s.*,c.*,d.department_id, d.prefix,d.title AS department_title\
-                             FROM student_courses AS sc\
-                             INNER JOIN students AS s ON (s.student_id=sc.student_id)\
-                             INNER JOIN courses AS c ON (c.course_id=sc.course_id)\
-                             INNER JOIN departments AS d ON (d.department_id=c.department_id)";
-/************************************************************
-                GET with student_id
-************************************************************/
+const baseQuery = "SELECT DISTINCT * from student_courses";
 
-router.get("/", (req, res) => {
+// const baseQuery =
+//   " SELECT sc.*,s.*,c.*,d.department_id, d.prefix,d.title AS department_title\
+//                              FROM student_courses AS sc\
+//                              INNER JOIN students AS s ON (s.student_id=sc.student_id)\
+//                              INNER JOIN courses AS c ON (c.course_id=sc.course_id)\
+//                              INNER JOIN departments AS d ON (d.department_id=c.department_id)";
+// /************************************************************
+//                 GET with student_id
+// ************************************************************/
+
+// router.get("/", (req, res) => {
+//   const connection = getConnection();
+//   const query = baseQuery;
+
+//   connection.query(query, (err, results) => {
+//     if (err) return res.status(400).send(err);
+
+//     res.send(results);
+//   });
+
+//   connection.end();
+// });
+
+router.get("/:student_id", auth, (req, res) => {
   const connection = getConnection();
-  const query = baseQuery;
-
-  connection.query(query, (err, results) => {
-    if (err) return res.status(400).send(err);
-
-    res.send(results);
-  });
-
-  connection.end();
-});
-
-router.get("/:student_id", (req, res) => {
-  const connection = getConnection();
-  const query = baseQuery + " WHERE sc.student_id=?";
+  const query = baseQuery + " WHERE student_id=?";
   connection.query(query, [req.params.student_id], (err, results) => {
     if (err) return res.status(400).send(err);
 
@@ -41,16 +43,19 @@ router.get("/:student_id", (req, res) => {
   connection.end();
 });
 
-router.post("/", (req, res) => {
+router.post("/", auth, (req, res) => {
   const connection = getConnection();
-  const query = "INSERT INTO student_courses SET ?";
   const student_course = {
     student_id: req.user.studentId,
     course_id: req.body.courseId,
   };
-  const { error } = validateStudentCourse(student_minor);
-  if (error) return res.status(400).send(error);
+  const { error } = validateStudentCourse(student_course);
+  if (error) {
+    console.log(error.deails, req.body, req.body.data);
+    return res.status(400).send(error);
+  }
 
+  const query = "INSERT IGNORE INTO student_courses SET ?";
   connection.query(query, student_course, (err, results) => {
     if (err) res.status(404).send(err);
 
@@ -58,12 +63,12 @@ router.post("/", (req, res) => {
   });
   connection.end();
 });
-router.delete("/", (req, res) => {
+router.delete("/", auth, (req, res) => {
   const student_course = {
     student_id: req.user.studentId,
     course_id: req.body.courseId,
   };
-  const { error } = validateStudentCourse(student_minor);
+  const { error } = validateStudentCourse(student_course);
   if (error) return res.status(400).send(error);
 
   const connection = getConnection();
