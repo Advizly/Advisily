@@ -235,11 +235,11 @@ INSERT INTO catalog_courses (catalog_id,course_id,course_type_id,semester_number
 --   STUDENTS and related tables
 -- -----------------------------------------------		
 
-INSERT INTO students(student_id,fname,lname,email,password) 
-			VALUES (900192237,'Youssef', 'Agiza', 'youssefagiza@aucegypt.edu', 'abcd12345'),
-					(900192238,'Youssef2', 'Agiza2', 'youssefagiza2@aucegypt.edu', 'hello12345');
-            
-            
+-- INSERT INTO students(student_id,fname,lname,email,password) 
+-- 			VALUES (900192237,'Youssef', 'Agiza', 'youssefagiza@aucegypt.edu', 'abcd12345'),
+-- 					(900192238,'Youssef2', 'Agiza2', 'youssefagiza2@aucegypt.edu', 'hello12345');
+--             
+--             
 INSERT INTO student_majors(student_id, major_id,catalog_id) 
 								VALUES(900192237,1,1),
 								(900192237,3,1),
@@ -258,8 +258,4 @@ INSERT INTO student_courses(student_id,course_id)
                                    (900192238,3);
 INSERT INTO advising_sessions(student_id)VALUES(900192237);
 
-INSERT INTO advising_courses(advising_session_id,course_id)
-						VALUES(1,99),
-                        (1,101),
-                        (1,15),
-                        (1,16);
+INSERT INTO paces(pace_title) VALUES("slow"),("normal"), ("fast");
