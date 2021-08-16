@@ -2,22 +2,23 @@ import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AboutUs from "./components/AboutUs";
-import AdvisingRouter from "./components/advising/AdvisingRouter";
+import AdvisingRouter from "./advising/AdvisingRouter";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
-import ForgotPassword from "./components/ForgotPassword";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import LoginForm from "./components/LoginForm";
+
+import ForgotPassword from "./components/ForgotPassword";
+import LoginForm from "./loginForm/LoginForm";
 import Logout from "./components/Logout";
-import SignUpForm from "./components/signUp/SignupForm";
+import SignUpForm from "./signUpForm/SignupForm";
+
 import Profile from "./components/Profile";
 
 import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/common/ProtectedRoute";
 function App() {
   const { user } = useAuth();
-  console.log("User from app.js", user);
   return (
     <BrowserRouter>
       <div className="page-container">

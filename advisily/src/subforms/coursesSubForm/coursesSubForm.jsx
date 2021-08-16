@@ -1,19 +1,23 @@
 import React from "react";
 import { useFormikContext } from "formik";
 
-import { FormCheckbox, FormGroup, FormInput } from "../common/form";
-import { Row, ColMedium } from "../common/grid";
+import {
+  FormCheckbox,
+  FormGroup,
+  FormInput,
+} from "../../components/common/form";
+import { Row, ColMedium } from "../../components/common/grid";
 import { formatCourseData } from "../../utils/coursesUtils";
-import useCourses from "../../hooks/useCourses";
+import useCatalogCourses from "../../hooks/useCourses";
 
-function FinishedCourses() {
+import { COURSES_IDS, GENERAL_ELECTIVE_CREDITS } from "./fieldNames";
+function CoursesSubForm() {
   const { concCourses, collateralCourses, coreCourses, electiveCourses } =
-    useCourses();
+    useCatalogCourses();
   const { values, setFieldValue } = useFormikContext();
 
   const handleCourseCheck = (target) => {
-    const { name, checked } = target;
-    const value = target.value;
+    const { name, checked, value } = target;
     const selectedIds = values[name].map((id) => id);
 
     if (checked) setFieldValue(name, [...selectedIds, value]);
@@ -26,7 +30,7 @@ function FinishedCourses() {
 
   const handleUncheckAll = () => {
     if (window.confirm("Are you sure you want to uncheck all the courses?"))
-      setFieldValue("coursesIds", []);
+      setFieldValue(COURSES_IDS, []);
   };
   const renderCourseRow = (row) => {
     return row.map((course) => {
@@ -36,7 +40,7 @@ function FinishedCourses() {
         <ColMedium key={courseId}>
           <FormCheckbox
             label={formatedTitle}
-            name="coursesIds"
+            name={COURSES_IDS}
             value={JSON.stringify(courseId)}
             onChange={({ target }) => {
               handleCourseCheck(target);
@@ -65,7 +69,7 @@ function FinishedCourses() {
       <br />
 
       <FormGroup
-        name="coursesIds"
+        name={COURSES_IDS}
         label="Please select all the courses you will have finished by the end of the current semester:"
       >
         <h5>Core Requirements</h5>
@@ -86,7 +90,7 @@ function FinishedCourses() {
         <h5>General Electives</h5>
         <FormInput
           type="number"
-          name="generalElectiveCredits"
+          name={GENERAL_ELECTIVE_CREDITS}
           label="How many credits did you use from the general elective credits?"
           min={0}
         />
@@ -96,4 +100,4 @@ function FinishedCourses() {
   );
 }
 
-export default FinishedCourses;
+export default CoursesSubForm;

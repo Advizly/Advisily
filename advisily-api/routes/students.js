@@ -100,14 +100,6 @@ const validateStudent = (student) => {
     email: Joi.string()
       .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
       .required(),
-    // majorId: Joi.number().positive().integer().required(),
-    // catalogId: Joi.number().positive().integer().required(),
-    // secondMajorId: Joi.number().positive().integer(),
-    // secondCatalogId: Joi.number()
-    //   .positive()
-    //   .integer()
-    //   .when("secondMajorId", { is: Joi.exist(), then: Joi.required() }),
-    // minorIds: Joi.array().items(Joi.number().positive().integer()),
   });
 
   return schema.validate(student);

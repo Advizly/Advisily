@@ -1,41 +1,26 @@
 import React from "react";
-import * as Yup from "yup";
 import { Link, Redirect } from "react-router-dom";
-import { Form, FormInput, SubmitButton } from "./common/form";
-import GoogleLogin from "./GoogleLogin";
+import { Form, FormInput, SubmitButton } from "../components/common/form";
+import GoogleLogin from "../components/GoogleLogin";
 import auth from "../services/authService";
 import useAuth from "../hooks/useAuth";
+
+import defaultValues from "./defaultValues";
+import validationSchema from "./validationSchema";
 function LoginForm(props) {
   const { user } = useAuth();
   if (user) return <Redirect to="/" />;
 
-  const initialValues = {
-    studentId: "",
-    password: "",
-  };
-  const validationSchema = Yup.object({
-    // email: Yup.string()
-    //   .email("Invalid email")
-    //   .required("Student Email is required"),
-    // studentId: Yup.number()
-    //   .positive()
-    //   .integer()
-    //   .min(100000000, "Studnet ID must be positive and consist of 9 digits")
-    //   .max(999999999, "Studnet ID must consist of no more than 9 digits")
-    //   .required("Student ID is required"),
-    // password: Yup.string().required("Password is required"),
-  });
   const onSubmit = async (values, { setErrors }) => {
+    console.log("Values: ", values);
     try {
-      // const { studentId, password } = values;
-      const studentId = 900192240,
-        password = "abcd1234";
+      const { studentId, password } = values;
+
       await auth.login(studentId, password);
       const user = auth.getCurrentUser();
       console.log("User from login: ", user);
 
       window.location = "/advising";
-      // console.log(location);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         console.log(ex.response.data);
@@ -47,7 +32,7 @@ function LoginForm(props) {
     <div className="m-auto">
       <Form
         title="Login"
-        initialValues={initialValues}
+        initialValues={defaultValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >

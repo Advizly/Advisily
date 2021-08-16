@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
 
-import { FormInput, FormPolarRadioGroup } from "../common/form";
+import {
+  FormInput,
+  FormPolarRadioGroup,
+  FormSelectGroup,
+} from "../../components/common/form";
 import { stringToBool } from "../../utils/stringUtils";
+import { getPaces } from "../../services/pacesService";
+import {
+  OVERLOADING,
+  OVERLOADING_CREDITS,
+  PACE_ID,
+  SEMESTERS_PLANNED,
+  SUMMER_CREDITS,
+  TAKING_SUMMER,
+  TAKING_WINTER,
+  WINTER_CREDITS,
+} from "./fieldNames";
+
+const semestersPlanned = [
+  { id: "1", name: 1 },
+  { id: "2", name: 2 },
+  { id: "3", name: 3 },
+  { id: "4", name: 4 },
+  { id: "5", name: 5 },
+  { id: "6", name: 6 },
+  { id: "7", name: 7 },
+  { id: "8", name: 8 },
+  { id: "9", name: 9 },
+  { id: "10", name: 10 },
+];
 
 function PreferencesInfo() {
   const { values, setFieldValue } = useFormikContext();
@@ -14,10 +42,15 @@ function PreferencesInfo() {
       setFieldValue(fieldToResetName, resetValue);
   };
 
+  const [paces, setPaces] = useState([]);
+  useEffect(() => {
+    getPaces().then((res) => setPaces(res));
+  }, []);
+
   return (
     <>
       <FormPolarRadioGroup
-        name="overloading"
+        name={OVERLOADING}
         label="Are you willing to overload in the next semester?"
         onChange={({ target }) => {
           handleOnChange(target, "overloadingCredits");
@@ -25,14 +58,14 @@ function PreferencesInfo() {
       />
       <FormInput
         type="number"
-        name="overloadingCredits"
+        name={OVERLOADING_CREDITS}
         label="How many crdeits:"
         min={1}
         visible={stringToBool(overloading)}
       />
       <hr />
       <FormPolarRadioGroup
-        name="takingSummer"
+        name={TAKING_SUMMER}
         label="Are you planning to take course(s) next Summer?"
         onChange={({ target }) => {
           handleOnChange(target, "summerCredits");
@@ -40,7 +73,7 @@ function PreferencesInfo() {
       />
       <FormInput
         type="number"
-        name="summerCredits"
+        name={SUMMER_CREDITS}
         label="How many crdeits?"
         min={0}
         max={7}
@@ -48,7 +81,7 @@ function PreferencesInfo() {
       />
       <hr />
       <FormPolarRadioGroup
-        name="takingWinter"
+        name={TAKING_WINTER}
         label="Are you planning to take course(s) next Winter?"
         onChange={({ target }) => {
           handleOnChange(target, "winterCredits");
@@ -56,7 +89,7 @@ function PreferencesInfo() {
       />
       <FormInput
         type="number"
-        name="winterCredits"
+        name={WINTER_CREDITS}
         label="How many crdeits:"
         min={0}
         max={4}
@@ -64,6 +97,21 @@ function PreferencesInfo() {
       />
 
       <hr />
+      <FormSelectGroup
+        label={"What pace would you like to follow?"}
+        name={PACE_ID}
+        items={paces}
+        valueSelector="pace_id"
+        idSelector="pace_id"
+        nameSelector="pace_title"
+      />
+      <hr />
+      <FormSelectGroup
+        label={"Up to how many semester would you like to be planned?"}
+        name={SEMESTERS_PLANNED}
+        items={semestersPlanned}
+        valueSelector="id"
+      />
     </>
   );
 }

@@ -4,7 +4,7 @@ import { getMajors } from "../services/majorsService";
 import { getMinors } from "../services/minorsService";
 import { getCatalogs } from "../services/catalogsService";
 import { formatCatalogs } from "../utils/catalogUtils";
-const useMajorInfo = () => {
+const useMajors = () => {
   const [majors, setMajors] = useState([]);
   const [minors, setMinors] = useState([]);
   const [catalogs, setCatalogs] = useState([]);
@@ -22,4 +22,4 @@ const useMajorInfo = () => {
   return { majors, minors, catalogs };
 };
 
-export default useMajorInfo;
+export default useMajors;

@@ -15,7 +15,10 @@ export const loginWithJwt = (jwt) => {
   http.setJwt(getJwt());
 };
 export const login = async (studentId, password) => {
-  const { data: jwt } = await http.post(apiEndPoint, { studentId, password });
+  const { data: jwt } = await http.post(apiEndPoint, {
+    studentId,
+    password,
+  });
   localStorage.setItem(tokenKey, jwt);
 };
 export const logout = () => {

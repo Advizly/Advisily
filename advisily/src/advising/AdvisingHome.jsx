@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { websiteName } from "../../constant/websiteName";
-import useAuth from "../../hooks/useAuth";
+import { ADVISILY } from "../constant/websiteName";
+import useAuth from "../hooks/useAuth";
 function AdvisingHome(props) {
   const { user } = useAuth();
   if (!user) console.log(props);
@@ -9,7 +9,7 @@ function AdvisingHome(props) {
     <div className="d-flex justify-content-center">
       <div className="frame">
         <h1 className="text-center mb-3">Advising</h1>
-        <h3>Why {websiteName}?</h3>
+        <h3>Why {ADVISILY}?</h3>
         <ul>
           <li>
             <strong>No more waiting!</strong>
