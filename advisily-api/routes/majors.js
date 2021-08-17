@@ -3,9 +3,10 @@ const router = express.Router();
 
 const { getConnection } = require("../utils/mysqlUtils");
 
+const baseQuery = "SELECT * FROM majors ";
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query = "SELECT * FROM majors";
+  const query = baseQuery;
 
   connection.query(query, (err, results) => {
     if (err) return res.status(400).send(err);
@@ -16,7 +17,7 @@ router.get("/", (req, res) => {
 });
 router.get("/:major_id", (req, res) => {
   const connection = getConnection();
-  const query = "SELECT * FROM majors WHERE major_id=?";
+  const query = baseQuery + " WHERE majorId=?";
 
   connection.query(query, [req.params.major_id], (err, results) => {
     if (err) return res.status(400).send(err);

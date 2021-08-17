@@ -101,9 +101,9 @@ function AdvisingForm(props) {
       case 1:
         return "Major Info";
       case 2:
-        return "Preferences Info";
+        return "Preferences";
       case 3:
-        return "Finished Courses";
+        return "Catalog Courses";
       default:
         return "Advising";
     }

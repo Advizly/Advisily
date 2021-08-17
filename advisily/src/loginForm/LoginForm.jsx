@@ -17,8 +17,6 @@ function LoginForm(props) {
       const { studentId, password } = values;
 
       await auth.login(studentId, password);
-      const user = auth.getCurrentUser();
-      console.log("User from login: ", user);
 
       window.location = "/advising";
     } catch (ex) {

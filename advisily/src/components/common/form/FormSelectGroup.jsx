@@ -6,7 +6,7 @@ function FormSelectGroup({
   items,
   idSelector = "id",
   nameSelector = "name",
-  valueSelector = "value",
+  valueSelector = "id",
   ...props
 }) {
   return (

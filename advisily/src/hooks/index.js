@@ -1,5 +1,5 @@
 export { default as useAuth } from "./useAuth";
-export { default as useCourses } from "./useCourses";
+export { default as useCatalogCourses } from "./useCatalogCourses";
 export { default as useFormStep } from "./useFormStep";
 export { default as useMajors } from "./useMajors";
 export { default as useUserCourses } from "./useUserCourses";

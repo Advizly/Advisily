@@ -54,8 +54,8 @@ export const updateAdvisingInfo = async (studentId, values) => {
   if (!advisingSession.length)
     advisingService.addAdvisingSession({ ...values, studentId });
   else {
-    const sessionId = advisingSession[0].advising_session_id;
-    const updateAdvisingData = { sessionId, ...values, studentId };
+    const { advisingSessionId } = advisingSession[0];
+    const updateAdvisingData = { advisingSessionId, ...values, studentId };
     advisingService.updateAdvisingSessions(updateAdvisingData);
   }
 };

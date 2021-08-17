@@ -6,9 +6,13 @@ import {
   getCollateralCourses,
   getElectiveCourses,
 } from "../services/catalogsService";
+
 import { groupCourses } from "../utils/coursesUtils";
 import useAuth from "./useAuth";
-const useCatalogCourses = () => {
+
+const NUMBER_OF_COLS = 3;
+
+const useCatalogCourses = (catalogId) => {
   const [coreCourses, setCoreCourses] = useState([]);
   const [concCourses, setConcCourses] = useState([]);
   const [collateralCourses, setCollateralCourses] = useState([]);
@@ -16,21 +20,21 @@ const useCatalogCourses = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    if (user) {
-      getCoreCourses(1).then((courses) =>
-        setCoreCourses(groupCourses(courses, 3))
+    if (user && catalogId) {
+      getCoreCourses(catalogId).then((courses) =>
+        setCoreCourses(groupCourses(courses, NUMBER_OF_COLS))
       );
-      getCollateralCourses(1).then((courses) =>
-        setCollateralCourses(groupCourses(courses, 3))
+      getCollateralCourses(catalogId).then((courses) =>
+        setCollateralCourses(groupCourses(courses, NUMBER_OF_COLS))
       );
-      getConcCourses(1).then((courses) =>
-        setConcCourses(groupCourses(courses, 3))
+      getConcCourses(catalogId).then((courses) =>
+        setConcCourses(groupCourses(courses, NUMBER_OF_COLS))
       );
-      getElectiveCourses(1).then((courses) =>
-        setElectiveCourses(groupCourses(courses, 3))
+      getElectiveCourses(catalogId).then((courses) =>
+        setElectiveCourses(groupCourses(courses, NUMBER_OF_COLS))
       );
     }
-  }, [user]);
+  }, [user, catalogId]);
   return { coreCourses, concCourses, collateralCourses, electiveCourses };
 };
 export default useCatalogCourses;

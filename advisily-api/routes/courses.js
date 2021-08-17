@@ -4,12 +4,14 @@ const router = express.Router();
 
 const { getConnection } = require("../utils/mysqlUtils");
 
+const baseQuery =
+  "SELECT c.courseTitle,c.courseId,d.prefix,c.courseCode\
+     FROM courses as c JOIN departments as d\
+     ON c.departmentId=d.departmentId";
+
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query =
-    "select c.title,c.course_id,d.prefix,c.course_code\
-     FROM courses as c JOIN departments as d\
-     ON c.department_id=d.department_id";
+  const query = baseQuery;
   connection.query(query, (err, results) => {
     if (err) res.status(400).send(err);
 
@@ -18,15 +20,11 @@ router.get("/", (req, res) => {
   connection.end();
 });
 
-router.get("/:course_id", (req, res) => {
+router.get("/:courseId", (req, res) => {
   const connection = getConnection();
-  const { course_id } = req.params;
-  const query =
-    "SELECT c.title,c.course_id,d.prefix,c.course_code\
-     FROM courses as c JOIN departments as d\
-     ON c.department_id=d.department_id\
-     WHERE course_id=?";
-  connection.query(query, [course_id], (err, results) => {
+  const { courseId } = req.params;
+  const query = baseQuery + " WHERE courseId=?";
+  connection.query(query, [courseId], (err, results) => {
     if (err) res.status(400).send(err);
 
     res.send(results);

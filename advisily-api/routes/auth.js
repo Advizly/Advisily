@@ -13,7 +13,7 @@ router.post("/", (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const connection = getConnection();
-  const usrQuery = "SELECT * from students WHERE student_id=?";
+  const usrQuery = "SELECT * from users WHERE studentId=?";
   connection.query(usrQuery, [req.body.studentId], async (err, results) => {
     if (err) return res.status(400).send(err);
 
@@ -30,12 +30,7 @@ router.post("/", (req, res) => {
       return res.status(400).send("Invalid password and ID combination");
 
     //generate auth token
-    const {
-      student_id: studentId,
-      email,
-      fname: firstName,
-      lname: lastName,
-    } = results[0];
+    const { studentId, email, firstName, lastName } = results[0];
     const token = generateToken({ studentId, email, firstName, lastName });
 
     res.send(token);

@@ -1,12 +1,13 @@
 const express = require("express");
-
 const router = express.Router();
 
 const { getConnection } = require("../utils/mysqlUtils");
 
+const baseQuery = "select * from catalogs";
+
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query = "select * from catalogs";
+  const query = baseQuery;
   connection.query(query, (err, results) => {
     if (err) return res.status(400).send(err);
 
@@ -15,11 +16,11 @@ router.get("/", (req, res) => {
   connection.end();
 });
 
-router.get("/:catalog_id", (req, res) => {
+router.get("/:catalogId", (req, res) => {
   const connection = getConnection();
-  const { catalog_id } = req.params;
-  const query = "select * from catalogs where catalog_id=?";
-  connection.query(query, [catalog_id], (err, results) => {
+  const { catalogId } = req.params;
+  const query = baseQuery + " where catalogId=?";
+  connection.query(query, [catalogId], (err, results) => {
     if (err) return res.status(400).send(err);
 
     res.send(results);

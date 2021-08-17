@@ -5,18 +5,18 @@ import { getStudentCourses } from "../services/userService";
 
 function useUserCourses(props) {
   const [coursesIds, setStudentCourseIds] = useState([]);
-  const [generalElectiveCredits, setGeneralElectiveCredits] = useState(0);
+  const [generalElecCredits, setGeneralElecCredits] = useState(0);
 
-  const getGeneralElectiveCredits = async (studentId) => {
+  const getGeneralElecCredits = async (studentId) => {
     const advisingSession = await getAdvisingSession(studentId);
     if (!advisingSession.length) return;
-    const electiveCredits = advisingSession[0].general_elec_credits;
-    setGeneralElectiveCredits(electiveCredits);
+
+    setGeneralElecCredits(advisingSession[0].generalElecCredits);
   };
 
   const getCoursesIds = async (studentId) => {
     const studentCourses = await getStudentCourses(studentId);
-    const coursesIds = studentCourses.map((c) => JSON.stringify(c.course_id));
+    const coursesIds = studentCourses.map((c) => JSON.stringify(c.courseId));
     setStudentCourseIds(coursesIds);
   };
 
@@ -24,11 +24,11 @@ function useUserCourses(props) {
     const user = getCurrentUser();
     if (user) {
       getCoursesIds(user.studentId);
-      getGeneralElectiveCredits(user.studentId);
+      getGeneralElecCredits(user.studentId);
     }
   }, []);
 
-  return { coursesIds, generalElectiveCredits };
+  return { coursesIds, generalElecCredits };
 }
 
 export default useUserCourses;

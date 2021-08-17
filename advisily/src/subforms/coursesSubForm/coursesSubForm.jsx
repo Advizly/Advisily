@@ -8,13 +8,13 @@ import {
 } from "../../components/common/form";
 import { Row, ColMedium } from "../../components/common/grid";
 import { formatCourseData } from "../../utils/coursesUtils";
-import useCatalogCourses from "../../hooks/useCourses";
+import useCatalogCourses from "../../hooks/useCatalogCourses";
 
 import { COURSES_IDS, GENERAL_ELECTIVE_CREDITS } from "./fieldNames";
 function CoursesSubForm() {
-  const { concCourses, collateralCourses, coreCourses, electiveCourses } =
-    useCatalogCourses();
   const { values, setFieldValue } = useFormikContext();
+  const { concCourses, collateralCourses, coreCourses, electiveCourses } =
+    useCatalogCourses(values.catalogId);
 
   const handleCourseCheck = (target) => {
     const { name, checked, value } = target;
@@ -35,7 +35,6 @@ function CoursesSubForm() {
   const renderCourseRow = (row) => {
     return row.map((course) => {
       const { courseId, formatedTitle } = formatCourseData(course);
-
       return (
         <ColMedium key={courseId}>
           <FormCheckbox
@@ -53,7 +52,7 @@ function CoursesSubForm() {
 
   const renderCoursesTabular = (courses) => {
     return courses.map((row) => (
-      <Row key={"key" + row[0].course_id}>{renderCourseRow(row)}</Row>
+      <Row key={"key" + row[0].courseId}>{renderCourseRow(row)}</Row>
     ));
   };
 

@@ -3,7 +3,7 @@ use advisily;
 -- -----------------------------------------------
 --   DEPARTMENTS
 -- -----------------------------------------------
-INSERT INTO advisily.departments (title,prefix) VALUES("Template Department","XXX"),
+INSERT INTO advisily.departments (departmentTitle,prefix) VALUES("Template Department","XXX"),
 													  ("Computer Science and Engineering", "CSCE"),
                                                       ("Mathematics and Actuarial Science", "MACT"),
                                                       ("Physics", "PHYS"),
@@ -18,13 +18,13 @@ INSERT INTO advisily.departments (title,prefix) VALUES("Template Department","XX
 -- -----------------------------------------------
 --   COURSES
 -- -----------------------------------------------
-INSERT INTO course_types
+INSERT IGNORE INTO courseTypes
 					VALUES(1,'Core Curriculum'),
 						  (2,'Concentration Requirements'),
 						  (3,'Concentration Electives'),
 						  (4,'Collateral Requirements'),
 						  (5,'General Electives');
-INSERT INTO courses (course_code,title,credits,department_id)
+INSERT IGNORE INTO courses (courseCode,courseTitle,credits,departmentId)
                    VALUES(-1,"Pathways I: Scientific Encounters",3,1),
                         (-2,"Pathways II: Cultural Exploration",3,1),
                         (-3,"Global Studies",3,1),
@@ -132,7 +132,7 @@ INSERT INTO courses (course_code,title,credits,department_id)
 -- -----------------------------------------------
 --   MAJORS
 -- -----------------------------------------------			
-INSERT INTO majors (title,department_id)
+INSERT INTO majors (majorTitle,departmentId)
                    VALUES("Computer Science ",2),
                         ("Computer Engineering",2),
                         ("Mathematics and Actuarial Science",3),
@@ -141,7 +141,7 @@ INSERT INTO majors (title,department_id)
 -- -----------------------------------------------
 --   MINORS
 -- -----------------------------------------------		
-INSERT INTO minors (title,department_id)
+INSERT INTO minors (minorTitle,departmentId)
                    VALUES("Computer Science Minor",2),
                         ("Mathematics Minor",3),
                         ("Philosophy Minor",9),
@@ -154,10 +154,10 @@ INSERT INTO minors (title,department_id)
 -- -----------------------------------------------		
 
 INSERT INTO catalogs
-(catalog_id,`year`,major_id,core_credits,conc_req_credits,conc_elec_credits,collateral_credits,general_elec_credits,season) 
+(catalogId,`year`,majorId,coreCredits,concReqCredits,concElecCredits,collateralCredits,generalElecCredits,season) 
 VALUES(1,2019,1,33,42,18,30,9,'Fall'),
 	  (2,2020,1,33,42,18,30,9,'Spring');
-INSERT INTO catalog_courses (catalog_id,course_id,course_type_id,semester_number)
+INSERT INTO catalogCourses (catalogId,courseId,courseTypeId,semesterNumber)
                    VALUES(1,12,2,1),
                         (1,86,4,1),
                         (1,93,4,1),
@@ -232,30 +232,30 @@ INSERT INTO catalog_courses (catalog_id,course_id,course_type_id,semester_number
 
 
 -- -----------------------------------------------
---   STUDENTS and related tables
+--   users and related tables
 -- -----------------------------------------------		
 
 -- INSERT INTO students(student_id,fname,lname,email,password) 
 -- 			VALUES (900192237,'Youssef', 'Agiza', 'youssefagiza@aucegypt.edu', 'abcd12345'),
 -- 					(900192238,'Youssef2', 'Agiza2', 'youssefagiza2@aucegypt.edu', 'hello12345');
 --             
---             
-INSERT INTO student_majors(student_id, major_id,catalog_id) 
-								VALUES(900192237,1,1),
-								(900192237,3,1),
-                                (900192238,3,1);
+--     --         
+-- INSERT INTO student_majors(studentId, major_id,catalog_id) 
+-- 								VALUES(900192237,1,1),
+-- 								(900192237,3,1),
+--                                 (900192238,3,1);
 
-INSERT INTO student_minors(student_id,minor_id) 
-							VALUES (900192237,4),
-								  (900192238,3);
+-- INSERT INTO student_minors(student_id,minor_id) 
+-- 							VALUES (900192237,4),
+-- 								  (900192238,3);
 
-INSERT INTO student_courses(student_id,course_id)
-							VALUES (900192237,2),
-								 (900192237,12),
-								 (900192237,13),
-								 (900192237,14),
-                                  (900192238,98),
-                                   (900192238,3);
-INSERT INTO advising_sessions(student_id)VALUES(900192237);
+-- INSERT INTO student_courses(student_id,course_id)
+-- 							VALUES (900192237,2),
+-- 								 (900192237,12),
+-- 								 (900192237,13),
+-- 								 (900192237,14),
+--                                   (900192238,98),
+--                                    (900192238,3);
+-- INSERT INTO advising_sessions(student_id)VALUES(900192237);
 
-INSERT INTO paces(pace_title) VALUES("slow"),("normal"), ("fast");
+INSERT INTO paces(paceTitle) VALUES("slow"),("normal"), ("fast");

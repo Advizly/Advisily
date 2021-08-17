@@ -101,16 +101,15 @@ function PreferencesInfo() {
         label={"What pace would you like to follow?"}
         name={PACE_ID}
         items={paces}
-        valueSelector="pace_id"
-        idSelector="pace_id"
-        nameSelector="pace_title"
+        valueSelector="paceId"
+        idSelector="paceId"
+        nameSelector="paceTitle"
       />
       <hr />
       <FormSelectGroup
         label={"Up to how many semester would you like to be planned?"}
         name={SEMESTERS_PLANNED}
         items={semestersPlanned}
-        valueSelector="id"
       />
     </>
   );

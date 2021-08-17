@@ -9,13 +9,13 @@ const generateToken = require("../utils/tokenGenerator");
 const { getConnection } = require("../utils/mysqlUtils");
 
 /* Nested routes*/
-const studentMinors = require("./student_minors");
-const studentMajors = require("./student_majors");
-const studentCourses = require("./student_courses");
+const userMinors = require("./user_minors");
+const userMajors = require("./user_majors");
+const userCourses = require("./user_courses");
 
-router.use("/student_minors", studentMinors);
-router.use("/student_majors", studentMajors);
-router.use("/student_courses", studentCourses);
+router.use("/user_minors", userMinors);
+router.use("/user_majors", userMajors);
+router.use("/user_courses", userCourses);
 
 /************************************************************
                 GET with student_id
@@ -23,7 +23,7 @@ router.use("/student_courses", studentCourses);
 
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query = "SELECT * FROM students";
+  const query = "SELECT * FROM users";
   connection.query(query, (err, results) => {
     if (err) return res.status(400).send(err);
     res.send(results);
@@ -32,10 +32,10 @@ router.get("/", (req, res) => {
   connection.end();
 });
 
-router.get("/:student_id", (req, res) => {
+router.get("/:studentId", (req, res) => {
   const connection = getConnection();
-  const query = "SELECT * FROM students WHERE student_id=?";
-  connection.query(query, [req.params.student_id], (err, results) => {
+  const query = "SELECT * FROM users WHERE studentId= ?";
+  connection.query(query, [req.params.studentId], (err, results) => {
     if (err) return res.status(400).send(err);
 
     res.send(results);
@@ -44,51 +44,58 @@ router.get("/:student_id", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { error } = validateStudent(req.body);
+  let user = _.pick(req.body, [
+    "studentId",
+    "firstName",
+    "lastName",
+    "email",
+    "password",
+    "repeatPassword",
+  ]);
+
+  const { error } = validateStudent(user);
   if (error) return res.status(400).send(error.details[0].message);
 
-  const student = {
-    student_id: req.body.studentId,
-    fname: req.body.firstName,
-    lname: req.body.lastName,
-    email: req.body.email,
-    password: req.body.password,
-  };
   const salt = await bcrypt.genSalt(10);
-  student.password = await bcrypt.hash(req.body.password, salt);
+  user.password = await bcrypt.hash(user.password, salt);
+  user = _.omit(user, ["repeatPassword"]);
 
   const connection = getConnection();
-  const studentQuery = "INSERT INTO students SET ?";
+  const studentQuery = "INSERT INTO users SET ?";
   const getStudentQuery =
-    "SELECT student_id,fname, lname, email from students WHERE student_id=? ";
+    "SELECT studentId,firstName, lastName, email FROM users WHERE studentId=? ";
 
-  connection.query(studentQuery, [student], (err, results) => {
+  connection.query(studentQuery, [user], (err, results) => {
     if (err) {
       return res.status(400).send(err);
     }
 
-    const {
-      fname: firstName,
-      lname: lastName,
-      student_id: studentId,
-      email,
-    } = student;
+    const { firstName, lastName, studentId, email } = user;
     const token = generateToken({ firstName, lastName, studentId, email });
-    connection.query(getStudentQuery, [student.student_id], (err, student) => {
-      console.log(student);
+    connection.query(getStudentQuery, [user.studentId], (err, insertedUser) => {
       res
         .header("x-auth-token", token)
         .header("access-control-expose-headers", "x-auth-token")
-        .send(student);
+        .send(insertedUser);
     });
   });
 });
 
-const validateStudent = (student) => {
+const validateStudent = (user) => {
   const schema = Joi.object({
-    studentId: Joi.number().positive().integer().required(),
-    firstName: Joi.string().alphanum().min(1).max(30).required(),
-    lastName: Joi.string().alphanum().min(1).max(30).required(),
+    studentId: Joi.number().positive().integer().required().label("Student ID"),
+    firstName: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(30)
+      .required()
+      .label("First Name"),
+    lastName: Joi.string()
+      .alphanum()
+      .min(1)
+      .max(30)
+      .required()
+      .label("Last Name"),
     password: JoiPassword.string()
       .min(8)
       .max(30)
@@ -102,6 +109,6 @@ const validateStudent = (student) => {
       .required(),
   });
 
-  return schema.validate(student);
+  return schema.validate(user);
 };
 module.exports = router;

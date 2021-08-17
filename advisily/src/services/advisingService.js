@@ -1,6 +1,6 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
-import _ from "lodash";
+// import _ from "lodash";
 
 const apiEndpoint = apiBaseUrl + "/advising";
 
@@ -17,30 +17,30 @@ export const getAdvisingSession = async (studentId) => {
 };
 
 export const addAdvisingSession = async (sessionInfo) => {
-  const data = _.pick(sessionInfo, [
-    "studentId",
-    "overloadingCredits",
-    "summerCredits",
-    "winterCredits",
-    "paceId",
-    "generalElectiveCredits",
-    "semestersPlanned",
-  ]);
-  await http.post(apiEndpoint, data);
+  // const data = _.pick(sessionInfo, [
+  //   "studentId",
+  //   "overloadingCredits",
+  //   "summerCredits",
+  //   "winterCredits",
+  //   "paceId",
+  //   "generalElectiveCredits",
+  //   "semestersPlanned",
+  // ]);
+  await http.post(apiEndpoint, sessionInfo);
 };
 
 export const updateAdvisingSessions = async (sessionInfo) => {
-  const data = _.pick(sessionInfo, [
-    "sessionId",
-    "studentId",
-    "overloadingCredits",
-    "summerCredits",
-    "winterCredits",
-    "paceId",
-    "generalElectiveCredits",
-    "semestersPlanned",
-  ]);
-  await http.put(apiEndpoint, data);
+  // const data = _.pick(sessionInfo, [
+  //   "advisingSessionId",
+  //   "studentId",
+  //   "overloadingCredits",
+  //   "summerCredits",
+  //   "winterCredits",
+  //   "paceId",
+  //   "generalElectiveCredits",
+  //   "semestersPlanned",
+  // ]);
+  await http.put(apiEndpoint, sessionInfo);
 };
 
 const exported = {

@@ -29,6 +29,7 @@ const SignUpForm = () => {
 
   const onSubmit = async (values, { setErrors, ...rest }) => {
     try {
+      console.log(`Subimtting Values: ${values}`);
       const res = await userService.register(values);
       authService.loginWithJwt(res.headers["x-auth-token"]);
       const { studentId } = authService.getCurrentUser();

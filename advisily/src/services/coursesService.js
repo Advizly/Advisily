@@ -8,8 +8,8 @@ export const getAllCourses = async () => {
   return courses;
 };
 
-export const getCourse = async (course_id) => {
-  const { data: course } = await http.get(`${apiEndPoint}/${course_id}`);
+export const getCourse = async (courseId) => {
+  const { data: course } = await http.get(`${apiEndPoint}/${courseId}`);
   return course;
 };
 

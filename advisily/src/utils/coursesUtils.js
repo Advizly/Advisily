@@ -1,7 +1,7 @@
 export const formatCourseData = (course) => {
-  const { course_id: courseId, course_code, title, prefix } = course;
-  const title_code = course_code < 0 ? "XXX" : course_code;
-  const formatedTitle = prefix + " " + title_code + " - " + title;
+  const { courseId, courseCode, courseTitle, prefix } = course;
+  const titleCode = courseCode < 0 ? "XXX" : courseCode;
+  const formatedTitle = prefix + " " + titleCode + " - " + courseTitle;
   return { courseId, formatedTitle };
 };
 

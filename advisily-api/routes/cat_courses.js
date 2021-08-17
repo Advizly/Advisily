@@ -4,13 +4,14 @@ const router = express.Router();
 
 const { getConnection } = require("../utils/mysqlUtils");
 
+const baseQuery =
+  "SELECT c.courseTitle,c.courseCode,d.prefix,c.courseId,d.departmentId FROM catalogCourses as cc \
+    INNER JOIN courses as c ON cc.courseId=c.courseId \
+    INNER JOIN departments as d ON d.departmentId=c.departmentId";
+
 router.get("/", (req, res) => {
   const connection = getConnection();
-  const query =
-    "select c.title,c.course_code,d.prefix,c.course_id,d.department_id FROM catalog_courses as cc \
-    INNER JOIN courses as c ON cc.course_id=c.course_id \
-    INNER JOIN departments as d ON d.department_id=c.department_id\
-    ";
+  const query = baseQuery;
   connection.query(query, [], (err, results) => {
     if (err) {
       console.log("Error in quyring data", err);
@@ -21,15 +22,11 @@ router.get("/", (req, res) => {
   connection.end();
 });
 
-router.get("/:catalog_id", (req, res) => {
+router.get("/:catalogId", (req, res) => {
   const connection = getConnection();
-  const { catalog_id } = req.params;
-  const query =
-    "select c.title,c.course_code,d.prefix,c.course_id,d.department_id FROM catalog_courses as cc \
-    INNER JOIN courses as c ON cc.course_id=c.course_id \
-    INNER JOIN departments as d ON d.department_id=c.department_id\
-     where catalog_id=? ";
-  connection.query(query, [catalog_id], (err, results) => {
+  const { catalogId } = req.params;
+  const query = baseQuery + " WHERE catalogId=? ";
+  connection.query(query, [catalogId], (err, results) => {
     if (err) {
       console.log("Error in quyring data", err);
       return res.send("Error");
@@ -39,15 +36,11 @@ router.get("/:catalog_id", (req, res) => {
   connection.end();
 });
 
-router.get("/:catalog_id/:course_type_id", (req, res) => {
+router.get("/:catalogId/:courseTypeId", (req, res) => {
   const connection = getConnection();
-  const { catalog_id, course_type_id } = req.params;
-  const query =
-    "select c.title,c.course_code,d.prefix,c.course_id,d.department_id FROM catalog_courses as cc \
-    INNER JOIN courses as c ON cc.course_id=c.course_id \
-    INNER JOIN departments as d ON d.department_id=c.department_id\
-     where catalog_id=? AND course_type_id=?";
-  connection.query(query, [catalog_id, course_type_id], (err, results) => {
+  const { catalogId, courseTypeId } = req.params;
+  const query = baseQuery + " where catalogId=? AND courseTypeId=?";
+  connection.query(query, [catalogId, courseTypeId], (err, results) => {
     if (err) {
       console.log("Error in quyring data", err);
       return res.send("Error");

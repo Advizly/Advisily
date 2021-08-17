@@ -12,7 +12,7 @@ const cat_courses = require("./routes/cat_courses");
 const home = require("./routes/home");
 const majors = require("./routes/majors");
 const minors = require("./routes/minors");
-const students = require("./routes/students");
+const users = require("./routes/users");
 
 let port = 5000;
 if (config.has("port")) port = config.get("port");
@@ -31,7 +31,7 @@ app.use("/api/courses", courses);
 app.use("/api/cat_courses", cat_courses);
 app.use("/api/majors", majors);
 app.use("/api/minors", minors);
-app.use("/api/students", students);
+app.use("/api/users", users);
 app.use("/api/advising", advising);
 app.use("/api/auth", auth);
 

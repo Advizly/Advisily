@@ -2,7 +2,7 @@ use advisily;
 
 
 
-select course_id from courses where title IN
+select courseId from courses where title IN
  ('Digital Design I',
  'Digital Design I Lab', 
  'Introduction to Electronics',

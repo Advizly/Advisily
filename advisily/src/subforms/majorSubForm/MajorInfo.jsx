@@ -35,16 +35,12 @@ function MajorInfo({ showChangeButton = false }) {
       mounted = false;
     };
   }, [isDoubleMajoring, isMinoring, setFieldValue]);
-
   return (
     <>
       <FormSelectGroup
         label="What is your major?"
         items={majors}
         name={MAJOR_ID}
-        idSelector="major_id"
-        nameSelector="title"
-        valueSelector="major_id"
         defaultOption={"--select a major--"}
         changeButton={showChangeButton}
       />
@@ -55,7 +51,6 @@ function MajorInfo({ showChangeButton = false }) {
         label={"Which catalog are you follwoing?"}
         name={CATALOG_ID}
         items={catalogs}
-        valueSelector="id"
         defaultOption={"--select a catalog--"}
         changeButton={showChangeButton}
       />
@@ -71,11 +66,8 @@ function MajorInfo({ showChangeButton = false }) {
         name={MINOR_IDS}
         label="Select minor(s):"
         visible={stringToBool(isMinoring)}
-        nameSelector="title"
-        idSelector="minor_id"
         multiple
         items={minors}
-        valueSelector="minor_id"
         changeButton={showChangeButton}
       />
 
@@ -96,10 +88,7 @@ function MajorInfo({ showChangeButton = false }) {
         name={SECOND_MAJOR_ID}
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a major---"}
-        idSelector="major_id"
-        nameSelector="title"
         items={majors}
-        valueSelector="major_id"
         changeButton={showChangeButton}
       />
 
@@ -109,7 +98,6 @@ function MajorInfo({ showChangeButton = false }) {
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
         items={catalogs}
-        valueSelector="id"
         changeButton={showChangeButton}
       />
       <hr />
