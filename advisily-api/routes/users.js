@@ -175,7 +175,7 @@ router.post("/", async (req, res) => {
 
   const connection = getConnection();
   const studentQuery = "INSERT INTO users SET ?";
-  const getStudentQuery = baseSelectQuery + " WHERE studentId=? ";
+  const getStudentQuery = baseSelectQuery + " WHERE email=? LIMIT 1";
 
   connection.query(studentQuery, [user], (err, results) => {
     if (err) return res.status(400).send(err);
@@ -183,12 +183,34 @@ router.post("/", async (req, res) => {
     sendVerificationEmail(user);
     const authToken = generateToken(user);
 
-    connection.query(getStudentQuery, [user.studentId], (err, insertedUser) => {
+    connection.query(getStudentQuery, [user.email], (err, insertedUser) => {
       res
         .header("x-auth-token", authToken)
         .header("access-control-expose-headers", "x-auth-token")
         .send(insertedUser);
     });
+  });
+});
+
+router.post("/resend-verification", (req, res) => {
+  const { email } = req.body;
+
+  const { error } = validateEmail({ email });
+  if (error) return res.status(400).send(error.details[0].message);
+
+  const getStudentQuery = baseSelectQuery + " WHERE email=? LIMIT 1 ";
+
+  const connection = getConnection();
+  connection.query(getStudentQuery, [email], (err, results) => {
+    if (err) return res.status(400).send(err);
+    if (!results.length) return res.status(400).send("Email not found");
+
+    const user = results[0];
+
+    if (user.isVerified) return res.status(400).send("User already verified");
+
+    sendVerificationEmail(user);
+    return res.send("Verification Email send.");
   });
 });
 
@@ -243,6 +265,15 @@ const validateToken = (token) => {
     token: Joi.string().required(),
   });
   return schema.validate(token);
+};
+const validateEmail = ({ email }) => {
+  const schema = Joi.object({
+    email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
+      .required()
+      .label("Email"),
+  });
+  return schema.validate({ email });
 };
 
 const validateUser = (user) => {

@@ -11,12 +11,21 @@
   "port": "",
   "requiresAuth": false,
   "emailFrom": "advisily@gmail.com",
-  "smtpOptions": {
+
+  "ethrealSmtpOptions": {
     "host": "smtp.ethereal.email",
     "port": 587,
     "auth": {
       "user": "winnifred.lindgren30@ethereal.email",
       "pass": "j9Ed3gqTQVvWNPq64z"
+    }
+  },
+
+  "gmailSmtpOptions": {
+    "service": "gmail",
+    "auth": {
+      "user": "advisily@gmail.com",
+      "pass": "abcd12345$"
     }
   }
 }
