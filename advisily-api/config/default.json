@@ -1,4 +1,6 @@
 {
+  "hostUrl": "http://localhost:5000",
+  "frontendUrl": "http://localhost:3000",
   "jwtPrivateKey": "",
   "db": {
     "host": "localhost",
@@ -7,5 +9,14 @@
     "database": "advisily"
   },
   "port": "",
-  "requiresAuth": false
+  "requiresAuth": false,
+  "emailFrom": "advisily@gmail.com",
+  "smtpOptions": {
+    "host": "smtp.ethereal.email",
+    "port": 587,
+    "auth": {
+      "user": "winnifred.lindgren30@ethereal.email",
+      "pass": "j9Ed3gqTQVvWNPq64z"
+    }
+  }
 }

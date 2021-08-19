@@ -21,18 +21,21 @@ router.post("/", (req, res) => {
     if (!results || results.length === 0)
       return res.status(400).send("Invalid ID");
 
+    const user = results[0];
     //check password is correct
     const validPassword = await bcrypt.compare(
       req.body.password,
-      results[0].password
+      user.password
     );
+
     if (!validPassword)
       return res.status(400).send("Invalid password and ID combination");
 
-    //generate auth token
-    const { studentId, email, firstName, lastName } = results[0];
-    const token = generateToken({ studentId, email, firstName, lastName });
+    if (!user.isVerified)
+      return res.status(401).send("Please verify your email first");
 
+    //generate auth token
+    const token = generateToken(results[0]);
     res.send(token);
   });
   connection.end();
