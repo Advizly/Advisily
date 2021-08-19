@@ -16,7 +16,7 @@ import Logout from "./components/Logout";
 import SignUpForm from "./signUpForm/SignupForm";
 
 import Profile from "./components/Profile";
-import EmailVerification from "./components/EmailVerification";
+import EmailVerification from "./verifyEmail/EmailVerification";
 
 import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/common/ProtectedRoute";
@@ -35,25 +35,27 @@ function App() {
             exact
             render={(props) => <Home {...props} user={user} />}
           />
-          <main className="container content-wrapper">
-            <Switch>
-              <Route path="/forgot-password" component={ForgotPassword} />
-              <Route path="/reset-password" component={ResetPassword} />
-              <ProtectedRoute path="/advising" component={AdvisingRouter} />
-              <ProtectedRoute path="/me" component={Profile} />
-              <Route path="/logout" component={Logout} />
-              <Route
-                path="/email-verification"
-                render={(props) => <EmailVerification {...props} user={user} />}
-              />
-              <Route path="/login" component={LoginForm} />
-              <Route path="/sign-up" component={SignUpForm} />
-              <Route path="/contact-us" component={ContactUs} />
-              <Route path="/about-us" component={AboutUs} />
-              <Route exact path="/not-found" component={NotFound} />
-              <Redirect to={{ pathname: "/not-found" }} />
-            </Switch>
-          </main>
+          <Route>
+            <main className="container content-wrapper">
+              <Switch>
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <Route path="/reset-password" component={ResetPassword} />
+                <ProtectedRoute path="/advising" component={AdvisingRouter} />
+                <ProtectedRoute path="/me" component={Profile} />
+                <Route path="/logout" component={Logout} />
+                <Route
+                  path="/email-verification"
+                  component={EmailVerification}
+                />
+                <Route path="/login" component={LoginForm} />
+                <Route path="/sign-up" component={SignUpForm} />
+                <Route path="/contact-us" component={ContactUs} />
+                <Route path="/about-us" component={AboutUs} />
+                <Route exact path="/not-found" component={NotFound} />
+                <Redirect to={{ pathname: "/not-found" }} />
+              </Switch>
+            </main>
+          </Route>
         </Switch>
 
         <Footer />

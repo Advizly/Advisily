@@ -14,9 +14,9 @@ export const loginWithJwt = (jwt) => {
   localStorage.setItem(tokenKey, jwt);
   http.setJwt(getJwt());
 };
-export const login = async (studentId, password) => {
+export const login = async ({ email, password }) => {
   const { data: jwt } = await http.post(apiEndPoint, {
-    studentId,
+    email,
     password,
   });
   localStorage.setItem(tokenKey, jwt);

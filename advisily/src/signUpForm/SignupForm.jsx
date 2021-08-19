@@ -22,7 +22,7 @@ import {
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 
-const SignUpForm = () => {
+const SignUpForm = (props) => {
   const { next, back, step } = useFormStep();
   const { user } = useAuth();
   if (user) return <Redirect to="/" />;
@@ -45,7 +45,12 @@ const SignUpForm = () => {
       alert(
         "Account registered successfuly. Please verify your email to login."
       );
-      window.location = "/email-verification";
+      props.history.push({
+        pathname: "/email-verification",
+        state: {
+          email: values.email,
+        },
+      });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         if (ex.response.data.errno === 1062) {

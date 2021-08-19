@@ -8,6 +8,7 @@ import useAuth from "../hooks/useAuth";
 
 import defaultValues from "./defaultValues";
 import validationSchema from "./validationSchema";
+import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
   const { user } = useAuth();
   if (user) return <Redirect to="/" />;
@@ -15,9 +16,7 @@ function LoginForm(props) {
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
     console.log("Values: ", values);
     try {
-      const { studentId, password } = values;
-
-      await auth.login(studentId, password);
+      await auth.login(values);
 
       window.location = "/advising";
     } catch (ex) {
@@ -38,21 +37,21 @@ function LoginForm(props) {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        {/* <FormInput
+        <FormInput
           label="AUC email"
-          name="email"
+          name={EMAIL}
           type="email"
           aria-required="true"
-        /> */}
-        <FormInput
+        />
+        {/* <FormInput
           label="AUC ID"
           name="studentId"
           type="number"
           aria-required="true"
-        />
+        /> */}
         <FormInput
           label="Password"
-          name="password"
+          name={PASSWORD}
           type="password"
           aria-required="true"
         />
@@ -60,6 +59,11 @@ function LoginForm(props) {
           <Link to="/forgot-password">Forgot password?</Link>
           <p>
             New user?<Link to="/sign-up"> Sign up</Link>
+          </p>
+        </div>
+        <div>
+          <p>
+            <Link to="/email-verification"> Resend email verification?</Link>
           </p>
         </div>
         <SubmitButton label="Login" />

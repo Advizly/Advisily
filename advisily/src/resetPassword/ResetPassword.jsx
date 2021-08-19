@@ -17,9 +17,11 @@ function ResetPassword(props) {
 
   const [token, setToken] = useState();
   const [tokenStatus, setTokenStatus] = useState(TokenStatus.validating);
+
+  const { location, history } = props;
   useEffect(() => {
-    const { token: queryToken } = queryString.parse(props.location.search);
-    props.history.replace(props.location.pathname);
+    const { token: queryToken } = queryString.parse(location.search);
+    history.replace(location.pathname);
     validateResetToken(queryToken)
       .then(() => {
         setToken(queryToken);
@@ -28,13 +30,21 @@ function ResetPassword(props) {
       .catch(() => {
         setTokenStatus(TokenStatus.invalid);
       });
-  }, []);
+  }, [
+    TokenStatus.invalid,
+    TokenStatus.valid,
+    TokenStatus.validating,
+    history,
+    location.pathname,
+    location.search,
+  ]);
 
   const handleSubmit = async ({ password }) => {
     try {
       const res = await resetPassword(token, password);
       console.log(res.data);
-      alert("Success");
+      alert("Password reset successfuly. You can login with the new password.");
+      window.location("/login");
     } catch (error) {
       console.log(error);
     }
@@ -46,7 +56,7 @@ function ResetPassword(props) {
       validationSchema={resetPasswordSchema}
       onSubmit={handleSubmit}
     >
-      <FormInput name={PASSWORD} type="password" label="Password" />
+      <FormInput name={PASSWORD} type="password" label="New password" />
       <FormInput
         name={REPEAT_PASSWORD}
         type="password"

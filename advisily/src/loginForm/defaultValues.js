@@ -1,7 +1,7 @@
-import { PASSWORD, STUDENT_ID } from "./fieldNames";
+import { PASSWORD, EMAIL } from "./fieldNames";
 
 const loginDefaultValues = {
-  [STUDENT_ID]: "",
+  [EMAIL]: "",
   [PASSWORD]: "",
 };
 

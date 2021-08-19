@@ -27,6 +27,9 @@ export const resetPassword = async (token, password) => {
 export const forgotPassword = async (email) => {
   return await http.post(`${apiEndPoint}/forgot-password`, { email });
 };
+export const resendVerification = async (email) => {
+  return await http.post(`${apiEndPoint}/resend-verification`, { email });
+};
 
 export const getStudentMajors = async (studentId) => {
   const { data: majors } = await http.get(
