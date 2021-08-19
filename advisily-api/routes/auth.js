@@ -13,13 +13,13 @@ router.post("/", (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
 
   const connection = getConnection();
-  const usrQuery = "SELECT * from users WHERE studentId=?";
-  connection.query(usrQuery, [req.body.studentId], async (err, results) => {
+  const usrQuery = "SELECT * from users WHERE email=?";
+  connection.query(usrQuery, [req.body.email], async (err, results) => {
     if (err) return res.status(400).send(err);
 
     //student not found
     if (!results || results.length === 0)
-      return res.status(400).send("Invalid ID");
+      return res.status(400).send("Invalid Email.");
 
     const user = results[0];
     //check password is correct
@@ -43,7 +43,10 @@ router.post("/", (req, res) => {
 
 const validate = (req) => {
   const schema = Joi.object({
-    studentId: Joi.number().positive().integer().required().label("Student ID"),
+    email: Joi.string()
+      .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
+      .required()
+      .label("Email"),
     password: Joi.string().required().min(8).label("Password "),
   });
 

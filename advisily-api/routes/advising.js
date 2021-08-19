@@ -73,6 +73,8 @@ router.post("/", auth, (req, res) => {
     return res.status(400).send(error);
   }
 
+  advisingData.sessionDate = new Date();
+
   const query = "INSERT INTO advisingSessions SET ?";
   connection.query(query, advisingData, (err, results) => {
     if (err) return res.send(err);
