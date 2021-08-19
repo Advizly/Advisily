@@ -6,8 +6,26 @@ const apiEndPoint = apiBaseUrl + "/users";
     studentId, firstName,lastName, auc email, password, repeatPassword
 */
 export const register = (userInfo) => {
+  console.log("post req");
   return http.post(apiEndPoint, userInfo);
-  //   console.log("Res: ", res);
+};
+export const getUser = async (studentId) => {
+  const { data, headers } = await http.get(`${apiEndPoint}/${studentId}`);
+  if (!data || !data.length) return null;
+
+  return { user: data[0], token: headers["x-auth-token"] };
+};
+export const validateResetToken = async (token) => {
+  return await http.post(`${apiEndPoint}/validate-reset-token`, { token });
+};
+export const resetPassword = async (token, password) => {
+  return await http.post(`${apiEndPoint}/reset-password`, {
+    token,
+    password,
+  });
+};
+export const forgotPassword = async (email) => {
+  return await http.post(`${apiEndPoint}/forgot-password`, { email });
 };
 
 export const getStudentMajors = async (studentId) => {
@@ -86,6 +104,7 @@ export const deleteStudentMinor = async (studentId, minorId) => {
 
 const exported = {
   register,
+  getUser,
   getStudentMajors,
   getStudentMinors,
   getStudentCourses,

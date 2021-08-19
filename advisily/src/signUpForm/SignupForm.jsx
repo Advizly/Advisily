@@ -8,7 +8,7 @@ import UserSubForm from "../subforms/userSubForm/UserSubForm";
 import MajorInfo from "../subforms/majorSubForm/MajorInfo";
 
 //services
-import { authService, userService } from "../services";
+import { userService } from "../services";
 
 //hooks
 import { useAuth, useFormStep } from "../hooks";
@@ -27,26 +27,31 @@ const SignUpForm = () => {
   const { user } = useAuth();
   if (user) return <Redirect to="/" />;
 
-  const onSubmit = async (values, { setErrors, ...rest }) => {
+  const submitMajorInfo = (values) => {
+    const { studentId } = values;
+
+    const { majorId, catalogId, secondMajorId, secondCatalogId, minorIds } =
+      values;
+    updateUserMajor(studentId, majorId, catalogId);
+    updateUserMajor(studentId, secondMajorId, secondCatalogId);
+    updateUserMinors(studentId, minorIds);
+  };
+
+  const onSubmit = async (values, { setStatus }) => {
     try {
-      console.log(`Subimtting Values: ${values}`);
-      const res = await userService.register(values);
-      authService.loginWithJwt(res.headers["x-auth-token"]);
-      const { studentId } = authService.getCurrentUser();
-      const { majorId, catalogId, secondMajorId, secondCatalogId, minorIds } =
-        values;
-      updateUserMajor(studentId, majorId, catalogId);
-      updateUserMajor(studentId, secondMajorId, secondCatalogId);
-      updateUserMinors(studentId, minorIds);
-      window.location = "/advising";
+      console.log(`Subimtting Values:`, values);
+      await userService.register(values);
+      submitMajorInfo(values);
+      alert(
+        "Account registered successfuly. Please verify your email to login."
+      );
+      window.location = "/email-verification";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         if (ex.response.data.errno === 1062) {
-          setErrors({
-            email: " ",
-            studentId: "Email or ID already registered",
+          setStatus({
+            error: "Email or ID already registered",
           });
-          back();
         }
         console.log(ex);
         console.log(ex.response);

@@ -30,6 +30,7 @@ const PASSWORD_TOO_SHORT = `The password must be at least ${MIN_PASSWORD_LENGTH}
 const PASSWORD_CONTAIN_NO_LETTER = "The password must have at least one letter";
 const PASSWORD_CONTAIN_NO_NUMBER = "Password must have at least one number";
 const PASSWORD_CONTAINS_SPACE = "Password can't contain spaces";
+const PASSWORD_NO_MATCH = "Passwords don't match";
 
 export default Yup.object({
   [FIRST_NAME]: Yup.string()
@@ -58,5 +59,5 @@ export default Yup.object({
     .required(REQUIRED_MESSAGE),
   [REPEAT_PASSWORD]: Yup.string()
     .required(REQUIRED_MESSAGE)
-    .oneOf([Yup.ref("password"), null], "Passwords don't match"),
+    .oneOf([Yup.ref(PASSWORD), null], PASSWORD_NO_MATCH),
 });

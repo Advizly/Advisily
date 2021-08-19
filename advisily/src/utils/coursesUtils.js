@@ -15,7 +15,6 @@ export const groupCourses = (courses, coursesPerRow = 2) => {
     if (i % coursesPerRow === 0 || i === courses.length) {
       groupedCourses.push(row);
       row = [];
-      //update
     }
   }
   return groupedCourses;

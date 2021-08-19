@@ -1,7 +1,7 @@
 import { useFormikContext } from "formik";
 import React from "react";
 
-function SubmitButton({ label = "submit", ...props }) {
+function SubmitButton({ label = "Submit", ...props }) {
   const { isSubmitting } = useFormikContext();
   return (
     <div className="my-3 d-flex flex-column">

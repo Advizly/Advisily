@@ -25,10 +25,27 @@ export const logout = () => {
   localStorage.removeItem(tokenKey);
 };
 
+// const refreshUser = async (user) => {
+//   const { user: newUser, token } = await getUser(user.studentId);
+//   console.log("refreshing user:", newUser);
+//   if (!newUser) throw new Error("Error refreshing user");
+//   if (!newUser.isVerified) return user;
+//   loginWithJwt(token);
+
+//   return jwtDecode(token);
+// };
+
 export const getCurrentUser = () => {
   try {
     const jwt = localStorage.getItem(tokenKey);
-    return jwtDecode(jwt);
+    let user = jwtDecode(jwt);
+
+    // console.log("Before refresh");
+    // if (user && !user.isVerified) user = await refreshUser(user);
+    // console.log("after refresh");
+
+    // console.log("user from get current user", user);
+    return user;
   } catch (ex) {
     return null;
   }

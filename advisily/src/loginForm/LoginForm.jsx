@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
+
 import { Form, FormInput, SubmitButton } from "../components/common/form";
 import GoogleLogin from "../components/GoogleLogin";
 import auth from "../services/authService";
@@ -11,7 +12,7 @@ function LoginForm(props) {
   const { user } = useAuth();
   if (user) return <Redirect to="/" />;
 
-  const onSubmit = async (values, { setErrors }) => {
+  const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
     console.log("Values: ", values);
     try {
       const { studentId, password } = values;
@@ -20,9 +21,12 @@ function LoginForm(props) {
 
       window.location = "/advising";
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        console.log(ex.response.data);
-        setErrors({ studentId: " ", password: ex.response.data });
+      const { response } = ex;
+      const { status } = response;
+      if (response && (status === 400 || status === 401)) {
+        console.log(response.data);
+        // setErrors({ studentId: "", password: "" });
+        setStatus({ error: response.data });
       }
     }
   };
