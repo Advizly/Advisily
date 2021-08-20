@@ -1,29 +1,24 @@
 import "./App.css";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
-import AboutUs from "./components/AboutUs";
-import ContactUs from "./components/ContactUs";
-import AdvisingRouter from "./advising/AdvisingRouter";
-import Footer from "./components/Footer";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import NotFound from "./components/NotFound";
+import { AboutUs, ContactUs, Footer, Header, Home, NotFound } from "./common";
+import {
+  ABOUT_US_ROUTE,
+  CONTACT_US_ROUTE,
+  HOME_ROUTE,
+  NOT_FOUND_ROUTE,
+} from "./common";
 
-import ResetPassword from "./resetPassword/ResetPassword";
-import ForgotPassword from "./forgotPassword/ForgotPassword";
-import LoginForm from "./loginForm/LoginForm";
-import Logout from "./components/Logout";
-import SignUpForm from "./signUpForm/SignupForm";
+import { Profile, Logout, LOGOUT_ROUTE, PROFILE_ROUTE } from "./profile";
 
-import Profile from "./components/Profile";
-import EmailVerification from "./verifyEmail/EmailVerification";
+import AdvisingRouter, { ADVISING_HOME_ROUTE } from "./advising";
+import AccountRouter, { ACCOUNT_ROUTE } from "./account";
 
 import useAuth from "./hooks/useAuth";
-import ProtectedRoute from "./components/common/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const { user } = useAuth();
-  console.log("User from app.js ", user);
   return (
     <BrowserRouter>
       <div className="page-container">
@@ -31,28 +26,27 @@ function App() {
 
         <Switch>
           <Route
-            path="/"
+            path={HOME_ROUTE}
             exact
             render={(props) => <Home {...props} user={user} />}
           />
           <Route>
             <main className="container content-wrapper">
               <Switch>
-                <Route path="/forgot-password" component={ForgotPassword} />
-                <Route path="/reset-password" component={ResetPassword} />
-                <ProtectedRoute path="/advising" component={AdvisingRouter} />
-                <ProtectedRoute path="/me" component={Profile} />
-                <Route path="/logout" component={Logout} />
-                <Route
-                  path="/email-verification"
-                  component={EmailVerification}
+                <ProtectedRoute
+                  path={ADVISING_HOME_ROUTE}
+                  component={AdvisingRouter}
                 />
-                <Route path="/login" component={LoginForm} />
-                <Route path="/sign-up" component={SignUpForm} />
-                <Route path="/contact-us" component={ContactUs} />
-                <Route path="/about-us" component={AboutUs} />
-                <Route exact path="/not-found" component={NotFound} />
-                <Redirect to={{ pathname: "/not-found" }} />
+                <Route path={ACCOUNT_ROUTE} component={AccountRouter} />
+
+                <ProtectedRoute path={PROFILE_ROUTE} component={Profile} />
+                <Route path={LOGOUT_ROUTE} component={Logout} />
+
+                <Route path={CONTACT_US_ROUTE} component={ContactUs} />
+                <Route path={ABOUT_US_ROUTE} component={AboutUs} />
+
+                <Route exact path={NOT_FOUND_ROUTE} component={NotFound} />
+                <Redirect to={{ pathname: { NOT_FOUND_ROUTE } }} />
               </Switch>
             </main>
           </Route>

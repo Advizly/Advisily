@@ -9,23 +9,23 @@
     "database": "advisily"
   },
   "port": "",
-  "requiresAuth": false,
-  "emailFrom": "advisily@gmail.com",
+  "requiresAuth": true,
 
+  "emailFrom": "",
   "ethrealSmtpOptions": {
     "host": "smtp.ethereal.email",
     "port": 587,
     "auth": {
-      "user": "winnifred.lindgren30@ethereal.email",
-      "pass": "j9Ed3gqTQVvWNPq64z"
+      "user": "",
+      "pass": ""
     }
   },
 
   "gmailSmtpOptions": {
     "service": "gmail",
     "auth": {
-      "user": "advisily@gmail.com",
-      "pass": "abcd12345$"
+      "user": "",
+      "pass": ""
     }
   }
 }

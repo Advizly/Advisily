@@ -1,12 +1,8 @@
 import React from "react";
 import { useFormikContext } from "formik";
 
-import {
-  FormCheckbox,
-  FormGroup,
-  FormInput,
-} from "../../components/common/form";
-import { Row, ColMedium } from "../../components/common/grid";
+import { FormCheckbox, FormGroup, FormInput } from "../../components/form";
+import { Row, ColMedium } from "../../components/grid";
 import { formatCourseData } from "../../utils/coursesUtils";
 import useCatalogCourses from "../../hooks/useCatalogCourses";
 

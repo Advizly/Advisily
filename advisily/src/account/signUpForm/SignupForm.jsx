@@ -1,31 +1,32 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { Form, SubmitButton } from "../components/common/form";
-import GoogleLogin from "../components/GoogleLogin";
+import { Form, SubmitButton } from "../../components/form";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 
-import UserSubForm from "../subforms/userSubForm/UserSubForm";
-import MajorInfo from "../subforms/majorSubForm/MajorInfo";
+import UserSubForm from "../../subforms/userSubForm/UserSubForm";
+import MajorInfo from "../../subforms/majorSubForm/MajorInfo";
 
 //services
-import { userService } from "../services";
+import { userService } from "../../services";
 
 //hooks
-import { useAuth, useFormStep } from "../hooks";
+import { useFormStep } from "../../hooks";
 
 //utils
 import {
   updateUserMajor,
   updateUserMinors,
-} from "../utils/advisingSubmissionUtils";
+} from "../../utils/advisingSubmissionUtils";
 
+//routes
+import { LOGIN_ROUTE } from "../routes";
+//form
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 
 const SignUpForm = (props) => {
   const { next, back, step } = useFormStep();
-  const { user } = useAuth();
-  if (user) return <Redirect to="/" />;
 
   const submitMajorInfo = (values) => {
     const { studentId } = values;
@@ -99,14 +100,14 @@ const SignUpForm = (props) => {
         {/* Already a user */}
         <div className="d-flex align-items-center">
           <p className="ms-auto ">
-            Already a user? <Link to="/login">Login</Link>
+            Already a user? <Link to={LOGIN_ROUTE}>Login</Link>
           </p>
         </div>
       </Form>
       <div className="d-flex justify-content-center">
         <strong className="text-center">
           Or login in using
-          <GoogleLogin />
+          <GoogleLoginButton />
         </strong>
       </div>
     </>

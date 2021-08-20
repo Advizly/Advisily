@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
 import { useFormikContext } from "formik";
 
-import {
-  FormPolarRadioGroup,
-  FormSelectGroup,
-} from "../../components/common/form";
+import { FormPolarRadioGroup, FormSelectGroup } from "../../components/form";
 import { stringToBool } from "../../utils/stringUtils";
 import useMajors from "../../hooks/useMajors";
 import {

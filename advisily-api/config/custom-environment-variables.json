@@ -6,5 +6,20 @@
     "password": "DB_PASSWORD",
     "database": "DB_NAME"
   },
-  "port": "PORT"
+  "port": "PORT",
+  "emailFrom": "EMAIL_USER",
+
+  "ethrealSmtpOptions": {
+    "auth": {
+      "user": "ETHREAL_USER",
+      "pass": "ETHREAL_PASSWORD"
+    }
+  },
+
+  "gmailSmtpOptions": {
+    "auth": {
+      "user": "EMAIL_USER",
+      "pass": "EMAIL_PASSWORD"
+    }
+  }
 }

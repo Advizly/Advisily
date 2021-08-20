@@ -1,10 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import { Nav, NavItem, NavList } from "./common/nav";
-import Logo from "./common/Logo";
-import Brand from "./common/Brand";
-import { ColMedium } from "./common/grid";
+import { Nav, NavItem, NavList } from "../components/nav";
+import Logo from "../components/Logo";
+import Brand from "../components/Brand";
+import { ColMedium } from "../components/grid";
+
+import { LOGIN_ROUTE, LOGOUT_ROUTE, SIGN_UP_ROUTE } from "../account/routes";
 
 function Header({ user }) {
   return (
@@ -26,9 +28,9 @@ function Header({ user }) {
         <NavList extraClasses="nav-right">
           {!user && (
             <>
-              <NavItem to="/login" label="Login" />
+              <NavItem to={LOGIN_ROUTE} label="Login" />
               <NavItem
-                to="/sign-up"
+                to={SIGN_UP_ROUTE}
                 label="Sign Up"
                 extraClasses="btn"
                 id="nav-signup-btn"
@@ -38,7 +40,7 @@ function Header({ user }) {
           {user && (
             <>
               <NavItem to="/me" label={user.firstName} />
-              <NavItem to="/logout" label="Logout" extraClasses="btn" />
+              <NavItem to={"LOGOUT_ROUTE"} label="Logout" extraClasses="btn" />
             </>
           )}
         </NavList>

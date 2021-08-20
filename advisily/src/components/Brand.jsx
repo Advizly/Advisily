@@ -1,5 +1,5 @@
 import React from "react";
-import { ADVISILY } from "../../constant/websiteName";
+import { ADVISILY } from "../constant/websiteName";
 
 function Brand(props) {
   return (

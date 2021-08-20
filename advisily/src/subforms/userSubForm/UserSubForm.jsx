@@ -1,5 +1,5 @@
 import React from "react";
-import { FormInput } from "../../components/common/form";
+import { FormInput } from "../../components/form";
 import {
   FIRST_NAME,
   LAST_NAME,

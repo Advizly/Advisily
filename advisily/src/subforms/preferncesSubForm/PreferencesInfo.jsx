@@ -5,7 +5,7 @@ import {
   FormInput,
   FormPolarRadioGroup,
   FormSelectGroup,
-} from "../../components/common/form";
+} from "../../components/form";
 import { stringToBool } from "../../utils/stringUtils";
 import { getPaces } from "../../services/pacesService";
 import {

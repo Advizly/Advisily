@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import auth from "../../services/authService";
+import auth from "../services/authService";
 function ProtectedRoute({ component: Component, render, ...rest }) {
   const user = auth.getCurrentUser();
 

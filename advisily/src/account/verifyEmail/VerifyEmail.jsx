@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 
-import { Form, FormInput, SubmitButton } from "../components/common/form";
+import { Form, FormInput, SubmitButton } from "../../components/form";
 
-import auth from "../services/authService";
-import { resendVerification } from "../services/userService";
+import { LOGIN_ROUTE } from "../routes";
+import { HOME_ROUTE } from "../../common/routes";
+
+import auth from "../../services/authService";
+import { resendVerification } from "../../services/userService";
 
 import { EMAIL } from "./fieldNames";
 import verifyEmailDefaultValues from "./defaultValues";
@@ -12,11 +15,11 @@ import verifyEmailSchema from "./validationSchema";
 
 const TITLE = "Email Verification";
 
-function EmailVerification(props) {
+function VerifyEmail(props) {
   const [showForm, setShowForm] = useState(false);
 
   const user = auth.getCurrentUser();
-  if (user) return <Redirect to={{ pathname: "/" }} />;
+  if (user) return <Redirect to={{ pathname: HOME_ROUTE }} />;
 
   const { state } = props.history.location; //get email from previous route, if given.
   if (state && state.email) verifyEmailDefaultValues.email = state.email;
@@ -37,7 +40,8 @@ function EmailVerification(props) {
     <>
       <p>Please check your email inbox to verify your email.</p>
       <p className="my-2">
-        If you already confirmed your email, <a href="/login">login here</a>.
+        If you already confirmed your email,{" "}
+        <a href={LOGIN_ROUTE}>login here</a>.
       </p>
     </>
   );
@@ -85,4 +89,4 @@ function EmailVerification(props) {
   );
 }
 
-export default EmailVerification;
+export default VerifyEmail;

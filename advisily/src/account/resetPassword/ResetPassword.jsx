@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
+import { Redirect } from "react-router-dom";
 
-import { Form, FormInput, SubmitButton } from "../components/common/form";
+import { Form, FormInput, SubmitButton } from "../../components/form";
+import { resetPassword, validateResetToken } from "../../services/userService";
+
 import resetPasswordDefaultValues from "./defaultValues";
 import resetPasswordSchema from "./validationSchema";
 import { PASSWORD, REPEAT_PASSWORD } from "./fieldNames";
-import { resetPassword, validateResetToken } from "../services/userService";
-import { Redirect } from "react-router-dom";
 
 function ResetPassword(props) {
   const TokenStatus = {

@@ -55,13 +55,13 @@ h6 {
 
 @font-face {
   font-family: "Avro";
-  src: url("./fonts/Arvo/Arvo-Regular.ttf") format("truetype");
+  src: url("./assets/fonts/Arvo/Arvo-Regular.ttf") format("truetype");
 }
 @font-face {
   font-family: "Comfortaa";
-  src: url("./fonts/Comfortaa/static/Comfortaa-Medium.ttf");
+  src: url("./assets/fonts/Comfortaa/static/Comfortaa-Medium.ttf");
 }
 @font-face {
   font-family: "Montserrat";
-  src: url("./fonts/Montserrat/Montserrat-Regular.ttf");
+  src: url("./assets/fonts/Montserrat/Montserrat-Regular.ttf");
 }

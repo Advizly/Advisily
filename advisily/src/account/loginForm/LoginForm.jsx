@@ -1,18 +1,20 @@
 import React from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { Form, FormInput, SubmitButton } from "../components/common/form";
-import GoogleLogin from "../components/GoogleLogin";
-import auth from "../services/authService";
-import useAuth from "../hooks/useAuth";
+import { Form, FormInput, SubmitButton } from "../../components/form";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
+import auth from "../../services/authService";
+
+import {
+  FORGOT_PASSWORD_ROUTE,
+  SIGN_UP_ROUTE,
+  VERIFY_EMAIL_ROUTE,
+} from "../routes";
 
 import defaultValues from "./defaultValues";
 import validationSchema from "./validationSchema";
 import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
-  const { user } = useAuth();
-  if (user) return <Redirect to="/" />;
-
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
     console.log("Values: ", values);
     try {
@@ -56,14 +58,15 @@ function LoginForm(props) {
           aria-required="true"
         />
         <div className="d-flex justify-content-between ">
-          <Link to="/forgot-password">Forgot password?</Link>
+          <Link to={FORGOT_PASSWORD_ROUTE}>Forgot password?</Link>
           <p>
-            New user?<Link to="/sign-up"> Sign up</Link>
+            New user?
+            <Link to={SIGN_UP_ROUTE}> Sign up</Link>
           </p>
         </div>
         <div>
           <p>
-            <Link to="/email-verification"> Resend email verification?</Link>
+            <Link to={VERIFY_EMAIL_ROUTE}> Resend email verification?</Link>
           </p>
         </div>
         <SubmitButton label="Login" />
@@ -71,7 +74,7 @@ function LoginForm(props) {
       <div className="d-flex justify-content-center">
         <strong className="text-center">
           Or login in using
-          <GoogleLogin />
+          <GoogleLoginButton />
         </strong>
       </div>
     </div>

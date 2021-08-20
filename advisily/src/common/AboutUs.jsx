@@ -1,11 +1,12 @@
 import React from "react";
-import youssefPic from "../assets/youssef.jpg";
-import sherifPic from "../assets/sherif.jpg";
-import RoundedPicture from "./common/RoundedPicture";
-import CardBody from "./common/card/CardBody";
-import Card from "./common/card/Card";
 
-import { Row, ColMedium } from "./common/grid";
+import youssefPic from "../assets/pictures/youssef.jpg";
+import sherifPic from "../assets/pictures/sherif.jpg";
+
+import RoundedPicture from "../components/RoundedPicture";
+import CardBody from "../components/card/CardBody";
+import Card from "../components/card/Card";
+import { Row, ColMedium } from "../components/grid";
 function AboutUs(props) {
   return (
     <div className="text-center">

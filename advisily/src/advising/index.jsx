@@ -1,3 +1,23 @@
-export { default as AdvisingHome } from "./AdvisingHome";
-export { default as AdvisingForm } from "./form/AdvisingForm";
-export { default as AdvisingResults } from "./AdvisingResults";
+import { Route, Switch } from "react-router-dom";
+
+import AdvisingHome from "./AdvisingHome";
+import AdvisingResults from "./AdvisingResults";
+import AdvisingForm from "./form/AdvisingForm";
+
+import {
+  ADVISING_FORM_ROUTE,
+  ADVISING_HOME_ROUTE,
+  ADVISING_RESULTS_ROUTE,
+} from "./routes";
+
+const AdvisingRouter = () => (
+  <Switch>
+    <Route path={ADVISING_HOME_ROUTE} exact component={AdvisingHome} />
+    <Route path={ADVISING_RESULTS_ROUTE} component={AdvisingResults} />
+    <Route path={ADVISING_FORM_ROUTE} component={AdvisingForm} />
+  </Switch>
+);
+
+export { ADVISING_FORM_ROUTE, ADVISING_HOME_ROUTE, ADVISING_RESULTS_ROUTE };
+
+export default AdvisingRouter;

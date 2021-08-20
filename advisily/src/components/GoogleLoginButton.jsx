@@ -1,7 +1,7 @@
 import React from "react";
-import googleLogo from "../assets/google.png";
+import googleLogo from "../assets/pictures/google-logo.png";
 
-function GoogleLogin(props) {
+function GoogleLoginButton(props) {
   return (
     <button className="google-login" type="button" {...props}>
       <img src={googleLogo} alt="Google Logo" />
@@ -10,4 +10,4 @@ function GoogleLogin(props) {
   );
 }
 
-export default GoogleLogin;
+export default GoogleLoginButton;

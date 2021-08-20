@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Form, SubmitButton } from "../../components/common/form";
+import { Form, SubmitButton } from "../../components/form";
 import CoursesSubForm from "../../subforms/coursesSubForm/coursesSubForm";
 import PreferencesInfo from "../../subforms/preferncesSubForm/PreferencesInfo";
 import MajorInfo from "../../subforms/majorSubForm/MajorInfo";

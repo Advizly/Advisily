@@ -1,7 +1,7 @@
 import React from "react";
-import { Form, FormInput, SubmitButton } from "../components/common/form";
+import { Form, FormInput, SubmitButton } from "../../components/form";
 import * as Yup from "yup";
-import { forgotPassword } from "../services/userService";
+import { forgotPassword } from "../../services/userService";
 
 function ForgotPassword(props) {
   const initalValues = {
