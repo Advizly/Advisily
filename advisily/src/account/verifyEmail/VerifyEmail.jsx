@@ -31,8 +31,9 @@ function VerifyEmail(props) {
       alert("Email sent successfully");
     } catch (error) {
       const { response } = error;
-      const { data } = response;
-      if (response && response.status === 400) setStatus({ error: data });
+      const { data, status } = response;
+      if (response && status && status >= 400 && status < 500)
+        setStatus({ error: data.error });
     }
   };
 

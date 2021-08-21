@@ -5,19 +5,9 @@ import { Form, SubmitButton } from "../../components/form";
 import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 import UserSubForm from "../../subforms/userSubForm/UserSubForm";
-import MajorInfo from "../../subforms/majorSubForm/MajorInfo";
 
 //services
 import { userService } from "../../services";
-
-//hooks
-import { useFormStep } from "../../hooks";
-
-//utils
-import {
-  updateUserMajor,
-  updateUserMinors,
-} from "../../utils/advisingSubmissionUtils";
 
 //routes
 import { LOGIN_ROUTE, VERIFY_EMAIL_ROUTE } from "../routes";
@@ -27,23 +17,10 @@ import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 
 const SignUpForm = (props) => {
-  const { next, back, step } = useFormStep();
-
-  const submitMajorInfo = (values) => {
-    const { studentId } = values;
-
-    const { majorId, catalogId, secondMajorId, secondCatalogId, minorIds } =
-      values;
-    updateUserMajor(studentId, majorId, catalogId);
-    updateUserMajor(studentId, secondMajorId, secondCatalogId);
-    updateUserMinors(studentId, minorIds);
-  };
-
   const onSubmit = async (values, { setStatus }) => {
     try {
       console.log(`Subimtting Values:`, values);
       await userService.register(values);
-      submitMajorInfo(values);
       alert(
         "Account registered successfuly. Please verify your email to login."
       );
@@ -54,14 +31,17 @@ const SignUpForm = (props) => {
         },
       });
     } catch (ex) {
-      if (ex.response && ex.response.status === 400) {
-        setStatus({
-          error: ex.response.data.error,
-        });
-        console.log(ex);
-        console.log(ex.response);
-        console.log(ex.response.data);
+      const { response } = ex;
+      if (response) {
+        const { status, data } = response;
+
+        if (status && status >= 400 && status < 500) {
+          setStatus({ error: data.error });
+        }
+
+        console.log(response.data);
       }
+      console.log(response);
     }
   };
 
@@ -73,28 +53,8 @@ const SignUpForm = (props) => {
         initialValues={defaultValues}
         title={"Sign Up"}
       >
-        {step === 1 && <UserSubForm />}
-
-        {step === 2 && <MajorInfo />}
-
-        <div className="d-flex justify-content-between ">
-          {step === 1 && (
-            <>
-              <button className="btn my-3 ms-auto" onClick={next} type="button">
-                Next
-              </button>
-            </>
-          )}
-
-          {step === 2 && (
-            <>
-              <button className="btn my-3" onClick={back} type="button">
-                Back
-              </button>
-              <SubmitButton label="Sign Up" />
-            </>
-          )}
-        </div>
+        <UserSubForm />
+        <SubmitButton label="Sign Up" />
 
         {/* Already a user */}
         <div className="d-flex align-items-center">

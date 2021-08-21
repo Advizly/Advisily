@@ -6,7 +6,6 @@ const apiEndPoint = apiBaseUrl + "/users";
     studentId, firstName,lastName, auc email, password, repeatPassword
 */
 export const register = (userInfo) => {
-  console.log("post req");
   return http.post(`${apiEndPoint}/register`, userInfo);
 };
 export const getUser = async (studentId) => {

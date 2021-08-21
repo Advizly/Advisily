@@ -19,6 +19,6 @@ module.exports = function validate(
     const { details } = error;
     const message = details.map((d) => d.message).join(", ");
     res.status(422);
-    return next(`Validation error:${message}`);
+    return next(`Validation error: ${message}`);
   };
 };

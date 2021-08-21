@@ -77,16 +77,7 @@ function AdvisingForm(props) {
   const getFormChild = () => {
     switch (step) {
       case 1:
-        return (
-          <>
-            <h5>
-              We retrieved the data you entered while signing up, but you can
-              change any of them!
-            </h5>
-            <br />
-            <MajorInfo changeButton={true} />
-          </>
-        );
+        return <MajorInfo />;
       case 2:
         return <PreferencesInfo />;
       case 3:

@@ -45,6 +45,7 @@ export default Yup.object({
     .email(INVALID_EMAIL_FORMAT)
     .required(REQUIRED_MESSAGE)
     .matches(EMAIL_FORMAT, AUC_EMAIL_ONLY),
+
   [STUDENT_ID]: Yup.number()
     .integer()
     .min(MIN_ID_VALUE, ID_VALUE_TOO_SMALL)

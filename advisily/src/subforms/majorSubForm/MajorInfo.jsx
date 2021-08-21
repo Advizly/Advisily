@@ -14,7 +14,7 @@ import {
   IS_MINORING,
 } from "./fieldNames";
 
-function MajorInfo({ showChangeButton = false }) {
+function MajorInfo() {
   const { majors, catalogs, minors } = useMajors();
   const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
@@ -39,7 +39,6 @@ function MajorInfo({ showChangeButton = false }) {
         items={majors}
         name={MAJOR_ID}
         defaultOption={"--select a major--"}
-        changeButton={showChangeButton}
       />
 
       <br />
@@ -49,7 +48,6 @@ function MajorInfo({ showChangeButton = false }) {
         name={CATALOG_ID}
         items={catalogs}
         defaultOption={"--select a catalog--"}
-        changeButton={showChangeButton}
       />
       <br />
 
@@ -65,7 +63,6 @@ function MajorInfo({ showChangeButton = false }) {
         visible={stringToBool(isMinoring)}
         multiple
         items={minors}
-        changeButton={showChangeButton}
       />
 
       {stringToBool(isMinoring) && (
@@ -86,7 +83,6 @@ function MajorInfo({ showChangeButton = false }) {
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a major---"}
         items={majors}
-        changeButton={showChangeButton}
       />
 
       <FormSelectGroup
@@ -95,7 +91,6 @@ function MajorInfo({ showChangeButton = false }) {
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
         items={catalogs}
-        changeButton={showChangeButton}
       />
       <hr />
     </>

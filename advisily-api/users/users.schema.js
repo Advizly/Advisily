@@ -17,6 +17,7 @@ const ID_SCHEMA = Joi.number().positive().integer().required();
 const NAME_SCHEMA = Joi.string().alphanum().min(1).max(30).required();
 const EMAIL_SCHEMA = Joi.string()
   .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
+  .message("Invalid email.")
   .required();
 const PASSWORD_SCHEMA = JoiPassword.string()
   .min(8)
