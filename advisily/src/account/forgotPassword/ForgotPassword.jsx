@@ -11,13 +11,16 @@ function ForgotPassword(props) {
     email: Yup.string().email("Invalid email").required("Required"),
   });
 
-  const handleSubmit = async ({ email }) => {
+  const handleSubmit = async ({ email }, { setStatus }) => {
     try {
       const res = await forgotPassword(email);
-      console.log(res);
-      alert(res.data);
-    } catch (error) {
-      console.log(error);
+      console.log(res.data.message);
+      alert(res.data.message);
+    } catch (ex) {
+      const { response } = ex;
+      if (response && response.data && response.data.error)
+        setStatus({ error: response.data.error });
+      else setStatus({ error: "Unexpected error happened!" });
     }
   };
 

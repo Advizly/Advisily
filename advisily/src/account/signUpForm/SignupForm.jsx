@@ -20,7 +20,8 @@ import {
 } from "../../utils/advisingSubmissionUtils";
 
 //routes
-import { LOGIN_ROUTE } from "../routes";
+import { LOGIN_ROUTE, VERIFY_EMAIL_ROUTE } from "../routes";
+
 //form
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
@@ -47,21 +48,19 @@ const SignUpForm = (props) => {
         "Account registered successfuly. Please verify your email to login."
       );
       props.history.push({
-        pathname: "/email-verification",
+        pathname: VERIFY_EMAIL_ROUTE,
         state: {
           email: values.email,
         },
       });
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
-        if (ex.response.data.errno === 1062) {
-          setStatus({
-            error: "Email or ID already registered",
-          });
-        }
+        setStatus({
+          error: ex.response.data.error,
+        });
         console.log(ex);
         console.log(ex.response);
-        console.log(ex.response.data.errno);
+        console.log(ex.response.data);
       }
     }
   };

@@ -5,8 +5,8 @@ const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const router = express.Router();
 
-const generateToken = require("../utils/tokenGenerator");
-const { getConnection } = require("../utils/mysqlUtils");
+const { getAuthToken } = require("../helpers/account");
+const { getConnection } = require("../helpers/mysql");
 
 router.post("/", (req, res) => {
   const { error } = validate(req.body);
@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
 
     //student not found
     if (!results || results.length === 0)
-      return res.status(400).send("Invalid Email.");
+      return res.status(400).json({ error: "Invalid Email." });
 
     const user = results[0];
     //check password is correct
@@ -29,13 +29,15 @@ router.post("/", (req, res) => {
     );
 
     if (!validPassword)
-      return res.status(400).send("Invalid password and ID combination");
+      return res
+        .status(400)
+        .json({ error: "Invalid email and password combination" });
 
     if (!user.isVerified)
-      return res.status(401).send("Please verify your email first");
+      return res.status(401).json({ error: "Please verify your email first" });
 
     //generate auth token
-    const token = generateToken(results[0]);
+    const token = getAuthToken(results[0]);
     res.send(token);
   });
   connection.end();

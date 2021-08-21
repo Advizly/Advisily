@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getConnection } = require("../utils/mysqlUtils");
+const { getConnection } = require("../helpers/mysql");
 
 const baseQuery = "SELECT * FROM minors";
 

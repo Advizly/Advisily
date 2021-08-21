@@ -27,8 +27,9 @@ function LoginForm(props) {
       if (response && (status === 400 || status === 401)) {
         console.log(response.data);
         // setErrors({ studentId: "", password: "" });
-        setStatus({ error: response.data });
       }
+      console.log(response);
+      setStatus({ error: response.data.error });
     }
   };
   return (

@@ -52,6 +52,13 @@ function CoursesSubForm() {
     ));
   };
 
+  if (!values.catalogId)
+    return (
+      <p className="text-center ">
+        Please select you declaration catalog catalog first.
+      </p>
+    );
+
   return (
     <>
       <button

@@ -1,36 +1,53 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 
-const apiEndPoint = apiBaseUrl;
-const catCourseUrl = (catId) => `${apiEndPoint}/cat_courses/${catId}`;
+const apiEndPoint = apiBaseUrl + "/catalogs";
+const catCourseUrl = `${apiEndPoint}/courses`;
+const CourseTypeIds = {
+  core: "1",
+  concentertaion: "2",
+  electives: "3",
+  collateral: "4",
+};
 
 export const getCatalogs = async () => {
-  const { data: catalogs } = await http.get(apiEndPoint + "/catalogs");
+  const { data: catalogs } = await http.get(apiEndPoint);
   return catalogs;
 };
 
-export const getCatalogCourses = async (catId) => {
-  const { data: catCourses } = await http.get(catCourseUrl(catId));
+export const getCatalogCourses = async (catalogId) => {
+  const { data: catCourses } = await http.get(catCourseUrl, {
+    params: { catalogId },
+  });
   return catCourses;
 };
 
-export const getCoreCourses = async (catId) => {
-  const { data: courses } = await http.get(catCourseUrl(catId) + "/1");
+export const getCoreCourses = async (catalogId) => {
+  console.log("core courses: ", "courses");
+  const { data: courses } = await http.get(catCourseUrl, {
+    params: { catalogId, courseTypeId: CourseTypeIds.core },
+  });
   return courses;
 };
 
-export const getConcCourses = async (catId) => {
-  const { data: courses } = await http.get(catCourseUrl(catId) + "/2");
+export const getConcCourses = async (catalogId) => {
+  const { data: courses } = await http.get(catCourseUrl, {
+    params: { catalogId, courseTypeId: CourseTypeIds.concentertaion },
+  });
   return courses;
 };
 
-export const getElectiveCourses = async (catId) => {
-  const { data: courses } = await http.get(catCourseUrl(catId) + "/3");
+export const getElectiveCourses = async (catalogId) => {
+  const { data: courses } = await http.get(catCourseUrl, {
+    params: { catalogId, courseTypeId: CourseTypeIds.electives },
+  });
   return courses;
 };
 
-export const getCollateralCourses = async (catId) => {
-  const { data: catCourses } = await http.get(catCourseUrl(catId) + "/4");
+export const getCollateralCourses = async (catalogId) => {
+  const { data: catCourses } = await http.get(catCourseUrl, {
+    params: { catalogId, courseTypeId: CourseTypeIds.collateral },
+  });
   return catCourses;
 };
 

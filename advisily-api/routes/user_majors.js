@@ -5,7 +5,7 @@ const _ = require("lodash");
 const express = require("express");
 const router = express.Router();
 
-const { getConnection } = require("../utils/mysqlUtils");
+const { getConnection } = require("../helpers/mysql");
 
 const baseQuery = "select DISTINCT * from userMajors";
 
@@ -21,7 +21,6 @@ router.get("/:studentId", auth, (req, res) => {
 });
 
 router.post("/", auth, (req, res) => {
-  console.log("posting here", req.body);
   const userMajor = _.pick(req.body, ["studentId", "majorId", "catalogId"]);
 
   const { error } = validateStudentMajor(userMajor);

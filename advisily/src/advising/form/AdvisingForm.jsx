@@ -22,7 +22,7 @@ import {
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 function AdvisingForm(props) {
-  const { step, back, next } = useFormStep();
+  const { step, back, next } = useFormStep(3);
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();

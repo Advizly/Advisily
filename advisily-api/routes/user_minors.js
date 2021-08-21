@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 // router.use(auth);
 
-const { getConnection } = require("../utils/mysqlUtils");
+const { getConnection } = require("../helpers/mysql");
 
 const baseQuery = "SELECT DISTINCT * from userMinors";
 

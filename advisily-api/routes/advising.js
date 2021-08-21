@@ -4,7 +4,7 @@ const _ = require("lodash");
 
 const express = require("express");
 const router = express.Router();
-const { getConnection } = require("../utils/mysqlUtils");
+const { getConnection } = require("../helpers/mysql");
 
 router.get("/", auth, (req, res) => {
   const connection = getConnection();

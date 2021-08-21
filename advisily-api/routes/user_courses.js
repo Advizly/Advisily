@@ -6,7 +6,7 @@ const express = require("express");
 const router = express.Router();
 // router.use(auth);
 
-const { getConnection } = require("../utils/mysqlUtils");
+const { getConnection } = require("../helpers/mysql");
 
 const baseQuery = "SELECT DISTINCT * from userCourses";
 
@@ -25,9 +25,9 @@ router.post("/", auth, (req, res) => {
   const connection = getConnection();
   const userCourse = _.pick(req.body, ["studentId", "courseId"]);
 
-  const { error } = validateStudentCourse(userCourse);
+  const { error } = validateUserCourse(userCourse);
   if (error) {
-    console.log(error.deails, req.body, req.body.data);
+    console.log(error.details, req.body, req.body.data);
     return res.status(400).send(error);
   }
 
@@ -43,7 +43,7 @@ router.post("/", auth, (req, res) => {
 router.delete("/", auth, (req, res) => {
   const userCourse = _.pick(req.body, ["studentId", "courseId"]);
 
-  const { error } = validateStudentCourse(userCourse);
+  const { error } = validateUserCourse(userCourse);
   if (error) return res.status(400).send(error);
 
   const connection = getConnection();
@@ -61,7 +61,7 @@ router.delete("/", auth, (req, res) => {
   connection.end();
 });
 
-const validateStudentCourse = (userCourse) => {
+const validateUserCourse = (userCourse) => {
   const schema = Joi.object({
     studentId: Joi.number().integer().required().positive(),
     courseId: Joi.number().integer().required().positive(),

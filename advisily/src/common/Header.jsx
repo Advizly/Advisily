@@ -6,7 +6,8 @@ import Logo from "../components/Logo";
 import Brand from "../components/Brand";
 import { ColMedium } from "../components/grid";
 
-import { LOGIN_ROUTE, LOGOUT_ROUTE, SIGN_UP_ROUTE } from "../account/routes";
+import { LOGIN_ROUTE, SIGN_UP_ROUTE } from "../account/routes";
+import { LOGOUT_ROUTE } from "../profile";
 
 function Header({ user }) {
   return (
@@ -40,7 +41,7 @@ function Header({ user }) {
           {user && (
             <>
               <NavItem to="/me" label={user.firstName} />
-              <NavItem to={"LOGOUT_ROUTE"} label="Logout" extraClasses="btn" />
+              <NavItem to={LOGOUT_ROUTE} label="Logout" extraClasses="btn" />
             </>
           )}
         </NavList>

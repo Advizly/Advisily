@@ -7,15 +7,20 @@ const apiEndPoint = apiBaseUrl + "/users";
 */
 export const register = (userInfo) => {
   console.log("post req");
-  return http.post(apiEndPoint, userInfo);
+  return http.post(`${apiEndPoint}/register`, userInfo);
 };
 export const getUser = async (studentId) => {
-  const { data, headers } = await http.get(`${apiEndPoint}/${studentId}`);
+  const { data, headers } = await http.get(`${apiEndPoint}/user`, {
+    params: {
+      studentId,
+    },
+  });
   if (!data || !data.length) return null;
 
   return { user: data[0], token: headers["x-auth-token"] };
 };
 export const validateResetToken = async (token) => {
+  console.log("started");
   return await http.post(`${apiEndPoint}/validate-reset-token`, { token });
 };
 export const resetPassword = async (token, password) => {
