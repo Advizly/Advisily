@@ -19,7 +19,6 @@ function LoginForm(props) {
     console.log("Values: ", values);
     try {
       await auth.login(values);
-
       window.location = "/advising";
     } catch (ex) {
       const { response } = ex;

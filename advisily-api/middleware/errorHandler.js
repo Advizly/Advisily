@@ -8,6 +8,12 @@ module.exports = function errorHandler(err, req, res, next) {
       if (!validationError) res.status(statusCode);
 
       return res.json({ error: err });
+    case typeof err === "object":
+      if (err.statusCode && err.message) {
+        const statusCode = err.statusCode ? err.statusCode : 400;
+        const { message } = err;
+        return res.status(statusCode).json({ error: message });
+      }
 
     default:
       console.log(err);

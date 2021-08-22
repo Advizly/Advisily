@@ -12,6 +12,7 @@ module.exports = {
   validateResetToken,
   register,
   resendVerification,
+  login,
 };
 
 async function register(req, res, next) {
@@ -99,5 +100,14 @@ function getUser(req, res, next) {
         .header("access-control-expose-headers", "x-auth-token")
         .send(userInfo)
     )
+    .catch(next);
+}
+
+function login(req, res, next) {
+  usersService
+    .login(req.body)
+    .then((token) => {
+      res.send(token);
+    })
     .catch(next);
 }

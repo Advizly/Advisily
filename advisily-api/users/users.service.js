@@ -1,3 +1,10 @@
+const config = require("config");
+const frontendUrl = config.get("frontendUrl");
+const hostUrl = config.get("hostUrl");
+
+const _ = require("lodash");
+const bcrypt = require("bcrypt");
+
 const sendEmail = require("../helpers/sendEmail");
 const { query, parseConditions } = require("../helpers/mysql");
 const {
@@ -7,12 +14,6 @@ const {
   hash,
 } = require("../helpers/account");
 
-const config = require("config");
-const frontendUrl = config.get("frontendUrl");
-const hostUrl = config.get("hostUrl");
-
-const _ = require("lodash");
-
 module.exports = {
   getUsers,
   getUser,
@@ -21,6 +22,7 @@ module.exports = {
   resetPassword,
   validateResetToken,
   register,
+  login,
   resendVerification,
 };
 
@@ -50,6 +52,18 @@ async function register(user) {
     ...basicInfo(user),
     authToken,
   };
+}
+
+async function login({ email, password }) {
+  const user = await _getUserBy({ email });
+  if (!user) throw "Email not found.";
+
+  const validPassword = await bcrypt.compare(password, user.password);
+  if (!validPassword) throw "Invalid email and password combination.";
+  if (!user.isVerified)
+    throw { message: "Please verify your email first.", statusCode: 401 };
+
+  return getAuthToken(user);
 }
 
 async function getUsers() {
@@ -140,7 +154,7 @@ async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
   if (!values.length) throw "Error getting user. No conditions given.";
 
-  const getStudentQuery = baseGetUsersQuery + ` WHERE ${columns}`;
+  const getStudentQuery = baseGetUsersQuery + ` WHERE ${columns} LIMIT 1`;
   const [data, err] = await query(getStudentQuery, values);
 
   if (err) throw "Error getting user.";

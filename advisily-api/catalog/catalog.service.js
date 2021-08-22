@@ -25,7 +25,6 @@ async function getCatCourses(conditions) {
 
   const [data, err] = await query(sql, values);
   if (err) throw "Error getting catalog courses.";
-  if (!data.length) throw "No courses found for this catalog.";
 
   return data;
 }
@@ -35,7 +34,6 @@ async function getCatalog(catalogId) {
 
   const [data, err] = await query(sql, [catalogId]);
   if (err) throw "Error getting catalog.";
-  if (!data.length) throw "Catalog not found.";
 
-  return data[0];
+  return data.length ? data[0] : {};
 }

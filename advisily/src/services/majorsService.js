@@ -1,9 +1,9 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 
-const apiEndPoint = apiBaseUrl + "/majors";
-export const getMajors = async () => {
-  const { data: majors } = await http.get(apiEndPoint);
+const apiEndPoint = apiBaseUrl + "/academics/majors";
+export const getMajors = async (majorId) => {
+  const { data: majors } = await http.get(apiEndPoint, { params: { majorId } });
   return majors;
 };
 

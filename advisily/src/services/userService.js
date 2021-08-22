@@ -36,29 +36,30 @@ export const resendVerification = async (email) => {
 };
 
 export const getStudentMajors = async (studentId) => {
-  const { data: majors } = await http.get(
-    `${apiEndPoint}/user_majors/${studentId}`
-  );
+  const { data: majors } = await http.get(`${apiEndPoint}/user-majors`, {
+    params: { studentId },
+  });
   console.log("Majors; ", majors);
   return majors;
 };
 export const getStudentMinors = async (studentId) => {
-  const { data: minors } = await http.get(
-    `${apiEndPoint}/user_minors/${studentId}`
-  );
+  const { data: minors } = await http.get(`${apiEndPoint}/user-minors`, {
+    params: { studentId },
+  });
   return minors;
 };
 
 export const getStudentCourses = async (studentId) => {
   const { data: studentCourses } = await http.get(
-    `${apiEndPoint}/user_courses/${studentId}`
+    `${apiEndPoint}/user-courses`,
+    { params: { studentId } }
   );
 
   return studentCourses;
 };
 
 export const addStudentCourse = async (studentId, courseId) => {
-  await http.post(`${apiEndPoint}/user_courses`, {
+  await http.post(`${apiEndPoint}/user-courses`, {
     studentId,
     courseId,
   });
@@ -67,12 +68,12 @@ export const deleteStudentCourse = async (studentId, courseId) => {
   const config = {
     data: { studentId, courseId },
   };
-  const res = await http.delete(`${apiEndPoint}/user_courses`, config);
+  const res = await http.delete(`${apiEndPoint}/user-courses`, config);
   return res;
 };
 
 export const addStudentMajor = async (studentId, majorId, catalogId) => {
-  const res = await http.post(`${apiEndPoint}/user_majors`, {
+  const res = await http.post(`${apiEndPoint}/user-majors`, {
     studentId,
     majorId,
     catalogId,
@@ -81,7 +82,7 @@ export const addStudentMajor = async (studentId, majorId, catalogId) => {
 };
 
 export const deleteStudentMajor = async (studentId, majorId) => {
-  const res = await http.delete(`${apiEndPoint}/user_majors`, {
+  const res = await http.delete(`${apiEndPoint}/user-majors`, {
     data: {
       studentId,
       majorId,
@@ -94,7 +95,7 @@ export const addStudentMinor = async (studentId, minorId) => {
     studentId,
     minorId,
   };
-  const res = await http.post(`${apiEndPoint}/user_minors`, config);
+  const res = await http.post(`${apiEndPoint}/user-minors`, config);
   return res;
 };
 
@@ -105,7 +106,7 @@ export const deleteStudentMinor = async (studentId, minorId) => {
       minorId,
     },
   };
-  const res = await http.delete(`${apiEndPoint}/user_minors`, config);
+  const res = await http.delete(`${apiEndPoint}/user-minors`, config);
   return res;
 };
 

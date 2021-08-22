@@ -22,7 +22,7 @@ import {
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 function AdvisingForm(props) {
-  const { step, back, next } = useFormStep(3);
+  const { step, back, next } = useFormStep();
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
@@ -43,6 +43,7 @@ function AdvisingForm(props) {
           majorId: oldMajorId,
           econdMajorId: oldSecondMajorId,
         } = userMajorInfo;
+        console.log("student id: ", studentId);
         updateStudentCourses(
           studentId,
           values.coursesIds,

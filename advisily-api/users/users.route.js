@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 /* Nested routes*/
-router.use("/user_minors", require("../routes/user_minors"));
-router.use("/user_majors", require("../routes/user_majors"));
-router.use("/user_courses", require("../routes/user_courses"));
+router.use("/user-minors", require("./userMinors/user-minors.route"));
+router.use("/user-majors", require("./userMajors/user-majors.route"));
+router.use("/user-courses", require("./userCourses/user-courses.route"));
 
 const controller = require("./users.controller");
 const schemas = require("./users.schema");
@@ -48,6 +48,12 @@ router.get(
   "/user",
   requestValidator(schemas.getUser(), "query"),
   controller.getUser
+);
+
+router.post(
+  "/login",
+  requestValidator(schemas.loginSchema()),
+  controller.login
 );
 
 module.exports = router;

@@ -1,7 +1,7 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 
-const apiEndPoint = apiBaseUrl + "/courses";
+const apiEndPoint = apiBaseUrl + "/academics/courses";
 
 export const getAllCourses = async () => {
   const { data: courses } = await http.get(apiEndPoint);

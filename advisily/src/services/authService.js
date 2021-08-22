@@ -1,7 +1,7 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
-const apiEndPoint = apiBaseUrl + "/auth";
+const apiEndPoint = apiBaseUrl + "/users/login";
 const tokenKey = "token";
 
 export const getJwt = () => {
