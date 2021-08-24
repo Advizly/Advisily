@@ -71,12 +71,12 @@ function LoginForm(props) {
         </div>
         <SubmitButton label="Login" />
       </Form>
-      <div className="d-flex justify-content-center">
+      {/* <div className="d-flex justify-content-center">
         <strong className="text-center">
           Or login in using
           <GoogleLoginButton />
         </strong>
-      </div>
+      </div> */}
     </div>
   );
 }
