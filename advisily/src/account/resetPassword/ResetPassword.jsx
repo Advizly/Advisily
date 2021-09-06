@@ -33,6 +33,7 @@ function ResetPassword(props) {
         console.log(err.response);
         setTokenStatus(TokenStatus.invalid);
       });
+    // eslint-disable-next-line
   }, []);
 
   const handleSubmit = async ({ password }) => {

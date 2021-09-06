@@ -1,0 +1,67 @@
+course,prerequisite
+CSCE 106/1001, College level preparation course in Mathematics or MACT 1111  .
+CSCE 110/1101," CSCE 1001   and concurrent with CSCE 1102  
+ECNG students not required to take CSCE 1102 "
+CSCE 000/1102, Concurrent with CSCE 1101  
+CSCE 321/2202,  MACT 2131  (or concurrent) and  CSCE 1101 . Must be taken concurrently with CSCE 2203 .
+CSCE 000/2203," MACT 2131  or concurrent, and concurrent with CSCE 2202 "
+CSCE 230/2301," PHYS 2211  or concurrent. Must be taken concurrently with CSCE 2302 .Description Basic logic gates, Boolean algebra, logic minimization algorithms, modular design of combinational circuits, introduction to computer arithmetic, memory elements, sequential circuits, Finite State Machines analysis and design, top-down digital systems design approach, timing aspects of digital systems. Exposure to modern Electronic Design Automation tools, Hardware "
+CSCE 231/2303, CSCE 1101  and (CSCE 2301  or ECNG 2101 ) cannot be taken concurrently with PHYS 2211  
+CSCE 239L/2302, Concurrent with CSCE 2301  .
+CSCE 325/3104,  CSCE 1101  
+CSCE 330/3301, CSCE 2301  and CSCE 2303 . Must be taken concurrently with CSCE 3302 .
+CSCE 341/3701,  CSCE 1101  
+CSCE 345/3401, CSCE 2303  and concurrent with CSCE 3402  
+CSCE 000/3402, CSCE 1101  and CSCE 3301  
+CSCE 422/4201, MACT 2131   and Senior standing.
+CSCE 447/4101, CSCE 3104  .
+CSCE 490/4950, Junior standing and approval of instructor.
+CSCE 491/4980, Instructor approval
+CSCE 492/4981, CSCE 4980  
+CSCE 253/2501,  CSCE 1101  
+CSCE 315/3101, CSCE 1001  
+CSCE 316/3102, CSCE 1101  
+CSCE 317/3103,  CSCE 1101  
+CSCE 333/3311,  CSCE 1101  and  PHYS 2211  
+CSCE 427/4602,"  CSCE 1101  , MACT 2123  and  MACT 2132  "
+CSCE 432/4301," CSCE 3301 , CSCE 3401 , CSCE 3312 , and Concurrent with CSCE 4302 "
+CSCE 332/3303, PHYS 2211  and CSCE 2301  or concurrent
+CSCE 337/3304," CSCE 2301  , CSCE 3303  ."
+CSCE 435/3312, PHYS 2211  and concurrent with CSCE 3313 . 
+CSCE 363/3611, PHYS 2211  and junior standing.
+CSCE 436L/4314, Concurrent with CSCE 4313 
+CSCE 437/4313, CSCE 3311  
+CSCE 438L/4302,  Concurrent with  CSCE 4301  
+CSCE 439L/3313, Concurrent with CSCE 3312 .
+CSCE 441/4701, CSCE 3701  .
+CSCE 445/4411, CSCE 3401  
+CSCE 446/4421, CSCE 3401  
+CSCE 448/4702, CSCE 3701  and CSCE 3401  
+CSCE 453/4501, CSCE 2501  
+CSCE 455/4621,"  CSCE 1101  , MACT 2132  "
+CSCE 456/4502," CSCE 2501  or MOIS 3201 *
+*for MICT students only"
+CSCE 465/3601, CSCE 2202  
+CSCE 000/4603,  CSCE 110/1101  -  Fundamentals of Computing II (3 cr.)  
+CSCE 485/4930, Junior standing or higher.
+CSCE 495/4910, Prerequisite: consent of instructor.
+MACT 233/2141, MACT 2123 
+MACT 304/3143," Pre-requisites or concurrent:  CSCE 1001 , MACT 2141  and MACT 2132  "
+MACT 362/3133,   MACT 2131  or   PHIL 2010   or consent of the instructor.
+MACT 406/4212, MACT 2132  MACT 2141  and ( MACT 3211  or MACT 3224  )
+MACT 440/4135," MACT 2131  , and either MACT 3211  ,MACT 3224  or consent of instructor."
+CSCE 000/4604," CSCE 2202  
+MACT 1122  "
+MACT 132/1122, MACT 1121   or exemption.
+MACT 200/2131, MACT 1121   (concurrent or exemption)
+MACT 240/2132, MACT 2123 
+MACT 306/3211, MACT 2123   or concurrently.
+MACT 307/3223, MACT 3211 
+PHYS 111/1011," MACT 1121 ;
+PHYS 1012  to be taken concurrently."
+PHYS 112/1021," PHYS 1011  ,PHYS 1012  ,MACT 1122  or concurrent. Concurrent with PHYS 1022 "
+PHYS 123L/1012, Concurrent with PHYS 1011 
+PHYS 124L/1022, Concurrent with PHYS 1021 
+PHYS 215/2211," PHYS 1021 ;
+PHYS 2212  (or PHYS 2213 ) is taken concurrently"
+PHYS 222L/2213, Concurrent with PHYS 2211  

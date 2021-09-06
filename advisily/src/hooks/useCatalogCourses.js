@@ -5,6 +5,7 @@ import {
   getConcCourses,
   getCollateralCourses,
   getElectiveCourses,
+  getEngCoreCourses,
 } from "../services/catalogsService";
 
 import { groupCourses } from "../utils/coursesUtils";
@@ -17,6 +18,7 @@ const useCatalogCourses = (catalogId) => {
   const [concCourses, setConcCourses] = useState([]);
   const [collateralCourses, setCollateralCourses] = useState([]);
   const [electiveCourses, setElectiveCourses] = useState([]);
+  const [engCoreCourses, setEngCoreCourses] = useState([]);
   const { user } = useAuth();
 
   useEffect(() => {
@@ -33,8 +35,17 @@ const useCatalogCourses = (catalogId) => {
       getElectiveCourses(catalogId).then((courses) =>
         setElectiveCourses(groupCourses(courses, NUMBER_OF_COLS))
       );
+      getEngCoreCourses(catalogId).then((courses) =>
+        setEngCoreCourses(groupCourses(courses, NUMBER_OF_COLS))
+      );
     }
   }, [user, catalogId]);
-  return { coreCourses, concCourses, collateralCourses, electiveCourses };
+  return {
+    coreCourses,
+    concCourses,
+    collateralCourses,
+    electiveCourses,
+    engCoreCourses,
+  };
 };
 export default useCatalogCourses;

@@ -1,5 +1,4 @@
 const auth = require("../middleware/auth");
-const Joi = require("joi");
 
 const express = require("express");
 const router = express.Router();
@@ -39,17 +38,10 @@ router.put(
   controller.updateAdvisingSession
 );
 
-const validateAdvisingData = (advisingData) => {
-  const schema = Joi.object({
-    advisingSessionId: Joi.number().integer().positive(),
-    studentId: Joi.number().integer().positive().required(),
-    overloadingCredits: Joi.number().integer().min(0).required(),
-    summerCredits: Joi.number().integer().max(7).min(0).required(),
-    winterCredits: Joi.number().integer().max(4).min(0).required(),
-    paceId: Joi.number().integer().positive().required(),
-    generalElecCredits: Joi.number().integer().min(0).required(),
-    semestersPlanned: Joi.number().integer().max(10).positive().required(),
-  });
-  return schema.validate(advisingData);
-};
+console.log(controller.generatePlan);
+router.post(
+  "/generate-plan",
+  [auth, requestValidator(schemas.generatePlan())],
+  controller.generatePlan
+);
 module.exports = router;

@@ -11,6 +11,7 @@ module.exports = {
   getAdvisingResults,
   addAdvisingSession,
   updateAdvisingSession,
+  generatePlan,
 };
 
 function getAdvisingSessions() {
@@ -54,5 +55,11 @@ function updateAdvisingSession() {
     paceId: ID_SCHEMA_REQUIRED,
     generalElecCredits: CREDITS_SCHEMA.required(),
     semestersPlanned: ID_SCHEMA.max(10),
+  });
+}
+
+function generatePlan() {
+  return Joi.object({
+    advisingSessionId: ID_SCHEMA.required(),
   });
 }

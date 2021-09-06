@@ -7,5 +7,7 @@ module.exports = {
 function getCourses() {
   return Joi.object({
     courseId: ID_SCHEMA,
+    courseCode: Joi.number().integer().positive(),
+    prefix: Joi.string(),
   });
 }

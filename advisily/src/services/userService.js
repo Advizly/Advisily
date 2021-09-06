@@ -39,7 +39,6 @@ export const getStudentMajors = async (studentId) => {
   const { data: majors } = await http.get(`${apiEndPoint}/user-majors`, {
     params: { studentId },
   });
-  console.log("Majors; ", majors);
   return majors;
 };
 export const getStudentMinors = async (studentId) => {

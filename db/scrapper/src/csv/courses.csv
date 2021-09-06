@@ -1,0 +1,2325 @@
+courseCode,courseTitle,prefix,credits
+-10,Major Elective,XXXX,NULL
+-9,General Elective,XXXX,NULL
+-8,Arab World Studies II,XXXX,3
+-7,Arab World Studies I,XXXX,3
+-6,Core Capstone II,XXXX,3
+-5,Core Capstone I,XXXX,3
+-4,Humanities and Social Sciences,XXXX,3
+-3,Global Studies,XXXX,3
+-2,Pathways II: Cultural Explorations,XXXX,3
+-1,Pathways I: Scientific Encounters,XXXX,3
+2001,Financial Accounting,ACCT,3
+2002,Managerial Accounting,ACCT,3
+3001,Intermediate Accounting I,ACCT,3
+3002,Intermediate Accounting II,ACCT,3
+3003,Advanced Accounting,ACCT,3
+3004,Cost Accounting,ACCT,3
+3005,Auditing,ACCT,3
+3006,Principles of Taxation,ACCT,3
+4000,Automated Financial Accounting,ACCT,3
+4001,Contemporary Issues in Auditing and Forensic Accounting,ACCT,3
+4002,Special Topics in Tax Accounting,ACCT,3
+4004,Financial Statement Analysis,ACCT,3
+4005,Contemporary Issues in Financial Reporting,ACCT,3
+4070,Special Topics in Accounting,ACCT,3
+4075,Independent Study in Accounting,ACCT,NULL
+5201,Financial Reporting and Analysis,ACCT,3
+5211,Accounting for Managers,ACCT,1.5
+5301,Managerial Accounting for Decision Making,ACCT,3
+5370,Selected Topics in Accounting,ACCT,3
+5375,Independent Study in Accounting,ACCT,NULL
+1099,Selected Topics for Core Curriculum,AMST,3
+2096,Selected Topics for Core Curriculum,AMST,3
+2190,Is America Still a Superpower?,AMST,3
+3010,American Literature to 1900,AMST,3
+3011,Modern American Literature,AMST,3
+3016,American Philosophy,AMST,3
+3100,The US and the World Economy,AMST,3
+4001,Selected Topics for Core Curriculum,AMST,3
+4444,Media Law and Policy,AMST,3
+1099,Selected Topics for Core Curriculum,ANTH,3
+2005,Arab Society,ANTH,3
+2006,Youth Cultures,ANTH,3
+2007,Anthropology of the Occupied: Palestine/ Israel,ANTH,3
+2099,Selected Topics for Core Curriculum,ANTH,3
+2101,Cultural Anthropology,ANTH,3
+2201,Introduction to Community Development,ANTH,3
+3015,Global Families: Kinship and Relatedness in Late Modernity,ANTH,3
+3020,Social Movements,ANTH,3
+3040,"States, Capital and Rural Lives",ANTH,3
+3045,The Urban Experience,ANTH,3
+3060,"Social Constructions of Difference: Race, Class and Gender",ANTH,3
+3070,Anthropology and Film,ANTH,3
+3075,Language in Culture,ANTH,3
+3080,"Gender, Sexuality and Social Change",ANTH,3
+3085,Environmental Issues in Egypt,ANTH,3
+3090,Public Anthropology,ANTH,3
+3102,History of Social Theory,ANTH,3
+3104,Contemporary Anthropological Theory,ANTH,3
+3105,Fieldwork Methods,ANTH,3
+3202,Participatory Action Research in Community Settings,ANTH,3
+3301,Anthropologies of Middle East and North Africa,ANTH,3
+3302,Anthropologies of Africa,ANTH,3
+3303,Anthropologies of Latin America,ANTH,3
+3304,Anthropologies of Asia,ANTH,3
+3305,Selected People and Culture Areas,ANTH,3
+4015,Psychological Anthropology,ANTH,3
+4020,Anthropology of Violence,ANTH,3
+4025,Religion in a Global World,ANTH,3
+4030,"Women, Islam and the State",ANTH,3
+4050,Critical Approaches to Development,ANTH,3
+4055,Seminar in African Studies,ANTH,3
+4065,"Culture, Economy and the Everyday",ANTH,3
+4070,Political Anthropology,ANTH,3
+4075,Migrants and Transnationals,ANTH,3
+4099,Selected Topics in Anthropology,ANTH,3
+4107,Senior Seminar,ANTH,3
+4203,Practicum in Community Development,ANTH,3
+4405,Independent Study,ANTH,NULL
+4499,Selected Topics in Coptic Studies,ANTH,3
+4560,Development Studies Seminar,ANTH,3
+5100,Methods of TESOL I,APLN,3
+5101,The Phonetics of Arabic,APLN,3
+5102,The Linguistics of Arabic,APLN,3
+5103,Advanced Arabic Grammar,APLN,3
+5104,Second Language Acquisition,APLN,3
+5105,English Grammar,APLN,3
+5111,Language Variation and Change,APLN,3
+5124,Introduction to Computational Linguistics,APLN,3
+5132,Language and Politics,APLN,3
+5201,Principles of Linguistic Analysis,APLN,3
+5202,Second Language Acquisition,APLN,3
+5203,Methods of Teaching a Foreign Language I,APLN,3
+5204,Methods of Teaching Arabic to Non-native Speakers II,APLN,3
+5205,Sociolinguistics,APLN,3
+5206,Seminar on Challenges Facing AFL Teachers,APLN,3
+5210,Computer Assisted Language Learning (CALL)/Computer Operations Techniques,APLN,3
+5270,Selected Topics in Applied Linguistics,APLN,NULL
+5271,Supervised Study in TAFL,APLN,3
+5298,Comprehensives,APLN,0
+5299,Research Guidance and Thesis,APLN,0
+5301,Principles of Linguistic Analysis,APLN,3
+5302,Research Methods in Applied Linguistics,APLN,3
+5305,Assessment in Language Learning,APLN,3
+5310,Computer Assisted Language Learning (CALL),APLN,3
+5311,Thesis Proposal Writing,APLN,3
+5312,Second Language Reading and Writing: Theory and Practice,APLN,3
+5313,Second Language Listening and Speaking: Theory and Practice,APLN,3
+5320,English Syntax,APLN,3
+5321,Corpus Linguistics,APLN,3
+1099,Selected Topics for the Core Curriculum,EDUC,3
+2011,Education and Society,EDUC,3
+2021,Fundamentals of Teaching and Learning,EDUC,3
+2099,Selected Topics in Core Curriculum,EDUC,3
+3011,Educating Children and Youth for a Sustainable Future,EDUC,3
+3021,Educational Assessment and Instructional Design,EDUC,3
+3031,"Education, Civil Society and International Development",EDUC,3
+4031,Gender and Education,EDUC,3
+4098,Selected Topics for Core Curriculum,EDUC,3
+5201,Foundations of Educational Research,EDUC,3
+5202,Social Foundations of Education,EDUC,3
+5203,Introduction to International & Comparative Education,EDUC,3
+5204,Human Development & Learning Theory,EDUC,3
+5205,Foundations of Instructional Practice,EDUC,3
+5211,"Globalization, Development, and Educational Reform in the Arab World",EDUC,3
+5212,"Comparative Gender, Adolescent, Youth, and Human Development Policy",EDUC,3
+5213,Educational Evaluation & Assessment,EDUC,3
+5214,Human Rights-based Education,EDUC,3
+5215,Educational Policy Analysis,EDUC,3
+5216,Research-Based Comparative Approaches to Educational Reform,EDUC,3
+5217,Strategic Educational Planning and Development,EDUC,3
+5221,Transformational Education,EDUC,3
+5222,School Governance and Management,EDUC,3
+5223,Organizational Theory and Educational Institutions,EDUC,3
+5224,Research-based Instructional Leadership,EDUC,3
+5231,Online and Blended Learning Design and Instruction in Developing Countries,EDUC,3
+5232,"Literacy, Learning and Education",EDUC,3
+5233,Action Research,EDUC,3
+5234,Reaching Diverse and Underserved Learners,EDUC,3
+5236,Education for Sustainable Development,EDUC,3
+5238,Programs and Environments for Inclusive Education,EDUC,3
+5241,Pedagogy & Theory of Modern Teaching & Learning in Higher Education,EDUC,3
+5242,Theories of Student Development in Higher Education,EDUC,3
+5243,Policy and Administration in Higher Education,EDUC,3
+5259,Selected Topics in International & Comparative Education,EDUC,3
+5265,Applied Projects in Inclusive Education,EDUC,3
+5281,Supervised Fieldwork,EDUC,3
+5282,Independent Study in International & Comparative Education,EDUC,3
+5288,Comprehensive Exam,EDUC,1
+5293,Capstone Project,EDUC,3
+5299,Research Guidance and Thesis,EDUC,2
+1099,Selected Topics for the Core Curriculum,EGPT,3
+2020,Ancient Egypt: An Introduction,EGPT,3
+2030,Introduction to Egyptian Architecture,EGPT,3
+2099,Selected Topics for Core Curriculum,EGPT,3
+2210,Introduction to Archaeology,EGPT,3
+2250,Ancient Egyptian Literature in Translation,EGPT,3
+2251,Hieroglyphics I,EGPT,3
+2252,Hieroglyphics II,EGPT,3
+3010,"Temples, Tombs and Hieroglyphs",EGPT,3
+3201,Art and Architecture of Ancient Egypt I,EGPT,3
+3202,Art and Architecture of Ancient Egypt II,EGPT,3
+3211,History of Ancient Egypt I: Pre-Dynastic Through Middle Kingdom Egypt,EGPT,3
+3212,History of Ancient Egypt II: Middle Kingdom through Ptolemaic Egypt,EGPT,3
+4030,Independent Study in Egyptology,EGPT,NULL
+4040,Ancient Egyptian Religion and Ethics,EGPT,3
+5030,Independent Study and Guided Readings,EGPT,3
+5100,Culture and Society of Ancient Egypt,EGPT,3
+5100,Culture and Society of Ancient Egypt,EGPT,3
+5110,Egypt in the First Millennium BC,EGPT,3
+5111,Egyptomania,EGPT,3
+5120,Graeco-Roman Egypt,EGPT,3
+5120,History of Egypt in the Graeco-Roman Era,EGPT,3
+5130,"Art, Societies, and Cultures of the Ancient Near East",EGPT,3
+5130,Societies and Culture of the Ancient Near East,EGPT,3
+5140,Societies and Cultures of Ancient Nubia,EGPT,3
+5140,Societies and Cultures of Ancient Nubia,EGPT,3
+5150,Introduction to Coptic,EGPT,3
+5150,Introduction to Coptic,EGPT,3
+5151,Hieroglyphics III,EGPT,3
+5151,Hieroglyphics III,EGPT,3
+5152,Introduction to Hieratic,EGPT,3
+5153,Hieroglyphics IV,EGPT,3
+5153,Hieroglyphics IV,EGPT,3
+5154,Late Egyptian,EGPT,3
+5160,Selected Topics in Coptic Studies,EGPT,3
+5160,Selected Topics in Coptic Studies,EGPT,3
+5170,Selected Topics in Cultural Resource Management and Museology,EGPT,3
+5170,Selected Topics in Cultural Resource Management and Museology,EGPT,3
+5180,Advanced Method and Theory: Archaeological and Historical,EGPT,3
+5191,Field Work,EGPT,3
+5191,Field Work,EGPT,3
+5199,Selected Topics in Ancient Egyptian Art and Culture,EGPT,3
+5199,Selected Topics in Egyptology,EGPT,3
+5220,Ancient Egyptian Religion and Ethics,EGPT,3
+5230,Settlement and Daily Life in Ancient Egypt,EGPT,3
+5240,Death and Burial in Ancient Egypt,EGPT,3
+5310,Classical Art and Archaeology,EGPT,3
+5320,The Romano-Byzantine World and Egypt,EGPT,3
+5330,Coptic Art and Architecture,EGPT,3
+5420,Material Culture: Looking at Artifacts in Context,EGPT,3
+5430,Site Analysis,EGPT,3
+5440,The Iconography of Ancient Egypt,EGPT,3
+5510,Advanced Hieratic,EGPT,3
+5520,Introduction to Demotic,EGPT,3
+5530,Ptolemaic Hieroglyphs,EGPT,3
+5540,Advanced Coptic Texts,EGPT,3
+5550,Advanced Readings in Ancient Egyptian Religion Texts,EGPT,3
+5560,Advanced Readings in Historical Literature from the Old Kingdom to the Late Period,EGPT,3
+5991,Research Seminar: Research Design and Writing,EGPT,3
+5292,Advanced Topics in Construction Engineering,CENG,3
+6211,Structural Stability,CENG,3
+6212,Structural Dynamics,CENG,3
+6213,Earthquake Engineering and Seismic Design,CENG,3
+6222,Specialty Materials for Construction,CENG,3
+6223,"Preserving, Repair and Sustainability of Structures",CENG,3
+6231,Highways Pavement Systems and Design,CENG,3
+6290,Research Guidance Dissertation,CENG,3
+6291,Independent Study in Structural and Material Engineering,CENG,3
+6292,Advanced Selected Topics in Structural and Material Engineering,CENG,3
+1010,Freshman Seminar,CORE,3
+1099,Selected Topics for Core Curriculum,CORE,3
+1130,The Human Spirit,CORE,3
+1140,Community Matters,CORE,3
+2096,Selected Topics for the Core Curriculum in Global Studies,CORE,3
+2097,Selected Topics for The Arab World,CORE,3
+2098,Selected Topics on Egypt,CORE,3
+2099,Selected Topics for Core Curriculum,CORE,3
+2142,Profiles in Civic Leadership and Civic Project Development,CORE,3
+4198,Selected Topic for Core Curriculum,CORE,3
+1011,"The Human Quest: Exploring the ""Big Questions""",SEMR,3
+1012,"""Who Am I?"": Explorations in Consciousness and Self Across the Disciplines""",SEMR,3
+1023,"Celebrating Ideas: A Voyage Through Books, film, Art and Theater",SEMR,3
+1099,Selected Topics in Core Curriculum,SEMR,3
+1110,Creative Thinking & Problem Solving,SEMR,3
+2010,Core Seminar,SEMR,3
+2099,Selected Topics in the Humanities,SEMR,3
+3099,Core Seminar,SEMR,3
+4018,East-West Dialogue: Cross-Cultural Perceptions and Reflections,SEMR,3
+4028,The Arab Spring in Arab Eyes: Perceptions and Reflections from the Arab World,SEMR,3
+4038,South-South Dialogue: Perceptions and Reflections from the Global South,SEMR,3
+1411,Fundamentals of Data Science I,DSCI,3
+1412,Fundamentals of Data Science II,DSCI,3
+2411,Data Visualization,DSCI,3
+3411,Fundamentals of Simulation,DSCI,3
+3413,Biostatistics,DSCI,3
+3415,Fundamentals of Machine Learning,DSCI,3
+4411,Fundamentals of Data Mining,DSCI,3
+4412,Introduction to Big Data Technologies,DSCI,3
+4413,Analysis of Categorical Data,DSCI,3
+4415,Advanced Machine Learning,DSCI,3
+4416,Capstone l (Data Science Senior Project l),DSCI,1
+4417,Capstone II (Data Science Project II),DSCI,2
+4950,Industrial Training,DSCI,3
+1099,Selected Topics for Core Curriculum,ECON,3
+2011,Introduction to Microeconomics,ECON,3
+2021,Introduction to Macroeconomics,ECON,3
+2051,Economic History of the Modern Middle East,ECON,3
+2061,Mathematics for Economists I,ECON,3
+2081,Statistics for Economists,ECON,3
+3011,Intermediate Microeconomic Theory,ECON,3
+3021,Intermediate Macroeconomic Theory,ECON,3
+3041,Monetary Economics,ECON,3
+3053,Economic Development,ECON,3
+3054,Environmental and Natural Resource Economics,ECON,3
+3055,The Digital Economy: The Economics of New Technologies and Development,ECON,3
+3061,Mathematics for Economists II,ECON,3
+3071,Labor Economics,ECON,3
+3081,Introduction to Econometrics,ECON,3
+4000,Independent Study,ECON,NULL
+4002,Senior Thesis,ECON,3
+4012,Feasibility Study,ECON,3
+4013,Behavioral Economics,ECON,3
+4014,Public Economics and Policy Analysis,ECON,3
+4015,Applied Econometrics,ECON,3
+4031,International Trade,ECON,3
+4041,Financial Economics,ECON,3
+4050,CopyrightX: The Economics of Copyright and Creativity,ECON,3
+4051,Seminar on Economic Development and Policy in the Middle East,ECON,3
+4061,Mathematical Economics,ECON,3
+4081,Econometrics,ECON,3
+4091,History of Economic Thought,ECON,3
+4094,Economics of Egypt,ECON,3
+4099,Seminar: Special Topics in Economics,ECON,3
+5200,Independent Study,ECON,3
+5201,Research Workshop,ECON,3
+5202,Research Guidance and Thesis,ECON,6
+5211,Advanced Microeconomic Theory,ECON,3
+5213,Project Evaluation,ECON,3
+5215,Competitive Strategy and Game Theory,ECON,3
+5217,Health Economics in Developing Countries,ECON,3
+5219,Health Care Financing,ECON,3
+5221,Advanced Macroeconomic Theory,ECON,3
+5231,Advanced International Trade,ECON,3
+5233,International Finance,ECON,3
+5241,Financial Economics,ECON,3
+5242,Financial Econometrics,ECON,3
+5251,The Economic Setting for Development,ECON,3
+5252,Economic Development in Middle East Countries,ECON,3
+5254,Economic Growth & Development,ECON,3
+5256,Ethical Issues in Development,ECON,3
+5257,Economic Strategies for Sustainable Development,ECON,3
+5259,Research Practicum,ECON,3
+5261,Mathematical Economics,ECON,3
+5271,Labor Economics,ECON,3
+5281,Time Series Econometrics,ECON,3
+5282,Quantitative Methods,ECON,3
+5291,An Advanced History of Economic Thought,ECON,3
+5299,Advanced Topics in Economics,ECON,3
+4690,Bioinformatics Capstone Seminar I,BIOL,1
+4691,Bioinformatics Capstone Seminar II,BIOL,2
+4910,Guided Studies in Biology,BIOL,NULL
+4930,Selected Topics in Biology,BIOL,NULL
+4980,Senior Research Thesis,BIOL,1
+4981,Seminar in Biology,BIOL,2
+5201,Biochemistry,BIOT,3
+5202,Cell and Molecular Biology,BIOT,3
+5203,Biotechnology,BIOT,3
+5204,Experimental Biotechnology,BIOT,3
+5205,Basics of Bioentrepreneurship,BIOT,3
+5206,Fundamentals of Bioinformatics,BIOT,3
+5207,Molecular Diagnosis,BIOT,3
+5208,Molecular Genetics,BIOT,3
+5210,Microbial Biotechnology,BIOT,3
+5211,Bioengineering,BIOT,3
+5271,Bionanotechnology,BIOT,3
+5910,Independent Study In Biotechnology,BIOT,3
+5930,Selected Topics in Biotechnology,BIOT,3
+5980,Research Guidance and Thesis,BIOT,6
+6204,Model Systems in Cancer Research,BIOT,3
+6206,Computational Genomics and Transcriptomics,BIOT,3
+6207,Systems and Computational Biology,BIOT,3
+6930,Current Topics in Biotechnology,BIOT,3
+6931,Reading and Conference Course,BIOT,3
+6980,Research Guidance Dissertation,BIOT,3
+2001,Introduction to Business,BADM,3
+3002,International Business,BADM,3
+3003,Business Environment and Ethics,BADM,3
+4001,Business Planning and Strategy,BADM,3
+4900,Graduation Project,BADM,3
+4999,Internship and Assessment,BADM,0
+5310,Strategic Management,BADM,3
+5370,Business Seminar and Contemporary Topics in Management,BADM,3
+5401,Business Consultancy,BADM,3
+4000,Experiential Learning : CO-OP,BUSC,3
+4101,Modern Standard Arabic,AIAS,4
+4301,Egyptian Colloquial Arabic,AIAS,4
+5121,"Reading, Writing And Vocabulary Building",AIAS,5
+5151,Listening And Speaking,AIAS,3
+5152,Academic Listening and Speaking,AIAS,3
+5201,Advanced Translation,AIAS,3
+5261,Advanced Media,AIAS,3
+5271,Advanced Writing,AIAS,3
+5301,Egyptian Colloquial Arabic,AIAS,3
+5411,Advanced Egyptian Colloquial Arabic,AIAS,3
+5601,CASA Students without Boarders,AIAS,3
+5991,Selected Topics in Arabic,AIAS,3
+1003,Chemistry and Society,CHEM,3
+1004,Man and the Environment,CHEM,3
+1005,General Chemistry I,CHEM,3
+1006,General Chemistry II,CHEM,3
+1015,General Chemistry Laboratory,CHEM,1
+1016,General Chemistry Laboratory,CHEM,1
+1930,Selected Topic for Core Curriculum,CHEM,3
+2001,Egypt Water Crisis: Challenges and Solutions,CHEM,3
+2003,Organic Chemistry I,CHEM,3
+2005,Environmental Analytical Chemistry,CHEM,3
+2006,Analytical Chemistry I,CHEM,2
+2007,Chemical Industries,CHEM,3
+2020,Introduction to Food Science and Technology,CHEM,3
+3002,Archaeological Chemistry I,CHEM,3
+3003,Thermodynamics,CHEM,3
+3004,Physical Chemistry I,CHEM,3
+3005,Principles of Chemical Modeling,CHEM,3
+3006,Organic Chemistry II,CHEM,3
+3009,Inorganic Chemistry I,CHEM,3
+3010,Organic Chemistry I Laboratory,CHEM,1
+3011,Analytical Chemistry II,CHEM,3
+3013,Thermodynamics Laboratory,CHEM,1
+3014,Physical Chemistry I Laboratory,CHEM,1
+3015,Biochemistry,CHEM,3
+3016,Organic Chemistry II Laboratory,CHEM,1
+3018,Inorganic Chemistry Laboratory,CHEM,1
+3020,Food Chemistry,CHEM,3
+3025,Clinical Chemistry I,CHEM,3
+3522,Production Basics for Chemical Industries,CHEM,3
+3910,Guided Studies in Environmental Sciences,CHEM,3
+3940,Seminar in Science and Technology,CHEM,1
+4003,Physical Chemistry II,CHEM,3
+4004,Physical Chemistry III,CHEM,3
+4006,Organic Chemistry III,CHEM,3
+4007,Food Processing and Preservation,CHEM,3
+4008,Inorganic Chemistry II,CHEM,3
+4013,Physical Chemistry II Laboratory,CHEM,1
+4016,Organic Syntheses,CHEM,2
+4025,Clinical Chemistry II,CHEM,3
+4030,Advanced Practical Organic Chemistry,CHEM,3
+4035,Advanced Organic Chemistry,CHEM,3
+4040,Molecular Symmetry and Applications,CHEM,3
+4524,Polymer Chemistry and Technology,CHEM,3
+4910,Independent Study,CHEM,NULL
+4930,Selected Topics in Chemistry,CHEM,NULL
+4980,Senior Thesis I,CHEM,1
+4981,Senior Thesis II,CHEM,2
+5200,Environmental Physical Chemistry,CHEM,3
+5201,Biochemistry,CHEM,3
+5202,Organometallics,CHEM,3
+5203,Advanced Organic Chemistry,CHEM,3
+5204,Methods of Structure Determination,CHEM,3
+5205,Nanochemistry,CHEM,3
+5206,Advanced Food Chemistry,CHEM,3
+5211,Applied Food Microbiology,CHEM,3
+5212,Food Safety Assurance,CHEM,3
+5213,Food Packaging,CHEM,3
+5214,Nutritional Evaluation of Food during Processing,CHEM,3
+5215,"Food Additives, Contaminants and Legislation",CHEM,3
+5216,Food Fermentation,CHEM,3
+5217,Sensory Evaluation of Food Products,CHEM,3
+5218,Functional Foods and Nutraceuticals,CHEM,3
+5219,Food Analysis,CHEM,3
+5220,Life Cycle Nutrition,CHEM,3
+5221,Nutrition & Diseases,CHEM,3
+5222,Clinical Nutrition,CHEM,3
+5241,The Chemistry of Nanostructures,CHEM,3
+5242,Nanoelectrochemistry,CHEM,3
+5910,Independent Study in Chemistry,CHEM,3
+5930,Selected Topics in Chemistry,CHEM,3
+5980,Research Guidance and Thesis,CHEM,6
+6103,Bioseparation Processes for Food and Pharmaceutical Industries,CHEM,3
+6105,Principles and Applications of Mass Spectrometry,CHEM,3
+6107,Chemistry of Natural and Synthetic Polymers,CHEM,3
+6240,Nanoporous Materials,CHEM,3
+6910,Independent Study in Chemistry,CHEM,3
+6930,Advanced Selected Topics in Chemistry,CHEM,3
+6980,Research Guidance Dissertation,CHEM,3
+1005,Science and Technology of Ancient Egypt,SCI,3
+1009,Exploration of the Universe,SCI,3
+1015,General Science Laboratory,SCI,1
+1020,Scientific Thinking,SCI,3
+1930,Selected Topic for Core Curriculum,SCI,3
+2004,"Chemistry, Art and Archaeology",SCI,3
+2005,Introduction to Geology,SCI,3
+2006,Environmental Geology,SCI,3
+2015,Introduction to Geology Lab,SCI,1
+3002,"Science, Technology and the Environment",SCI,3
+4005,Geology of Raw Materials,SCI,3
+5940,Graduate Thesis Seminar,SCI,3
+2096,Selected Topics for the Core Curriculum in Global Studies,CREL,3
+2097,Selected Topics for the Core Curriculum in Arab World Studies,CREL,3
+2099,Selected Topics for Core Curriculum,CREL,3
+2601,Dimensions of the Sacred: Exploring Religious Experience,CREL,3
+2603,Religions of the World,CREL,3
+2605,The Quest for the Historical Jesus,CREL,3
+2606,Hinduism and Buddhism in India,CREL,3
+2607,Pilgrimage Traditions in the World's Religions,CREL,3
+3209,Zionism and Modern Judaism,CREL,3
+3608,"Masters, Saints, and Saviors: Sacred Biography in the World's Religions",CREL,3
+5609,World Religions and the Study of Religion,CREL,3
+1000,Introduction to Computers and their Applications,CSCE,3
+1001,Fundamentals of Computing I,CSCE,3
+1101,Fundamentals of Computing II,CSCE,3
+1102,Fundamentals of Computing II Lab,CSCE,1
+2202,Analysis and Design of Algorithms,CSCE,3
+2203,Analysis and Design of Algorithms Lab,CSCE,1
+2301,Digital Design I,CSCE,3
+2302,Digital Design I Lab,CSCE,1
+2303,Computer Organization and Assembly Language Programming,CSCE,3
+2501,Fundamentals of Database Systems,CSCE,3
+2502,Information Technology,CSCE,3
+3101,Programming Language,CSCE,NULL
+3102,Programming in Java,CSCE,3
+3103,Object Oriented Programming,CSCE,3
+3104,Concepts of Programming Languages,CSCE,3
+3301,Computer Architecture,CSCE,3
+3302,Computer Architecture Lab,CSCE,1
+3303,Fundamental Microelectronics,CSCE,3
+3304,Digital Design II,CSCE,3
+3311,Data and Computer Communications,CSCE,3
+3312,Computer Networks,CSCE,3
+3313,Computer Networks Lab,CSCE,1
+3401,Operating Systems,CSCE,3
+3402,Operating Systems Lab,CSCE,1
+3421,Fundamentals of Computing and Communication Systems,CSCE,3
+3422,Introduction to Information Security,CSCE,3
+3601,Fundamentals of Artificial Intelligence,CSCE,3
+3611,Digital Signal Processing,CSCE,3
+3701,Software Engineering,CSCE,3
+4101,Compiler Design,CSCE,3
+4201,Theory of Computing,CSCE,3
+4301,Embedded Systems,CSCE,3
+4302,Embedded Systems Lab,CSCE,1
+4313,Local and Metropolitan Area Networks,CSCE,3
+4314,Local Area Networks Lab,CSCE,1
+4411,Fundamentals of Distributed Systems,CSCE,3
+4421,Computer Security,CSCE,3
+4501,Database Systems,CSCE,3
+4502,Design of Web-based Systems,CSCE,3
+4503,Internet-based Information Systems,CSCE,3
+4602,Introduction to Artificial Neural Networks,CSCE,3
+4603,Fundamentals of Computer Vision,CSCE,3
+4604,Practical Machine Deep Learning,CSCE,3
+4621,Computer Graphics,CSCE,3
+4701,Object-Oriented Analysis and Design,CSCE,3
+4702,Secure Systems Engineering,CSCE,3
+4910,Guided Studies in Computer Science and Engineering,CSCE,NULL
+4930,Selected Topics in Computer Science and Engineering,CSCE,NULL
+5220,Fieldwork in Islamic Architecture,ARIC,3
+5221,Seminar on the Architecture of a Selected Period,ARIC,3
+5230,"Seminar on a Selected Topic in Medieval Arab/Islamic History, 600-1800 A.D.",ARIC,3
+5231,Seminar on the Nineteenth-Century Middle East,ARIC,3
+5232,Seminar on the Twentieth-Century Middle East,ARIC,3
+5240,Seminar on Selected Topics in Qur'anic Studies,ARIC,3
+5241,Seminar on Selected Topics in Sira or Hadith,ARIC,3
+5242,Seminar on Selected Topics in Islamic Law and Legal Theory,ARIC,3
+5243,"Selected Topics in Islamic Theology, Sufism or Philosophy",ARIC,3
+5244,Selected Topics in Islamic Studies,ARIC,3
+5245,World Religions and the Study of Religion,ARIC,3
+5299,Research Guidance and Thesis,ARIC,0
+1010,Eye on Press,ALNG,3
+1020,Arabic in Context,ALNG,3
+1501,Accelerated Elementary Modern Standard Arabic,ALNG,6
+1502,Accelerated High Elementary and Lower Iintermediate Modern Standard Arabic,ALNG,6
+1991,Selected Topics,ALNG,3
+2010,Current Issues and Egyptian Society,ALNG,3
+2131,Arabic of the News Media,ALNG,3
+2301,Intermediate Egyptian Colloquial Arabic (ECA),ALNG,3
+2991,Selected Topics,ALNG,3
+3105,Independent Study,ALNG,3
+3131,Advanced Arabic of the News Media,ALNG,3
+3327,Egyptian culture on Film,ALNG,3
+3912,Learning Arabic through Community Engagement,ALNG,3
+3991,Selected Topics,ALNG,3
+4221,Arabic Morphology (Sarf) and Prosody ('Arud),ALNG,3
+4281,Linguistics of Arabic,ALNG,3
+4291,The Phonetics of Arabic,ALNG,3
+3919,Arabic through Translation: A course in Bilingual Awareness,ALWT,3
+2221,Applied Morphology,ALIN,NULL
+2411,Introduction to Egyptian Culture - Intermediate,ALIN,NULL
+3411,Introduction to Egyptian Culture - Advanced,ALIN,NULL
+2251,Readings in Modern Arabic Literature,ALIN,NULL
+3251,Readings in Modern Arabic Literature,ALIN,3
+2251,Readings in Modern Arabic Literature,ALIS,1
+3251,Readings in Modern Arabic Literature,ALIS,1
+1511,Free-hand Representation for Architects,ARCH,3
+1521,Digital Representation Tools for Architects,ARCH,2
+1561,Architecture: Art or Engineering,ARCH,3
+2211,History and Philosophy of Modern and Contemporary Architecture,ARCH,3
+2221,Human Aspects in Architectural Design,ARCH,3
+2231,Environmental Control Systems and Sustainable Design,ARCH,3
+2411,Surveying for Architects,ARCH,1
+2512,Foundations of 3-Dimensional Design,ARCH,3
+2551,Introduction to Architectural Design,ARCH,3
+2552,Architectural Design Studio I,ARCH,4
+3311,Detail Design and Finishes in Buildings,ARCH,3
+3321,Building Service Systems and Building Systems Integration,ARCH,3
+3331,Construction Materials and Quality Control,ARCH,4
+3522,Digital Design Studio and Workshop,ARCH,3
+3531,Housing Design and Geographic Information Systems,ARCH,3
+3553,Architectural Design Studio II,ARCH,4
+3554,Architectural Design Studio III,ARCH,4
+3562,Introduction to Architectural Engineering,ARCH,3
+3950,Internship in Construction Projects,ARCH,0
+4312,Design Development and Construction Documents,ARCH,3
+4421,"Professional Practice, Design Management and Codes",ARCH,2
+4532,Urban Design and Landscape Architecture,ARCH,4
+4541,Introduction to Interior Design,ARCH,3
+4555,Architectural Design 4,ARCH,4
+4557,Architectural Design Studio VI Design Studio Contextual,ARCH,4
+4558,Architectural Design Studio VIII Design Studio High Tech,ARCH,4
+4561,Vertical Design Studio A,ARCH,5
+4562,Vertical Design Studio B,ARCH,5
+4570,Senior Design Studio,ARCH,5
+4801,Human and Environmental Studies Theory and Dissertation,ARCH,2
+4802,Tectonics and Computational Design Theory and Dissertation,ARCH,2
+4803,Architecture and Urban Heritage Theory and Dissertation,ARCH,2
+4920,Special Problems in Architectural Engineering,ARCH,NULL
+4930,Selected Topics in Architectural Engineering,ARCH,3
+4931,Introduction to Urban and Architecture Conservation,ARCH,3
+4932,Sustainable Landscape architecture in Hot an Arid Environments,ARCH,3
+4933,Vernacular Architecture,ARCH,3
+4934,"Cairo in the Curriculum, The Urban Laboratory: Mapping Cairo's Complexities",ARCH,3
+4935,Coptic Art and Architecture,ARCH,3
+4936,Design of Interior Spaces,ARCH,3
+4937,Seminar on Contemporary Architecture Discourse,ARCH,3
+4938,Urban Dialogues on Heritage and Space,ARCH,3
+4939,Advanced Architectural Computing,ARCH,3
+4951,Internship in Technical Drawing and Design,ARCH,1
+4971,Selected Topics in Human and Environmental Studies of Architectural Engineering,ARCH,3
+4972,Selected Topics in Tectonics and Computational Design of Architectural Engineering,ARCH,3
+4973,Selected Topics in Architecture and Urban Heritage Design,ARCH,3
+4980,Senior Project I,ARCH,2
+4981,Senior Project,ARCH,5
+5201,Philosophy & Theory of Architecture,ARCH,3
+5202,Critical Thinking in Architectural Design,ARCH,3
+5221,Research Methods in Architecture,ARCH,3
+5290,Research Guidance Thesis,ARCH,3
+1010,Introduction to Life Sciences,BIOL,4
+1011,Introductory Biology I,BIOL,4
+1012,Introductory Biology II,BIOL,4
+1040,Essentials of Environmental Biology,BIOL,3
+1098,Fundamentals of Neurosciences,BIOL,4
+1410,Current Health Issues,BIOL,4
+1930,Selected Topic for Core Curriculum,BIOL,3
+2090,Quantitative Biology,BIOL,4
+2150,Genetics,BIOL,4
+2230,Molecular and Cell Biology,BIOL,4
+2320,Biophysics,BIOL,4
+2340,General Botany,BIOL,4
+3040,Environmental Biology for Engineers,BIOL,3
+3130,Molecular Evolution and Population Genetics,BIOL,4
+3280,Biochemistry,BIOL,3
+3310,Microbiology,BIOL,4
+3326,Vertebrate Anatomy and Physiology,BIOL,4
+3340,Invertebrate Zoology,BIOL,4
+3341,Animal Behavior,BIOL,4
+3360,Animal Physiology,BIOL,4
+3370,Developmental Biology,BIOL,4
+3510,Ecology,BIOL,4
+3540,Environmental Biology,BIOL,4
+3541,Environmental Biology of the Red Sea,BIOL,4
+3542,GIS For Biologists,BIOL,4
+3600,Introduction to Bioinformatics,BIOL,3
+3601,Bioinformatics Tools and Techniques,BIOL,3
+3910,Guided Studies in Environmental Sciences,BIOL,3
+4150,Molecular Biology of the Gene,BIOL,4
+4230,Immunology,BIOL,4
+4330,Tumor Biology,BIOL,4
+4540,Marine Ecology,BIOL,4
+4541,Desert Ecology,BIOL,4
+5322,Language Pragmatics,APLN,3
+5323,Discourse of Analysis for Language Teachers,APLN,3
+5330,"Language Transfer, Contrastive Analysis, and Error Analysis",APLN,3
+5331,Sociolinguistics,APLN,3
+5332,Intercultural Communication,APLN,3
+5370,Selected Topics in Applied  Linguistics,APLN,NULL
+5371,Supervised Study in TESOL,APLN,3
+5397,Methods of TESOL II,APLN,3
+5398,Comprehensives,APLN,0
+5399,Research Guidance and Thesis,APLN,0
+3310,Linguistic Fieldwork,LING,3
+3340,Language Assessment,LING,3
+1099,Selected Topics for Core Curriculum,ARIC,3
+1101,Children's Literature and Cultural Representations,ARIC,3
+1102,Passionate Love in Arabic and World Literatures,ARIC,3
+1300,Arabs and Muslims Encountering the Other,ARIC,3
+2096,Selected Topics for the Core Curriculum in International/World Studies,ARIC,3
+2097,Selected Topics for the Core Curriculum in Arab World Studies,ARIC,3
+2099,Selected Topics for the Core Curriculum in Humanities,ARIC,3
+2101,Introduction to Classical Arabic Literature,ARIC,3
+2102,Introduction to Modern Arabic Literature,ARIC,3
+2103,Classical Arabic Literature in Translation,ARIC,3
+2104,Modern Arabic Literature in Translation,ARIC,3
+2205,"The World of Islamic Architecture, from the Beginnings to the Present Day",ARIC,3
+2206,The City of Cairo,ARIC,3
+2346,Survey of Arab History,ARIC,3
+3020,Introduction to Sufism,ARIC,3
+3097,Selected Themes and Topics in Arabic Literature,ARIC,3
+3098,Selected Topics in Islamic Studies,ARIC,3
+3104,Arabic Literature and Gender,ARIC,3
+3106,Arabic Literature and Film,ARIC,3
+3107,The Writer and the State,ARIC,3
+3108,Colloquial and Folk Literature,ARIC,3
+3114,The Arabic Novel,ARIC,3
+3115,Arabic Drama,ARIC,3
+3116,The Arabic Short Story,ARIC,3
+3197,Selected Themes and Topics in Arabic Literature in Translation,ARIC,3
+3267,Arts of the Loom: Carpets and Textiles of the Islamic World,ARIC,3
+3268,The Art of the Book in the Islamic World,ARIC,3
+3269,The Arts of Fire: Ceramics and Glass of the Islamic World,ARIC,3
+3270,The Age of Transition: Early Islamic Art and the Pre-Islamic Past,ARIC,3
+3271,Building for Islam: Architecture of the Early Caliphates in Egypt and Syria,ARIC,3
+3272,Building the Sultanate: Architecture under the Ayyubids and Mamluks in Egypt and Syria,ARIC,3
+3273,Building Under Empire: Ottoman-Period Architecture in Egypt and Syria,ARIC,3
+3319,Islamic Spain and North Africa (711-1492 A.D.),ARIC,3
+3321,"Zawiyas, Harems, Coffee shops, Everyday Life in the Pre-Modern Mideast",ARIC,3
+3322,"Land, Trade and Power: a History of Economic Relations in the Middle East, 600-1800 A.D.",ARIC,3
+3323,Marriage and the Family in the Medieval and Early Modern Middle East,ARIC,3
+3324,Non-Muslim Communities in the Muslim World,ARIC,3
+3325,"Beggars, Madmen, Prostitutes: the Marginalized in Pre-Modern Mideast History.",ARIC,3
+3336,Studies in Ibn Khaldun,ARIC,3
+3337,Shi'i Muslims in History,ARIC,3
+3343,Birth of Muslim Community and Rise of the Arab Caliphates,ARIC,3
+3344,Caliphs and Sultans in the Age of Crusades and Mongols,ARIC,3
+3345,"Gunpowder Empires: Ottomans, Safavids and Mughols",ARIC,3
+3346,Egypt since the Arab Conquest,ARIC,3
+3353,Muslim Political Thought,ARIC,3
+3355,"State and Society in the Middle East, 1699-1914",ARIC,3
+3356,"State and Society in the Middle East, 1906-present",ARIC,3
+3397,Selected topic in Middle East History,ARIC,3
+3405,Islamic Philosophy,ARIC,3
+3435,Introduction to the Study of Islam,ARIC,3
+5100,Independent Study,ARIC,NULL
+5101,Selected Topics in the History of Islamic Thought and Institutions,ARIC,3
+5102,Cairo in the Cultural Imaginary,ARIC,3
+5103,Source - Criticism and Classical Arabic Literature,ARIC,3
+5110,Senior Seminar in Arabic Texts,ARIC,3
+5111,Senior Seminar in Arabic Literature in Translation,ARIC,3
+5112,Arabic Literary Criticism,ARIC,3
+5113,Sira and Hadith,ARIC,3
+5114,Special Studies in Arabic Texts,ARIC,3
+5117,Translation: Theory and Practice,ARIC,3
+5118,"Translation and The Arab ""Renaissance""",ARIC,3
+5121,Islamic Art and Architecture in India and Pakistan,ARIC,3
+5124,Islamic Architecture in Spain and North Africa,ARIC,3
+5127,Selected Topics in Islamic Art and Architecture,ARIC,3
+5130,Poetry for Historians,ARIC,3
+5131,Arabic Historical Literature,ARIC,3
+5132,Selected Topics in Coptic Studies,ARIC,3
+5133,Islamic Institutions,ARIC,3
+5134,Modern Movements in Islam,ARIC,3
+5135,"Selected Topics in Middle Eastern History, 600-1800 AD",ARIC,3
+5136,Selected Topics in the History of the Modern Middle East,ARIC,3
+5137,International Trade 1000 - 1700: Egypt and the Mediterranean - Red Sea Trade,ARIC,3
+5141,Studies in the Qur'an,ARIC,3
+5142,Islamic Law,ARIC,3
+5150,On Display: Collecting and Exhibiting Art of the Islamic World,ARIC,3
+5151,Heritage Management and Architectural Conservation in Cairo: Theory and Practice,ARIC,3
+5200,Independent Study and Readings,ARIC,3
+5201,Bibliography and Manuscript Study,ARIC,3
+5210,Seminar on a Selected Work or Author in Classical Arabic Literature,ARIC,3
+5211,Seminar on Modern Arabic Literature: Nineteenth Century,ARIC,3
+5212,Seminar on Modern Arabic Literature: Twentieth Century,ARIC,3
+5219,Internship in Arabic and Islamic Studies,ARIC,3
+4950,Industrial Training,CSCE,1
+4980,Senior Project I,CSCE,1
+4981,Senior Project II,CSCE,2
+5221,Algorithms and Complexity Theory,CSCE,3
+5222,Design and Analysis of Parallel Algorithms,CSCE,3
+5231,Advanced Processor Architecture,CSCE,3
+5232,Advanced Network Modelling,CSCE,3
+5241,Distributed Systems,CSCE,3
+5242,Parallel Computer Architecture,CSCE,3
+5243,Information and System Security,CSCE,3
+5245,Embedded Real-Time Systems,CSCE,3
+5261,Advanced Artificial Intelligence,CSCE,3
+5262,Neural Networks and Genetic Algorithms,CSCE,3
+5263,Knowledge Engineering,CSCE,3
+5264,Natural Language Processing and Machine Translation,CSCE,3
+5265,Web Mining,CSCE,3
+5266,Computer Vision,CSCE,3
+5267,Digital Image Processing,CSCE,3
+5268,Computer Graphics and Animation,CSCE,3
+5269,Pattern Analysis,CSCE,3
+5271,Advanced Software Engineering,CSCE,3
+5272,Advanced Software Quality,CSCE,3
+5910,Independent Studies in Computer Science and Engineering,CSCE,NULL
+5930,Selected Topics in Computer Science and Engineering,CSCE,3
+5940,Seminar,CSCE,1
+5980,Capstone Project in Computing,CSCE,3
+5981,Graduate Thesis,CSCE,3
+6231,Mobile and Pervasive Computing,CSCE,3
+6261,Advanced Data Mining,CSCE,3
+6930,Advanced Selected Topics in Computer Science,CSCE,3
+6980,Research Guidance Dissertation,CSCE,3
+2251,Drawing for Construction Engineering and Architecture,CENG,1
+2311,Construction Surveying,CENG,3
+3011,Electrical and Mechanical Systems for Construction Engineering,CENG,4
+3111,Structural Analysis,CENG,4
+3112,Structural Analysis and Design Principles for Architects,CENG,3
+3151,Structural Design for Architects I,CENG,3
+3152,Structural Design for Architects II,CENG,3
+3153,Structural Design,CENG,4
+3211,Construction Materials and Quality Control I,CENG,4
+3312,Geology for Engineers,CENG,2
+3511,Fundamentals of Hydraulic Engineering,CENG,3
+4113,Structural Mechanics,CENG,3
+4154,Advanced Design of Reinforced and Prestressed Concrete Structures,CENG,3
+4155,Steel and Concrete Bridges,CENG,3
+4157,Tall Buildings and Large Span Structures,CENG,3
+4158,Structural Systems and Advanced Design,CENG,3
+4212,Construction Materials and Quality Control II,CENG,3
+4252,Methods and Equipment for Construction I,CENG,3
+4253,Methods and Equipment for Construction II,CENG,2
+4313,Soil Mechanics,CENG,4
+4314,Design and Construction of Foundations and Retaining Structures,CENG,3
+4315,Applications in Geotechnical Engineering,CENG,3
+4351,Transportation Engineering,CENG,3
+4352,Highway Facilities,CENG,3
+4410,Introduction to Construction Management and Cost Estimating,CENG,3
+4420,"Construction Project Specifications, Bids, and Contracts",CENG,3
+4430,Risk Management and Bidding Strategies,CENG,3
+4440,"Techniques of Planning, Scheduling and Control",CENG,3
+4450,"Design, Modeling and Simulation of Construction Systems",CENG,3
+4460,Financial Management and Accounting for Construction,CENG,3
+4470,Contract Administration,CENG,3
+4551,Environmental and Sanitary Engineering,CENG,3
+4552,Design of Water Resources Systems,CENG,3
+4553,Unit Operations in Environmental Engineering,CENG,3
+4554,Computer-aided design and construction of environmental and sanitary systems,CENG,3
+4555,Solid and Hazardous Wastes Engineering,CENG,3
+4556,Design of water and wastewater treatment plants,CENG,3
+4557,Functional design and construction of tunnels and bridges,CENG,3
+4911,Selected Topics in Construction Engineering,CENG,3
+4921,Special Problems in Construction Engineering,CENG,NULL
+4951,Practical Training,CENG,1
+4980,Senior Project I,CENG,1
+4981,Senior Project II,CENG,2
+5121,"Assessment, Protection and Repair of Structures",CENG,3
+5151,Advanced Design of Steel and Composite Structures,CENG,3
+5152,Advanced Composite Materials in Infrastructure Applications,CENG,3
+5210,The Finite Element Method in Structural Engineering,CENG,3
+5220,Advanced Construction and Building Materials,CENG,3
+5225,Advanced Systems Analysis for Construction Engineering,CENG,3
+5226,Methods and Equipment for Construction,CENG,3
+5227,Advanced Systems for Construction,CENG,3
+5241,Infrastructure Asset Management,CENG,3
+5242,Simulation Applications in Construction,CENG,3
+5243,Construction Leadership and Management Skills,CENG,3
+5244,Advanced Construction Management,CENG,3
+5245,Claims and Disputes in the Construction Industry,CENG,3
+5246,"Techniques of Planning, Scheduling and Control",CENG,3
+5247,Resource Management for Construction Projects,CENG,3
+5261,Contracts in Construction Industry,CENG,3
+5262,Construction Management,CENG,3
+5263,"Planning, Scheduling and Control",CENG,3
+5264,Management for Multi-National Environments,CENG,3
+5265,Risk Management and Bidding Strategies,CENG,3
+5266,Claims and Disputes in the Construction Industry,CENG,3
+5267,Systems Analysis for Construction,CENG,3
+5268,Resource Management for Construction Projects,CENG,3
+5269,Procurement of Assets & Services for Construction Projects,CENG,3
+5290,Research Guidance Thesis,CENG,3
+5291,Independent Study in Construction Engineering,CENG,3
+5992,Thesis,EGPT,3
+1501,Exploring Electrical Engineering,ECNG,1
+1502,Programming Elements for Electrical Engineering,ECNG,3
+2101,Digital Logic Design,ECNG,3
+2105,Circuit Analysis I,ECNG,3
+2106,Circuit Analysis II,ECNG,3
+2108L,Digital Logic Design Lab,ECNG,1
+2109L,Circuit Analysis Lab,ECNG,1
+3105,Electronics I: Basic Electronic Devices & Circuits,ECNG,3
+3106,Electronics II: Analog Circuits,ECNG,3
+3108,VLSI Design,ECNG,3
+3109L,Electronics Lab,ECNG,1
+3201,Signals and Systems,ECNG,3
+3202,Automatic Control Systems,ECNG,3
+3401,Electromagnetic Theory,ECNG,3
+3503,Microcontroller system design,ECNG,3
+3509L,Microcontroller system design lab,ECNG,1
+3601,Power and Machines,ECNG,3
+3801,Technological Innovation and Product Development,ECNG,2
+4101,Solid-State Devices,ECNG,3
+4103,Testing of Digital Circuits,ECNG,3
+4104,High Level Digital ASIC Design Using CAD,ECNG,3
+4105,Integrated Circuit Fabrication: Materials and Processes,ECNG,3
+4301,Fundamentals of Communications I,ECNG,3
+4302,Fundamentals of Communications II,ECNG,3
+4304L,Photonics and Optical Communication Laboratory,ECNG,1
+4306,Computer Communication Networks,ECNG,3
+4308,Telecommunications Systems,ECNG,3
+4310,Optical Communication Systems,ECNG,3
+4312,Mobile Communication Systems,ECNG,3
+4314L,Communications Lab,ECNG,1
+4402,Electromagnetic Waves,ECNG,3
+4407,Microwave Systems,ECNG,3
+4504,Embedded Systems for Wireless Communications,ECNG,3
+4505,Computer Architecture,ECNG,3
+4506,Industrial control systems,ECNG,3
+4508L,Computer Architecture Lab,ECNG,1
+4601,Product Design and Development,ECNG,3
+4920,Special Problems in Electronics and Communications Engineering,ECNG,NULL
+4930,Selected Topics in Electronics and Communications Engineering,ECNG,3
+4950,Industrial Internship,ECNG,1
+4980,Senior Project I,ECNG,1
+4981,Senior Project II,ECNG,2
+5210,Advanced Solid-State Devices,ECNG,3
+5214,Advanced ASIC Design,ECNG,3
+5216,Analog Integrated Circuit Design,ECNG,3
+5217,Digital Integrated Circuit Design,ECNG,3
+5218,Advanced Integrated Circuit Design,ECNG,3
+5219,High-Performance Integrated Circuit Modeling,ECNG,3
+5223,Fault-Tolerant Computing and Reliability Modeling,ECNG,3
+5225,Digital Signal Processing,ECNG,3
+5226,Networked Control Systems Design & Applications,ECNG,3
+5230,Probability and Stochastic Processes with Applications,ECNG,3
+5231,Advanced Digital Communications,ECNG,3
+5233,Wireless Communication Systems,ECNG,3
+5234,Enabling Technologies for High Date Rate Communications,ECNG,3
+5236,Information Theory and Coding,ECNG,3
+5238,Advanced Computer Networks,ECNG,3
+5241,Microwave Circuit Analysis and Design,ECNG,3
+5247,RF and Microwave Systems,ECNG,3
+5248,RF Integrated Circuit Design,ECNG,3
+5249,Antennas Design and Applications,ECNG,3
+5271,New Product Design and Development,ECNG,3
+5272,Technology and Innovation Management,ECNG,3
+5273,Strategic Management of Innovation,ECNG,3
+5274,Entrepreneurship and Innovation,ECNG,3
+5910,Graduate Independent Study,ECNG,NULL
+5930,Advanced Topics in Electronics and Communications Engineering,ECNG,3
+6211,Nanoscale CMOS,ECNG,3
+6219,Design and Analysis of High-Performance Integrated Circuits,ECNG,3
+6235,"Detection, Classification, and Estimation Theory",ECNG,3
+6930,Advanced Selected Topics in Electronics and Communications Engineering,ECNG,3
+6931,Advanced Topics in Wireless Communications,ECNG,3
+6980,Research Guidance Dissertation,ECNG,3
+1001,Introduction to Engineering,ENGR,1
+1005,Descriptive Geometry and Engineering Drawing,ENGR,2
+2102,Engineering Mechanics I (Statics),ENGR,3
+2104,Engineering Mechanics II (Dynamics),ENGR,3
+2112,Strength and Testing of Materials,ENGR,4
+2122,Fundamentals of Fluid Mechanics,ENGR,3
+3202,Engineering Analysis and Computation I,ENGR,3
+3212,General Electrical Engineering,ENGR,3
+3222,Engineering Economy,ENGR,3
+3322,Fundamentals of Thermofluids,ENGR,3
+3920,Special Problems in Engineering,ENGR,NULL
+4990,Entrepreneurial Development and Innovation,ENGR,3
+5101,Cross Talk: Implementation Science and Engineering,ENGR,3
+5202,Computational Methods in Engineering,ENGR,3
+5204,Engineering Statistics,ENGR,3
+5210,Experimental Methods in Engineering,ENGR,3
+5240,Engineering for a Sustainable Environment,ENGR,3
+5940,Graduate Thesis Seminar,ENGR,3
+0301,Intermediate English (for Graduates),ELIN,0
+0210,Academic English for the Liberal Arts,ENGL,0
+0310,Effective Writing (for Graduates),ENGL,0
+0311,Academic Reading (for Graduates),ENGL,0
+0312,Listening and Speaking (for Graduates),ENGL,0
+0399,Selected Topic for Core Curriculum,ENGL,3
+1099,Selected Topics for Core Curriculum,ECLT,3
+2010,Introduction to Literature,ECLT,3
+2011,Survey of British Literature,ECLT,3
+2012,Global Literature in English,ECLT,3
+2019,Introduction to American Studies,ECLT,3
+2096,Selected Topics for the Core Curriculum in Global Studies,ECLT,3
+2097,Selected Topics for the Core Curriculum in Arab World Studies,ECLT,3
+2099,Selected Topics for the Core Curriculum in Humanities,ECLT,3
+3001,Medieval Literature,ECLT,3
+3002,Literature of the Renaissance,ECLT,3
+3003,Seventeenth-Century Literature,ECLT,3
+3004,Eighteenth-Century Literature,ECLT,3
+3005,Romanticism,ECLT,3
+3006,Nineteenth-Century European Literature,ECLT,3
+3008,Modern European and American Literature,ECLT,3
+3010,American Literature to 1900,ECLT,3
+3011,Modern American Literature,ECLT,3
+3014,Literature and Philosophy,ECLT,3
+3030,Literature and Cinema,ECLT,3
+3032,World Literature,ECLT,3
+3033,African Literature,ECLT,3
+3045,Literature and Gender,ECLT,3
+3046,Third World Literature,ECLT,3
+3048,Contemporary Literature,ECLT,3
+3052,Recurrent Themes in Literature,ECLT,3
+3053,Modern Drama,ECLT,3
+3060,Shakespeare,ECLT,3
+3070,Creative Writing,ECLT,3
+3099,Selected Topics,ECLT,3
+4009,Greek Classics in Translation,ECLT,3
+4010,Classics of the Ancient World,ECLT,3
+4011,History of Literary Criticism,ECLT,3
+4012,Modern Literary Criticism,ECLT,3
+4099,Capstone Seminar: Selected Topics,ECLT,3
+5101,"Visual, Literary, and Critical Approaches to Gender in MENA",ECLT,3
+5106,Greek Classics in Translation,ECLT,3
+5107,Classics of the Ancient World,ECLT,3
+5108,History of Literary Criticism,ECLT,3
+5109,Modern Literary Criticism,ECLT,3
+5110,Renaissance Writers,ECLT,3
+5112,Seventeenth-Century Writers,ECLT,3
+5114,Eighteenth-Century Writers,ECLT,3
+5116,The Romantic Movement,ECLT,3
+5117,Nineteenth-Century Writers,ECLT,3
+5123,Modern Poets,ECLT,3
+5131,The Modern Novel,ECLT,3
+5140,Readings in American Literature,ECLT,3
+5142,Readings in French Literature,ECLT,3
+5143,Readings in British Literature,ECLT,3
+5255,Research Methods in Literature,ECLT,3
+5288,Comprehensives,ECLT,0
+5298,Research Guidance and Thesis,ECLT,0
+3201,Principles of Entrepreneurial Finance,ENTR,3
+4102,Entrepreneurship and Innovation,ENTR,3
+4301,Entrepreneurship Lab: Developing and Launching a New Venture,ENTR,3
+4302,Corporate Entrepreneurship,ENTR,3
+4303,Social Entrepreneurship,ENTR,3
+4501,Family Business,ENTR,3
+4502,Innovation and Technology,ENTR,3
+4503,Digital Strategy,ENTR,3
+4970,Special Topics in Entrepreneurship,ENTR,3
+5201,Entrepreneurship and Regional Opportunities,ENTR,3
+5202,Developing an Entrepreneurial Venture,ENTR,3
+5211,Entrepreneurial Management,ENTR,1.5
+5250,Water Quality Control,ENVE,3
+5251,Unit Operations in Environmental Engineering,ENVE,3
+5252,Air Pollution Control Engineering,ENVE,3
+5253,Air Pollution and Combustion,ENVE,3
+5254,Solid and Hazardous Wastes Engineering,ENVE,3
+5255,Environmental Chemistry,ENVE,3
+5256,"Noise Pollution Fundamentals, Measurements and Control",ENVE,3
+5258,Groundwater Hydrology and Contamination,ENVE,3
+5910,Independent Study in Engineering,ENVE,3
+5930,Advanced Topics in Engineering,ENVE,3
+5980,Research Guidance Thesis,ENVE,3
+6250,Advanced Treatment Processes,ENVE,3
+6910,Independent Study in Environmental Engineering,ENVE,3
+6930,Advanced Selected Topics in Environmental Engineering,ENVE,3
+6980,Research Guidance Dissertation,ENVE,3
+5601,Leading and Navigating Strategic Change,EMBA,1.75
+5602,Team-work & Communication,EMBA,1.75
+5603,Data Analysis and Analytical Decision Modeling for Optimizing Decisions,EMBA,2
+5604,Managerial Economics,EMBA,1.75
+5605,Strategic Accounting,EMBA,1.75
+5606,Financial Management,EMBA,2
+5607,Corporate Financial Management,EMBA,1.75
+5608,"Talent Management, Coaching & Mentoring",EMBA,1.75
+5609,Managerial Decision Making and Operation Management,EMBA,2
+5610,Global Marketing Management (International Live-in Module),EMBA,2.75
+5611,Competitive & Corporate Strategy (International Live-in Module),EMBA,2.75
+5612,E- Business & Managers' Toolkit,EMBA,2
+5613,Leadership & Management,EMBA,1.75
+5614,Innovation and Creating the Best Practices of Tomorrow,EMBA,1.75
+5615,Global Supply Chain Management and Operational Excellence,EMBA,2
+5616,Negotiation & Conflict Management,EMBA,1.75
+5617,Entrepreneurial Management,EMBA,1.75
+5618,Doing Business With The East (International Live-in Module),EMBA,2.75
+5619,Doing Business With The East (International Live-in Module),EMBA,2.75
+5620,Corporate Governance & Social Responsibility,EMBA,2
+5621,Business & Legal Environment,EMBA,1.75
+5622,Development & Rationale for Competitive Law,EMBA,1.75
+5623,Adapting to Global Environment - Integration Consultation Project,EMBA,4
+5624,Independent Study - Selected Topics in Management,EMBA,NULL
+1099,Selected Topics for Core Curriculum,FILM,3
+2099,Selected Topics for Core Curriculum,FILM,3
+2120,Introduction to Film Art,FILM,3
+2121,Introduction to Film Production,FILM,3
+2122,Introduction to Film Criticism,FILM,3
+2123,Introduction to Film Production II,FILM,3
+2201,Acting I,FILM,3
+2211,Acting in Arabic I,FILM,3
+3030,Literature and Cinema,FILM,3
+3041,Anthropology and Film,FILM,3
+3070,Selected Topics in Film,FILM,3
+3110,World Cinema,FILM,3
+3115,American Cinema 1895-1945,FILM,3
+3117,American Cinema 1945-present,FILM,3
+3120,Cinema in Egypt and the Arab World,FILM,3
+3125,Topics in National Cinemas,FILM,3
+3130,Film Theory,FILM,3
+3140,Documentary Film,FILM,3
+3150,Women and Film,FILM,3
+3160,The Filmmaker,FILM,3
+3190,Film Genres,FILM,3
+3252,Screenwriting,FILM,3
+3253,Digital Cinematography,FILM,3
+3254,Digital Editing,FILM,3
+3306,Sound for Picture Production,FILM,3
+3352,The Film Industry,FILM,3
+3354,Film Audience and Reception,FILM,3
+3402,Documentary Production,FILM,3
+4201,Film Directing,FILM,3
+4250,Senior Film Project,FILM,3
+4350,Philosophy and Film,FILM,3
+4356,Experiential Learning in Film,FILM,3
+4402,Independent Study,FILM,NULL
+5170,Advanced Seminar in Film Studies and Research,FILM,3
+2101,Business Finance I,FINC,3
+3201,Investment Analysis,FINC,3
+3401,Applied Banking,FINC,3
+3501,International Finance,FINC,3
+4202,Capital Markets,FINC,3
+4203,Options and Derivatives,FINC,3
+4204,Portfolio Theory and its Applications,FINC,3
+4301,Corporate Finance,FINC,3
+4302,Introduction to Private Equity and Direct Investments,FINC,3
+4970,Special Topics in Financial Management,FINC,3
+4975,Independent Study in Financial Management,FINC,NULL
+5201,Managerial Economics,FINC,3
+5202,Financial Management,FINC,3
+5203,Investments and Portfolio Management,FINC,3
+5204,Applied Financial Econometrics,FINC,3
+5211,Managerial Economics in Business,FINC,1.5
+5230,Statistical and numerical methods,FINC,3
+5311,International Financial Management,FINC,3
+5312,Financial Institutions and Markets,FINC,3
+5313,Options and Derivatives,FINC,3
+5314,Real Estate Finance,FINC,3
+5315,Islamic Finance,FINC,3
+5320,Financial Computing,FINC,3
+5331,Fixed Income Securities,FINC,3
+5333,Private Equity and Venture Capital,FINC,3
+5351,Advanced Corporate Finance,FINC,3
+5352,Financial Modeling,FINC,3
+5353,Financial Risk Analysis,FINC,3
+5370,Selected Topics in Financial Management,FINC,3
+5375,Independent Study in Financial Management,FINC,NULL
+5401,Thesis,FINC,9
+5402,Research Methodology,FINC,3
+5100,Theorizing Gender,GWST,3
+5101,"Visual, Literary, and Critical Approaches to Gender in MENA",GWST,3
+5102,Justice: Histories and Theories,GWST,3
+5104,Mobilities: Gender and Migration,GWST,3
+5106,Reading Capital,GWST,3
+5107,Critical Geographies: Reading the Global South,GWST,3
+5108,Women and Human Rights,GWST,3
+5109,Theorizing the Urban,GWST,3
+5170,Special Topics in Gender and Women's Studies,GWST,3
+5180,Independent Study and Readings,GWST,3
+5205,Gender and Feminist Research Methodologies,GWST,3
+5299,Research Guidance and Thesis,GWST,0
+5110,Biostatistics,GHHE,3
+5120,Introduction to Epidemiology,GHHE,3
+5130,Environmental & Occupational Health,GHHE,3
+5135,Environmental Health for the Non-Scientist,GHHE,3
+5140,Bioethics in Research,GHHE,3
+5150,Global Health Communication and Society,GHHE,3
+5180,Experimental Design and Research Methods,GHHE,3
+5190,Diseases and Social Perception,GHHE,3
+5195,Advanced Good Laboratory Practices and Laboratory Management,GHHE,3
+5210,Advanced Epidemiology,GHHE,3
+5220,Principles and Methods of Applied Infectious Disease Epidemiology,GHHE,3
+5230,Environmental Epidemiology,GHHE,3
+5240,Genetic and Cancer Epidemiology,GHHE,3
+5250,"Epidemiology of Malnutrition, Metabolic Disorders, Obesity and Diabetes",GHHE,3
+5260,Reproductive and Child Health Epidemiology,GHHE,3
+5270,Community-Driven Epidemiology: Environmental Justice and Equity,GHHE,3
+5280,Systematic Review and Meta-Analysis,GHHE,3
+5290,Health Analytics and Informatics,GHHE,3
+5330,The Earth Lab,GHHE,3
+5331,Health Effects of Environmental Agents,GHHE,3
+5332,Environmental Exposure Assessment,GHHE,3
+5333,Biological Monitoring in Exposure Assessment,GHHE,3
+5334,Field Research in Environmental Health and Safety,GHHE,3
+5335,Occupational Safety and Ergonomics,GHHE,3
+5336,Kinesiology and Biomechanics,GHHE,3
+5337,Ergonomics for Injury Prevention and Accommodation,GHHE,3
+5340,"Principles of Toxicokinetics, Toxicodynamics, and Chemical Classes",GHHE,3
+5341,Systemic and Molecular Toxicology,GHHE,3
+5342,Case Studies in Pharmaceutical Toxicology,GHHE,3
+5343,Chemical Teratogenesis,GHHE,3
+5344,Chemical Carcinogenesis,GHHE,3
+5345,Autonomic and Autocoid Pharmacology and Toxicology,GHHE,3
+5346,Immunopharmacology and Immunotoxicology,GHHE,3
+5347,Environmental Cardiopulmonary Diseases,GHHE,3
+5348,Nanotoxicology and Safety: From Mechanisms to Regulation,GHHE,3
+5349,Neurotoxicology,GHHE,3
+5350,"Contemporary Issues in Environment, Sustainable Development and Health",GHHE,3
+5351,Environmental Health and Sustainability in the Context of Human Geography,GHHE,3
+5352,Geography of Health and Healthcare,GHHE,3
+5410,"Biomarkers: Exposure, Susceptibility, Effects and Efficacy",GHHE,3
+5420,Pharmacogenomics and Personalized Medicine,GHHE,3
+5430,Integrating Biomarkers in Population‐based Research,GHHE,3
+5440,Nanotechnology: Scope and Frontiers in Precision Health,GHHE,3
+5450,"Nanoformulation, Targeting and Applications",GHHE,3
+5460,"Nanomanufacturing, QC and Regulatory Affairs",GHHE,3
+5470,Nano-Enabled Precision Health,GHHE,3
+5510,Applied Neuroscience I,GHHE,3
+5520,Applied Neuroscience II,GHHE,3
+5530,Neuroimmunology,GHHE,3
+5540,Genetics and Molecular Basis of Disease,GHHE,3
+5550,Systems Neurobiology in Public Health,GHHE,3
+6100,Contemporary Challenges in Global Health I,GHHE,3
+6110,Global Challenges in Environmental Medicine,GHHE,3
+6120,Leadership and Professional Development for Public Health Professionals,GHHE,3
+6130,Current Issues in Public Health Outcomes,GHHE,3
+6140,Evidence-Based Medicine,GHHE,3
+6180,Microbiology and Infectious Disease,GHHE,3
+6190,Immune System in Health and Disease,GHHE,3
+6210,Public Health Informatics,GHHE,3
+6220,Health Informatics and Management,GHHE,3
+6230,Health Informatics in Health Surveillance,GHHE,3
+7110,Molecular Mechanisms of Antimicrobial Agents and Resistance,GHHE,3
+7120,Contemporary Issues in Infectious Disease,GHHE,3
+2113,Introduction to Visual Cultures,DSGN,3
+2115,History of Graphic Design,DSGN,3
+2200,Design Foundations,DSGN,3
+2201,Design Principles & Practices,DSGN,3
+2202,Logo and Visual Identity Design,DSGN,3
+2210,Typography I,DSGN,3
+2240,Color,DSGN,3
+2245,Illustration,DSGN,3
+2250,Digital Practice I,DSGN,3
+3117,History of Advertising in the Arab World,DSGN,3
+3118,History of Arabic Calligraphy,DSGN,3
+3203,Publication Design,DSGN,3
+3204,Packaging Design,DSGN,3
+3205,Retail Design,DSGN,3
+3213,Interactive Design,DSGN,3
+3220,Typography II,DSGN,3
+3230,Type Design,DSGN,3
+3235,Animation,DSGN,3
+3250,Digital Practices II,DSGN,3
+3260,Photography for Designers,DSGN,3
+3265,Advertising and Branding,DSGN,3
+3270,Selected Topics in Design,DSGN,3
+4200,Design field practices,DSGN,3
+4210,Portfolio,DSGN,3
+4220,Production for Designers,DSGN,3
+4269,Senior Project Thesis,DSGN,3
+4270,Senior Project Practice,DSGN,3
+4302,Independent Study,DSGN,3
+5115,History of Graphic Design in the Arab world,DSGN,3
+1099,Selected Topics for Core Curriculum,HIST,3
+1101,World Cultures,HIST,3
+1102,Big History for Freshmen,HIST,3
+1103,Words That Made History: Great Speeches of the 20th Century,HIST,3
+1201,Family History in the Modern Middle East,HIST,3
+2019,Introduction to American Studies,HIST,3
+2096,Selected Topics for the Core Curriculum in Global Studies,HIST,3
+2097,Selected Topics for the Core Curriculum in Arab World Studies,HIST,3
+2099,Selected Topics for the Core Curriculum in Humanities,HIST,3
+2104,World History,HIST,3
+2202,History In The Making,HIST,3
+2203,Survey of Arab History,HIST,3
+2204,The Making of the Modern Arab World,HIST,3
+2401,Western Civilization from Antiquity to Medieval Europe,HIST,3
+2402,Europe from the Middle Ages to the Enlightenment (1337-1789),HIST,3
+2403,Europe in the Age of Revolution and Reform (1789-1914),HIST,3
+2404,Europe in International Politics in the Twentieth Century,HIST,3
+2501,History of American Civilization to the Nineteenth Century,HIST,3
+2502,History of Modern American Civilization,HIST,3
+2602,Religions of the World,HIST,3
+2604,The Quest for the Historical Jesus,HIST,3
+2901,History I: Pre-Dynastic Through Middle Kingdom Egypt,HIST,3
+2902,History II: Middle Kingdom Through New Kingdom Egypt,HIST,3
+3105,Big History,HIST,3
+3205,Islamic Spain and North Africa (711-1492 A.D.),HIST,3
+3206,Urban Landscapes in the Modern Middle East/North Africa,HIST,3
+3207,History of Palestine/Israel,HIST,3
+3208,Zionism and Modern Judaism,HIST,3
+3210,Birth of Muslim Community and Rise of the Arab Caliphates,HIST,3
+3211,Caliphs and Sultans in the Age of Crusades and Mongols,HIST,3
+3212,"Gunpowder Empires: Ottomans, Safavids and Mughols",HIST,3
+3213,"State and Society in the Middle East, 1699-1914",HIST,3
+3214,"State and Society in the Middle East, 1906-present",HIST,3
+3215,"Zawiyas, Harems, Coffee shops, Everyday Life in the Pre-Modern Mideast",HIST,3
+3216,Shi'i Muslims in History,HIST,3
+3288,Selected topics in Middle East History,HIST,3
+3302,"Violence, War, and Conflict in Modern Africa",HIST,3
+3405,"The Middle Ages, the Renaissance and the Reformation",HIST,3
+3406,Europe in the Age of Reason,HIST,3
+3903,History of Egypt in the Graeco-Roman Era,HIST,3
+3904,Societies and Cultures of the Ancient Near East,HIST,3
+4000,Honors Thesis,HIST,3
+4106,Food in World History,HIST,3
+4107,The Environment in World History,HIST,3
+4188,Selected Topics in World History,HIST,3
+4215,The Marriage Crisis and the Middle East,HIST,3
+4216,Social and Political History of Modern Cairo,HIST,3
+4217,Colonialism and Imperialism in the Middle East and South Asia,HIST,3
+4219,Modern Movements in Islam,HIST,3
+4220,"Selected Topics in Middle Eastern History, 600-1250 A. D.",HIST,3
+4221,Selected Topics in the History of Islamic Thought and Institutions,HIST,3
+4222,Egypt under Nasser,HIST,3
+4224,Egypt in the Modern World Market,HIST,3
+4288,Selected Topics in the History of the Modern Middle East,HIST,3
+4289,"Selected Topics in Middle Eastern History, 1250-1800 A. D.",HIST,3
+4290,Selected Topics in Modern Egyptian History,HIST,3
+4303,Global Capitalism and Africa: An Economic History,HIST,3
+4400,Independent Study,HIST,NULL
+4488,Selected Topics in European History,HIST,3
+4588,Selected Topics in the History of the United States,HIST,3
+4801,Historical Theory and Methodology,HIST,3
+4802,Preparation for Thesis Writting,HIST,3
+4905,Selected Topics in Coptic Studies,HIST,3
+5222,Seminar on the Nineteenth-Century Middle East,HIST,3
+5223,Seminar on the Twentieth-Century Middle East,HIST,3
+0302,Advanced English (for Graduates),ELIN,0
+3501,International Finance,INTB,3
+4601,International Marketing,INTB,3
+5210,Introduction to International Human Rights Law and Critique,LAW,3
+5211,International Humanitarian Law,LAW,3
+5214,Human Rights in the Middle East,LAW,3
+5216,"Economic, Social, and Cultural Rights",LAW,3
+5218,International Refugee Law,LAW,3
+5219,Human Rights in Africa,LAW,3
+5275,Special Topics in International Human Rights Law,LAW,3
+5284,Human Rights in Practice,LAW,3
+2200,Introduction to Mass Communication,JRMC,3
+2201,Media Writing,JRMC,3
+2202,Multimedia Writing and Production,JRMC,3
+2203,Mass Media Ethics and Responsibility,JRMC,3
+2208,Media Literacy in the Digital Age,JRMC,3
+2230,Photography Foundations 1,JRMC,3
+2250,Global Media Systems,JRMC,3
+2270,Online Communication,JRMC,3
+2280,Entertainment Media,JRMC,3
+2299,Selected Topic for Core Curriculum,JRMC,3
+3301,Journalism Editing and Design,JRMC,3
+3303,Data for Media,JRMC,3
+3305,Introduction to Visual Communication,JRMC,3
+3307,Sports Media,JRMC,3
+3310,"Public Opinion, Persuasion and Propaganda",JRMC,3
+3312,Multimedia Journalism Lab: The Caravan,JRMC,3
+3315,Introduction to Advertising,JRMC,3
+3320,Mass Communication Research,JRMC,3
+3330,Photojournalism and Documentary Practices,JRMC,3
+3333,Research for Journalists,JRMC,3
+3337,TV Scriptwriting and Production,JRMC,3
+3339,Studio Production: AUC TV,JRMC,3
+3355,Creative Strategy and Advertising Copywriting,JRMC,3
+3366,Online Behavior and Web Analytics,JRMC,3
+3380,Digital Storytelling,JRMC,3
+3390,Media Economics,JRMC,3
+4402,Reporting and Writing in Arabic,JRMC,3
+4403,Feature and Magazine Writing,JRMC,3
+4405,Advanced Visual Communication,JRMC,3
+4406,Internship,JRMC,3
+4412,Newsroom Editing and Management,JRMC,3
+4415,Public Relations Theory and Techniques,JRMC,3
+4420,Media Management,JRMC,3
+4425,Integrated Marketing Communication Campaigns Capstone,JRMC,3
+4430,Advertising Agency Operations,JRMC,3
+4441,Camera and Editing Workshop,JRMC,3
+4444,Media Law and Policy,JRMC,3
+4460,Audio Production,JRMC,3
+4471,Online Journalism,JRMC,3
+4480,Multimedia Reporting Capstone,JRMC,3
+4482,Media Convergence Capstone,JRMC,3
+4490,Special Topics in Mass Communication,JRMC,NULL
+4499,Directed Individual Study in Mass Communication,JRMC,NULL
+5200,Seminar in Mass  Communication Theory and Literature,JRMC,3
+5201,Advanced Reporting and Writing,JRMC,3
+5202,Seminar: Current Issues in Mass Communication,JRMC,3
+5204,Research Methods in Mass Communication,JRMC,3
+5206,Internship,JRMC,3
+5240,Reporting Civil Society,JRMC,3
+5250,Seminar in International Communication,JRMC,3
+5260,Seminar on Electronic Journalism and Arab Society,JRMC,3
+5270,Seminar in Mass Communication and National Development,JRMC,3
+5271,Digital Journalism,JRMC,3
+5280,Television and Digital Broadcasting: Impact and Development,JRMC,3
+5288,Comprehensives,JRMC,0
+5290,Special Topics,JRMC,3
+5299,Research Guidance and Thesis,JRMC,0
+1020,Libraries and Learning Technologies,LALT,0
+2200,Introduction to Linguistics,LING,3
+2201,Languages of the World,LING,3
+2210,Principles and Practice of Teaching English,LING,3
+2220,Language and Society,LING,3
+2230,Language and Communication,LING,3
+2299,Selected Topic for Core Curriculum,LING,3
+3075,Language in Culture,LING,3
+3220,Introduction to Phonetics,LING,3
+3320,Language and Politics,LING,3
+3330,Introduction to Corpus Linguistics,LING,3
+4212,Language and Human Development,LING,3
+4410,Introduction to Computational Linguistics,LING,3
+4371,Introduction to Public International Law,LAW,3
+4375,Introduction to Egyptian and Islamic Law,LAW,3
+4378,Introduction to International Human Rights Law,LAW,3
+5200,Legal Research and Writing,LAW,3
+5201,Jurisprudence,LAW,3
+5202,Comparative Law,LAW,3
+5203,Law and Economic Development,LAW,3
+5205,Islamic Law Reform,LAW,3
+5206,Egyptian Legal History,LAW,3
+5207,The Law and Practice of the Settlement of International Disputes Between States,LAW,3
+5208,International Criminal Law,LAW,3
+5209,International Law,LAW,3
+5215,Comparative Constitutional Law and Human Rights,LAW,3
+5220,Justice: Histories and Theories,LAW,3
+5221,Law and Patriarchy,LAW,3
+5222,International Economic and Trade Law,LAW,3
+5223,International Commercial Arbitration,LAW,3
+5224,Comparative Corporate Governance,LAW,3
+5225,Securities Regulation Law,LAW,3
+5226,Antitrust Law,LAW,3
+5227,Graduate Law Seminar,LAW,3
+5228,Migration in International Law,LAW,3
+5270,Special Topics in Comparative Law,LAW,NULL
+5271,Special Topics in International Law,LAW,NULL
+5272,Special Topics in Public Law,LAW,NULL
+5285,Legal Practice,LAW,3
+5299,Research Guidance/Thesis,LAW,0
+3201,Management Fundamentals,MGMT,3
+3301,Business Law (Commercial & Fiscal),MGMT,3
+4202,Managing the Human Capital,MGMT,3
+4203,Organization Development,MGMT,3
+4402,Business Consultancy,MGMT,3
+4970,Special Topics in Management,MGMT,3
+4975,Independent Study in Management,MGMT,NULL
+5202,Managing Organizations in a Dynamic Environment,MGMT,3
+5302,Managing Organizations and the Human Capital,MGMT,3
+5303,Organizational Design,MGMT,3
+5304,Management of International Business Organizations,MGMT,3
+5306,Leadership,MGMT,3
+5307,Entrepreneurship and Innovation,MGMT,3
+5308,Strategic Management of Innovation,MGMT,3
+5309,Technology and Innovation Management,MGMT,3
+5370,Selected Topics in Management,MGMT,3
+5375,Independent Study in Management,MGMT,NULL
+2101,Introduction to Information Systems/Technology,MOIS,3
+3201,Management Information Systems and Database Management,MOIS,3
+3301,Entrepreneurial IT and Electronic Business,MOIS,3
+3401,Human Computer Interaction (HCI),MOIS,3
+3501,Geographic Information Systems (GIS),MOIS,3
+3601,Decision Support Systems and Business Intelligence,MOIS,3
+3701,Marketing Information Systems,MOIS,3
+3702,Financial Information Systems,MOIS,3
+3703,Accounting Information Systems,MOIS,3
+3801,Strategic Information Systems,MOIS,3
+4202,Business Information Systems Analysis and Development,MOIS,3
+4704,Big Data and Predictive Analysis,MOIS,3
+4970,Special Topics in Management of Information Systems,MOIS,3
+4975,Independent Study in Management of Information Systems,MOIS,NULL
+4999,Internship and Graduation Project,MOIS,3
+5201,Information and Communication Technology in Business,MOIS,3
+5202,Data Sciences in Business,MOIS,1.5
+5211,Information Technologies and Systems,MOIS,1.5
+5301,"Systems Analysis, Design, and Implementation",MOIS,3
+5302,Decision Support Systems,MOIS,3
+5303,Electronic Business: Doing Business in the Digital Economy,MOIS,3
+5304,Integrated Technologies and Big Data,MOIS,3
+5305,Information Technology Strategy and Entrepreneurship,MOIS,3
+5370,Advanced Topics (Next Generation Technologies),MOIS,3
+5375,Independent Research in Management of Information Systems/Technology,MOIS,NULL
+2101,Principles of Marketing,MKTG,3
+3201,Marketing Research,MKTG,3
+3202,Consumer-Buyer Behaviour,MKTG,3
+3301,Marketing Communications Management,MKTG,3
+4203,Advanced Marketing Research,MKTG,3
+4302,E-Marketing,MKTG,3
+4303,Principles of Public Relations,MKTG,3
+4401,Professional Selling,MKTG,3
+4501,Services Marketing,MKTG,3
+4601,International Marketing,MKTG,3
+4602,Marketing Strategy,MKTG,3
+4970,Special topics in Marketing,MKTG,3
+4975,Independent Study in Marketing,MKTG,NULL
+5201,Marketing Management,MKTG,3
+5301,Marketing Research Methods,MKTG,3
+5304,Global Marketing,MKTG,3
+5305,Integrated Marketing Communication,MKTG,3
+5306,Strategic Marketing,MKTG,3
+5307,Strategic Brand Management,MKTG,3
+5370,Contemporary Topics in Marketing,MKTG,3
+5375,Independent Study in Contemporary Topics in Marketing,MKTG,NULL
+1111,Algebra and Trigonometry,MACT,3
+1112,Basic Mathematics for Social Sciences,MACT,3
+1121,Calculus I,MACT,3
+1122,Calculus II,MACT,3
+1221,Statistical Reasoning,MACT,3
+1930,Selected Topic for Core Curriculum,MACT,3
+2123,Calculus III,MACT,3
+2124,Calculus IV,MACT,3
+2131,Discrete Mathematics,MACT,3
+2132,Linear Algebra,MACT,3
+2141,Differential Equations,MACT,3
+2146,Optimization I,MACT,3
+2222,Statistics for Business,MACT,3
+3133,Formal and Mathematical Logic,MACT,3
+3142,Introduction to PDE and Boundary-Value Problems,MACT,3
+3143,Numerical Methods,MACT,3
+3146,Optimization II,MACT,3
+3211,Applied Probability,MACT,3
+3223,Statistical Inference,MACT,3
+3224,Probability and Statistics,MACT,3
+3311,Introduction to Financial Mathematics,MACT,3
+3940,Seminar in Mathematics,MACT,1
+4125,Complex-Function Theory,MACT,3
+4126,Real Analysis I,MACT,3
+4127,Real Analysis II,MACT,3
+4134,Modern Algebra,MACT,3
+4135,Graph Theory,MACT,3
+4212,Stochastic Processes,MACT,3
+4213,Mathematical Modeling with Applications,MACT,3
+4231,Applied Regression Methods,MACT,3
+4232,Analysis of Time Series Data,MACT,3
+4233,Applied Multivariate Analysis,MACT,3
+4312,Mathematics of Derivatives Pricing I,MACT,3
+4313,Mathematics of Derivatives Pricing II,MACT,3
+4314,Financial Modeling,MACT,3
+4321,Long-Term Actuarial Mathematics I,MACT,3
+4322,Long-Term Actuarial Mathematics II,MACT,3
+4331,Short Term Actuarial Mathematics I,MACT,3
+4332,Short Term Actuarial Mathematics II,MACT,3
+4910,Guided Studies in Mathematics,MACT,NULL
+4930,Selected Topics in Mathematics,MACT,3
+4931,Selected Topics in Actuarial Science,MACT,3
+4950,Practical Internship,MACT,3
+4980,Senior Thesis,MACT,3
+4990,Enterprise Risk Management,MACT,3
+6111,Advanced Numerical Methods,MACT,3
+6121,Advanced Probability with Engineering Applications,MACT,3
+2112,Strength of Materials,MENG,3
+2505,Mechanical Engineering Drawing,MENG,1
+3207,Engineering Materials,MENG,3
+3209,Fundamentals of Manufacturing Processes,MENG,3
+3217,Mechanical and Structural Behavior of Engineering Materials Lab,MENG,1
+3402,Quality and Process Control,MENG,3
+3446,Engineering and Project Management,MENG,3
+3502,Mechanical Systems,MENG,3
+3505,Mechanics of Materials,MENG,3
+3506,Mechanical Design I,MENG,3
+3601,Fundamentals of Thermodynamics,MENG,3
+3602,Applied Fluid Mechanics,MENG,3
+3605,Applied Thermodynamics,MENG,3
+3705,System Dynamics,MENG,3
+4208,Selection of Materials and Processes for Design,MENG,3
+4221,Ceramics and Composites,MENG,3
+4225,Polymers and Composites,MENG,3
+4226,"Metals, Alloys and Composites",MENG,3
+4227,Failure of Mechanical Components,MENG,3
+4229,Nanostructured Materials,MENG,3
+4232,"Materials, Processing, and Design",MENG,3
+4239,Advanced Manufacturing Processes,MENG,3
+4440,Engineering Operations Research,MENG,3
+4441,Decision Support in Engineering Systems,MENG,3
+4442,Reliability Engineering and Risk Analysis,MENG,3
+4443,Systems Simulation,MENG,3
+4444,Work Analysis and Design,MENG,3
+4445,Production and Inventory Control,MENG,3
+4448,Facilities Planning,MENG,3
+4449,Maintenance Management Systems,MENG,3
+4477,Manufacturing System Automation,MENG,3
+4507,Mechanical Design II,MENG,3
+4551,Computer-Aided Design and Prototyping,MENG,3
+4553,Finite Element Method and Applications in Design,MENG,3
+4554,Finite Element Method in Dynamic Analysis and Design,MENG,3
+4555,"Applied Vibration Measurements, Analysis and Control",MENG,3
+4558,Integrated Design,MENG,3
+4565,Design of Engineering Systems,MENG,3
+4606,Heat Transfer,MENG,4
+4661,Turbo-Machinery,MENG,3
+4662,Power Plant Technology,MENG,3
+4663,Design of Renewable Energy Systems,MENG,3
+4665,Internal Combustion Engines,MENG,3
+4666,"Design of Heating, Ventilation, and Air Conditioning Systems",MENG,3
+4667,Refrigeration and Air-conditioning,MENG,3
+4756,Automatic Control Systems,MENG,3
+4757,"Robotics: Design, Analysis and Control",MENG,3
+4778,Microcontrollers and Mechatronics systems,MENG,3
+4779,Integrated Design of Electromechanical Systems,MENG,3
+4920,Special Problems in Engineering,MENG,NULL
+4930,Selected Topics in Mechanical Engineering,MENG,3
+4931,Selected Topics in Design,MENG,3
+4932,Selected Topics in Materials and Manufacturing,MENG,3
+4936,Selected Topics in Power Engineering,MENG,3
+4937,Selected Topics in Mechatronics,MENG,3
+4950,Industrial Training,MENG,1
+4980,Senior Project I,MENG,1
+4981,Senior Project II,MENG,2
+5168,Nuclear Power Plant Engineering,MENG,3
+5221,Advanced Topics in Mechanical Behavior of Engineering Materials,MENG,3
+5222,Materials in Design and Manufacturing,MENG,3
+5223,Physical Metallurgy,MENG,3
+5224,Electronic Phenomena in Solids,MENG,3
+5225,Deformation and Fracture of Materials,MENG,3
+5226,Computer Methods in Materials Engineering,MENG,3
+5227,"Composite Materials: Mechanics, Manufacturing, and Design",MENG,3
+5228,Advanced Testing and Characterization Techniques,MENG,3
+5229,Failure Analysis and Prevention,MENG,3
+5230,Nanostructured Materials,MENG,3
+5231,Fabrication of Nanomaterials For Films And Devices,MENG,3
+5232,Simulation and Modeling for Nanoscale Materials and Systems,MENG,3
+5234,Materials for Energy Conversion and Storage,MENG,3
+5235,Biomaterials,MENG,3
+5241,Integrated Manufacturing Systems,MENG,3
+5242,Total Quality Management,MENG,3
+5243,Systems Modeling and Optimization,MENG,3
+5245,Production Systems Design,MENG,3
+5248,Facilities Planning and Design,MENG,3
+5251,Engineering Systems Analysis and Design,MENG,3
+5253,Advanced Computer Aided Design,MENG,3
+5254,Advanced Stress Analysis in Design and Manufacturing,MENG,3
+5255,Analysis and Design of Dynamic Systems,MENG,3
+5257,Engineering Design Methodologies,MENG,3
+5258,Applied Finite Element Analysis for Engineers,MENG,3
+5263,Cogeneration and Energy Storage,MENG,3
+5265,CFD and Turbulence Modeling,MENG,3
+5266,Solar Radiation and Energy Conversion,MENG,3
+5270,"Applied Control, Vibration and Instrumentations",MENG,3
+5271,"Robotics: Kinematics, Dynamics and Control",MENG,3
+5272,Embedded Real Time Systems,MENG,3
+5273,Modern Control Design,MENG,3
+5274,"Autonomous Robotics: Modeling, Navigation and Control",MENG,3
+5910,Independent Study in Engineering,MENG,3
+5930,Advanced Topics in Engineering,MENG,3
+5980,Capstone Project,MENG,3
+5981,Research Guidance Thesis,MENG,3
+6241,Stochastic Simulation,MENG,3
+6255,Continuum Mechanics,MENG,3
+6261,Sustainability of Thermal Systems,MENG,3
+6262,Advanced Transport Phenomena,MENG,3
+6263,Advanced Measurements in Thermofluids,MENG,3
+6270,Nonlinear and Adaptive Control,MENG,3
+6980,Research Guidance Dissertation,MENG,3
+4210,Individual Study and Selected Readings,MEST,NULL
+4301,Special Topics in Middle East Studies,MEST,3
+5200,Migration and Refugee movements in the Middle East and North Africa,MEST,3
+5201,A Critical Introduction to Middle East Studies,MEST,3
+5202,Interdisciplinary Seminar in Middle East Studies,MEST,3
+5205,Palestinian Refugee Issues,MEST,3
+5280,Selected Topics,MEST,3
+5281,Independent Study and Readings,MEST,3
+5289,Comprehensives,MEST,0
+5298,Research Methods,MEST,3
+5299,Thesis,MEST,0
+5100,Introduction to Migration and Refugee Studies,MRS,3
+5101,International Refugee Law,MRS,3
+5102,Migration & Refugee Movements in the Middle East and North Africa,MRS,3
+5103,International Migration and Development,MRS,3
+5104,Mobilities: Gender and Migration,MRS,3
+5112,Psychosocial Issues in Forced Migration,MRS,3
+5204,Research Methods in Migration and Refugees Studies,MRS,3
+5205,Palestinian Refugee Issues,MRS,3
+5206,Comparative Migration Policies,MRS,3
+5207,Migrants & Refugees in the International System,MRS,3
+5208,Special Topics in Migration and Refugee Studies,MRS,3
+5209,"Migration, Integration and Citizenship",MRS,3
+5213,Practicum in Psychosocial Interventions for Forced Migrants and Refugees,MRS,2
+5214,Psychosocial Interventions for Forced Migrants and Refugees,MRS,3
+5228,Migration in International Law,MRS,3
+5284,Practicum: Internship or Research,MRS,3
+5299,Research Guidance and Thesis,MRS,3
+1010,The Songs of America,MUSC,3
+1011,Vocal Methods,MUSC,3
+1012,"Guitar and Piano: Accompaniment and improvisation ""by ear""",MUSC,3
+1099,Selected Topics for Core Curriculum,MUSC,3
+1800,Private Lessons in Voice or an Instrument,MUSC,1
+1805,How to Read Music,MUSC,3
+2000,World Music,MUSC,3
+2099,Selected Topics for Core Curriculum,MUSC,3
+2200,Introduction to Music,MUSC,3
+2300,Introduction to Music Technology,MUSC,3
+2301,Music Production Using Protools I,MUSC,3
+2303,Microphone Techniques,MUSC,3
+2400,Western Music Theory I,MUSC,3
+2401,Sight-Singing and Aural Skills I,MUSC,1
+2450,Arab Music Theory I,MUSC,3
+2451,Maqam I (Arab Music Sight-Singing and Aural Skills),MUSC,1
+2620,Arab Music Ensemble,MUSC,1
+2630,Guitar Ensemble,MUSC,1
+2640,Chamber Music Ensembles,MUSC,1
+2650,Rehearsal/Performance Practicum,MUSC,1
+2660,Chamber Singers,MUSC,1
+2670,Cairo Choral Society,MUSC,1
+2850,Private Instruction for Piano Proficiency,MUSC,1
+3099,Selected Topics in Music,MUSC,3
+3110,Diction for Singers in the Western Tradition,MUSC,3
+3150,Western and Arab Musical Instruments,MUSC,3
+3200,Music in the Western Tradition,MUSC,3
+3250,Music in the Arab Tradition,MUSC,3
+3304,Music Production for Visual Media,MUSC,3
+3305,Electronic Music,MUSC,3
+3306,Sound for Picture Production,MUSC,3
+3307,Music for Film,MUSC,3
+3308,Live Sound Reinforcement,MUSC,3
+3400,Western Music Theory II,MUSC,3
+3401,Sight-Singing and Aural Skills II,MUSC,1
+3450,Arab Music Theory II,MUSC,3
+3451,Maqam II (Arab Music Sight-Singing and Aural Skills),MUSC,1
+3520,Guitar Pedagogy,MUSC,3
+3900,Independent Study,MUSC,NULL
+4308,Music Production Using Protools II,MUSC,3
+4309,Digital Mixing Techniques,MUSC,3
+4400,Western Music Theory III,MUSC,3
+4401,Sight-Singing and Aural Skills III,MUSC,1
+4800,Advanced Private Lessons in Voice or an Instrument,MUSC,3
+4900,Advanced Seminar,MUSC,3
+4980,Capstone Final Recital,MUSC,3
+5200,"Nanomaterials, Synthesis, Processing and Applications",NANO,3
+5202,Simulation and Modeling for Nanoscale Materials and Systems,NANO,3
+5203,Advanced Testing and Characterization Techniques,NANO,3
+5204,Fabrication of Nanomaterials For Films And Devices,NANO,3
+5205,Nanochemistry,NANO,3
+5206,Management and Economics of Nanotechnology,NANO,3
+5207,Advanced Nanophysics,NANO,3
+5210,Advanced Quantum Mechanics,NANO,3
+5221,MEMS/NEMS Technology and Devices,NANO,3
+5222,Advanced Semiconductor Physics,NANO,3
+5232,Nanocomposite Science and Technology,NANO,3
+5233,Materials for Energy Conversion and Storage,NANO,3
+5241,The Chemistry of Nanostructures,NANO,3
+5242,Nanoelectrochemistry,NANO,3
+5251,Nanotechnology Applications in Construction Materials,NANO,3
+5252,Nanotechnology in Studying Damage and Failure in Structures,NANO,3
+5261,Advanced Solid-State Devices,NANO,3
+5262,Advanced Integrated Circuit Design,NANO,3
+5271,Bionanotechnology,NANO,3
+5910,Independent Studies,NANO,NULL
+5930,Selected Topics in Nanotechnology,NANO,3
+5980,Research Guidance Thesis,NANO,3
+6121,Nanophotonics,NANO,3
+6230,Biomaterials,NANO,3
+6240,Nanoporous Materials,NANO,3
+6242,Nanocatalysis,NANO,3
+6910,Independent Studies,NANO,NULL
+6980,Research Guidance Dissertation,NANO,3
+5211,Statistics in Business,OPMG,1.5
+2011,Introduction to Petroleum Geology,PENG,2
+2012,Geology Lab.,PENG,1
+2013,Petroleum Industry Overview,PENG,1
+2411,Electrical Engineering,PENG,2
+2415,Materials Engineering,PENG,3
+3011,Petroleum Geology and Exploration,PENG,3
+3021,Reservoir Rock Properties,PENG,3
+3022,Petrophysics and Fluids Lab,PENG,1
+3111,Drilling Engineering I,PENG,3
+3112,Drilling Engineering I Lab,PENG,1
+3211,Reservoir Fluids,PENG,3
+3215,Reservoir Engineering Fundamentals,PENG,3
+3225,Natural Gas Engineering,PENG,3
+3227,Formation Evaluation,PENG,4
+3310,Well Completion and Workover,PENG,3
+3321,Surface Facilities,PENG,3
+3411,Thermodynamics,PENG,3
+3413,Heat Transfer,PENG,3
+3415,Principles of Energy Engineering,PENG,3
+3420,Corrosion and Oxidation Protection,PENG,3
+3421,Hydrogen and Fuel cells,PENG,3
+4015,Exploration Methods,PENG,3
+4121,Drilling Engineering II,PENG,3
+4123,Drilling Fluids Engineering,PENG,3
+4125,Advanced Well Construction,PENG,3
+4223,Reservoir Simulation and Modeling,PENG,3
+4224,Well Testing,PENG,3
+4225,Secondary and Tertiary Recovery,PENG,3
+4226,Petroleum Economics,PENG,3
+4227,Reservoir Description and Characterization,PENG,3
+4229,Unconventional Reservoirs,PENG,3
+4313,Oil and Gas Transmission and Storage,PENG,3
+4320,Artificial Lift Methods,PENG,3
+4323,Petroleum Refining,PENG,3
+4325,Well Stimulation,PENG,3
+4330,"Health, Safety, Environment and Professional Ethics",PENG,3
+4421,Renewable and Alternative Energy,PENG,3
+4422,Energy conversion and materials,PENG,3
+4423,Energy and the Environment,PENG,3
+4425,Environmental Protection & Chemical Pollution,PENG,3
+4427,Ground Water Hydrology and Contamination,PENG,3
+4428,Greenhouse Technology and Emission Reduction,PENG,3
+4429,Principles of Nuclear Engineering,PENG,3
+4525,Petrochemical Technology,PENG,3
+4920,Independent Studies in Petroleum and Energy Engineering,PENG,NULL
+4930,Selected Topics in Petroleum and Energy Engineering,PENG,NULL
+4950,Industrial Training,PENG,1
+4980,Senior Project I,PENG,1
+4981,Senior Project II,PENG,2
+5112,Well Control,PENG,3
+5131,Applied PVT and EOS Modelling,PENG,3
+5134,Reservoir Management,PENG,3
+5136,Advanced Reservoir Simulation,PENG,3
+5141,Advanced formation evaluation,PENG,3
+5142,Cased-hole logging,PENG,3
+5144,Geostatistics,PENG,3
+5211,Advanced Drilling,PENG,3
+5221,Advanced Production Engineering,PENG,3
+5222,Petroleum Assets Evaluation,PENG,3
+5232,Advanced Well Testing,PENG,3
+5233,Enhanced Oil Recovery,PENG,3
+5235,Compositional Simulation,PENG,3
+5243,Applied Techniques in Unconventional Reservoirs,PENG,3
+5251,Selected Topics in Fundamentals of Petroleum Engineering,PENG,NULL
+5252,Selected Advanced Topics in Petroleum Engineering,PENG,3
+5253,Independent Study,PENG,3
+5254,Research Guidance Thesis,PENG,3
+5255,Capstone Project,PENG,3
+6291,Advanced Research Seminar,PHDS,1
+6216,Design and analysis of Experiments,PHDE,3
+6291,Advanced Research Seminar,PHDE,1
+2010,"Truth, Lies, and Logical Reasoning",PHIL,3
+2099,Selected Topics for Core Curriculum,PHIL,3
+2100,Philosophical Thinking,PHIL,3
+2112,Philosophy of Religion,PHIL,3
+2113,Introduction to Ethics,PHIL,3
+2117,Political Philosophy,PHIL,3
+2200,Philosophy and Globalization,PHIL,3
+3010,Philosophy and Art,PHIL,3
+3014,Literature and Philosophy,PHIL,3
+3015,Islamic Philosophy,PHIL,3
+3016,American Philosophy,PHIL,3
+3017,Philosophy of Science and Technology,PHIL,3
+3101,Classical Philosophy,PHIL,3
+3102,Modern Philosophy,PHIL,3
+3104,Metaphysics and Epistemology,PHIL,3
+3200,Philosophy of History,PHIL,3
+5100,Independent Study in Philosophy,PHIL,NULL
+5101,Advanced Seminar in Classical Philosophy,PHIL,3
+5104,Selected Topics in Contemporary Philosophy,PHIL,3
+5109,Applied Ethics,PHIL,3
+5112,Advanced Seminar in Aesthetics,PHIL,3
+5117,Philosophy of Language,PHIL,3
+5120,Advanced Seminar in Feminist Philosophy,PHIL,3
+5121,Philosophical Logic,PHIL,3
+5122,Advanced Seminar in Islamic Philosophy,PHIL,3
+5123,Kant and Idealism,PHIL,3
+5124,Advanced Seminar in Phenomenology,PHIL,3
+5130,Philosophy of Mind,PHIL,3
+5150,Philosophy and Film,PHIL,3
+5199,Selected Topics in Philosophy,PHIL,3
+5299,Research Guidance and Thesis,PHIL,0
+1001,Physics for Poets,PHYS,3
+1011,"Classical Mechanics, Sound and Heat",PHYS,3
+1012,General Physics Laboratory I,PHYS,1
+1021,Electricity and Magnetism,PHYS,3
+1022,General Physics Laboratory II,PHYS,1
+1930,Selected Topic for Core Curriculum,PHYS,3
+2041,Foundations of Modern Physics,PHYS,3
+2042,Modern Physics Laboratory,PHYS,1
+2211,Introduction to Electronics,PHYS,3
+2212,Electronics Laboratory,PHYS,2
+2213,Electronics lab for Computer Scientists & Computer Engineers,PHYS,1
+2221,Waves and Optics,PHYS,3
+2222,Optics Laboratory,PHYS,1
+3013,Theoretical Mechanics,PHYS,3
+3023,Electromagnetic Theory,PHYS,3
+3031,Thermodynamics and Statistical Mechanics,PHYS,3
+3052,Nuclear Physics Lab,PHYS,1
+3071,General Relativity and Cosmology,PHYS,3
+3223,Advanced Optics,PHYS,3
+3232,Solid-State Physics Lab,PHYS,2
+3241,Computational Methods in Physics,PHYS,3
+4042,Quantum Mechanics I,PHYS,3
+4043,Quantum Mechanics II,PHYS,3
+4051,Nuclear and Particle Physics,PHYS,3
+4224,Photonics,PHYS,3
+4225,Photonics and Optical Communication Laboratory,PHYS,1
+4231,Introduction to Solid-State Physics,PHYS,3
+4233,Semiconductor Physics,PHYS,3
+4234,Solar Energy Lab,PHYS,1
+4241,Introduction to Solar Energy,PHYS,3
+4242,Introduction to Nanophysics,PHYS,3
+4243,Physics of Solar Energy Conversion Nanosystems,PHYS,3
+4244,Introduction to Nanotechnology,PHYS,3
+4281,Experimental Methods in Physics,PHYS,3
+4910,Independent Study,PHYS,NULL
+4930,Selected Topics in Physics,PHYS,3
+4980,Research Skills,PHYS,1
+4981,Senior Thesis,PHYS,2
+5013,Classical Mechanics,PHYS,3
+5023,Classical Electrodynamics I,PHYS,3
+5024,Fundamentals of Microwaves,PHYS,3
+5032,Advanced Thermodynamics and Statistical Mechanics,PHYS,3
+5043,Advanced Quantum Mechanics,PHYS,3
+5061,Mathematical Physics,PHYS,3
+5207,Advanced Nanophysics,PHYS,3
+5235,Solid State Physics I,PHYS,3
+5236,Advanced Semiconductor Physics,PHYS,3
+5237,Solid State Physics II,PHYS,3
+5242,Computational Physics,PHYS,3
+5277,MEMS/NEMS Technology and Devices,PHYS,3
+5282,Advanced Experimental Techniques,PHYS,3
+5910,Independent Studies,PHYS,NULL
+5930,Selected topics in Physics,PHYS,3
+5980,Research Guidance and Thesis,PHYS,6
+6025,Classical Electrodynamics II,PHYS,3
+6121,Nanophotonics,PHYS,3
+6225,Integrated Photonics,PHYS,3
+6243,Computational Electromagnetics,PHYS,3
+6930,Advanced Selected Topics in Physics,PHYS,3
+1001,Introduction to Political Science,POLS,3
+1099,Selected Topics in Political Science,POLS,3
+2003,Introduction to Political Science II,POLS,3
+2096,Selected Topics for Core Curriculum,POLS,3
+2104,Introduction to Research Methods in Political Science,POLS,3
+2405,History and International Politics,POLS,3
+3201,History of Political Theory l,POLS,3
+3202,History of Political Theory II,POLS,3
+3401,Introduction to Comparative Politics,POLS,3
+3408,Comparative Politics of the Middle East,POLS,3
+3454,Political and Social Thought in the Modern Arab World,POLS,3
+3510,Introduction to Development,POLS,3
+3550,Introduction to Political Economy,POLS,3
+3620,Introduction to International Relations Theories,POLS,3
+4000,The Discipline and Critical Social Theory,POLS,3
+4018,East- West Dialogue: Cross-Cultural Perceptions and Reflections,POLS,3
+4030,Seminar: Special Topics in Political Science for Undergraduates,POLS,3
+4033,Individual Study and Selected Reading,POLS,NULL
+4035,Political Sociology,POLS,3
+4099,Senior Year Thesis,POLS,3
+4104,Political Science Methods,POLS,3
+4216,"Race, Class and Gender: Theorizing Political Identity",POLS,3
+4217,Cosmopolitanism and Global Justice,POLS,3
+4226,Contemporary Political Islam,POLS,3
+4371,Introduction to Public International Law,POLS,3
+4372,International Law in the Middle East,POLS,3
+4373,Special Topics in Public Law,POLS,3
+4374,Special Topics in Public International Law,POLS,3
+4375,Introduction to Egyptian and Islamic Law,POLS,3
+4377,Law and Development,POLS,3
+4378,Introduction to International Human Rights Law,POLS,3
+4403,American Government and Politics,POLS,3
+4405,Comparative Politics of Contemporary Africa,POLS,3
+4420,Issues in Middle East Politics,POLS,3
+4422,Contemporary Egypt,POLS,3
+4423,Comparative Government and Politics: Developing Systems,POLS,3
+4424,Comparative Government and Politics in Contemporary Eastern Europe and Russia,POLS,3
+4425,Government and Politics of Egypt,POLS,3
+4432,Seminar: Comparative Politics and/or Policies,POLS,3
+4435,The State and Society,POLS,3
+4437,Comparative Politics of Asia,POLS,3
+4438,Modern China,POLS,3
+4439,Comparative Politics of the Modern Caucasus and Central Asia,POLS,3
+4444,Comparative Politics of Latin America,POLS,3
+4470,The Politics of Human Rights,POLS,3
+4480,Israeli Politics and Society,POLS,3
+4481,The Politics of Palestinian-Israeli Relations,POLS,3
+4502,Political Economy of Egypt and the Middle East,POLS,3
+4513,International Financial Institutions,POLS,3
+4523,The Political Economy of Poverty and Inequality,POLS,3
+4525,Global Political Economy,POLS,3
+4526,Political Economy of the Global South,POLS,3
+4542,Environmental Politics,POLS,3
+4550,Business -Government Relations,POLS,3
+4551,Theories of Political Economy,POLS,3
+4560,Development Studies Seminar,POLS,3
+4565,Special Topics in Development and Political Economy,POLS,3
+4605,International Politics of the Middle East,POLS,3
+4608,Critical Approaches to International Relations and the Global South,POLS,3
+4609,International Organizations,POLS,3
+4610,Global Security,POLS,3
+4611,Comparative Foreign Policy Analysis,POLS,3
+4614,Egyptian Foreign Policy,POLS,3
+4615,U.S. Foreign Policy,POLS,3
+4640,Seminar: Special Topics in International Relations for Undergraduates,POLS,3
+5130,Seminar: Special Topics in Political Science for both Undergraduates and Graduates,POLS,3
+5140,Seminar: Special Topics in International Relations for both Undergraduates and Graduates,POLS,3
+5201,Comparative Theory,POLS,3
+5202,Scope and Method of Developmental Analysis,POLS,3
+5203,International Relations Theories,POLS,3
+5204,Advanced Political Science Methods,POLS,3
+5205,"Identity, Culture and Norms in World Politics",POLS,3
+5206,Foundations of Political Philosophy,POLS,3
+5208,Critical Approaches to International Relations Theories,POLS,3
+5209,"Race, Gender, and Sexuality in International Relations",POLS,3
+5210,Global Governance and World Order(s),POLS,3
+5220,Protracted Social Conflicts,POLS,3
+5225,International Political Economy,POLS,3
+5226,The Political Economy of Regionalism,POLS,3
+5230,Regime Change and Democratization,POLS,3
+5233,Middle East Conflicts,POLS,3
+5236,Contemporary Issues in Political Islam,POLS,3
+5237,Modern Islamic Political Thought,POLS,3
+5240,Politics of Modern Egypt,POLS,3
+5244,Comparative Politics of Europe,POLS,3
+5245,Development Politics and International Cooperation,POLS,3
+5250,Comparative Politics of Asia,POLS,3
+5251,Comparative Politics of Africa,POLS,3
+5252,Arab-American Relations,POLS,3
+5254,Comparative Foreign Policy: Theories and Applications,POLS,3
+5255,Conflict and Security in Global Politics,POLS,3
+5258,Comparative Politics of the Middle East,POLS,3
+5261,Public Policy and Development,POLS,3
+5262,International Development Organizations,POLS,3
+5270,Special Topics in Political Science for Graduates,POLS,3
+5271,Seminar: Special Topics in International Relations for Graduates,POLS,3
+5280,Independent Study and Readings,POLS,3
+5285,Project Seminar,POLS,3
+5286,Skills in Development Practice and Internships,POLS,3
+5299,Research Guidance and Thesis,POLS,0
+2101,Statistics for Business,OPMG,3
+3201,Operations for Competitive Advantage,OPMG,3
+4102,Quantitative Approach to Management,OPMG,3
+4202,Production/Operations Management II,OPMG,3
+4203,Business Process Management and Simulation,OPMG,3
+4204,Service Operations and Strategy,OPMG,3
+4301,Supply Chain Management,OPMG,3
+4970,Special Topics in Production / Operation Management,OPMG,3
+4975,Independent Study in Production/Operation Management,OPMG,NULL
+5201,Introduction to Business Statistics,OPMG,3
+5202,Operations Management for Competitive Advantage,OPMG,3
+5301,Managing and Coordinating Supply Chains,OPMG,3
+5302,Managing Dynamic Projects,OPMG,3
+5303,Data Analysis,OPMG,3
+5305,Operations Strategy,OPMG,3
+5306,Business Dynamics,OPMG,3
+5370,Selected Topics in Operations Management,OPMG,3
+5375,Independent Study in Operations Management,OPMG,NULL
+1000,Introduction to Psychology,PSYC,3
+1098,Fundamentals of Neurosciences,PSYC,4
+2000,Introduction to Psychological Statistics,PSYC,3
+2099,Selected Topics in Psychology,PSYC,3
+2100,Research Methods for Psychology,PSYC,4
+2201,Introduction to Community Development,PSYC,3
+3002,Personal Growth and Adjustment,PSYC,3
+3003,Community Psychology,PSYC,3
+3010,Social Psychology,PSYC,3
+3011,Educational Psychology,PSYC,3
+3021,Psychology of Love and Attraction in Egypt,PSYC,3
+3022,Psychology of Inclusion and Exclusion in Egypt,PSYC,3
+3040,Lifespan Development,PSYC,3
+3080,Cognitive Psychology,PSYC,3
+3130,Learning and Behavioral Psychology,PSYC,3
+3202,Participatory Action Research in Community Settings,PSYC,3
+3270,Theories of Personality,PSYC,3
+3420,Abnormal Psychology,PSYC,3
+3800,Biopsychology,PSYC,3
+4001,Supervised Research in Psychology,PSYC,NULL
+4002,Independent Study,PSYC,NULL
+4011,Cultural Psychology,PSYC,3
+4012,Psychology of Gender,PSYC,3
+4013,Psychology of Trauma,PSYC,3
+4014,Child Psychology,PSYC,3
+4015,Psychological Anthropology,PSYC,3
+4016,Introduction to Forensic Psychology,PSYC,3
+4022,Industrial/Organizational Psychology,PSYC,3
+4030,History and Systems of Psychology,PSYC,3
+4062,Clinical Psychology,PSYC,3
+4063,Advanced Community Psychology,PSYC,3
+4098,Selected Topics in Neuroscience,PSYC,3
+4099,Selected Topics in Psychology,PSYC,3
+4150,Psychological Testing and Assessment,PSYC,3
+4203,Practicum in Community Development,PSYC,3
+5000,Research Methods and Inferential Statistics for Psychology,PSYC,3
+5122,Physiological Psychology,PSYC,3
+5200,Fundamentals of Counseling,PSYC,3
+5202,Advanced Lifespan Development,PSYC,3
+5203,Community Collaboration and Assessment,PSYC,3
+5205,Psychology in the Schools,PSYC,3
+5206,International and Multicultural Psychology,PSYC,3
+5209,Independent Study and Guided Readings,PSYC,NULL
+5210,Community Psychology and Systems Theory,PSYC,3
+5220,Applied Research Design and Statistical Analysis,PSYC,3
+5226,Seminar in Cross-Cultural Family Studies,PSYC,3
+5230,Ethics and Professional Issues,PSYC,3
+5233,Program Evaluation,PSYC,3
+5241,Theories of Counseling and Psychotherapy,PSYC,3
+5243,Prevention and Intervention in Communities,PSYC,3
+5251,Psychological Assessment,PSYC,3
+5253,Consultation to Non-Profit Organizations,PSYC,3
+5255,Assessment and Evaluation for Learning Enrichment,PSYC,3
+5256,Special Topics in Psychology,PSYC,3
+5261,Psychopathology and Resilience across Cultures,PSYC,3
+5264,Practicum I in Counseling Psychology,PSYC,3
+5265,Applied Projects in Inclusive Education,PSYC,3
+5270,Group Work,PSYC,3
+5271,Career Development and Counseling,PSYC,3
+5274,Practicum II in Counseling Psychology,PSYC,3
+5281,Couples Counseling and Human Sexuality,PSYC,3
+5283,Internship in Community Psychology,PSYC,3
+5284,Internship in  Counseling Psychology,PSYC,6
+5299,Research Guidance and Thesis,PSYC,3
+2099,Selected Topics for the Core Curriculum,PPAD,3
+3198,Management in Government,PPAD,3
+4111,Introduction of Public Policy and Administration,PPAD,3
+4113,Selected Topics in Global and Public Affairs,PPAD,3
+5111,Essentials of Public Policy and Administration,PPAD,3
+5113,Organizational Behavior for Government and Nonprofit Management,PPAD,3
+5114,Management of Development Programs,PPAD,3
+5122,Administrative Environment and Public Policy in Egypt and the Middle East,PPAD,3
+5123,"Governance, Accountability, and Stakeholder Negotiations",PPAD,3
+5124,Leadership and Communication for Public Affairs,PPAD,3
+5125,Citizen-centered government,PPAD,3
+5126,Managing NGOs in Developing and Transitional Countries,PPAD,3
+5127,Reforming Delivery of Social Services,PPAD,3
+5128,Corporate Social Responsibility and NGO Partnerships,PPAD,3
+5129,Globalization and Development,PPAD,3
+5131,Government Finance for Policy Analysis,PPAD,3
+5132,Social and Environmental Policy,PPAD,3
+5133,Global Health Issues and Policies,PPAD,3
+5134,Government Regulation of Business and Investment,PPAD,3
+5135,Promotion of Local Economic Development,PPAD,3
+5136,Gender in Public Policy and Administration,PPAD,3
+5141,Policy for Sustainable Cities,PPAD,3
+5142,Greening the Built Environment,PPAD,3
+5143,Urban Infrastructure Development for Sustainability,PPAD,3
+5151,Issues in International Security,PPAD,3
+5152,Conflict Prevention and Resolution,PPAD,3
+5153,"Armament, Arms Control and Disarmament",PPAD,3
+5154,Contemporary Security Issues in the Middle East,PPAD,3
+5155,Governance of the Global Economy,PPAD,3
+5156,Multilateral and Bilateral Cooperation for Development,PPAD,3
+5161,Diplomacy: Theory and Practice,PPAD,3
+5168,Proposal Writing and Grant Management for Nonprofit Organizations,PPAD,3
+5169,Issues in Social Entrepreneurship,PPAD,3
+5170,Volunteer Management,PPAD,3
+5171,International and Comparative Human Resources Management,PPAD,3
+5172,Compensation Management,PPAD,3
+5173,"Public Administration, Technology, and Innovation",PPAD,3
+5174,Internship in Public and Non-Profit Organizations,PPAD,3
+5175,Independent Study in Public Policy and Administration,PPAD,NULL
+5178,Program Evaluation,PPAD,3
+5179,Big Data Analytics for Public Policy,PPAD,3
+5180,Introduction to Data Analytics,PPAD,3
+5181,Public Policy Theory and Practice,PPAD,3
+5198,Practicum,PPAD,3
+5198,Practicum,PPAD,3
+5199,Special Topics in Public Policy and Administration,PPAD,NULL
+5201,Research Methods for Public Policy and Administration,PPAD,3
+5202,Public Policy Theory & Practice,PPAD,3
+5211,Qualitative Analysis for Policy and Administration,PPAD,3
+5212,Applied Quantitative Analysis,PPAD,3
+5221,Strategic Management for Government and Nonprofit Organizations,PPAD,3
+5222,Fundamentals of Financial Planning and Management for Government and Nonprofit Organizations,PPAD,3
+5223,International Models of Public Management,PPAD,3
+5224,Human Resource Management for Government and Nonprofit Organizations,PPAD,3
+5225,Regionalism and Regional Integration,PPAD,3
+5231,Economics for Public Policy Analysis,PPAD,3
+5232,Role of Government in a Market-Oriented Economy,PPAD,3
+5251,International Organization in Global Governance,PPAD,3
+5252,Theory and Practice of Negotiation,PPAD,3
+5258,Role of Force: Strategy and Statecraft,PPAD,3
+5288,Comprehensives,PPAD,1
+5293,Capstone Project,PPAD,0
+5298,Research Seminar,PPAD,0
+5299,Research Guidance,PPAD,0
+1000,Approaches to Critical Writing,RHET,3
+1010,Freshman Writing,RHET,3
+1020,Research Writing,RHET,3
+1099,Selected Topics,RHET,3
+1100,Effective Argument,RHET,3
+2010,Research Writing,RHET,3
+2099,Selected Topics,RHET,3
+3099,Selected Topics,RHET,3
+3110,The Writer's Workshop,RHET,3
+3120,Life Narratives,RHET,3
+3130,Travel Writing,RHET,3
+3140,Writing Children's Literature,RHET,3
+3150,Poetry Writing,RHET,3
+3160,Fiction writing,RHET,3
+3210,Business Communication,RHET,3
+3220,Public Speaking,RHET,3
+3230,Technical Communication,RHET,3
+3240,Principles of Mediation and Negotiation,RHET,3
+3250,Digital Rhetoric,RHET,3
+3310,Discourse and Power,RHET,3
+3320,Writing in the Social Sciences,RHET,3
+3330,Words that Change the World,RHET,3
+3340,Making Your Case: The Art of Persuasion,RHET,3
+3350,Writing and Cognition: The Mind and the Machine,RHET,3
+4060,Independent Study,RHET,NULL
+4160,Imagining the Book,RHET,3
+4260,Writing for Project Funding,RHET,3
+4270,Research and Writing Internship,RHET,3
+4280,Advanced Scientific and Technical Writing,RHET,3
+4360,Writing for Publication,RHET,3
+5201,"Robotics: Kinematics, Dynamics and Control",RCSS,3
+5202,Embedded Real Time Systems,RCSS,3
+5203,Modern Control Design,RCSS,3
+5204,Applied Estimation,RCSS,3
+5221,Intelligent and Autonomous Robotic Systems,RCSS,3
+5222,Mechatronics Innovations and Experimental Robotics,RCSS,3
+5223,Bioinspired Robotics and Multi Robotic Systems,RCSS,3
+5224,Robotics and Intelligent Automated Manufacturing,RCSS,3
+5231,"Teleoperation, Haptic Systems and Collaborative Control",RCSS,3
+5232,Robust and Optimal Control,RCSS,3
+5233,Nonlinear and Adaptive Control,RCSS,3
+5234,Networked Control Systems: Design and Applications,RCSS,3
+5241,Smart Systems and Computational Intelligence,RCSS,3
+5242,MEMS/NEMS Technology and Devices,RCSS,3
+5243,Image Analysis and Computer Vision,RCSS,3
+5244,"Sensors, Perception and Smart Systems",RCSS,3
+5245,Advanced Artificial Intelligence,RCSS,3
+5930,Selected Topics in RCSS,RCSS,3
+5980,Capstone Project,RCSS,3
+5989,Research Guidance Thesis,RCSS,3
+6930,"Advanced Selected Topics in Robotics, Control and Smart Systems (RCSS)",RCSS,3
+6980,Research Guidance Dissertation,RCSS,3
+1099,Selected Topics for Core Curriculum,SOC,3
+2005,Arab Society,SOC,3
+2099,Selected Topics for Core Curriculum,SOC,3
+2101,Introduction to Sociology,SOC,3
+2201,Introduction to Community Development,SOC,3
+2301,Social Problems of the Middle East,SOC,3
+2302,Arab Family Structure and Dynamics,SOC,3
+3010,Social Psychology,SOC,3
+3025,Development Agencies,SOC,3
+3030,Sociology of Literature,SOC,3
+3045,The Urban Experience,SOC,3
+3050,Rural Sociology,SOC,3
+3055,Fundamentals of Population Studies,SOC,3
+3060,"Social Constructions of Difference: Race, Class and Gender",SOC,3
+3085,Environmental Issues in Egypt,SOC,3
+3102,History of Social Theory,SOC,3
+3103,Social Statistics,SOC,3
+3104,Contemporary Sociological Theory,SOC,3
+3105,Doing Survey Research in the Social Sciences,SOC,3
+3202,Participatory Action Research in Community Settings,SOC,3
+3303,Social Movements,SOC,3
+3304,Social Class and Inequality,SOC,3
+3305,Selected Topics in Sociology,SOC,3
+4005,Sociology of Work,SOC,3
+4010,Educational Sociology,SOC,3
+4020,Criminology,SOC,3
+4025,Religion in a Global World,SOC,3
+4035,Political Sociology,SOC,3
+4040,Gender and Power in Development,SOC,3
+4055,Seminar in African Studies,SOC,3
+4099,Selected Topics in Sociology,SOC,3
+4106,Critical Approaches to Development,SOC,3
+4107,Senior Seminar,SOC,3
+4203,Practicum in Community Development,SOC,3
+4405,Independent Study,SOC,3
+4499,Selected Topics in Coptic Studies,SOC,3
+4560,Development Studies Seminar,SOC,3
+5200,Introduction to Migration and Refugee Studies,ANTH,3
+5201,Classical Social Thought,ANTH,3
+5203,Ethnographic Fieldwork,ANTH,3
+5204,Survey Research,ANTH,3
+5208,Special Topics in Migration and Refugee Issues,ANTH,3
+5209,"Migration, Integration and Citizenship",ANTH,3
+5210,Problems in Sociology-Anthropology,ANTH,3
+5215,"Kin, Friends and Neighbors",ANTH,3
+5220,Gender and Sexuality,ANTH,3
+5225,"Religion, Ideology and Society",ANTH,3
+5230,Theorizing the State,ANTH,3
+5235,Maintaining Systems of Global Inequality,ANTH,3
+5240,Revisiting the Rural,ANTH,3
+5245,Cities: Structure and Dynamics,ANTH,3
+5250,Sociology of Knowledge,ANTH,3
+5255,Comparative Health and Healing Systems,ANTH,3
+5260,Population Dynamics,ANTH,3
+5265,"Ethnicity, Identity and Nationalism",ANTH,3
+5270,Environment and Society,ANTH,3
+5275,Modern Social Movements,ANTH,3
+5280,History and Memory,ANTH,3
+5285,Social and Cultural Dynamics in Contemporary Egypt,ANTH,3
+5290,Middle Eastern Societies and Cultures,ANTH,3
+5295,Reading Capital,ANTH,3
+5297,Independent Study and Readings,ANTH,3
+5298,Thesis Writing Seminar,ANTH,3
+5299,Research Guidance and Thesis,ANTH,0
+5201,Global Changes and Sustainable Development,GREN,3
+5202,Engineering for a Sustainable Environment,GREN,3
+5203,Core Concepts & Applications for Social & Environmental Policy,GREN,3
+5204,Entrepreneurship and Innovation,GREN,3
+5205,Environment and Society,GREN,3
+5211,Water Desalination,GREN,3
+5213,Solid and Hazardous Wastes Engineering,GREN,3
+5214,Green Buildings,GREN,3
+5215,Sustainability of Thermal Systems,GREN,3
+5216,Water-Energy-Food Nexus,GREN,3
+5217,Renewable Energy Systems,GREN,3
+5218,Sustainable Agriculture,GREN,3
+5219,Selected Topics in Green Technologies,GREN,3
+5220,Integrated Water Resources Management,GREN,3
+5221,Marketing Management,GREN,3
+5222,Strategic Management of Innovation,GREN,3
+5223,Managing in a Dynamic Environment,GREN,3
+5224,Financial Management,GREN,3
+5231,Policy for Sustainable Cities,GREN,3
+5232,Greening the Built Environment,GREN,3
+5233,Urban Infrastructure Development for Sustainability,GREN,3
+5234,Egyptian Environmental Law,GREN,3
+5235,Corporate Social Responsibility and NGO Partnerships,GREN,3
+5236,International Migration and Development,GREN,3
+5244,Cities: Structure and Dynamics,GREN,3
+5245,Community Assessment and Program Evaluation,GREN,3
+5246,Community Psychology and Systems Theory,GREN,3
+5247,Prevention and Intervention in Communities,GREN,3
+5248,Consultation to Non-Profit Organizations,GREN,3
+5251,Graduate Thesis Seminar I,GREN,2
+5252,Graduate Thesis Seminar II,GREN,1
+5253,Research Guidance Thesis,GREN,6
+5281,Sustainable Development Project Part One,GREN,3
+5282,Sustainable Development Project Part Two,GREN,3
+5283,Sustainable Development Project Part Three,GREN,3
+5910,Independent Study in Sustainable Development,GREN,3
+5201,"Fundamentals of Curriculum Design, Theory, & Practice",TEAL,3
+5202,Learning Theory & Educational Psychology,TEAL,3
+5203,Social & Political Theories of Educational Practice,TEAL,3
+5204,Assessment of Student Learning,TEAL,3
+5205,Differentiation of Instruction for Diverse Learners,TEAL,3
+5206,Problem-based Instructional Models,TEAL,3
+5207,Promoting Independent & Lifelong Learners,TEAL,3
+5208,Teaching Capstone,TEAL,3
+5209,Teaching Portfolio,TEAL,3
+1099,Selected Topics for Core Curriculum,THTR,3
+1101,The World of the Theatre,THTR,3
+1200,Acting for Non-Majors,THTR,3
+1201,Theatre in the Making,THTR,3
+2099,Selected Topics for Core Curriculum,THTR,3
+2201,Acting I,THTR,3
+2211,Acting in Arabic I,THTR,3
+2301,Play Analysis,THTR,3
+2401,Introduction to Technical Theatre,THTR,3
+2601,Production Practicum,THTR,1
+2603,Rehearsal and Performance Practicum,THTR,1
+3099,Selected Topics in Theatre,THTR,3
+3103,Drama in Context I: Greeks to English Renaissance,THTR,3
+3104,Drama in Context II: Italian Renaissance to Modern,THTR,3
+3105,Drama in Context III: Modern and Contemporary,THTR,3
+3201,Acting II,THTR,3
+3203,Special Topics in Acting,THTR,3
+3205,Acting Styles,THTR,3
+3207,Movement for the Stage,THTR,3
+3211,Acting in Arabic II,THTR,3
+3301,Directing I,THTR,3
+3401,Design for the Theatre,THTR,3
+3403,Make Up for the Theatre,THTR,3
+3501,Playwriting I,THTR,3
+3503,Playwriting II,THTR,3
+3601,Advanced Theatre Practicum,THTR,3
+3603,Design Practicum,THTR,3
+4000,Independent Study,THTR,NULL
+4103,Dramatic Theory and Criticism,THTR,3
+4110,Theatrical and Dramatic Translation,THTR,3
+4301,Directing II,THTR,3
+4404,Scene Design,THTR,3
+4405,Stage Lighting,THTR,3
+4406,Costume Design for Theatre and Film,THTR,3
+4701,Senior Seminar,THTR,3
+4703,Senior Thesis,THTR,3
+4705,Senior Honors Project,THTR,3
+5203,Media Ethics and Social Responsibility,TVDJ,3
+5207,Practicum: TV or Special Video Assignment,TVDJ,3
+5237,TV Digital News Gathering and Script Writing,TVDJ,3
+5239,TV Presentation and Voice Coaching,TVDJ,3
+5241,Field and Studio Digital Camera Production,TVDJ,3
+5242,Digital Video Editing,TVDJ,3
+5245,TV Studio News Reporting,TVDJ,3
+5246,TV Digital Journalism Capstone,TVDJ,3
+5290,Special Topics,TVDJ,3
+5217,Translation: Theory and Practice,TRST,3
+5218,"Translation and The Arab ""Renaissance""",TRST,3
+1099,Selected Topics for Core Curriculum,ARTV,3
+2113,Introduction to Visual Cultures,ARTV,3
+2200,Art Foundations,ARTV,3
+2201,Introduction to Drawing,ARTV,3
+2202,Introduction to Painting,ARTV,3
+2203,Introduction to sculpture/Installation,ARTV,3
+2204,Introduction to Time-Based Media,ARTV,3
+2206,Experimental Animation Art,ARTV,3
+2207,Introduction to Ceramics,ARTV,3
+2208,Internship Practice,ARTV,0
+2209,Studio Professional Practice,ARTV,0
+2210,Experimental Workshop Practices,ARTV,0
+2211,Introduction to Experimental Comic Strips,ARTV,3
+2214,History of Art Practices I,ARTV,3
+2230,Introduction to Digital Photography,ARTV,3
+3115,Art Theory,ARTV,3
+3270,Selected Topics in Art,ARTV,3
+3311,Advanced Painting and Drawing,ARTV,3
+3312,Advanced Studio I,ARTV,3
+3316,History of Art Practices II,ARTV,3
+4269,Senior Project (A),ARTV,3
+4270,Senior Project (B),ARTV,3
+4302,Independent Study,ARTV,NULL
+4311,Advanced Studio II,ARTV,3
+4312,Advanced Studio III,ARTV,3
+5110,Contemporary issues in Arab Art,ARTV,3

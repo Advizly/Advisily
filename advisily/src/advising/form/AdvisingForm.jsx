@@ -9,7 +9,7 @@ import MajorInfo from "../../subforms/majorSubForm/MajorInfo";
 import { useUserMajorInfo, useFormStep, useUserCourses } from "../../hooks";
 
 //services
-import { authService } from "../../services";
+import { advisingService, authService } from "../../services";
 
 //utils
 import {
@@ -22,7 +22,7 @@ import {
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 function AdvisingForm(props) {
-  const { step, back, next } = useFormStep();
+  const { step, back, next } = useFormStep(3);
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
@@ -37,7 +37,7 @@ function AdvisingForm(props) {
   const handleSubmit = async (values, { setSubmitting }) => {
     if (window.confirm("Are you sure you want to submit?")) {
       try {
-        console.log("Submitting values: ", values);
+        // console.log("Submitting values: ", values);
         const {
           minorIds: oldMinorIds,
           majorId: oldMajorId,
@@ -64,7 +64,8 @@ function AdvisingForm(props) {
         );
 
         updateUserMinors(studentId, values.minorIds, oldMinorIds);
-        updateAdvisingInfo(studentId, values);
+        // updateAdvisingInfo(studentId, values);
+        advisingService.addAdvisingSession({ ...values, studentId });
       } catch (e) {
         console.log(e);
       }

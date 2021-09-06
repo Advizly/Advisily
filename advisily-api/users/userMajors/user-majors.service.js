@@ -1,7 +1,7 @@
 const { query } = require("../../helpers/mysql");
 
 module.exports = {
-  getUserMajors,
+    getUserMajors,
   addUserMajor,
   deleteUserMajor,
 };

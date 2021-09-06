@@ -9,10 +9,16 @@ function FormCheckbox({ label, ...props }) {
   const divClassName = field.checked ? "form-check-disabled" : "";
   return (
     <div className={"form-check " + divClassName}>
-      <label htmlFor={props.name} className="form-check-label">
+      <label htmlFor={props.value} className="form-check-label">
         {label}
       </label>
-      <input type="checkbox" className={inputClassName} {...field} {...props} />
+      <input
+        type="checkbox"
+        id={props.value}
+        className={inputClassName}
+        {...field}
+        {...props}
+      ></input>
     </div>
   );
 }

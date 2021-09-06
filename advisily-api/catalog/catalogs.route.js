@@ -6,7 +6,11 @@ const requestValidator = require("../middleware/requestValidator");
 const catalogController = require("./catalog.controller");
 const schemas = require("./catalog.schema");
 
-router.get("/", catalogController.getCatalogs);
+router.get(
+  "/",
+  requestValidator(schemas.getCatalogs(), "query"),
+  catalogController.getCatalogs
+);
 router.get(
   "/catalog",
   requestValidator(schemas.getCatalog(), "query"),
@@ -16,6 +20,11 @@ router.get(
   "/courses",
   requestValidator(schemas.getCatCourses(), "query"),
   catalogController.getCatCourses
+);
+router.get(
+  "/plans/courses",
+  requestValidator(schemas.getPlanCourses(), "query"),
+  catalogController.getPlanCourses
 );
 
 module.exports = router;

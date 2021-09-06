@@ -1,6 +1,6 @@
 export const formatCatalogs = (catalogs) => {
   return catalogs.map((c) => {
-    return { id: c.catalogId, name: c.season + " " + c.year };
+    return { id: c.catalogId, name: c.year };
   });
 };
 

@@ -23,10 +23,15 @@ export const updateAdvisingSessions = async (sessionInfo) => {
   await http.put(apiEndpoint, sessionInfo);
 };
 
-const exported = {
+export const generatePlan = async (sessionId) => {
+  await http.post(`${apiEndpoint}/generate-plan`, { sessionId });
+};
+
+const advisingService = {
   getAdvisingSessions,
   getAdvisingSession,
   addAdvisingSession,
   updateAdvisingSessions,
+  generatePlan,
 };
-export default exported;
+export default advisingService;

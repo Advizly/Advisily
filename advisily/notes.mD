@@ -10,12 +10,14 @@ tips for later:
 5. courses prerequisites change according to catalog.
 
 6. Prerequisite are connected with current catalog.
-7. Change which catalog to change, the semester you declared in.
+7. Change "which catalog are you following" to "the semester you declared in.
 8. Core curriculum is followed according to when the student entered the university.
-9. Arabic language lazm ya5do courses in egyptology mn fall 2019.
-10. Arab world studies: Arab World Studies 2 (Egypt Category), Arab World Studies 1 (Generic Arab)
-11. Send email to the advisor.
-12. Add general elective list.
-13. Save the warnings recieved while advising.
-14. Notes: recommednation when courses are offered in fall only, if student in semester number is X note that he should finish core by time X.
-15. add note for when student wants to overload, about the acceptance.
+9. Arab world studies: Arab World Studies 2 (Egypt Category), Arab World Studies 1 (Generic Arab)
+10. Send email to the advisor.
+11. Add general elective list.
+12. Save the warnings recieved while advising.
+13. Notes: recommednation when courses are offered in fall only, if student in semester number is X note that he should finish core by time X.
+14. add note for when student wants to overload, about the acceptance.
+
+15. make sure you are only getting catalogs for the major given.
+16. ask the user about which semester this is.

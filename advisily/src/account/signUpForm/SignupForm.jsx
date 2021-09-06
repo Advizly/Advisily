@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { Form, SubmitButton } from "../../components/form";
-import GoogleLoginButton from "../../components/GoogleLoginButton";
+// import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 import UserSubForm from "../../subforms/userSubForm/UserSubForm";
 

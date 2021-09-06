@@ -1,0 +1,176 @@
+
+.tooltip body,
+.toplevel_popup body,
+table.block_n2_and_content body {
+	font-size: 14px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip td,
+.toplevel_popup td,
+table.block_n2_and_content td {
+	color: #333;
+	font-size: 14px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip th,
+.toplevel_popup th,
+table.block_n2_and_content th {
+	color: #333;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip .n1_header,
+.toplevel_popup .n1_header,
+table.block_n2_and_content .n1_header {
+	color: #555555;
+	font-size: 18px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip .n1_archived,
+.toplevel_popup .n1_archived,
+table.block_n2_and_content .n1_archived {
+	color: #AD650E;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Verdana, Helvetica, Arial, sans-serif;
+}
+.tooltip .n3_header,
+.toplevel_popup .n3_header,
+table.block_n2_and_content .n3_header {
+	color: #333;
+	font-size: 18px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h1, .tooltip .header,
+.toplevel_popup h1, .toplevel_popup .header,
+table.block_n2_and_content h1, table.block_n2_and_content .header {
+	color: #002e57;
+	font-size: 40px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h2, .tooltip .header_2,
+.toplevel_popup h2, .toplevel_popup .header_2,
+table.block_n2_and_content h2, table.block_n2_and_content .header_2 {
+	color: #002e57;
+	font-size: 30px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h3, .tooltip .header_3,
+.toplevel_popup h3, .toplevel_popup .header_3,
+table.block_n2_and_content h3, table.block_n2_and_content .header_3 {
+	color: #002e57;
+	font-size: 22px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h4, .tooltip .header_4,
+.toplevel_popup h4, .toplevel_popup .header_4,
+table.block_n2_and_content h4, table.block_n2_and_content .header_4 {
+	color: #002e57;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h5, .tooltip .header_5,
+.toplevel_popup h5, .toplevel_popup .header_5,
+table.block_n2_and_content h5, table.block_n2_and_content .header_5 {
+	color: #002e57;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip h6, .tooltip .header_6,
+.toplevel_popup h6, .toplevel_popup .header_6,
+table.block_n2_and_content h6, table.block_n2_and_content .header_6 {
+	color: #002e57;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip .date,
+.toplevel_popup .date,
+table.block_n2_and_content .date {
+	color: #333;
+	font-size: 6px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip .n2_search_header,
+.toplevel_popup .n2_search_header,
+table.block_n2_and_content .n2_search_header {
+	color: #223355;
+	font-size: 15px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+}
+.tooltip a:link, .tooltip a:visited,
+.toplevel_popup a:link, .toplevel_popup a:visited,
+table.block_n2_and_content a:link, table.block_n2_and_content a:visited {
+	color: #002E57;
+	font-size: 14px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tooltip a:active, .tooltip a:hover,
+.toplevel_popup a:active, .toplevel_popup a:hover,
+table.block_n2_and_content a:active, table.block_n2_and_content a:hover {
+	color: #8bd3f5;
+	font-size: 14px;
+	font-weight: inherit;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tooltip a.navbar:link, .tooltip a.navbar:visited,
+.toplevel_popup a.navbar:link, .toplevel_popup a.navbar:visited,
+table.block_n2_and_content a.navbar:link, table.block_n2_and_content a.navbar:visited {
+	color: #002e57;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tooltip a.navbar:active, .tooltip a.navbar:hover,
+.toplevel_popup a.navbar:active, .toplevel_popup a.navbar:hover,
+table.block_n2_and_content a.navbar:active, table.block_n2_and_content a.navbar:hover {
+	color: #002e57;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tooltip a.navbar_chosen:link, .tooltip a.navbar_chosen:visited,
+.toplevel_popup a.navbar_chosen:link, .toplevel_popup a.navbar_chosen:visited,
+table.block_n2_and_content a.navbar_chosen:link, table.block_n2_and_content a.navbar_chosen:visited {
+	color: #002e57;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+.tooltip a.navbar_chosen:active, .tooltip a.navbar_chosen:hover,
+.toplevel_popupa.navbar_chosen:active, .toplevel_popupa.navbar_chosen:active,
+table.block_n2_and_content a.navbar_chosen:active, table.block_n2_and_content a.navbar_chosen:hover {
+	color: #002e57;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+.tooltip .important_note,
+.toplevel_popup .important_note,
+table.block_n2_and_content .important_note {
+	color: #CC0000;
+	font-size: 13px;
+	font-weight: bold;
+	font-family: Arial, Tahoma, Verdana, sans-serif;
+	text-decoration: none;
+}

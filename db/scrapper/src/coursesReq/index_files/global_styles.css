@@ -1,0 +1,888 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css");
+/* CSS Document */
+
+/* Tooltip style */
+.tooltip {
+  position: absolute;
+  width: 300px;
+  margin-top: 10px;
+  padding: 5px 10px 15px 10px;
+  border: 2px solid #666;
+  border-left: 2px solid #CCC;
+  border-top: 2px solid #CCC;
+  background-color: #EEE;
+}
+
+/*  This style added to remove margins around ad-hoc text. They are created by the FCKEditor which always adds a <p>.
+  IE style incompatibilities are fixed by including ie.css (for programs only) in the client dir.
+  This may be overridden by the publi_custom.php stylesheet. */
+.acalog-adhoc {
+  margin: -10px 0px;
+}
+
+em .tooltip, em span table.td_dark, em span div.td_dark { font-style: normal; }
+strong .tooltip, strong span table.td_dark, strong span div.td_dark { font-weight: normal; }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-size: inherit; }
+
+td.coursepadding {
+ padding: 0px 10px !important;
+}
+
+/*  Fix spacing around ULs in an ad-hoc text.
+    This will solve text overlapping and make the UL flush left with the courses. */
+.acalog-adhoc ul {
+  margin: 0px !important;
+  padding-left: 0px;
+  margin-bottom: 10px !important;
+}
+
+.acalog-adhoc ol {
+  margin-bottom: 1em;
+}
+
+.acalog-highlight-search-1, .searchword {
+  background-color: #B9C9FF;
+  font-size: inherit;
+}
+
+.acalog-highlight-search-2 {
+  background-color: #FFB9C9;
+  font-size: inherit;
+}
+
+.acalog-highlight-search-3 {
+  background-color: #C9FFB9;
+  font-size: inherit;
+}
+
+.acalog-highlight-search-4 {
+  background-color: #FFCBB9;
+  font-size: inherit;
+}
+
+.acalog-highlight-search-5 {
+  background-color: #FFFF00;
+  font-size: inherit;
+}
+
+.acalog-highlight-search-6 {
+  background-color: #C299FF;
+  font-size: inherit;
+}
+
+.acalog-highlight-ignore .acalog-highlight-search-1,
+.acalog-highlight-ignore .searchword,
+.acalog-highlight-ignore .acalog-highlight-search-2,
+.acalog-highlight-ignore .acalog-highlight-search-3,
+.acalog-highlight-ignore .acalog-highlight-search-4,
+.acalog-highlight-ignore .acalog-highlight-search-5,
+.acalog-highlight-ignore .acalog-highlight-search-6 {
+  background-color: transparent;
+}
+
+.ajaxcourseindentfix .acalog-social-media-links {
+  display:inline;
+  margin-right: 4px;
+  position:relative;
+  top:4px;
+}
+
+.acalog-social-media-links img {
+  display:inline;
+}
+
+.social-media-align {
+  float: right;
+}
+
+.social-media-ajax {
+  text-align: right;
+  padding-left: 30px;
+}
+
+/* Hide the Explanation of Access keys */
+.accesskeys {
+  position: absolute;
+  left:-10000px;
+  top: auto;
+  width:200px;
+  text-align:left;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+
+.acalog_catalog_name {
+  display: none;
+}
+
+.acalog_archived_catalog {
+  display: none;
+}
+
+/*  Hide images with a "hidden" class. (ticket #3996) */
+img.hidden, .hide_anchor_tag {
+  display: none;
+}
+
+/* 508c Styles */
+
+a { cursor: pointer; }
+
+div.spacer_div {height: 0; width: 0} /** title attribute provided for screen-readers. Tested with chromevox */
+
+/**
+  Remove line 18 from template file header.html in s3 which inserts inline style attribute to toplevel table
+  $('.toplevel').css({'background' : 'transparent', 'margin': '0 auto'});
+**/
+.toplevel {
+  margin: 0 auto; /* center toplevel table */
+  table-layout: auto; /* adjust table width and length to fit contents */
+  background-color: transparent;
+}
+
+.table_default {
+  width: 100%;
+  border-spacing: 0px;
+  table-layout: auto;
+}
+
+.td_first {
+  width: 270px !important;
+}
+
+.links_table {
+  border-spacing: 0;
+  table-layout: auto;
+}
+
+.links_table tr, .links_table tr td {
+  padding: 0;
+}
+
+.table_default tr, .default_no_width tr,
+.links_table tr {
+  vertical-align: top;
+}
+
+td.block_content_outer {
+  vertical-align: text-top;
+}
+
+.portfolio_form tr td{
+  padding: 2px;
+  border: 0px;
+}
+
+.row-separator {
+  width: 100%;
+  text-align: right;
+  border-top: 1px solid black;
+}
+
+.row-separator-pad {
+  border-bottom: none;
+  padding: 2px 5px;
+}
+
+.default_no_width {
+  border-collapse: collapse;  /* no cell-spacing */
+  display: inline-block;
+}
+.width {
+  width: 100%;
+}
+
+.width_15 {
+  width: 15px !important;
+}
+
+.width_80 {
+  width: 80px !important;
+}
+
+.width_100 {
+  width: 100px !important;
+}
+
+.width_200 {
+  width: 200px !important;
+}
+
+.width_250 {
+  width: 250px !important;
+}
+
+.nopom { /* no padding or margin */
+  margin: 0; padding: 0;
+}
+
+.custom_leftpad_20 {
+  padding-left: 20px;
+}
+
+.custom_leftpad_30 {
+  padding-left: 30px;
+}
+
+.custom_leftpad_40 {
+  padding-left: 40px;
+}
+
+.preview_lists {
+  list-style-type: none;
+}
+
+.formtextinput {
+  width: 150px;
+}
+
+.form_table tr td {
+  padding: 2px;
+}
+
+.header_block_right {
+  float: right;
+}
+
+.small_date_pad {
+  width: 10px;
+}
+
+.medium_date_pad {
+  width: 150px;
+  text-align: center;
+}
+
+.no_display {
+  display: none !important;
+}
+
+.float_right {
+  float: right;
+  text-align: right;
+}
+
+.float_left {
+  text-align: left;
+}
+
+.align_center {
+  text-align: center;
+}
+
+.help_block {
+  float: right;
+}
+
+.ajaxcourseindentfix p a {
+  padding: 0 10px;
+}
+
+.print_anchor {
+    display: inline !important;
+}
+
+/* N2 include */
+#location {
+  width: 120px;
+}
+
+.block_n2 {
+  font-size:0px;
+  clear: both;
+  width: 150px;
+}
+
+.n2_form_words {
+  width: 120px;
+  padding-left: 0.4em;
+}
+
+.block_n2_links {
+  width: 170px;
+}
+
+.print_icon {
+  width: 10px;
+  height: 14px;
+  border: 0px;
+  margin: 0 5px;
+  vertical-align: top;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.preview_td {
+  padding: 0px 5px 1px 3px;
+}
+
+.warning {
+  color: red;
+}
+
+.block {
+  display: block;
+}
+
+.prefix_wrap {
+  padding: 5px 0px 0px 25px;
+}
+
+.prefix_box {
+  height: 5.5em;
+  overflow: auto;
+}
+
+.inline {
+  display: inline;
+}
+
+#show_options {
+  display: none;
+}
+
+#course_options {
+  display: inline;
+}
+
+#hide-prefix-list {
+  display: none;
+}
+
+.prefix_box_label a, .prefix_box_list a {
+  font-size: smaller;
+}
+/* Skip to main content link */
+a.skip-nav {
+  left:-999px;
+  position:absolute;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+  z-index:-999;
+  color: #FFFF00;
+}
+
+a.skip-nav:focus, a.skip-nav:active {
+  color: #FFFF00;
+  background-color:#373737;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  margin: 0px;
+  padding:10px;
+  border-radius: 5px;
+  border:2px solid rgb(0, 174, 255);
+  text-align:center;
+  font-size:1.5em;
+  z-index:999;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+td.th_lt, td.th_rt{
+  color: #ffffff !important;
+  font-weight: 900 !important;
+}
+
+td.th_lt, td.th_rt, td.td_lb, td.td_rb {
+  border-color: #414040 !important;
+  background-color: #414040 !important;
+}
+
+td.td_lb, td.td_rb, td.td_lt, td.td_rt,
+td.td_light, td.td_dark, td.td_Dark, td.th_lt, td.th_rt {
+  padding: 5px !important;
+  border: 1px solid transparent;
+}
+.block_content_popup, .block_content_popup p {
+  padding: 10px;
+  margin: 10px auto;
+}
+
+span.n1_header, a.n1 {
+  padding: 10px 10px;
+  display: inline-block;
+}
+
+.return-to {
+  width: 13px !important;
+  height: 14px !important;
+  vertical-align: middle;
+  padding-right: 3px;
+}
+
+legend {
+  display: table;
+  display: none;
+}
+
+fieldset {
+  border: 1px solid #414040 !important;
+  padding: 0px;
+  margin: 0;
+  min-width: 0;
+  border-radius: 3px;
+}
+
+#global-search-fieldset {
+  border: none !important;
+}
+
+form[name='database_search'] > table {
+  border: 1px solid #000;
+}
+
+.nobr {
+  display: inline-block;
+}
+
+@media print {
+  td.block_content_outer {
+    vertical-align: middle !important;
+  }
+}
+
+/* Responsive Div Tool Styles */
+
+.div-2col ul {
+  column-count: 2;
+}
+
+.div-3col ul {
+  column-count: 3;
+}
+
+.div-4col ul {
+  column-count: 4;
+}
+
+.div-2col ul li,
+.div-3col ul li,
+.div-4col ul li {
+  margin-right: 1em;
+}
+
+@media (max-width: 768px) {
+  .div-3col ul,
+  .div-4col ul {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 478px) {
+  .div-2col ul,
+  .div-3col ul,
+  .div-4col ul {
+    column-count: 1;
+  }
+
+  .div-responsive ul li {
+    margin-right: 0;
+  }
+}
+
+.style-fix {
+  border: 0;
+}
+
+.sr-only {
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+
+
+/* Select2 Styles */
+:root {
+  --select2-font-size: 13px;
+  --select2-height: 24px;
+}
+
+.catalog-selection-container {
+  text-align: left;
+}
+
+.block_n2_and_content .select2-container .select2-selection--single {
+  height: var(--select2-height);
+}
+
+.block_n2_and_content .select2-container--default .select2-selection--single {
+  border-radius: 0;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+  font-size: var(--select2-font-size);
+  margin: 0;
+  padding-left: 3px !important;
+  text-align: left;
+}
+
+.select2-results__option {
+  color: #000;
+}
+
+.block_n2_and_content .select2-container--default .select2-selection--single .select2-selection__rendered {
+  line-height: var(--select2-height);
+}
+
+.block_n2_and_content .select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: var(--select2-height);
+  margin: 0;
+}
+
+.select2-results__option {
+  font-size: var(--select2-font-size);
+  text-align: left;
+}
+
+/* Catalog Select */
+#catalog_select_parent {
+  position: relative;
+}
+
+/* Search Select */
+.block_n2_search #location_select_parent span {
+  margin: 0;
+}
+
+#location_select_parent {
+  height: var(--select2-height);
+  position: relative;
+}
+
+#location_select_parent #location {
+  width: 1px !important;
+}
+
+#location_select_parent .select2-container {
+  position: absolute;
+  width: 100% !important;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+/* Toolbar */
+.gateway-toolbar {
+  align-items: stretch;
+  display: flex;
+  height: 1.25rem;
+  margin: .75rem 0;
+}
+
+.gateway-toolbar .gateway-toolbar-item {
+  align-items: stretch;
+  display: flex;
+  flex: 1 1 auto;
+  width: 1.25rem;
+}
+
+.gateway-toolbar .gateway-toolbar-item button.acalog-share {
+  height: 110% !important;
+  width: 110% !important;
+}
+
+.gateway-toolbar .gateway-toolbar-item .acalog-icon {
+  align-items: center;
+  background: inherit;
+  border: none;
+  color: inherit;
+  display: flex !important;
+  height: 100% !important;
+  padding: 0 !important;
+  text-align: center;
+  text-decoration: none;
+  width: 100% !important;
+}
+
+.gateway-toolbar .gateway-toolbar-item .acalog-icon:hover {
+  background: inherit;
+  color: inherit;
+}
+
+.gateway-toolbar .gateway-toolbar-portfolio a::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  content: "\f005";
+  font-weight: 900;
+  margin: 0 auto;
+}
+
+.gateway-toolbar .gateway-toolbar-share {
+  position: relative;
+}
+
+.gateway-toolbar .gateway-toolbar-share button {
+  border-radius: unset;
+  min-height: unset;
+  min-width: unset;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #FFFFFF;ok
+  border-color: #00488e;
+  color: #00488e;
+}
+
+.gateway-toolbar .gateway-toolbar-share button:hover {
+  background: inherit;
+  color: inherit;
+  background-color: #00488e;
+  border-color: #FFFFFF;
+  color: #FFFFFF;
+}
+
+.gateway-toolbar .gateway-toolbar-share button::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  content: "\f1e0";
+  margin: 0 auto;
+}
+
+.gateway-toolbar .gateway-toolbar-share .gateway-toolbar-share-contents-wrapper {
+  display: none;
+  margin: 0;
+  position: absolute;
+  padding: .125rem;
+  left: -50%;
+  top: -1.75em;
+}
+
+.gateway-toolbar .gateway-toolbar-share .gateway-toolbar-share-contents-wrapper.expanded {
+  display: block; 
+}
+
+.gateway-toolbar .gateway-toolbar-share.gateway-toolbar-item-active .gateway-toolbar-share-contents-wrapper,
+.gateway-toolbar .gateway-toolbar-share:hover .gateway-toolbar-share-contents-wrapper {
+  display: block;
+  visibility: visible;
+}
+
+.gateway-toolbar .gateway-toolbar-share-contents-wrapper .acalog-social-media-links {
+  align-items: stretch;
+  border: 1px solid #444;
+  display: flex !important;
+  height: 1.25rem;
+  padding: .125rem;
+}
+
+.acalog-social-media-links > div {
+  align-items: stretch;
+  display: flex;
+  flex: 1 1 auto;
+  width: 1.25rem;
+}
+
+.acalog-social-media-links > div a {
+  align-items: center;
+  background: #fff;
+  display: flex;
+  flex: 1 0 1.25rem;
+  height: 100%;
+  line-height: 1.25 !important;
+  text-decoration: none !important;
+  text-align: center;
+}
+
+.gateway-toolbar .gateway-toolbar-facebook a {
+  border-color: #3b5998 !important;
+  color: #3b5998 !important;
+  margin-left: 0;
+}
+
+.gateway-toolbar .gateway-toolbar-facebook a::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  content: "\f39e";
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+.gateway-toolbar .gateway-toolbar-facebook a:hover {
+  background: #3b5998 !important;
+  color: #fff !important;
+}
+
+.gateway-toolbar .gateway-toolbar-twitter a {
+  border-color: #00acee !important;
+  color: #00acee !important;
+}
+
+.gateway-toolbar .gateway-toolbar-twitter a::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  text-rendering: optimizeLegibility;
+  content: "\f099";
+  font-weight: 400;
+  margin: 0 auto;
+}
+
+.gateway-toolbar .gateway-toolbar-twitter a:hover {
+  background: #00acee !important;
+  color: #fff !important;
+}
+
+.gateway-toolbar .gateway-toolbar-print a::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  content: "\f02f";
+  margin: 0 auto;
+}
+
+.gateway-toolbar .gateway-toolbar-help a::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  content: "\f128";
+  margin: 0 auto;
+}
+
+.show.clearfix {
+  display: block;
+  position: relative;
+}
+
+.show.clearfix #keyword {
+  box-sizing: border-box;
+  padding: 8px !important;
+  padding-right: 2rem !important;
+  width: 100% !important;
+}
+
+/*
+#keyword-submit-icon {
+  align-items: center;
+  color: #444;
+  display: flex;
+  text-align: center;
+  text-decoration: none;
+  width: 2rem;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#keyword-submit-icon::after {
+  font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+  font-style: normal;
+  font-weight: 900;
+  text-rendering: optimizeLegibility;
+  content: "\f002";
+  margin: 0 auto;
+}
+*/
+
+/******************** My Portfolio ********************/
+
+.portfolio-body .acalog-block-n1 .float_right a, .portfolio-body .help_block a.help {
+  text-decoration: none;
+}
+
+#gateway-popup .portfolio-body .block_content_popup h1#acalog-page-title,
+  #gateway-page .portfolio-body .block_content h1#acalog-page-title {
+  font-style: inherit;
+  font-weight: 500;
+  text-transform: none;
+}
+
+#gateway-page .portfolio-body .table_default hr:first-child {
+  display: none;
+}
+
+.portfolio-body form fieldset {
+  border-color: #777 !important;
+  border-width: 2px !important;
+  border-bottom: none !important;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody > tr td {
+  border-color: #777;
+  border-width: 2px;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody > tr > td:first-child {
+  width: 1.5rem;
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody > tr > td:first-child > div {
+  min-width: 1.5rem;
+  max-width: 1.5rem;
+  text-align: left;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody > tr > td:last-child {
+  text-align: right;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody > tr:last-child {
+  display: none;
+}
+
+.portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody td a:link, .portfolio-body form > fieldset > table:not(.portfolio_form):not(.form_table) > tbody td a:visited {
+  text-decoration: none;
+}
+
+.portfolio-body .remove span {
+  color: #113a5c;
+}
+
+.portfolio-body form button, .portfolio-body table.block_n2_and_content button {
+  padding: 5px 10px !important;
+  margin-top: 10px;
+  height: inherit !important;
+}
+
+.portfolio-body table.block_n2_and_content td {
+  font-weight: 500;
+}
+
+.portfolio-body form button:not(:disabled), .portfolio-body form input[type="submit"]:not(:disabled) {
+  background: none !important;
+  background-image: none !important;
+  background-color: #113a5c !important;
+  color: #FFF !important;
+  border: 1px solid #000 !important;
+  border-radius: 4px 4px !important;
+  text-shadow: none !important;
+}
+
+.portfolio-body table.block_n2_and_content button:disabled {
+  background-color: #EEE;
+  color: #AAA;
+  border: 1px solid #CCC;
+  font-weight: 500;
+}
+
+.portfolio-body div.schedule-btn {
+  float: left;
+}
+
+.portfolio-body div.remove-btn {
+  float: right;
+}
+
+.portfolio-body form[name=division_portfolio] {
+  margin-bottom: 5rem;
+}

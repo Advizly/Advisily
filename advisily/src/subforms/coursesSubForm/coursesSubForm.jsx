@@ -9,8 +9,13 @@ import useCatalogCourses from "../../hooks/useCatalogCourses";
 import { COURSES_IDS, GENERAL_ELECTIVE_CREDITS } from "./fieldNames";
 function CoursesSubForm() {
   const { values, setFieldValue } = useFormikContext();
-  const { concCourses, collateralCourses, coreCourses, electiveCourses } =
-    useCatalogCourses(values.catalogId);
+  const {
+    concCourses,
+    collateralCourses,
+    coreCourses,
+    electiveCourses,
+    engCoreCourses,
+  } = useCatalogCourses(values.catalogId);
 
   const handleCourseCheck = (target) => {
     const { name, checked, value } = target;
@@ -78,13 +83,24 @@ function CoursesSubForm() {
         {renderCoursesTabular(coreCourses)}
         <hr />
 
+        {engCoreCourses.length ? (
+          <>
+            <h5>Engineering Core Requirements</h5>
+            {renderCoursesTabular(engCoreCourses)}
+            <hr />
+          </>
+        ) : null}
         <h5>Concenteration Requirements</h5>
         {renderCoursesTabular(concCourses)}
         <hr />
 
-        <h5>Collateral Requirements</h5>
-        {renderCoursesTabular(collateralCourses)}
-        <hr />
+        {collateralCourses.length ? (
+          <>
+            <h5>Collateral Requirements</h5>
+            {renderCoursesTabular(collateralCourses)}
+            <hr />
+          </>
+        ) : null}
 
         <h5>Major Electives</h5>
         {renderCoursesTabular(electiveCourses)}

@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { getPlan } from "../logic/logic";
+import { formatCourseData } from "../utils/coursesUtils";
 
 function AdvisingResults(props) {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    getPlan(1)
+      .then((r) => setCourses(r))
+      .catch((err) => console.log(err));
+  }, []);
+
+  const renderCourses = () => {
+    // console.log(courses);
+    let arr = [];
+    const res = courses.map((course) => {
+      let { courseId, formatedTitle } = formatCourseData(course);
+
+      if (courseId === 10)
+        courseId = `${courseId}` + Math.random() * 100 * Math.random();
+      arr.push(courseId);
+      return <li key={courseId}>{formatedTitle}</li>;
+    });
+    return res;
+  };
   return (
     <div className="d-flex justify-content-center">
       <div className="frame ">
@@ -13,11 +36,12 @@ function AdvisingResults(props) {
         </p>
         <h5>Recomended courses:</h5>
         <ul>
-          <li>Course 1</li>
+          {renderCourses()}
+          {/* <li>Course 1</li>
           <li>Course 2</li>
           <li>Course 3</li>
           <li>Course 4</li>
-          <li>Lab 1</li>
+          <li>Lab 1</li> */}
         </ul>
         <strong>Total Credits: </strong>13
         <h5 className="my-2">

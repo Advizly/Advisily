@@ -4,6 +4,7 @@ import { useFormikContext } from "formik";
 import { FormPolarRadioGroup, FormSelectGroup } from "../../components/form";
 import { stringToBool } from "../../utils/stringUtils";
 import useMajors from "../../hooks/useMajors";
+import useCatalogs from "../../hooks/useCatalogs";
 import {
   MAJOR_ID,
   CATALOG_ID,
@@ -15,9 +16,13 @@ import {
 } from "./fieldNames";
 
 function MajorInfo() {
-  const { majors, catalogs, minors } = useMajors();
   const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
+
+  const { majors, minors } = useMajors();
+  const { catalogs: firstMajorCatalogs } = useCatalogs(values.majorId);
+  const { catalogs
+    : secondMajorCatalogs } = useCatalogs(values.secondMajorId);
 
   useEffect(() => {
     let mounted = true; //prevents memory leak
@@ -44,10 +49,11 @@ function MajorInfo() {
       <br />
 
       <FormSelectGroup
-        label={"Which catalog are you follwoing?"}
+        label={"Which catalog are you follwoing? (declaration catalog)"}
         name={CATALOG_ID}
-        items={catalogs}
+        items={firstMajorCatalogs}
         defaultOption={"--select a catalog--"}
+        visible={values.majorId}
       />
       <br />
 
@@ -90,7 +96,8 @@ function MajorInfo() {
         name={SECOND_CATALOG_ID}
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
-        items={catalogs}
+        items={secondMajorCatalogs}
+        visible={values.secondMajorId}
       />
       <hr />
     </>

@@ -1,17 +1,17 @@
 use advisily;
 
--- -----------------------------------------------
---   DEPARTMENTS
--- -----------------------------------------------
-INSERT INTO advisily.departments (departmentTitle,prefix) VALUES("Template Department","XXX"),
-													  ("Computer Science and Engineering", "CSCE"),
-                                                      ("Mathematics and Actuarial Science", "MACT"),
-                                                      ("Physics", "PHYS"),
-                                                      ("Rhetoric and Composition", "RHET"),
-                                                      ("Core Curriculum", "CORE"),
-                                                      ("Libraries and Learning Technologies", "LALT"),
-                                                      ("Sciences", "SCI"),
-                                                      ("Philosophy", "PHIL");
+-- -- -----------------------------------------------
+-- --   DEPARTMENTS
+-- -- -----------------------------------------------
+-- INSERT INTO advisily.departments (departmentTitle,prefix) VALUES("Template Department","XXX"),
+-- 													  ("Computer Science and Engineering", "CSCE"),
+--                                                       ("Mathematics and Actuarial Science", "MACT"),
+--                                                       ("Physics", "PHYS"),
+--                                                       ("Rhetoric and Composition", "RHET"),
+--                                                       ("Core Curriculum", "CORE"),
+--                                                       ("Libraries and Learning Technologies", "LALT"),
+--                                                       ("Sciences", "SCI"),
+--                                                       ("Philosophy", "PHIL");
 
 
 
@@ -45,6 +45,7 @@ INSERT IGNORE INTO courses (courseCode,courseTitle,credits,departmentId)
                         (2302,"Digital Design I Lab",1,2),
                         (2303,"Computer Organization and Assembly Language Programming",3,2),
                         (2501,"Fundamentals of Database Systems",3,2),
+                        (3101,"Programming Language",null,2),
                         (2502,"Information Technology",3,2),
                         (3102,"Programming in Java",3,2),
                         (3103,"Object Oriented Programming",3,2),
@@ -76,6 +77,8 @@ INSERT IGNORE INTO courses (courseCode,courseTitle,credits,departmentId)
                         (4503,"Internet-based Information Systems",3,2),
                         (4602,"Introduction to Artificial Neural Networks",3,2),
                         (4603,"Fundamentals of Computer Vision",3,2),
+                        (4930,"Selected Topics in Computer Science and Engineering ",null,2),
+                        (4910,"Guided Studies in Computer Science and Engineering ",null,2),
                         (4604,"Practical Machine Deep Learning",3,2),
                         (4621,"Computer Graphics",3,2),
                         (4701,"Object-Oriented Analysis and Design",3,2),
@@ -156,79 +159,83 @@ INSERT INTO minors (minorTitle,departmentId)
 INSERT INTO catalogs
 (catalogId,`year`,majorId,coreCredits,concReqCredits,concElecCredits,collateralCredits,generalElecCredits,season) 
 VALUES(1,2019,1,33,42,18,30,9,'Fall'),
-	  (2,2020,1,33,42,18,30,9,'Spring');
+	  (2,2020,1,33,42,18,30,9,'Fall');
 INSERT INTO catalogCourses (catalogId,courseId,courseTypeId,semesterNumber)
                    VALUES(1,12,2,1),
-                        (1,86,4,1),
-                        (1,93,4,1),
-                        (1,92,4,1),
-                        (1,98,1,1),
-                        (1,100,1,1),
+                        (1,89,4,1),
+                        (1,96,4,1),
+                        (1,95,4,1),
+                        (1,101,1,1),
+                        (1,103,1,1),
                         (1,13,2,2),
                         (1,14,2,2),
-                        (1,87,4,2),
-                        (1,94,4,2),
-                        (1,95,4,2),
-                        (1,99,1,2),
-                        (1,101,1,2),
+                        (1,90,4,2),
+                        (1,97,4,2),
+                        (1,98,4,2),
                         (1,102,1,2),
+                        (1,104,1,2),
+                        (1,105,1,2),
                         (1,2,1,3),
                         (1,17,2,3),
                         (1,18,2,3),
-                        (1,88,4,3),
-                        (1,96,4,3),
-                        (1,97,4,3),
-                        (1,103,1,3),
+                        (1,91,4,3),
+                        (1,99,4,3),
+                        (1,100,4,3),
+                        (1,106,1,3),
                         (1,3,1,4),
                         (1,15,2,4),
                         (1,16,2,4),
                         (1,19,2,4),
-                        (1,89,4,4),
-                        (1,90,4,4),
-                        (1,24,2,5),
+                        (1,92,4,4),
+                        (1,93,4,4),
                         (1,25,2,5),
                         (1,26,2,5),
-                        (1,91,4,5),
+                        (1,27,2,5),
+                        (1,94,4,5),
                         (1,7,1,5),
                         (1,4,1,6),
                         (1,8,1,6),
-                        (1,32,2,6),
                         (1,33,2,6),
-                        (1,38,2,6),
-                        (1,40,2,7),
-                        (1,56,2,7),
-                        (1,57,2,7),
+                        (1,34,2,6),
+                        (1,39,2,6),
+                        (1,41,2,7),
+                        (1,59,2,7),
+                        (1,60,2,7),
                         (1,6,1,8),
-                        (1,39,2,8),
-                        (1,58,2,8),
-                        (1,20,3,null),                        
-						(1,21,3,null),
-                        (1,22,3,null),
-                        (1,23,3,null),
-                        (1,27,3,null),
-                        (1,28,3,null),
-                        (1,29,3,null),
-                        (1,30,3,null),
-                        (1,31,3,null),
-                        (1,34,3,null),
-                        (1,35,3,null),
-                        (1,36,3,null),
-                        (1,37,3,null),
-                        (1,41,3,null),
-                        (1,42,3,null),
-                        (1,43,3,null),
-                        (1,44,3,null),
-                        (1,45,3,null),
-                        (1,46,3,null),
-                        (1,47,3,null),
-                        (1,48,3,null),
-                        (1,49,3,null),
-                        (1,50,3,null),
-                        (1,51,3,null),
-                        (1,52,3,null),
-                        (1,53,3,null),
-                        (1,54,3,null),
-                        (1,55,3,null);
+                        (1,40,2,8),
+                        (1,61,2,8),
+						(1,21,3,NULL),
+                        (1,53,3,NULL),
+                        (1,54,3,NULL),
+                        (1,20,3,NULL),
+                        (1,22,3,NULL),
+                        (1,23,3,NULL),
+                        (1,24,3,NULL),
+                        (1,28,3,NULL),
+                        (1,29,3,NULL),
+                        (1,30,3,NULL),
+                        (1,31,3,NULL),
+                        (1,32,3,NULL),
+                        (1,35,3,NULL),
+                        (1,36,3,NULL),
+                        (1,37,3,NULL),
+                        (1,38,3,NULL),
+                        (1,42,3,NULL),
+                        (1,43,3,NULL),
+                        (1,44,3,NULL),
+                        (1,45,3,NULL),
+                        (1,46,3,NULL),
+                        (1,47,3,NULL),
+                        (1,48,3,NULL),
+                        (1,49,3,NULL),
+                        (1,50,3,NULL),
+                        (1,51,3,NULL),
+                        (1,52,3,NULL),
+                        (1,55,3,NULL),
+                        (1,56,3,NULL),
+                        (1,57,3,NULL),
+                        (1,58,3,NULL);
+
 
 
 -- -----------------------------------------------
@@ -259,3 +266,26 @@ INSERT INTO catalogCourses (catalogId,courseId,courseTypeId,semesterNumber)
 -- INSERT INTO advising_sessions(student_id)VALUES(900192237);
 
 INSERT INTO paces(paceTitle) VALUES("slow"),("normal"), ("fast");
+
+INSERT INTO requisiteTypes VALUES(1,"prerequisite"),
+								(2,"concurrent"),
+                                (3,"prerequisite or concurrent"),
+                                (4,"junior standing"),
+                                (5,"senior standing"),
+                                (6,"instructor consent");
+
+
+INSERT INTO planCourses(catalogId,courseId,semesterNumber)
+		SELECT catalogId,courseId,semesterNumber 
+		FROM  catalogCourses
+        WHERE semesterNumber IS NOT NULL ;
+
+
+INSERT INTO planCourses(catalogId,courseId,semesterNumber) 
+				VALUES(1,10,5),
+                (1,10,6),
+                (1,10,6),
+                (1,10,7),
+                (1,10,7),
+                (1,10,8);
+                

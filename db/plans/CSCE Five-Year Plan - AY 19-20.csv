@@ -1,0 +1,66 @@
+majorTitle,catalogYear,courseTitle,prefix,semesterNumber
+Computer Engineering,2019-2020,106/1001 Fundamentals of Computing I,CSCE,1
+Computer Engineering,2019-2020,101/1001 Introduction to Engineering,ECNG,1
+Computer Engineering,2019-2020,115/1005 Descriptive Geometry and Engineering Drawing,ECNG,1
+Computer Engineering,2019-2020,"111/1011 Classical Mechanics, Sound and Heat",PHYS,1
+Computer Engineering,2019-2020,123L/1012 General Physics Laboratory I,PHYS,1
+Computer Engineering,2019-2020,110/1010 Freshman Writing,RHET,1
+Computer Engineering,2019-2020,110/1010 Freshman Seminar,CORE,1
+Computer Engineering,2019-2020,110/1101 Fundamentals of Computing II,CSCE,2
+Computer Engineering,2019-2020,000/1102 Fundamentals of Computing II Lab,CSCE,2
+Computer Engineering,2019-2020,105/1005 General Chemistry I,CHEM,2
+Computer Engineering,2019-2020,115L/1015 General Chemistry Laboratory,CHEM,2
+Computer Engineering,2019-2020,112/1021 Electricity and Magnetism,PHYS,2
+Computer Engineering,2019-2020,124L/1022 General Physics Laboratory II,PHYS,2
+Computer Engineering,2019-2020,132/1122 Calculus II,MACT,2
+Computer Engineering,2019-2020,120/1020 Research Writing,RHET,2
+Computer Engineering,2019-2020,101/1020 Libraries & Learning Technologies,LALT,2
+Computer Engineering,2019-2020,321/2202 Analysis & Design of Algorithms,CSCE,3
+Computer Engineering,2019-2020,000/2203 Analysis & Design of Algorithms Lab,CSCE,3
+Computer Engineering,2019-2020,212/2102 Engineering Mechanics I,ECNG,3
+Computer Engineering,2019-2020,215/2211 Introduction to Electronics,PHYS,3
+Computer Engineering,2019-2020,222L/2213 Electronics Lab for Computer Scientists & Computer Engineers,PHYS,3
+Computer Engineering,2019-2020,200/2131 Discrete Mathematics,MACT,3
+Computer Engineering,2019-2020,120/1020 Scientific Thinking,SCI,3
+Computer Engineering,2019-2020,253/2501 Fundamentals of Database Systems,CSCE,4
+Computer Engineering,2019-2020,230/2301 Digital Design I,CSCE,4
+Computer Engineering,2019-2020,239L/2302 Digital Design I Lab,CSCE,4
+Computer Engineering,2019-2020,332/3303 Fundamental Microelectronics,CSCE,4
+Computer Engineering,2019-2020,220/2100 Philosophical Thinking,PHIL,4
+Computer Engineering,2019-2020,000/-2 Pathways 2: Cultural Explorations,XXXX,4
+Computer Engineering,2019-2020,000/2303 Computer Organization & Assembly Language Programming,CSCE,5
+Computer Engineering,2019-2020,000/2301 Digital Design II,CSCE,5
+Computer Engineering,2019-2020,000/3701 Software Engineering,CSCE,5
+Computer Engineering,2019-2020,000/3611 Digital Signal Processing,CSCE,5
+Computer Engineering,2019-2020,000/2123 Calculus III,MACT,5
+Computer Engineering,2019-2020,000/-3 Global Studies,XXXX,5
+Computer Engineering,2019-2020,330/3301 Computer Architecture,CSCE,6
+Computer Engineering,2019-2020,339L/3302 Computer Architecture Lab,CSCE,6
+Computer Engineering,2019-2020,345/3401 Operating Systems,CSCE,6
+Computer Engineering,2019-2020,000/3402 Operating Systems Lab,CSCE,6
+Computer Engineering,2019-2020,240/2132 Linear Algebra,MACT,6
+Computer Engineering,2019-2020,214/2104 Engineering Mechanics II,ECNG,6
+Computer Engineering,2019-2020,000/-4 Humanities/Social Sciences,XXXX,6
+Computer Engineering,2019-2020,445/4411 Fundamentals of Distributed Systems,CSCE,7
+Computer Engineering,2019-2020,435/3312 Computer Networks,CSCE,7
+Computer Engineering,2019-2020,439L/3313 Computer Networks Lab,CSCE,7
+Computer Engineering,2019-2020,233/2141 Differential Equations,MACT,7
+Computer Engineering,2019-2020,317/3224 Probability and Statistics,MACT,7
+Computer Engineering,2019-2020,000/-7Arab World Studies 1,XXXX,7
+Computer Engineering,2019-2020,432/4301 Embedded Systems,CSCE,8
+Computer Engineering,2019-2020,438L/4302 Embedded Systems Lab,CSCE,8
+Computer Engineering,2019-2020,000/-10 Concentration Elective,XXXX,8
+Computer Engineering,2019-2020,000/-10 Concentration Elective,XXXX,8
+Computer Engineering,2019-2020,313/3202 Engineering Analysis and Computation I,ECNG,8
+Computer Engineering,2019-2020,Arab World Studies 2,XXXX,8
+Computer Engineering,2019-2020,490/4950 Industrial Training,CSCE,9
+Computer Engineering,2019-2020,491/4980 Senior Project I,CSCE,9
+Computer Engineering,2019-2020,000/-10 Concentration Elective,XXXX,9
+Computer Engineering,2019-2020,000/-10 Concentration Elective,XXXX,9
+Computer Engineering,2019-2020,345/3222 Engineering Economy,ECNG,9
+Computer Engineering,2019-2020,364/3322 Fundamentals of Thermofluids,ECNG,9
+Computer Engineering,2019-2020,000/4981 Senior Project II,CSCE,10
+Computer Engineering,2019-2020,000/-10 Concentration Elective,XXXX,10
+Computer Engineering,2019-2020,000/3201 Management Fundamentals,MGMT,10
+Computer Engineering,2019-2020,000/-6 Core Capstone II,XXXX,10
+Computer Engineering,2019-2020,000/-9 General Elective,XXXX,10

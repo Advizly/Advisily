@@ -16,7 +16,7 @@ const preferencesDefaultValues = {
   [OVERLOADING_CREDITS]: 0,
   [SUMMER_CREDITS]: 0,
   [WINTER_CREDITS]: 0,
-  [PACE_ID]: "2",
+  [PACE_ID]: "1",
   [SEMESTERS_PLANNED]: "1",
 };
 
