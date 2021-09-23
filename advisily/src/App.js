@@ -16,9 +16,13 @@ import AccountRouter, { ACCOUNT_ROUTE } from "./account";
 
 import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CoursesModal from "./subforms/coursesSubForm/coursesModal";
 
 function App() {
-  const { user } = useAuth();
+  const user = useAuth();
+
+  // return <CoursesModal />;
+
   return (
     <BrowserRouter>
       <div className="page-container">

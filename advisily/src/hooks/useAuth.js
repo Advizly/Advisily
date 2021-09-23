@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import auth from "../services/authService";
 
-function useAuth(props) {
-  const [user, setUser] = useState(null);
-
+function useAuth(refresh) {
+  const [user, setUser] = useState(auth.getCurrentUser());
   useEffect(() => {
-    setUser(auth.getCurrentUser());
-  }, []);
+    if (refresh) auth.refreshUser(user).then((newUser) => setUser(newUser));
+  }, [refresh]);
 
-  return { user };
+  return user;
 }
 
 export default useAuth;

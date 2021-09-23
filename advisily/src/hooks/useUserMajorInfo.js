@@ -35,7 +35,7 @@ const useUserMajorInfo = () => {
     setMinors({ minorIds, isMinoring });
   };
 
-  const { user } = useAuth();
+  const user = useAuth();
   useEffect(() => {
     if (user) {
       getStudentMajorsInfo(user.studentId);

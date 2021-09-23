@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormikContext } from "formik";
 
 import { FormCheckbox, FormGroup, FormInput } from "../../components/form";
@@ -7,6 +7,7 @@ import { formatCourseData } from "../../utils/coursesUtils";
 import useCatalogCourses from "../../hooks/useCatalogCourses";
 
 import { COURSES_IDS, GENERAL_ELECTIVE_CREDITS } from "./fieldNames";
+import CoursesModal from "./coursesModal";
 function CoursesSubForm() {
   const { values, setFieldValue } = useFormikContext();
   const {
@@ -22,7 +23,8 @@ function CoursesSubForm() {
     const selectedIds = values[name].map((id) => id);
 
     if (checked) setFieldValue(name, [...selectedIds, value]);
-    else if (window.confirm("Are you sure you want to uncheck this course?"))
+    //if (window.confirm("Are you sure you want to uncheck this course?"))
+    else
       setFieldValue(
         name,
         selectedIds.filter((v) => v !== value)
@@ -33,6 +35,29 @@ function CoursesSubForm() {
     if (window.confirm("Are you sure you want to uncheck all the courses?"))
       setFieldValue(COURSES_IDS, []);
   };
+
+  const prerequisiteFullfilled = (course) => {
+    const selectedCourseIds = values[COURSES_IDS].map((id) => parseInt(id));
+
+    const { requisites } = course;
+
+    if (!requisites.length) return true;
+    if (!selectedCourseIds.includes(course.courseId)) return true;
+
+    return requisites.some((reqSet) => {
+      return reqSet.every((r) => {
+        if (r.requisiteTypeId === 1)
+          return selectedCourseIds.includes(r.courseId);
+        if (r.requisiteTypeId === 2 || r.requisiteTypeId === 3)
+          return selectedCourseIds.includes(r.courseId);
+
+        return true;
+      });
+    });
+  };
+
+  const [showModal, setShowModal] = useState(false);
+
   const renderCourseRow = (row) => {
     return row.map((course) => {
       const { courseId, formatedTitle } = formatCourseData(course);
@@ -46,6 +71,12 @@ function CoursesSubForm() {
               handleCourseCheck(target);
             }}
           />
+          {!prerequisiteFullfilled(course) && (
+            <div className="alert alert-warning ">
+              <strong>Warning:</strong> you didn't fullfil the prerequisites for
+              this course
+            </div>
+          )}
         </ColMedium>
       );
     });
@@ -106,12 +137,15 @@ function CoursesSubForm() {
         {renderCoursesTabular(electiveCourses)}
         <hr />
         <h5>General Electives</h5>
-        <FormInput
-          type="number"
-          name={GENERAL_ELECTIVE_CREDITS}
-          label="How many credits did you use from the general elective credits?"
-          min={0}
-        />
+
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={() => setShowModal(true)}
+        >
+          Add general electives
+        </button>
+        <CoursesModal show={showModal} onClose={() => setShowModal(false)} />
         <hr />
       </FormGroup>
     </>

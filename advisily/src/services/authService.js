@@ -1,6 +1,8 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 import jwtDecode from "jwt-decode";
+import { saveAdvisingSession } from "./advisingService";
+import { getUser } from "./userService";
 const apiEndPoint = apiBaseUrl + "/users/login";
 const tokenKey = "token";
 
@@ -12,6 +14,8 @@ http.setJwt(getJwt());
 
 export const loginWithJwt = (jwt) => {
   localStorage.setItem(tokenKey, jwt);
+  const { advisingSessionId } = getCurrentUser();
+  saveAdvisingSession(advisingSessionId);
   http.setJwt(getJwt());
 };
 export const login = async ({ email, password }) => {
@@ -25,15 +29,19 @@ export const logout = () => {
   localStorage.removeItem(tokenKey);
 };
 
-// const refreshUser = async (user) => {
-//   const { user: newUser, token } = await getUser(user.studentId);
-//   console.log("refreshing user:", newUser);
-//   if (!newUser) throw new Error("Error refreshing user");
-//   if (!newUser.isVerified) return user;
-//   loginWithJwt(token);
+export const refreshUser = async (user) => {
+  try {
+    const res = await getUser(user.studentId);
+    const { user: newUser, token } = res;
+    if (!newUser) throw new Error("Error refreshing user");
+    if (!newUser.isVerified) return user;
+    loginWithJwt(token);
 
-//   return jwtDecode(token);
-// };
+    return jwtDecode(token);
+  } catch (ex) {
+    console.log("From refreshUser", ex, user);
+  }
+};
 
 export const getCurrentUser = () => {
   try {
@@ -51,5 +59,12 @@ export const getCurrentUser = () => {
   }
 };
 
-const auth = { login, logout, getCurrentUser, loginWithJwt, getJwt };
+const auth = {
+  login,
+  logout,
+  getCurrentUser,
+  loginWithJwt,
+  getJwt,
+  refreshUser,
+};
 export default auth;

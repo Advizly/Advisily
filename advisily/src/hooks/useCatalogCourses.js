@@ -19,7 +19,7 @@ const useCatalogCourses = (catalogId) => {
   const [collateralCourses, setCollateralCourses] = useState([]);
   const [electiveCourses, setElectiveCourses] = useState([]);
   const [engCoreCourses, setEngCoreCourses] = useState([]);
-  const { user } = useAuth();
+  const user = useAuth();
 
   useEffect(() => {
     if (user && catalogId) {

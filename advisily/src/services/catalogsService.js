@@ -1,16 +1,10 @@
-import { apiBaseUrl } from "../config";
+import { apiBaseUrl, CourseTypeIds } from "../config.json";
+
 import http from "./httpService";
 
 const apiEndPoint = apiBaseUrl + "/catalogs";
 const catCourseUrl = `${apiEndPoint}/courses`;
 const planCoursesUrl = `${apiEndPoint}/plans/courses`;
-const CourseTypeIds = {
-  core: "1",
-  concentertaion: "2",
-  electives: "3",
-  collateral: "4",
-  engCore: "5",
-};
 
 export const getCatalogs = async (majorId) => {
   if (!majorId) return [];

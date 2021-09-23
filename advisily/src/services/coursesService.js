@@ -12,6 +12,10 @@ export const getCourse = async (courseId) => {
   const { data: course } = await http.get(`${apiEndPoint}/${courseId}`);
   return course;
 };
+export const getPrefixes = async (courseId) => {
+  const { data: prefixes } = await http.get(`${apiEndPoint}/prefixes`);
+  return prefixes;
+};
 
 const coursesService = { getAllCourses, getCourse };
 

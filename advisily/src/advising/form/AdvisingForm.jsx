@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Form, SubmitButton } from "../../components/form";
 import CoursesSubForm from "../../subforms/coursesSubForm/coursesSubForm";
@@ -6,44 +6,51 @@ import PreferencesInfo from "../../subforms/preferncesSubForm/PreferencesInfo";
 import MajorInfo from "../../subforms/majorSubForm/MajorInfo";
 
 //hooks
-import { useUserMajorInfo, useFormStep, useUserCourses } from "../../hooks";
+import {
+  useUserMajorInfo,
+  useFormStep,
+  useUserCourses,
+  useAuth,
+} from "../../hooks";
 
 //services
-import { advisingService, authService } from "../../services";
+import { advisingService, userService } from "../../services";
 
 //utils
 import {
   updateUserMajor,
   updateUserMinors,
   updateStudentCourses,
-  updateAdvisingInfo,
 } from "../../utils/advisingSubmissionUtils";
 
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
+
 function AdvisingForm(props) {
   const { step, back, next } = useFormStep(3);
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
-  const { studentId } = authService.getCurrentUser();
+  const { studentId, standingId, semesterNumber } = useAuth(true);
 
   const initialValues = {
     ...defaultValues,
     ...userMajorInfo,
     ...userCoursesInfo,
+    semesterNumber: semesterNumber === null ? "" : semesterNumber,
+    standingId: standingId === null ? "" : standingId,
   };
-
   const handleSubmit = async (values, { setSubmitting }) => {
     if (window.confirm("Are you sure you want to submit?")) {
       try {
-        // console.log("Submitting values: ", values);
         const {
           minorIds: oldMinorIds,
           majorId: oldMajorId,
           econdMajorId: oldSecondMajorId,
         } = userMajorInfo;
-        console.log("student id: ", studentId);
+        const { semesterNumber, standingId } = values;
+
+        userService.update(studentId, { semesterNumber, standingId });
         updateStudentCourses(
           studentId,
           values.coursesIds,
@@ -65,7 +72,12 @@ function AdvisingForm(props) {
 
         updateUserMinors(studentId, values.minorIds, oldMinorIds);
         // updateAdvisingInfo(studentId, values);
-        advisingService.addAdvisingSession({ ...values, studentId });
+        const { advisingSessionId } = await advisingService.addAdvisingSession({
+          ...values,
+          studentId,
+        });
+        await advisingService.generatePlan(advisingSessionId);
+        advisingService.saveAdvisingSession(advisingSessionId);
       } catch (e) {
         console.log(e);
       }
@@ -96,7 +108,7 @@ function AdvisingForm(props) {
       case 2:
         return "Preferences";
       case 3:
-        return "Catalog Courses";
+        return "Finished Courses";
       default:
         return "Advising";
     }

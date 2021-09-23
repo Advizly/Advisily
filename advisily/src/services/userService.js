@@ -14,12 +14,11 @@ export const getUser = async (studentId) => {
       studentId,
     },
   });
-  if (!data || !data.length) return null;
+  if (!data) return null;
 
-  return { user: data[0], token: headers["x-auth-token"] };
+  return { user: data, token: headers["x-auth-token"] };
 };
 export const validateResetToken = async (token) => {
-  console.log("started");
   return await http.post(`${apiEndPoint}/validate-reset-token`, { token });
 };
 export const resetPassword = async (token, password) => {
@@ -109,8 +108,14 @@ export const deleteStudentMinor = async (studentId, minorId) => {
   return res;
 };
 
-const exported = {
+export const update = async (studentId, updatedData) => {
+  const res = await http.put(`${apiEndPoint}/${studentId}`, updatedData);
+  return res;
+};
+
+const userService = {
   register,
+  update,
   getUser,
   getStudentMajors,
   getStudentMinors,
@@ -122,4 +127,4 @@ const exported = {
   addStudentMinor,
   deleteStudentMinor,
 };
-export default exported;
+export default userService;

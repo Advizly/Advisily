@@ -7,6 +7,8 @@ import {
   MINOR_IDS,
   IS_DOUBLE_MAJORING,
   IS_MINORING,
+  STANDING_ID,
+  SEMESTER_NUMBER,
 } from "./fieldNames";
 
 const REQUIRED_MESSAGE = "This field is required";
@@ -33,4 +35,6 @@ export default Yup.object({
       is: true,
       then: Yup.string().required(REQUIRED_MESSAGE),
     }),
+  [STANDING_ID]: Yup.string().required(REQUIRED_MESSAGE),
+  [SEMESTER_NUMBER]: Yup.string().required(REQUIRED_MESSAGE),
 });

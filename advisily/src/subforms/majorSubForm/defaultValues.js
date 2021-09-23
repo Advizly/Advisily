@@ -6,6 +6,8 @@ import {
   MINOR_IDS,
   IS_DOUBLE_MAJORING,
   IS_MINORING,
+  STANDING_ID,
+  SEMESTER_NUMBER,
 } from "./fieldNames";
 
 const majorDefaultValues = {
@@ -16,6 +18,8 @@ const majorDefaultValues = {
   [SECOND_CATALOG_ID]: "",
   [IS_MINORING]: "",
   [MINOR_IDS]: [],
+  [STANDING_ID]: "",
+  [SEMESTER_NUMBER]: "",
 };
 
 export default majorDefaultValues;

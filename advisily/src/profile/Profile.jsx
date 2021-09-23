@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../hooks/useAuth";
 
 function Profile(props) {
-  const { user } = useAuth();
+  const user = useAuth();
 
   if (!user) return null;
 

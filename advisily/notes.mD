@@ -21,3 +21,8 @@ tips for later:
 
 15. make sure you are only getting catalogs for the major given.
 16. ask the user about which semester this is.
+
+17. if someone finished OS in spring, advise distributed systems
+18. take the number of exempted credits and add to general electives
+    Expemted courses note: "exmpeted courses/waived courses must complete degree credits."
+19. 

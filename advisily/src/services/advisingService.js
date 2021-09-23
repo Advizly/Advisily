@@ -16,16 +16,32 @@ export const getAdvisingSession = async (studentId) => {
 };
 
 export const addAdvisingSession = async (sessionInfo) => {
-  await http.post(apiEndpoint, sessionInfo);
+  const { data } = await http.post(apiEndpoint, sessionInfo);
+  return data;
 };
 
 export const updateAdvisingSessions = async (sessionInfo) => {
-  await http.put(apiEndpoint, sessionInfo);
+  const { data } = await http.put(apiEndpoint, sessionInfo);
+  return data;
 };
 
-export const generatePlan = async (sessionId) => {
-  await http.post(`${apiEndpoint}/generate-plan`, { sessionId });
+export const generatePlan = async (advisingSessionId) => {
+  const res = await http.post(`${apiEndpoint}/generate-plan`, {
+    advisingSessionId,
+  });
 };
+export const getAdvisingResultCourses = async (advisingSessionId) => {
+  const { data: courses } = await http.get(
+    `${apiEndpoint}/${advisingSessionId}/results/courses`
+  );
+  return courses;
+};
+
+export const saveAdvisingSession = (advisingSessionId) => {
+  localStorage.setItem("advisingSessionId", advisingSessionId);
+};
+export const retrieveAdvisingSession = () =>
+  localStorage.getItem("advisingSessionId");
 
 const advisingService = {
   getAdvisingSessions,
@@ -33,5 +49,8 @@ const advisingService = {
   addAdvisingSession,
   updateAdvisingSessions,
   generatePlan,
+  getAdvisingResultCourses,
+  saveAdvisingSession,
+  retrieveAdvisingSession,
 };
 export default advisingService;

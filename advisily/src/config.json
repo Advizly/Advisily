@@ -1,3 +1,10 @@
 {
-  "apiBaseUrl": "http://localhost:5000/api"
+  "apiBaseUrl": "http://localhost:5000/api",
+  "CourseTypeIds": {
+    "core": "1",
+    "concentertaion": "2",
+    "electives": "3",
+    "collateral": "4",
+    "engCore": "5"
+  }
 }

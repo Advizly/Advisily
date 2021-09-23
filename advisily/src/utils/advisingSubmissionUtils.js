@@ -59,6 +59,8 @@ export const updateAdvisingInfo = async (studentId, values) => {
     advisingService.updateAdvisingSessions(updateAdvisingData);
   }
 };
+
+
 const userMajorUtils = {
   updateUserMajor,
   updateUserMinors,

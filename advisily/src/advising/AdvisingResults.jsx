@@ -1,21 +1,35 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { getPlan } from "../logic/logic";
+import {
+  getAdvisingResultCourses,
+  retrieveAdvisingSession,
+} from "../services/advisingService";
+import { getCurrentUser } from "../services/authService";
 import { formatCourseData } from "../utils/coursesUtils";
 
 function AdvisingResults(props) {
   const [courses, setCourses] = useState([]);
+  const user = getCurrentUser();
+  const advisingSessionId = retrieveAdvisingSession() || user.advisingSessionId;
   useEffect(() => {
-    getPlan(1)
-      .then((r) => setCourses(r))
+    getAdvisingResultCourses(advisingSessionId)
+      .then((courses) => {
+        courses.forEach(
+          (course) =>
+            (course.credits = course.credits === null ? 3 : course.credits)
+        );
+        courses = courses.sort(
+          (c1, c2) => c1.semesterNumber - c2.semesterNumber
+        );
+        setCourses(courses);
+      })
       .catch((err) => console.log(err));
-  }, []);
+  }, [advisingSessionId]);
 
   const renderCourses = () => {
-    // console.log(courses);
     let arr = [];
-    const res = courses.map((course) => {
+    const formatedCourses = courses.map((course) => {
       let { courseId, formatedTitle } = formatCourseData(course);
 
       if (courseId === 10)
@@ -23,28 +37,35 @@ function AdvisingResults(props) {
       arr.push(courseId);
       return <li key={courseId}>{formatedTitle}</li>;
     });
-    return res;
+
+    const totalCredits = courses
+      .map((c) => c.credits)
+      .reduce((c1, c2) => c1 + c2, 0);
+
+    return (
+      <>
+        <ul>{formatedCourses}</ul>
+        <strong>Total Credits: </strong>
+        {totalCredits}
+      </>
+    );
   };
   return (
     <div className="d-flex justify-content-center">
       <div className="frame ">
         <h1 className="text-center">Your results are here!</h1>
-        <h5>Status:</h5>
+        {/* <h5>Status:</h5>
         <p>
           <strong>On track</strong>. Keep it going! you are currently moving on
           track and expected to graduate after 4 semester.
-        </p>
+        </p> */}
         <h5>Recomended courses:</h5>
-        <ul>
-          {renderCourses()}
-          {/* <li>Course 1</li>
-          <li>Course 2</li>
-          <li>Course 3</li>
-          <li>Course 4</li>
-          <li>Lab 1</li> */}
-        </ul>
-        <strong>Total Credits: </strong>13
-        <h5 className="my-2">
+        <p>
+          The following is a list of courses suggested for you to take in your
+          next semester.
+        </p>
+        {renderCourses()}
+        {/* <h5 className="my-2">
           You may choose 1 courses from the following to reach <em>16 </em>
           credits:
         </h5>
@@ -70,10 +91,10 @@ function AdvisingResults(props) {
             <li>Course 1</li>
             <li>Course 3</li>
           </ul>
-        </ol>
+        </ol>*/}
         <hr />
-        <div className="d-flex justify-content-between">
-          <button className="btn ">Email me</button>
+        <div className="d-flex justify-content-end">
+          {/* <button className="btn ">Email me</button> */}
           <Link to="/advising/form" replace>
             <button className="btn btn-primary">New Advising Session?</button>
           </Link>

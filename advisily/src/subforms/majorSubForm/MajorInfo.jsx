@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormikContext } from "formik";
 
 import { FormPolarRadioGroup, FormSelectGroup } from "../../components/form";
@@ -13,17 +13,26 @@ import {
   MINOR_IDS,
   IS_DOUBLE_MAJORING,
   IS_MINORING,
+  SEMESTER_NUMBER,
+  STANDING_ID,
 } from "./fieldNames";
+import { getStandings } from "../../services/standingsServices";
+import semesters from "../../constant/semesters";
 
 function MajorInfo() {
+  const [standings, setStandings] = useState([]);
+  useEffect(() => {
+    getStandings()
+      .then((res) => setStandings(res))
+      .catch((err) => console.log("Error: ", err));
+  }, []);
+
   const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
 
   const { majors, minors } = useMajors();
   const { catalogs: firstMajorCatalogs } = useCatalogs(values.majorId);
-  const { catalogs
-    : secondMajorCatalogs } = useCatalogs(values.secondMajorId);
-
+  const { catalogs: secondMajorCatalogs } = useCatalogs(values.secondMajorId);
   useEffect(() => {
     let mounted = true; //prevents memory leak
 
@@ -39,6 +48,28 @@ function MajorInfo() {
   }, [isDoubleMajoring, isMinoring, setFieldValue]);
   return (
     <>
+      <FormSelectGroup
+        label={"What is your current standing?"}
+        items={standings}
+        name={STANDING_ID}
+        defaultOption="--select standing--"
+        idSelector="standingId"
+        nameSelector="standing"
+        valueSelector="standingId"
+      />
+
+      <FormSelectGroup
+        label={"Which semester number is this one?"}
+        defaultOption={"--select a semester--"}
+        items={semesters}
+        name={SEMESTER_NUMBER}
+      />
+      <p className="my-1">
+        The number of semesters you have taken starting from English 0210 or
+        RHET 1010
+      </p>
+      <br />
+
       <FormSelectGroup
         label="What is your major?"
         items={majors}
@@ -97,7 +128,6 @@ function MajorInfo() {
         visible={stringToBool(isDoubleMajoring)}
         defaultOption={"---select a catalog---"}
         items={secondMajorCatalogs}
-        visible={values.secondMajorId}
       />
       <hr />
     </>

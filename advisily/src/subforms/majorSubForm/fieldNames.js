@@ -5,3 +5,5 @@ export const SECOND_MAJOR_ID = "secondMajorId";
 export const SECOND_CATALOG_ID = "secondCatalogId";
 export const IS_DOUBLE_MAJORING = "isDoubleMajoring";
 export const IS_MINORING = "isMinoring";
+export const STANDING_ID = "standingId";
+export const SEMESTER_NUMBER = "semesterNumber";
