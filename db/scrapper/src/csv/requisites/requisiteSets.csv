@@ -8,7 +8,7 @@ setId,requisitePrefix,requisiteCode,rquisiteTypeId
 5,CSCE,2202,2
 5,MACT,2131,3
 6,PHYS,2211,3
-6,CSCE,2301,2
+6,CSCE,2302,2
 7,CSCE,1101,1
 7,CSCE,2301,1
 8,CSCE,1101,1
@@ -23,7 +23,6 @@ setId,requisitePrefix,requisiteCode,rquisiteTypeId
 14,CSCE,2303,1
 11,CSCE,3302,2
 14,CSCE,3402,2
-14,CSCE,3401,2
 15,CSCE,1101,1
 15,CSCE,3301,1
 16,MACT,2131,1
@@ -32,6 +31,7 @@ setId,requisitePrefix,requisiteCode,rquisiteTypeId
 18,,,4
 18,,,6
 19,,,6
+19,,,5
 20,CSCE,4980,1
 21,CSCE,1101,1
 22,CSCE,1001,1
@@ -115,3 +115,8 @@ setId,requisitePrefix,requisiteCode,rquisiteTypeId
 72,PHYS,1021,1
 72,PHYS,2213,2
 73,PHYS,2211,2
+74,RHET,1010,2
+75,CORE,1010,2
+76,RHET,1010,1
+76,CORE,1010,1
+77,RHET,1010,1

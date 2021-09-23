@@ -84,45 +84,49 @@ def insertCourseTypes():
 
 
 def insertCatalogCourses():
-    catalogYears=[ "2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
+    catalogYears=[ "2016-2017","2017-2018","2018-2019","2019-2020","2020-2021","2021-2022"]
     insert_sql='''INSERT INTO catalogCourses(courseTypeId,catalogId,courseId)
                                             VALUES(%s,%s,%s)'''
-    for year in catalogYears:  
-        with open(f"{csv_folder}/catalogs/catalog_courses_{year}.csv","r") as catalogs_file:
-            courses_reader=csv.DictReader(catalogs_file)
+    try:
+        for year in catalogYears:  
+            with open(f"{csv_folder}/catalogs/catalog_courses_{year}.csv","r") as catalogs_file:
+                courses_reader=csv.DictReader(catalogs_file)
 
-            for courseRow in courses_reader:
-                majorTitle=courseRow.pop("majorTitle")
-                catalogYear=courseRow.pop("catalogYear")
-                courseCode=courseRow.pop("courseCode")
-                prefix=courseRow.pop("prefix")
-
-                catalogId=_get_catalogId(catalogYear,majorTitle)
-                courseId=_get_courseId_by_code_prefix(courseCode,prefix)
-                if(not (catalogYear and courseId)): continue
-
-                courseRow["catalogId"]=catalogId
-                courseRow["courseId"]=courseId
-                values=list(courseRow.values())
-                cursor.execute(insert_sql,values)
-    with open(f"{csv_folder}/catalogs/catalog_core_courses.csv","r") as core_courses_file:
-            courses_reader=csv.DictReader(core_courses_file)
-            cursor.execute("SELECT catalogId from catalogs")
-            catalogIds=cursor.fetchall()
-            i=0
-            j=0
-            for courseRow in courses_reader:
+                for courseRow in courses_reader:
+                    temp=courseRow
+                    majorTitle=courseRow.pop("majorTitle")
+                    catalogYear=courseRow.pop("catalogYear")
                     courseCode=courseRow.pop("courseCode")
                     prefix=courseRow.pop("prefix")
-                    courseId=_get_courseId_by_code_prefix(courseCode,prefix)
-                    if(not (courseId)): continue
-                    print(courseRow)
-                    for catalogId in catalogIds:
-                        courseRow["catalogId"]=catalogId[0]
-                        courseRow["courseId"]=courseId
-                        values=list(courseRow.values())
 
-                        cursor.execute(insert_sql,values)
+                    catalogId=_get_catalogId(catalogYear,majorTitle)
+                    courseId=_get_courseId_by_code_prefix(courseCode,prefix)
+                    if(not (catalogYear and courseId)): continue
+
+                    courseRow["catalogId"]=catalogId
+                    courseRow["courseId"]=courseId
+                    if(not catalogId):
+                        print("HERE: ",temp,majorTitle,catalogYear,courseCode)
+                    values=list(courseRow.values())
+                    cursor.execute(insert_sql,values)
+        with open(f"{csv_folder}/catalogs/catalog_core_courses.csv","r") as core_courses_file:
+                courses_reader=csv.DictReader(core_courses_file)
+                cursor.execute("SELECT catalogId from catalogs")
+                catalogIds=cursor.fetchall()
+                for courseRow in courses_reader:
+                        courseCode=courseRow.pop("courseCode")
+                        prefix=courseRow.pop("prefix")
+                        courseId=_get_courseId_by_code_prefix(courseCode,prefix)
+                        if(not (courseId)): continue
+                        print(courseRow)
+                        for catalogId in catalogIds:
+                            courseRow["catalogId"]=catalogId[0]
+                            courseRow["courseId"]=courseId
+                            values=list(courseRow.values())
+
+                            cursor.execute(insert_sql,values)
+    except ValueError:
+            print(ValueError)
     db.commit()
 
 def insertPaces():
@@ -240,6 +244,6 @@ def insertRequisiteSets():
 # insertPaces()
 # insertPlans()
 # insertCatalogCourses()
-
+# 
 insertCourseRequites()
 insertRequisiteSets()

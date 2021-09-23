@@ -1,14 +1,3 @@
-#requisites Formats
-#  CODE AND CODE.
-#  CODE, CODE
-#  CODE, CODE, AND CODE etc
-#  CODE AND CODE OR "concurrently"
-#   CODE and X "standing" 
-#  "concurrent with" CODE
-#   CODE or CODE
-#    "permission/consent of"
-#
-  
 
 import re
 
@@ -26,12 +15,14 @@ class CatalogCourses(scrapy.Spider):
     "https://catalog.aucegypt.edu/preview_program.php?catoid=27&poid=4747", #CS 2018 - 2019
     "https://catalog.aucegypt.edu/preview_program.php?catoid=29&poid=5123", #CS 2019 - 2020
     "https://catalog.aucegypt.edu/preview_program.php?catoid=36&poid=6108", #CS 2020 - 2021
+    "https://catalog.aucegypt.edu/preview_program.php?catoid=37&poid=6352",  #CS 2021 - 2022
     
     "https://catalog.aucegypt.edu/preview_program.php?catoid=26&poid=4489", #CE 2016 - 2017
     "https://catalog.aucegypt.edu/preview_program.php?catoid=20&poid=2942", #CE 2017 - 2018
     "https://catalog.aucegypt.edu/preview_program.php?catoid=27&poid=4746", #CE 2018 - 2019
     "https://catalog.aucegypt.edu/preview_program.php?catoid=29&poid=5122", #CE 2019 - 2020
     "https://catalog.aucegypt.edu/preview_program.php?catoid=36&poid=6107", #CE 2020 - 2021
+    "https://catalog.aucegypt.edu/preview_program.php?catoid=37&poid=6351"  #CE 2021 - 2022
 
     ]
     

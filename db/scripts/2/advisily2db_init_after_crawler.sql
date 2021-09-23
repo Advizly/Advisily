@@ -328,8 +328,9 @@ CREATE UNIQUE INDEX `advisingSessionId_UNIQUE` ON `advisily`.`advisingSessions` 
 DROP TABLE IF EXISTS `advisily`.`advisingResultCourses` ;
 
 CREATE TABLE IF NOT EXISTS `advisily`.`advisingResultCourses` (
-  `advisingSessionId` INT NULL,
-  `courseId` INT NULL,
+  `advisingSessionId` INT NOT NULL,
+  `courseId` INT NOT NULL,
+  `semesterNumber` INT NOT NULL,
   CONSTRAINT `fk_advising_result_courses_1`
     FOREIGN KEY (`advisingSessionId`)
     REFERENCES `advisily`.`advisingSessions` (`advisingSessionId`)
@@ -346,7 +347,6 @@ CREATE INDEX `fk_advising_result_courses_1_idx` ON `advisily`.`advisingResultCou
 
 CREATE INDEX `fk_advising_result_courses_2_idx` ON `advisily`.`advisingResultCourses` (`courseId` ASC) VISIBLE;
 
-CREATE UNIQUE INDEX `advisingSessionId_courseId_UNIQUE` ON `advisily`.`advisingResultCourses` (`advisingSessionId` ASC, `courseId` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
