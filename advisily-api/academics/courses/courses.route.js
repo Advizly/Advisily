@@ -11,5 +11,6 @@ router.get(
   requestValidator(schemas.getCourses(), "query"),
   controller.getCourses
 );
+router.get("/prefixes", controller.getPrefixes);
 
 module.exports = router;

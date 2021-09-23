@@ -5,3 +5,8 @@ Re-iterate later:
 - minors are not taking catalogid with them.
 - passing major_id that doesn't exist while registering for a user will create user without major.
 - add primary key for student_minors, student_courses, etc.
+
+
+**Ideas**
+1. construct fastest plan to graduate.
+2. 

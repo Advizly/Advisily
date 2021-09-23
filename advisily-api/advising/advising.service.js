@@ -1,12 +1,21 @@
-const { getPlanCourses } = require("../catalog/catalog.service");
-const { query } = require("../helpers/mysql");
+const {
+  getPlanCourses,
+  getCatCourses,
+  getCatalog,
+} = require("../catalog/catalog.service");
 const { getUserCourses } = require("../users/userCourses/user-courses.service");
 const { getUserMajors } = require("../users/userMajors/user-majors.service");
+const { update, getUser } = require("../users/users.service");
 
+const { query } = require("../helpers/mysql");
+
+const logic = require("../logic/logic");
+const _ = require("lodash");
 module.exports = {
   getAdvisingSessions,
   getAdvisingSession,
   getAdvisingResults,
+  getAdvisingResultCourses,
   addAdvisingSession,
   updateAdvisingSession,
   generatePlan,
@@ -16,69 +25,122 @@ module.exports = {
 const baseGetSessionQuery = "select * from advisingSessions";
 async function getAdvisingSessions({ studentId }) {
   let sql = baseGetSessionQuery;
-  if (studentId) sql += "WHERE studentId=?";
+  if (studentId) sql += " WHERE studentId=?";
 
   const [sessions, err] = await query(sql, [studentId]);
   if (err) throw "Error getting advising session data.";
 
   return sessions;
 }
-async function getAdvisingSession({ sessionId }) {
+async function getAdvisingSession({ advisingSessionId }) {
   const sql = `${baseGetSessionQuery} WHERE advisingSessionId=? LIMIT 1`;
-  const [data, err] = await query(sql, [sessionId]);
+  const [data, err] = await query(sql, [advisingSessionId]);
 
   if (err) throw "Error getting advising sessions.";
 
   return !data.length ? [] : data[0];
 }
 
-async function getAdvisingResults({ sessionId }) {
+async function addAdvisingSession(advisingData) {
+  advisingData.sessionDate = new Date();
+  const { studentId } = advisingData;
+  const session = await getAdvisingSessions({ studentId });
+  if (session.length)
+    //delete old session for this user.
+    await deleteAdvisingSession(session[0]);
+
+  //insert new session
+  const sql = "INSERT INTO advisingSessions SET ?";
+  const [data, err] = await query(sql, advisingData);
+  if (err) throw "Error inserting advising data.";
+
+  const advisingSessionId = data.insertId;
+  update(studentId, { advisingSessionId });
+  return { ...data, advisingSessionId };
+}
+
+async function updateAdvisingSession(advisingData) {
+  const { advisingSessionId } = advisingData;
+  advisingData.sessionDate = new Date(); //update date
+  const sql = "UPDATE advisingSessions SET ? WHERE advisingSessionId=?";
+  const [data, err] = await query(sql, [advisingData, advisingSessionId]);
+  if (err) throw "Error updating advising session info.";
+
+  return { advisingSessionId };
+}
+
+async function deleteAdvisingSession({ advisingSessionId }) {
+  await clearAdvisingResults({ advisingSessionId });
+  const sql = "DELETE from advisingSessions WHERE advisingSessionId=?";
+  const [data, err] = await query(sql, [advisingSessionId]);
+  if (err) throw "Error while deleteing advising session";
+
+  return data;
+}
+
+async function getAdvisingResults({ advisingSessionId }) {}
+
+async function addAdvisingResults(resultCourse) {
+  resultCourse = _.pick(resultCourse, [
+    "advisingSessionId",
+    "courseId",
+    "semesterNumber",
+  ]);
+
+  const sql = "INSERT INTO advisingResultCourses SET ?";
+  const [data, err] = await query(sql, resultCourse);
+  if (err) throw "Error while inserting advising results.";
+  return data;
+}
+async function clearAdvisingResults({ advisingSessionId }) {
+  let sql, data, err;
+  sql = "delete from advisingResultCourses WHERE advisingSessionId=?";
+  [data, err] = await query(sql, advisingSessionId);
+  if (err) throw "Error while deleting old advising results.";
+  return data;
+}
+
+async function getAdvisingResultCourses({ advisingSessionId }) {
   const sql =
     "select * from advisingResultCourses AS arc \
                           INNER JOIN courses AS c ON (c.courseId=arc.courseId)\
                          WHERE advisingSessionId=?";
-  const [data, err] = await query(sql, [sessionId]);
-  if (err) throw "Error getting advising results.";
+  const [courses, err] = await query(sql, [advisingSessionId]);
+  if (err) throw "Error getting advising results coursess.";
 
-  return !data.length ? [] : data[0];
+  return courses;
 }
 
-async function addAdvisingSession(advisingData) {
-  advisingData.sessionDate = new Date();
+async function generatePlan({ advisingSessionId }) {
+  try {
+    const advisingSession = await getAdvisingSession({ advisingSessionId });
+    if (!advisingSession)
+      throw "Advising session not found while generating plan.";
 
-  const session = getAdvisingSessions({ studentId: advisingData.studentId });
-  if (session) return await updateAdvisingSession(advisingData);
+    const { studentId } = advisingSession;
+    const user = await getUser({ studentId });
+    user.courses = await getUserCourses({ studentId });
+    const userMajors = await getUserMajors({ studentId });
 
-  //else
-  const sql = "INSERT INTO advisingSessions SET ?";
-  const [data, err] = await query(sql, advisingData);
-  if (err) throw "Error inserting advising data.";
-  console.log("add advising res: ", data);
-  return data;
-}
+    const { catalogId } = userMajors[0];
+    const planCourses = await getPlanCourses({ catalogId });
+    const catalogCourses = await getCatCourses({ catalogId });
+    const catalog = await getCatalog({ catalogId });
 
-async function updateAdvisingSession(advisingData) {
-  advisingData.sessionDate = new Date(); //update date
-  const sql = "UPDATE advisingSessions SET ?";
-  const [data, err] = await query(sql, advisingData);
-  if (err) throw "Error updating advising session info.";
-  console.log("add advising res: ", data);
+    let resultCourses = logic.generatePlan({
+      user,
+      planCourses,
+      advisingSession,
+      catalogCourses,
+      catalog,
+    });
 
-  return data;
-}
-
-async function generatePlan({ sessionId }) {
-  const session = await getAdvisingSession({ sessionId });
-  if (!session) throw "Advising session not found while generating plan.";
-
-  const { studentId } = session;
-  const useCourses = await getUserCourses({ studentId });
-  const useMajors = await getUserMajors({ studentId });
-  const planCourses = await getPlanCourses({ studentId });
-
-  console.log(
-    `\nUser Courses: ${useCourses}\n\nUser majors: ${useMajors}\n\n Plan Courses: ${planCourses}`
-  );
+    resultCourses.forEach((course) =>
+      addAdvisingResults({ ...course, advisingSessionId })
+    );
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 async function getPaces() {

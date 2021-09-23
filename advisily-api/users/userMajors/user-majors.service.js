@@ -1,7 +1,7 @@
 const { query } = require("../../helpers/mysql");
 
 module.exports = {
-    getUserMajors,
+  getUserMajors,
   addUserMajor,
   deleteUserMajor,
 };
@@ -23,7 +23,6 @@ async function addUserMajor({ studentId, majorId, catalogId }) {
     console.log("Error:", err);
     throw "Error adding user major.";
   }
-  console.log("Data: ", data, studentId, majorId);
 }
 
 async function deleteUserMajor({ studentId, majorId }) {
@@ -31,4 +30,5 @@ async function deleteUserMajor({ studentId, majorId }) {
 
   const [data, err] = await query(sql, [studentId, majorId]);
   if (err) throw "Error deleting user major.";
+  return data;
 }

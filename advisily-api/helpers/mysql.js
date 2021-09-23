@@ -53,7 +53,7 @@ function query(query, values) {
 function parseConditions(conditions) {
   let columns = "",
     values = [];
-
+  conditions = _.omitBy(conditions, _.isNil);
   if (!_.isEmpty(conditions)) {
     columns = _.keys(conditions).join("= ? AND ") + " = ?";
     values = _.values(conditions);

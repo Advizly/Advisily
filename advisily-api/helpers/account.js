@@ -3,6 +3,7 @@ const privateKey = require("config").get("jwtPrivateKey");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const bcrypt = require("bcrypt");
+const _ = require("lodash");
 
 module.exports = {
   getAuthToken,
@@ -24,6 +25,14 @@ async function hash(password) {
 }
 
 function basicInfo(user) {
-  const { firstName, lastName, studentId, email, isVerified } = user;
-  return { firstName, lastName, studentId, email, isVerified };
+  return _.pick(user, [
+    "firstName",
+    "lastName",
+    "studentId",
+    "email",
+    "isVerified",
+    "advisingSessionId",
+    "standingId",
+    "semesterNumber",
+  ]);
 }

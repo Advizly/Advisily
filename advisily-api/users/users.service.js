@@ -24,6 +24,7 @@ module.exports = {
   register,
   login,
   resendVerification,
+  update,
 };
 
 const baseGetUsersQuery = "SELECT * FROM users";
@@ -81,6 +82,32 @@ async function getUser(conditions) {
     ...basicInfo(user),
     authToken,
   };
+}
+
+async function update(id, params) {
+  let user = await _getUserBy({ studentId: id });
+  if (!user) throw "User of given ID not found.";
+
+  const { email, studentId } = params;
+
+  if (email && email !== user.email && !!(await _getUserBy({ email })))
+    throw "A user with this Student ID  already registered.";
+
+  if (
+    studentId &&
+    studentId !== user.studentId &&
+    !!(await _getUserBy({ studentId }))
+  )
+    throw "A user with this Student ID  already registered.";
+
+  if (params.password) params.password = await hash(params.password);
+
+  user = { ...user, ...params };
+  const sql = "UPDATE users SET ? WHERE studentId=? ";
+  const [data, err] = await query(sql, [user, id]);
+  if (err) throw "Error updating user";
+
+  return data;
 }
 
 async function verifyEmail(token) {
@@ -152,7 +179,7 @@ async function resendVerification(email) {
 //output: first user that matches all the conditions given.
 async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
-  if (!values.length) throw "Error getting user. No conditions given.";
+  if (!values.length) return null;
 
   const getStudentQuery = baseGetUsersQuery + ` WHERE ${columns} LIMIT 1`;
   const [data, err] = await query(getStudentQuery, values);

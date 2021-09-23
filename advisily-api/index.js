@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 
 const errorHandler = require("./middleware/errorHandler");
+const headerConfig = require("./middleware/headersConfig");
 
 const academics = require("./academics");
 const advising = require("./advising/advising.route");
@@ -14,12 +15,7 @@ let port = 5000;
 if (config.has("port")) port = config.get("port");
 
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
-  res.header("Access-Control-Allow-Headers", "Content-Type, x-auth-token");
-  next();
-});
+app.use(headerConfig);
 
 app.use("/api/academics", academics);
 app.use("/api/catalogs", catalogs);

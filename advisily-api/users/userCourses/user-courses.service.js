@@ -9,7 +9,7 @@ module.exports = {
 const baseUserCoursesQuery = "SELECT DISTINCT * from userCourses";
 
 async function getUserCourses({ studentId }) {
-  const sql = baseUserCoursesQuery + " WHERE studentId=?";
+  const sql = `${baseUserCoursesQuery} INNER JOIN courses ON userCourses.courseId= courses.courseId WHERE studentId=?`;
   const [data, err] = await query(sql, [studentId]);
   if (err) throw "Error getting user courses.";
 

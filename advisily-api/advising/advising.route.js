@@ -16,29 +16,32 @@ router.get(
 router.get("/paces", controller.getPaces);
 
 router.get(
-  "/:sessionId",
+  "/:advisingSessionId",
   [auth, requestValidator(schemas.getAdvisingSession())],
   controller.getAdvisingSession
 );
 router.get(
-  "/:sessionId/results",
-  [auth, requestValidator(schemas.getAdvisingResults())],
+  "/:advisingSessionId/results",
+  [auth, requestValidator(schemas.getAdvisingResults(), "params")],
   controller.getAdvisingResults
 );
-
+router.get(
+  "/:advisingSessionId/results/courses",
+  [requestValidator(schemas.getAdvisingResultCourses(), "params")],
+  controller.getAdvisingResultCourses
+);
 router.post(
   "/",
   [auth, requestValidator(schemas.addAdvisingSession())],
   controller.addAdvisingSession
 );
 
-router.put(
-  "/",
-  [auth, requestValidator(schemas.updateAdvisingSession())],
-  controller.updateAdvisingSession
-);
+// router.put(
+//   "/",
+//   [auth, requestValidator(schemas.updateAdvisingSession())],
+//   controller.updateAdvisingSession
+// );
 
-console.log(controller.generatePlan);
 router.post(
   "/generate-plan",
   [auth, requestValidator(schemas.generatePlan())],

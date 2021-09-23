@@ -1,4 +1,5 @@
 const Joi = require("joi");
+const { join } = require("lodash");
 const {
   ID_SCHEMA,
   ID_SCHEMA_REQUIRED,
@@ -9,6 +10,7 @@ module.exports = {
   getAdvisingSessions,
   getAdvisingSession,
   getAdvisingResults,
+  getAdvisingResultCourses,
   addAdvisingSession,
   updateAdvisingSession,
   generatePlan,
@@ -28,7 +30,12 @@ function getAdvisingSession() {
 
 function getAdvisingResults() {
   return Joi.object({
-    sessionId: ID_SCHEMA_REQUIRED,
+    advisingSessionId: ID_SCHEMA_REQUIRED,
+  });
+}
+function getAdvisingResultCourses() {
+  return Joi.object({
+    advisingSessionId: ID_SCHEMA_REQUIRED,
   });
 }
 
@@ -60,6 +67,14 @@ function updateAdvisingSession() {
 
 function generatePlan() {
   return Joi.object({
-    advisingSessionId: ID_SCHEMA.required(),
+    advisingSessionId: ID_SCHEMA_REQUIRED,
+  });
+}
+
+function addAdvisingResults() {
+  return joi.object({
+    advisingSessionId: ID_SCHEMA_REQUIRED,
+    courseId: ID_SCHEMA_REQUIRED,
+    semesterNumber: Joi.number().integer().positive(),
   });
 }

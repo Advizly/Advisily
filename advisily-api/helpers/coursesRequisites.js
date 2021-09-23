@@ -20,7 +20,7 @@ async function addCourseRequisites(course) {
   sql =
     "SELECT courseId,courseCode,courseTitle,credits,prefix,rs.requisiteTypeId,requisiteType\
      FROM requisiteSets AS rs\
-     INNER JOIN courses AS c ON c.courseId=rs.requisiteId\
+     LEFT OUTER JOIN courses AS c ON c.courseId=rs.requisiteId\
      INNER JOIN requisiteTypes as rt on rt.requisiteTypeId=rs.requisiteTypeId\
      WHERE setId =?";
 
@@ -29,7 +29,7 @@ async function addCourseRequisites(course) {
     let [requisites, err2] = await query(sql, sets[i].setId);
     if (err2) throw "error getting requisites";
 
-    requisiteSets.push(requisites);
+    if (requisites.length) requisiteSets.push(requisites);
   }
 
   return requisiteSets;

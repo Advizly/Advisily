@@ -13,9 +13,10 @@ module.exports = {
   register,
   resendVerification,
   login,
+  update,
 };
 
-async function register(req, res, next) {
+function register(req, res, next) {
   usersService
     .register(req.body)
     .then(({ authToken, ...user }) =>
@@ -27,14 +28,14 @@ async function register(req, res, next) {
     .catch(next);
 }
 
-async function getUsers(req, res, next) {
+function getUsers(req, res, next) {
   usersService
     .getUsers()
     .then((users) => res.send(users))
     .catch(next);
 }
 
-async function verifyEmail(req, res, next) {
+function verifyEmail(req, res, next) {
   const { token } = req.body;
 
   usersService
@@ -43,7 +44,7 @@ async function verifyEmail(req, res, next) {
     .catch(next);
 }
 
-async function forgotPassword(req, res, next) {
+function forgotPassword(req, res, next) {
   const { email } = req.body;
 
   usersService
@@ -91,15 +92,14 @@ function resendVerification(req, res, next) {
 }
 
 function getUser(req, res, next) {
-  console.log(req.query, req.body);
   usersService
     .getUser(req.body)
-    .then(({ authToken, ...userInfo }) =>
+    .then(({ authToken, ...userInfo }) => {
       res
         .header("x-auth-token", authToken)
         .header("access-control-expose-headers", "x-auth-token")
-        .send(userInfo)
-    )
+        .json(userInfo);
+    })
     .catch(next);
 }
 
@@ -109,5 +109,12 @@ function login(req, res, next) {
     .then((token) => {
       res.send(token);
     })
+    .catch(next);
+}
+
+function update(req, res, next) {
+  usersService
+    .update(req.params.id, req.body)
+    .then((result) => res.send(result))
     .catch(next);
 }
