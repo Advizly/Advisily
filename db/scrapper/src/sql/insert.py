@@ -147,28 +147,36 @@ def insertRequisiteTypes():
 
 def insertPlans():
     insert_sql="INSERT INTO planCourses(semesterNumber,catalogId,courseId) VALUES (%s, %s,%s)"
-    with open(f"{csv_folder}/plans/plans_all.csv","r") as plans_folder:
-        plans_reader=csv.DictReader(plans_folder)
-        err=False
-        for planRow in plans_reader:
-            catalogYear=planRow.pop("catalogYear")
-            majorTitle=planRow.pop("majorTitle")
-            prefix=planRow.pop("prefix")
-            courseCode=planRow.pop("courseCode")
+    plan_years=["2018-2019","2019-2020","2020-2021"]
+    plan_majors=["ce","cs"]
+    try:
+        for major in plan_majors:    
+            for year in plan_years:
+                with open(f"{csv_folder}/plans/plan_{major}_{year}.csv","r") as plans_folder:
+                    plans_reader=csv.DictReader(plans_folder)
+                    err=False
+                    for planRow in plans_reader:
+                        catalogYear=planRow.pop("catalogYear")
+                        majorTitle=planRow.pop("majorTitle")
+                        prefix=planRow.pop("prefix")
+                        courseCode=planRow.pop("courseCode")
 
-            catalogId=_get_catalogId(catalogYear,majorTitle)
-            courseId=_get_courseId_by_code_prefix(courseCode,prefix)
-            if(not (catalogId and courseId)):
-                err=True
-                print(f"{catalogId}\n {courseId}, {prefix}\n{planRow}")
-                break
-            planRow["catalogId"]=catalogId
-            planRow["courseId"]=courseId
-            cursor.execute(insert_sql,list(planRow.values()))
-        if(not err):
-            db.commit()
-            print(cursor.rowcount, "plans inserted sucessfully")
-        else: print(" didn't insert plans")
+                        catalogId=_get_catalogId(catalogYear,majorTitle)
+                        courseId=_get_courseId_by_code_prefix(courseCode,prefix)
+                        if(not (catalogId and courseId)):
+                            err=True
+                            print(f"{catalogId} {courseId}, {prefix}\n{planRow} {courseCode}")
+                            break
+                        planRow["catalogId"]=catalogId
+                        planRow["courseId"]=courseId
+                        cursor.execute(insert_sql,list(planRow.values()))
+                    if(not err):
+                        db.commit()
+                        print(cursor.rowcount, "plans inserted sucessfully")
+                    else: print(" didn't insert plans")
+    except ValueError:
+                print(ValueError)
+
 
 
 

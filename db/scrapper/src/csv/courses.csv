@@ -1,4 +1,5 @@
 courseCode,courseTitle,prefix,credits
+-11,Maths Elective,XXXX,NULL
 -10,Major Elective,XXXX,NULL
 -9,General Elective,XXXX,NULL
 -8,Arab World Studies II,XXXX,3
@@ -913,12 +914,12 @@ courseCode,courseTitle,prefix,credits
 5210,Experimental Methods in Engineering,ENGR,3
 5240,Engineering for a Sustainable Environment,ENGR,3
 5940,Graduate Thesis Seminar,ENGR,3
-0301,Intermediate English (for Graduates),ELIN,0
-0210,Academic English for the Liberal Arts,ENGL,0
-0310,Effective Writing (for Graduates),ENGL,0
-0311,Academic Reading (for Graduates),ENGL,0
-0312,Listening and Speaking (for Graduates),ENGL,0
-0399,Selected Topic for Core Curriculum,ENGL,3
+301,Intermediate English (for Graduates),ELIN,0
+210,Academic English for the Liberal Arts,ENGL,0
+310,Effective Writing (for Graduates),ENGL,0
+311,Academic Reading (for Graduates),ENGL,0
+312,Listening and Speaking (for Graduates),ENGL,0
+399,Selected Topic for Core Curriculum,ENGL,3
 1099,Selected Topics for Core Curriculum,ECLT,3
 2010,Introduction to Literature,ECLT,3
 2011,Survey of British Literature,ECLT,3
@@ -1257,7 +1258,7 @@ courseCode,courseTitle,prefix,credits
 4905,Selected Topics in Coptic Studies,HIST,3
 5222,Seminar on the Nineteenth-Century Middle East,HIST,3
 5223,Seminar on the Twentieth-Century Middle East,HIST,3
-0302,Advanced English (for Graduates),ELIN,0
+302,Advanced English (for Graduates),ELIN,0
 3501,International Finance,INTB,3
 4601,International Marketing,INTB,3
 5210,Introduction to International Human Rights Law and Critique,LAW,3
