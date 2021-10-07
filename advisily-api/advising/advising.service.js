@@ -104,7 +104,7 @@ async function getAdvisingResultCourses({ advisingSessionId }) {
   const sql =
     "select * from advisingResultCourses AS arc \
                           INNER JOIN courses AS c ON (c.courseId=arc.courseId)\
-                         WHERE advisingSessionId=?";
+                         WHERE advisingSessionId=? ORDER BY semesterNumber";
   const [courses, err] = await query(sql, [advisingSessionId]);
   if (err) throw "Error getting advising results coursess.";
 
@@ -126,18 +126,19 @@ async function generatePlan({ advisingSessionId }) {
     const planCourses = await getPlanCourses({ catalogId });
     const catalogCourses = await getCatCourses({ catalogId });
     const catalog = await getCatalog({ catalogId });
-
-    let resultCourses = logic.generatePlan({
+    catalog.courses = catalogCourses;
+    let resultSemesters = logic.generatePlan({
       user,
       planCourses,
       advisingSession,
-      catalogCourses,
       catalog,
     });
 
-    resultCourses.forEach((course) =>
-      addAdvisingResults({ ...course, advisingSessionId })
-    );
+    resultSemesters.forEach(({ resultCourses, semesterNumber }) => {
+      resultCourses.forEach((course) =>
+        addAdvisingResults({ ...course, advisingSessionId, semesterNumber })
+      );
+    });
   } catch (err) {
     console.log(err);
   }

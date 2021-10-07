@@ -86,6 +86,5 @@ function updateSchema() {
     password: PASSWORD_SCHEMA,
     advisingSessionId: ID_SCHEMA,
     standingId: ID_SCHEMA,
-    semesterNumber: Joi.number().integer().positive(),
   });
 }

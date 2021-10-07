@@ -17,6 +17,7 @@ async function getUserMajors({ studentId }) {
 }
 
 async function addUserMajor({ studentId, majorId, catalogId }) {
+  console.log("studentId", studentId, majorId);
   const sql = "INSERT IGNORE INTO userMajors SET ?";
   const [data, err] = await query(sql, { studentId, majorId, catalogId });
   if (err) {

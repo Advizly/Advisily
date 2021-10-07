@@ -48,7 +48,7 @@ function addAdvisingSession() {
     winterCredits: CREDITS_SCHEMA.max(4).required(),
     paceId: ID_SCHEMA_REQUIRED,
     generalElecCredits: CREDITS_SCHEMA.required(),
-    semestersPlanned: ID_SCHEMA.max(10),
+    semestersToPlan: ID_SCHEMA.max(10),
   });
 }
 
@@ -61,7 +61,9 @@ function updateAdvisingSession() {
     winterCredits: CREDITS_SCHEMA.max(4).required(),
     paceId: ID_SCHEMA_REQUIRED,
     generalElecCredits: CREDITS_SCHEMA.required(),
-    semestersPlanned: ID_SCHEMA.max(10),
+    semestersToPlan: ID_SCHEMA.max(10),
+    exemptedCredits: CREDITS_SCHEMA,
+    semesterNumber: Joi.number().integer().min(1),
   });
 }
 

@@ -1,116 +1,174 @@
 const _ = require("lodash");
+const {
+  StandingsIds,
+  JUNIOR_CREDITS,
+  SENIOR_CREDITS,
+  Course_Types,
+} = require("./constants");
 const { filterPlanCourses } = require("./filters");
-const { courseTaken } = require("./utils");
+const { courseTaken, _isElective, addCourseTypes } = require("./utils");
 
 module.exports = { generatePlan };
 
-function generatePlan({
-  user,
-  planCourses,
-  advisingSession,
-  catalogCourses,
-  catalog,
-}) {
-  let userCourses = user.courses;
-  userCourses = sortBySemester(userCourses);
+function generatePlan({ user, planCourses, advisingSession, catalog }) {
+  planCourses = addCourseTypes(planCourses, catalog.courses);
+  planCourses.push({
+    courseId: 1432,
+    credits: 3,
+    requisites: [],
+    semesterNumber: 1,
+    courseTypeId: Course_Types.Collateral,
+  }); // calc 1
 
-  const filteredCourses = filterPlanCourses({
-    planCourses,
-    user,
-    catalogCourses,
-    catalog,
-  });
+  const semestersToPlan = 10;
+  let resultSemesters = [];
 
-  if (!filteredCourses.length) return [];
+  user.totalCredits = user.courses
+    .map((course) => course.credits)
+    .reduce((c1, c2) => c1 + c2, 0);
 
-  filteredCourses.forEach(
-    //convert null credits to 3 by default
-    (course) => (course.credits = course.credits !== null ? course.credits : 3)
-  );
-  // return filteredCourses;
-  const sortedCourses = sortBySemester(filteredCourses);
-  // return sortedCourses;
-  const groupedCourses = groupByCoRequisites(sortedCourses, userCourses);
+  for (let i = 0; i < semestersToPlan; i++) {
+    user.courses = addCourseTypes(user.courses, catalog.courses);
+    user.courses = sortBySemester(user.courses);
 
-  let resultCourses = getResultCourses(groupedCourses, advisingSession);
-  return resultCourses;
+    let filteredCourses = addCourseTypes(planCourses, catalog.courses);
+
+    filteredCourses = filterPlanCourses({ planCourses, user, catalog });
+
+    filteredCourses.forEach(
+      //convert null credits to 3 by default
+      (course) =>
+        (course.credits = course.credits !== null ? course.credits : 3)
+    );
+
+    const sortedCourses = sortBySemester(filteredCourses);
+
+    const resultCourses = getResultCourses(
+      user,
+      sortedCourses,
+      advisingSession
+    );
+    resultSemesters.push({ resultCourses, semesterNumber: i + 1 });
+
+    updateUser(user, resultCourses);
+  }
+  return resultSemesters;
 }
 
-function getResultCourses(groupedCourses, advisingSession) {
-  if (!groupedCourses.length) return [];
+function updateUser(user, resultCourses) {
+  user.courses = user.courses.concat(resultCourses);
+  resultCourses.forEach((course) => (user.totalCredits += course.credits));
 
+  if (user.totalCredits > JUNIOR_CREDITS) user.standingId = StandingsIds.JUNIOR;
+  if (user.totalCredits > SENIOR_CREDITS) user.standingId = StandingsIds.SENIOR;
+  // console.log("User standing: ", user.standingId, user.totalCredits);
+}
+
+function getResultCourses(user, courses, advisingSession) {
   const { overloadingCredits } = advisingSession;
+  const { semesterNumber } = user;
+  if (!courses.length) return [];
 
-  let creditsSum = 0,
-    resultCourses = [],
-    reachedMaxCredits = false;
+  const coursesIdsMap = {};
+  courses.forEach((course) => (coursesIdsMap[course.courseId] = course));
+
+  courses = mapCoRequisitesToIds(courses, user.courses);
+
   const MAX_CREDITS = overloadingCredits ? overloadingCredits : 18;
+  let reachedMaxCredits = false;
+  const obj = {
+    coursesIdsMap,
+    resultCourses: [],
+    resultCoursesIds: [],
+    totalCredits: 0,
+    MAX_CREDITS,
+  };
 
-  for (let i = 0; i < groupedCourses.length && !reachedMaxCredits; i++) {
-    const { courseGroup, totalCredits } = groupedCourses[i];
+  for (let i = 0; i < courses.length && !reachedMaxCredits; i++) {
+    const course = courses[i];
+    obj.course = course;
+    if (!obj.resultCoursesIds.includes(course.courseId) || _isElective(course))
+      tryAddingCourse(obj);
 
-    if (creditsSum + totalCredits <= MAX_CREDITS) {
-      creditsSum += totalCredits;
-      courseGroup.forEach((course) => resultCourses.push(course));
-    }
-    reachedMaxCredits = creditsSum === MAX_CREDITS;
+    reachedMaxCredits = obj.totalCredits === MAX_CREDITS;
   }
 
-  resultCourses.map((c) => _.omit(c, ["requisites"]));
-  return resultCourses;
+  return obj.resultCourses;
 }
 
-function groupByCoRequisites(courses, userCourses) {
-  let allReqIds = [];
-  for (let i = 0; i < courses.length; i++) {
-    let course = courses[i];
-    if (allReqIds.includes(course.courseId)) {
-      //skip courses which were added before
-      courses[i].remove = true; //and mark for removal
-      continue;
-    }
+function tryAddingCourse(obj) {
+  const {
+    course,
+    coursesIdsMap,
+    resultCourses,
+    resultCoursesIds,
+    totalCredits,
+    MAX_CREDITS,
+  } = obj;
 
-    coReqIds = getCoRequisitesIds(courses[i], userCourses);
-    // if (coReqIds.length)
-    courses[i] = formCourseGroup(course, courses, coReqIds);
+  if (course.credits + totalCredits > MAX_CREDITS) return false;
 
-    allReqIds = allReqIds.concat(coReqIds);
-  }
-  return courses.filter((c) => !c.remove);
-}
+  resultCoursesIds.push(course.courseId);
+  obj.totalCredits += course.credits;
+  resultCourses.push(course);
 
-function formCourseGroup(course, courses, coReqIds) {
-  let totalCredits = course.credits,
-    courseGroup = [course];
+  const { requisites } = course;
+  if (!requisites.length) return true;
+  const requisitesAdded = requisites.some((reqSet) => {
+    if (!reqSet.length) return true;
 
-  const coReqCourses = courses.filter((c) => coReqIds.includes(c.courseId));
+    return reqSet.every((requisiteId) => {
+      if (resultCoursesIds.includes(requisiteId)) return true;
+      //else
+      const nextCourse = coursesIdsMap[requisiteId];
+      if (nextCourse === undefined) return false;
 
-  coReqCourses.forEach((req) => {
-    totalCredits += req.credits;
-    courseGroup.push(req);
+      const nextObj = {
+        ...obj,
+        course: nextCourse,
+      };
+      if (tryAddingCourse(nextObj)) {
+        obj.totalCredits = nextObj.totalCredits;
+        return true;
+      }
+      return false;
+    });
   });
-  const group = { courseGroup: courseGroup, totalCredits };
 
-  return group;
+  if (requisitesAdded) return true;
+
+  obj.totalCredits -= course.credits;
+  resultCourses.pop();
+  resultCoursesIds.pop();
+  return false;
+}
+
+function mapCoRequisitesToIds(courses, userCourses) {
+  for (let i = 0; i < courses.length; i++) {
+    coReqIds = getCoRequisitesIds(courses[i], userCourses);
+    courses[i].requisites = coReqIds;
+  }
+  return courses;
 }
 
 function getCoRequisitesIds(course, userCourses) {
-  let ids = [],
-    foundSet = false;
-
+  const reqSets = [];
   course.requisites.forEach((reqSet) => {
-    if (!reqSet.length || foundSet) return;
+    if (!reqSet.length) return;
 
-    reqSet.forEach((requisite) => {
-      const { requisiteTypeId, courseId } = requisite;
-      if (courseTaken(courseId, userCourses)) return; //skip taken requisites
-      if (requisiteTypeId !== 2 && requisiteTypeId !== 3) return; //skip non-conncurent requisites
+    const set = reqSet
+      .filter((requisite) => {
+        const { requisiteTypeId, courseId } = requisite;
+        if (courseTaken(courseId, userCourses)) return false; //skip taken requisites
+        if (requisiteTypeId !== 2 && requisiteTypeId !== 3) return false; //skip non-conncurent requisites
 
-      ids.push(courseId);
-      foundSet = true;
-    });
+        return true;
+      })
+      .map((requisite) => requisite.courseId);
+
+    reqSets.push(set);
   });
-  return ids;
+  return reqSets;
 }
 
 //return array of objects.
@@ -134,7 +192,11 @@ function groupBySemester(coursesCoReqs) {
 }
 
 function sortBySemester(courses) {
-  return courses.sort((c1, c2) => c1.semesterNumber - c2.semesterNumber);
+  return courses.sort((c1, c2) => {
+    if (_isElective(c1) && !_isElective(c2)) return 1;
+    if (!_isElective(c1) && _isElective(c2)) return -1;
+    return c1.semesterNumber - c2.semesterNumber;
+  });
 }
 
 /*****

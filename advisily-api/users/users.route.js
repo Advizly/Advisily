@@ -9,7 +9,6 @@ router.use("/user-courses", require("./userCourses/user-courses.route"));
 const controller = require("./users.controller");
 const schemas = require("./users.schema");
 const requestValidator = require("../middleware/requestValidator");
-const auth = require("../middleware/auth");
 
 router.get("/", controller.getUsers);
 router.get(

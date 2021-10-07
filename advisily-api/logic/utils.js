@@ -1,10 +1,22 @@
-const { Course_Types, Standings } = require("./constants");
+const {
+  Course_Types,
+  StandingsIds,
+  RequisiteIds,
+  MAJOR_ELECTIVE_CODE,
+  GENERAL_ELECTIVE_CODE,
+  MATH_ELECTIVE_CODE,
+} = require("./constants");
 
 module.exports = {
   concurrentNotRemoved,
   courseTaken,
   prerequisiteFulfilled,
-  getMajorElectiveUserCourses,
+  getUserElectives,
+  _isElective,
+  _isGeneralElective,
+  _isMajorElective,
+  _isMathElective,
+  addCourseTypes,
 };
 
 function courseTaken(courseId, userCourses) {
@@ -13,20 +25,42 @@ function courseTaken(courseId, userCourses) {
 }
 
 //returns true if all prerequisites of "course" were taken
-function prerequisiteFulfilled(course, user) {
+function prerequisiteFulfilled(course, user, planCourses) {
   const { requisites } = course;
   if (!requisites.length) return true;
   const res = requisites.some((reqSet) => {
     return reqSet.every((r) => {
-      if (r.requisiteTypeId === 1) return courseTaken(r.courseId, user.courses);
-      if (r.requisiteTypeId === 4) return user.standingId >= Standings.JUNIOR;
+      if (r.requisiteTypeId === RequisiteIds.PREREQUISITE)
+        return courseTaken(r.courseId, user.courses);
 
-      if (r.requisiteTypeId === 5) return user.standingId >= Standings.SENIOR;
+      if (r.requisiteTypeId === RequisiteIds.JUNIOR_STANDING)
+        return user.standingId >= StandingsIds.JUNIOR;
+
+      if (r.requisiteTypeId === RequisiteIds.SENIOR_STANIDNG)
+        return user.standingId >= StandingsIds.SENIOR;
+
+      if (r.requisiteTypeId === RequisiteIds.FINISHED_300_LEVEL)
+        return finished300LevelCourses(user, planCourses);
       return true;
     });
   });
 
   return res;
+}
+function finished300LevelCourses(user, planCourses) {
+  const courses300LvlIds = planCourses
+    .filter(
+      (course) =>
+        course.courseCode >= 3000 &&
+        course.courseCode < 4000 &&
+        course.courseTypeId === Course_Types.Concentration
+    )
+    .map((course) => course.courseId);
+  const userCoursesIds = user.courses.map((course) => course.courseId);
+
+  return courses300LvlIds.every((courseId) =>
+    userCoursesIds.includes(courseId)
+  );
 }
 
 //checks if concurrent requisites of "course" were removed or not.
@@ -39,24 +73,100 @@ function concurrentNotRemoved(course, userCourses, filteredPlanCourses) {
     if (!reqSet.length) return true;
 
     return reqSet.every((r) => {
-      if (r.requisiteTypeId === 2 && !courseTaken(r.courseId, userCourses))
+      if (
+        r.requisiteTypeId === RequisiteIds.COREQUISITE &&
+        !courseTaken(r.courseId, userCourses)
+      )
         return courseIds.includes(r.courseId);
-      if (r.requisiteTypeId === 3 && !courseTaken(r.courseId, userCourses))
+      if (
+        r.requisiteTypeId === RequisiteIds.PREREQUISITE_OR_CONCURRENT &&
+        !courseTaken(r.courseId, userCourses)
+      )
         return courseIds.includes(r.courseId);
 
       return true;
     });
   });
-  // console.log(res);
   return res;
 }
 
-function getMajorElectiveUserCourses({ userCourses, catalogCourses }) {
-  const electiveCoursesIds = catalogCourses
-    .filter((course) => course.courseTypeId === Course_Types.MajorElectives)
-    .map((course) => course.courseId);
-
-  return userCourses.filter((usrCourse) =>
-    electiveCoursesIds.includes(usrCourse.courseId)
+function _isElective(course) {
+  return (
+    _isMajorElective(course) ||
+    _isGeneralElective(course) ||
+    _isMathElective(course)
   );
+}
+
+function _isMajorElective(course) {
+  const { courseTypeId, courseCode } = course;
+  if (
+    courseTypeId !== undefined &&
+    (courseTypeId === Course_Types.MajorElectives ||
+      courseTypeId == Course_Types.MathOrMajorElective)
+  )
+    return true;
+
+  return courseCode === MAJOR_ELECTIVE_CODE;
+}
+function _isGeneralElective(course) {
+  const { courseTypeId, courseCode } = course;
+  if (
+    courseTypeId !== undefined &&
+    courseTypeId === Course_Types.GeneralElectives
+  )
+    return true;
+
+  return courseCode === GENERAL_ELECTIVE_CODE;
+}
+function _isMathElective(course) {
+  const { courseTypeId, courseCode } = course;
+
+  if (
+    courseTypeId !== undefined &&
+    (courseTypeId === Course_Types.MathElectives ||
+      courseTypeId == Course_Types.MathOrMajorElective)
+  )
+    return true;
+
+  return courseCode === MATH_ELECTIVE_CODE;
+}
+
+function getUserElectives({ userCourses, catalogCourses }) {
+  const catalogElectiveCourses = catalogCourses.filter((course) =>
+    _isElective(course)
+  );
+  const electiveCoursesIds = catalogElectiveCourses.map(
+    (course) => course.courseId
+  );
+  const catalogElectiveCoursesMap = {};
+  catalogElectiveCourses.forEach((course) => {
+    catalogElectiveCoursesMap[course.courseId] = course.courseTypeId;
+  });
+
+  const electives = userCourses
+    .filter(
+      (usrCourse) =>
+        electiveCoursesIds.includes(usrCourse.courseId) ||
+        _isElective(usrCourse)
+    )
+    .map((course) => {
+      return {
+        ...course,
+        courseTypeId: catalogElectiveCoursesMap[course.courseId],
+      };
+    });
+
+  return { electives };
+}
+
+function addCourseTypes(courses, catalogCourses) {
+  const map = {};
+  catalogCourses.forEach(
+    (course) => (map[course.courseId] = course.courseTypeId)
+  );
+
+  return courses.map((course) => {
+    return { ...course, courseTypeId: map[course.courseId] };
+  });
 }

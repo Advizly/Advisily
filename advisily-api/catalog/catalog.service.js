@@ -11,8 +11,9 @@ module.exports = {
 
 const baseQuery = "select * from catalogs";
 const baseGetCoursesQuery =
-  "SELECT * FROM catalogCourses as cc \
-    INNER JOIN courses as c ON cc.courseId=c.courseId ";
+  "SELECT cc.*, c.*, ct.courseType FROM catalogCourses as cc \
+    INNER JOIN courses as c ON cc.courseId=c.courseId\
+    INNER JOIN courseTypes as ct on ct.courseTypeId=cc.courseTypeId";
 
 const baseGetPlanCoursesQuery =
   "select * from planCourses AS pc\
@@ -28,10 +29,20 @@ async function getCatalogs(conditions) {
   return data;
 }
 
-async function getCatCourses(conditions) {
+async function getCatCourses({ catalogId, courseTypeId }) {
   let sql = baseGetCoursesQuery;
-  const { columns, values } = parseConditions(conditions);
-  if (values.length) sql += ` WHERE ${columns}`;
+  let values = [];
+  if (catalogId || courseTypeId) sql += " WHERE ";
+  if (catalogId) {
+    sql += "catalogId=?";
+    values.push(catalogId);
+  }
+  if (courseTypeId) {
+    if (catalogId) sql += " AND ";
+
+    sql += " cc.courseTypeId=?";
+    values.push(courseTypeId);
+  }
 
   let [catCourses, err] = await query(sql, values);
   if (err) throw "Error getting catalog courses.";
