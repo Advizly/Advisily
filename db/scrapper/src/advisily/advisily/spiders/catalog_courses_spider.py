@@ -7,6 +7,14 @@ import sys
 import csv
 
 
+
+CoreCurriculumId= 1
+ConcRequirementsId =2
+MajorElectivesId=3
+CollateralRequirementsId =4
+EngCoreId =5
+GeneralElectivesId=6
+
 class CatalogCourses(scrapy.Spider):
     name="catalogs"
     start_urls=[
@@ -107,7 +115,7 @@ class CatalogCourses(scrapy.Spider):
 
         if(majorTitle.find("Engineering")!=-1): #CE 
             collateralPart=[]
-            engCorePart=self.parseCoursesByCategories(courses[1],catalogYear,5,majorTitle)
+            engCorePart=self.parseCoursesByCategories(courses[1],catalogYear,EngCoreId,majorTitle)
         else: #CS
             engCorePart=[]
 
@@ -116,19 +124,25 @@ class CatalogCourses(scrapy.Spider):
             if(int(startYear)<=2018):
                 courses[3].append("MACT 233/2141 - Differential Equations (3 cr.)")
 
-            collateralPart= self.parseCoursesByCategories(courses[4],catalogYear,4,majorTitle)
+            collateralPart= self.parseCoursesByCategories(courses[4],catalogYear,CollateralRequirementsId,majorTitle)
 
         #get each course by category 
-        concenterationPart= self.parseCoursesByCategories(courses[2],catalogYear,2,majorTitle)
-        electivePart=self.parseCoursesByCategories( courses[3],catalogYear,3,majorTitle)
+        concenterationPart= self.parseCoursesByCategories(courses[2],catalogYear,ConcRequirementsId,majorTitle)
+        electivePart=self.parseCoursesByCategories( courses[3],catalogYear,MajorElectivesId,majorTitle)
 
         
         #combine and return
         allCourses=concenterationPart+electivePart+collateralPart+engCorePart
+        print ("\n\n\n\n\n before")
+        self.removeDuplicates(allCourses)
+        print("\n\n\n after\n\n\n")
         return allCourses
         
-    
-
+    def removeDuplicates(self,courses):
+        # for coruse in courses:
+        # mydict= dict.fromkeys(courses)
+        # print(mydict)
+        pass
       
         
 

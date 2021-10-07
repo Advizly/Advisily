@@ -246,12 +246,12 @@ def insertRequisiteSets():
 # insertMajors()
 # insertMinors()
 # insertCourses()
-# insertRequisiteTypes()
+insertRequisiteTypes()
 # insertCourseTypes()
 # insertCatalogs()
 # insertPaces()
 # insertPlans()
 # insertCatalogCourses()
-# 
+
 insertCourseRequites()
 insertRequisiteSets()
