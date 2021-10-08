@@ -1,5 +1,5 @@
 {
-  "hostUrl": "http://localhost:5000",
+  "hostUrl": "http://localhost:4000",
   "frontendUrl": "http://localhost:3000",
   "jwtPrivateKey": "",
   "db": {

@@ -6,11 +6,17 @@ const {
   Course_Types,
 } = require("./constants");
 const { filterPlanCourses } = require("./filters");
-const { courseTaken, _isElective, addCourseTypes } = require("./utils");
+const {
+  courseTaken,
+  _isElective,
+  addCourseTypes,
+  _isGeneralElective,
+} = require("./utils");
 
 module.exports = { generatePlan };
 
 function generatePlan({ user, planCourses, advisingSession, catalog }) {
+  console.log("Plan courses");
   planCourses = addCourseTypes(planCourses, catalog.courses);
   planCourses.push({
     courseId: 1432,
@@ -20,20 +26,35 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
     courseTypeId: Course_Types.Collateral,
   }); // calc 1
 
+  const { exemptedCredits } = advisingSession;
+  // console.log(exemptedCredits);
+  // for (let i = 0; i < Math.ceil(exemptedCredits / 3.0); i++)
+  //   planCourses.push({
+  //     courseId: 2,
+  //     credits: 3,
+  //     requisites: [],
+  //     semesterNumber: 9,
+  //     courseTypeId: Course_Types.GeneralElectives,
+  //   }); //general elective
+
   const semestersToPlan = 10;
   let resultSemesters = [];
+  const coursesIdsMap = {};
+  // planCourses.forEach((course) => (coursesIdsMap[course.courseId] = course));
+
+  // planCoursess = addWeight(planCourses);
 
   user.totalCredits = user.courses
     .map((course) => course.credits)
     .reduce((c1, c2) => c1 + c2, 0);
 
   for (let i = 0; i < semestersToPlan; i++) {
+    console.log("user courses");
+
     user.courses = addCourseTypes(user.courses, catalog.courses);
     user.courses = sortBySemester(user.courses);
 
-    let filteredCourses = addCourseTypes(planCourses, catalog.courses);
-
-    filteredCourses = filterPlanCourses({ planCourses, user, catalog });
+    let filteredCourses = filterPlanCourses({ planCourses, user, catalog });
 
     filteredCourses.forEach(
       //convert null credits to 3 by default
@@ -55,6 +76,14 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
   return resultSemesters;
 }
 
+function addWeight(planCourses) {
+  return planCourses;
+  planCourses.sort((c1, c2) => c1.semesterNumber - c2.semesterNumber);
+  for (let i = planCourses.length - 1; i >= 0; i--) {
+    const course = planCourses[i];
+  }
+}
+
 function updateUser(user, resultCourses) {
   user.courses = user.courses.concat(resultCourses);
   resultCourses.forEach((course) => (user.totalCredits += course.credits));
@@ -69,14 +98,14 @@ function getResultCourses(user, courses, advisingSession) {
   const { semesterNumber } = user;
   if (!courses.length) return [];
 
+  courses = mapCoRequisitesToIds(courses, user.courses);
   const coursesIdsMap = {};
   courses.forEach((course) => (coursesIdsMap[course.courseId] = course));
-
-  courses = mapCoRequisitesToIds(courses, user.courses);
 
   const MAX_CREDITS = overloadingCredits ? overloadingCredits : 18;
   let reachedMaxCredits = false;
   const obj = {
+    user,
     coursesIdsMap,
     resultCourses: [],
     resultCoursesIds: [],
@@ -100,6 +129,7 @@ function tryAddingCourse(obj) {
   const {
     course,
     coursesIdsMap,
+    user,
     resultCourses,
     resultCoursesIds,
     totalCredits,
@@ -123,10 +153,9 @@ function tryAddingCourse(obj) {
       const nextCourse = coursesIdsMap[requisiteId];
       if (nextCourse === undefined) return false;
 
-      const nextObj = {
-        ...obj,
-        course: nextCourse,
-      };
+      if (courseTaken(nextCourse.courseId, user.courses)) return true;
+
+      const nextObj = { ...obj, course: nextCourse };
       if (tryAddingCourse(nextObj)) {
         obj.totalCredits = nextObj.totalCredits;
         return true;
@@ -171,30 +200,10 @@ function getCoRequisitesIds(course, userCourses) {
   return reqSets;
 }
 
-//return array of objects.
-//each object has semester number and array of courses that should be taken in this semester
-function groupBySemester(coursesCoReqs) {
-  let groups = [];
-
-  for (let i = 0; i < coursesCoReqs.length; i++) {
-    const { courseGroup } = coursesCoReqs[i];
-    const { semesterNumber } = courseGroup[0];
-
-    let groupIndx = groups.findIndex(
-      (g) => g.semesterNumber === semesterNumber
-    );
-    if (groupIndx === -1)
-      groups.push({ semesterCourses: [coursesCoReqs[i]], semesterNumber });
-    else groups[groupIndx].semesterCourses.push(coursesCoReqs[i]);
-  }
-
-  return groups;
-}
-
 function sortBySemester(courses) {
   return courses.sort((c1, c2) => {
-    if (_isElective(c1) && !_isElective(c2)) return 1;
-    if (!_isElective(c1) && _isElective(c2)) return -1;
+    if (_isGeneralElective(c1) && !_isGeneralElective(c2)) return 1;
+    if (!_isGeneralElective(c1) && _isGeneralElective(c2)) return -1;
     return c1.semesterNumber - c2.semesterNumber;
   });
 }

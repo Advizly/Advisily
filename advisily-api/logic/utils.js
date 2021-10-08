@@ -17,6 +17,7 @@ module.exports = {
   _isMajorElective,
   _isMathElective,
   addCourseTypes,
+  groupBySemester,
 };
 
 function courseTaken(courseId, userCourses) {
@@ -53,7 +54,8 @@ function finished300LevelCourses(user, planCourses) {
       (course) =>
         course.courseCode >= 3000 &&
         course.courseCode < 4000 &&
-        course.courseTypeId === Course_Types.Concentration
+        course.courseTypeId === Course_Types.Concentration &&
+        course.prefix === "CSCE"
     )
     .map((course) => course.courseId);
   const userCoursesIds = user.courses.map((course) => course.courseId);
@@ -139,23 +141,13 @@ function getUserElectives({ userCourses, catalogCourses }) {
   const electiveCoursesIds = catalogElectiveCourses.map(
     (course) => course.courseId
   );
-  const catalogElectiveCoursesMap = {};
-  catalogElectiveCourses.forEach((course) => {
-    catalogElectiveCoursesMap[course.courseId] = course.courseTypeId;
-  });
-
-  const electives = userCourses
-    .filter(
-      (usrCourse) =>
-        electiveCoursesIds.includes(usrCourse.courseId) ||
-        _isElective(usrCourse)
-    )
-    .map((course) => {
-      return {
-        ...course,
-        courseTypeId: catalogElectiveCoursesMap[course.courseId],
-      };
-    });
+  const catalogCoursesIds = catalogCourses.map((course) => course.courseId);
+  const electives = userCourses.filter(
+    (course) =>
+      electiveCoursesIds.includes(course.courseId) ||
+      // !catalogCoursesIds.includes(course.courseId) ||
+      _isElective(course)
+  );
 
   return { electives };
 }
@@ -167,6 +159,41 @@ function addCourseTypes(courses, catalogCourses) {
   );
 
   return courses.map((course) => {
-    return { ...course, courseTypeId: map[course.courseId] };
+    let courseTypeId = map[course.courseId];
+
+    if (_isMajorElective(course)) courseTypeId = Course_Types.MajorElectives;
+    if (_isMathElective(course)) courseTypeId = Course_Types.MathElectives;
+    if (_isMajorElective(course) && _isMathElective(course))
+      courseTypeId = Course_Types.MathOrMajorElective;
+    if (_isGeneralElective(course) || courseTypeId === undefined)
+      courseTypeId = Course_Types.GeneralElectives;
+
+    if (courseTypeId === undefined)
+      console.log(course.courseTitle, course.courseCode);
+
+    return {
+      ...course,
+      courseTypeId,
+    };
   });
+}
+
+//return array of objects.
+//each object has semester number and array of courses that should be taken in this semester
+function groupBySemester(coursesCoReqs) {
+  let groups = [];
+
+  for (let i = 0; i < coursesCoReqs.length; i++) {
+    const { courseGroup } = coursesCoReqs[i];
+    const { semesterNumber } = courseGroup[0];
+
+    let groupIndx = groups.findIndex(
+      (g) => g.semesterNumber === semesterNumber
+    );
+    if (groupIndx === -1)
+      groups.push({ semesterCourses: [coursesCoReqs[i]], semesterNumber });
+    else groups[groupIndx].semesterCourses.push(coursesCoReqs[i]);
+  }
+
+  return groups;
 }

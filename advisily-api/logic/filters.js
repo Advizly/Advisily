@@ -55,6 +55,8 @@ function removeTakenElectives(filteredCourses, userCourses, catalog) {
    *
    * -
    */
+  console.log("\n\n\n");
+
   for (let i = 0; i < electives.length; i++) {
     let nextElectiveIndex = -1;
     const elective = electives[i];
@@ -68,12 +70,13 @@ function removeTakenElectives(filteredCourses, userCourses, catalog) {
         _isMajorElective(course)
       );
 
-    if (_isGeneralElective(elective) || nextElectiveIndex === -1)
+    if (_isGeneralElective(elective) || nextElectiveIndex === -1) {
+      console.log("removing general");
       nextElectiveIndex = filteredCourses.findIndex((course) =>
         _isGeneralElective(course)
       );
-
-    if (nextElectiveIndex === -1) break;
+    }
+    if (nextElectiveIndex === -1) continue;
 
     filteredCourses.splice(nextElectiveIndex, 1);
   }

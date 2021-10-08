@@ -42,6 +42,7 @@ async function getAdvisingSession({ advisingSessionId }) {
 }
 
 async function addAdvisingSession(advisingData) {
+  console.log("advisingData", advisingData);
   advisingData.sessionDate = new Date();
   const { studentId } = advisingData;
   const session = await getAdvisingSessions({ studentId });
