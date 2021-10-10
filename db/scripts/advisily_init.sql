@@ -129,6 +129,7 @@ DROP TABLE IF EXISTS `advisily`.`majors` ;
 CREATE TABLE IF NOT EXISTS `advisily`.`majors` (
   `majorId` INT NOT NULL AUTO_INCREMENT,
   `majorTitle` VARCHAR(125) NULL,
+  `majorPrefix` VARCHAR(16) NULL,
   PRIMARY KEY (`majorId`))
 ENGINE = InnoDB;
 

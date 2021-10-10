@@ -98,6 +98,11 @@ def insertCatalogCourses():
                     catalogYear=courseRow.pop("catalogYear")
                     courseCode=courseRow.pop("courseCode")
                     prefix=courseRow.pop("prefix")
+                    if(prefix=="CSCE" and int(courseCode)==4311): #wide area networks became computer network
+                        courseCode=3312
+                    if(prefix=="CSCE" and int(courseCode)==4312):
+                        courseCode=3313
+
 
                     catalogId=_get_catalogId(catalogYear,majorTitle)
                     courseId=_get_courseId_by_code_prefix(courseCode,prefix)
@@ -147,7 +152,7 @@ def insertRequisiteTypes():
 
 def insertPlans():
     insert_sql="INSERT INTO planCourses(semesterNumber,catalogId,courseId) VALUES (%s, %s,%s)"
-    plan_years=["2018-2019","2019-2020","2020-2021"]
+    plan_years=["2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
     plan_majors=["ce","cs"]
     try:
         for major in plan_majors:    
@@ -165,7 +170,7 @@ def insertPlans():
                         courseId=_get_courseId_by_code_prefix(courseCode,prefix)
                         if(not (catalogId and courseId)):
                             err=True
-                            print(f"{catalogId} {courseId}, {prefix}\n{planRow} {courseCode}")
+                            # print(f"{catalogId} {courseId}, {prefix}\n{planRow} {courseCode}")
                             break
                         planRow["catalogId"]=catalogId
                         planRow["courseId"]=courseId
@@ -194,7 +199,6 @@ def _get_catalogId(catalogYear,majorTitle):
     sql="SELECT catalogId from catalogs WHERE year LIKE %s AND majorId= %s LIMIT 1"
     cursor.execute(sql,[catalogYear,majorId])
     catalogId=cursor.fetchone()
-    print(catalogId,majorId,catalogYear)
     return catalogId[0] if catalogId else None
 
 def _get_courseId_by_code_prefix(courseCode,prefix):
@@ -246,12 +250,12 @@ def insertRequisiteSets():
 # insertMajors()
 # insertMinors()
 # insertCourses()
-insertRequisiteTypes()
+# insertRequisiteTypes()
 # insertCourseTypes()
 # insertCatalogs()
 # insertPaces()
 # insertPlans()
-# insertCatalogCourses()
+insertCatalogCourses()
 
 insertCourseRequites()
 insertRequisiteSets()

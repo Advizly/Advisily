@@ -1,7 +1,9 @@
 majorTitle,catalogYear,courseCode,prefix,courseTypeId
 Computer Science (B.S),2016-2017,1001,CSCE,2
 Computer Science (B.S),2016-2017,1101,CSCE,2
-Computer Science (B.S),2016-2017,2201,CSCE,2
+Computer Science (B.S),2016-2017,1102,CSCE,2
+Computer Science (B.S),2016-2017,2202,CSCE,2
+Computer Science (B.S),2016-2017,2203,CSCE,2
 Computer Science (B.S),2016-2017,2301,CSCE,2
 Computer Science (B.S),2016-2017,2303,CSCE,2
 Computer Science (B.S),2016-2017,2302,CSCE,2
@@ -11,6 +13,7 @@ Computer Science (B.S),2016-2017,3301,CSCE,2
 Computer Science (B.S),2016-2017,3302,CSCE,2
 Computer Science (B.S),2016-2017,3701,CSCE,2
 Computer Science (B.S),2016-2017,3401,CSCE,2
+Computer Science (B.S),2016-2017,3402,CSCE,2
 Computer Science (B.S),2016-2017,4201,CSCE,2
 Computer Science (B.S),2016-2017,4101,CSCE,2
 Computer Science (B.S),2016-2017,4950,CSCE,2
@@ -24,10 +27,10 @@ Computer Science (B.S),2016-2017,3311,CSCE,3
 Computer Science (B.S),2016-2017,4602,CSCE,3
 Computer Science (B.S),2016-2017,4301,CSCE,3
 Computer Science (B.S),2016-2017,4311,CSCE,3
+Computer Science (B.S),2016-2017,4312,CSCE,3
 Computer Science (B.S),2016-2017,4314,CSCE,3
 Computer Science (B.S),2016-2017,4313,CSCE,3
 Computer Science (B.S),2016-2017,4302,CSCE,3
-Computer Science (B.S),2016-2017,4312,CSCE,3
 Computer Science (B.S),2016-2017,4701,CSCE,3
 Computer Science (B.S),2016-2017,4411,CSCE,3
 Computer Science (B.S),2016-2017,4421,CSCE,3
@@ -59,7 +62,9 @@ Computer Science (B.S),2016-2017,2211,PHYS,4
 Computer Science (B.S),2016-2017,2213,PHYS,4
 Computer Engineering (B.S),2016-2017,1001,CSCE,2
 Computer Engineering (B.S),2016-2017,1101,CSCE,2
-Computer Engineering (B.S),2016-2017,2201,CSCE,2
+Computer Engineering (B.S),2016-2017,1102,CSCE,2
+Computer Engineering (B.S),2016-2017,2202,CSCE,2
+Computer Engineering (B.S),2016-2017,2203,CSCE,2
 Computer Engineering (B.S),2016-2017,2301,CSCE,2
 Computer Engineering (B.S),2016-2017,2303,CSCE,2
 Computer Engineering (B.S),2016-2017,2302,CSCE,2
@@ -71,6 +76,7 @@ Computer Engineering (B.S),2016-2017,3304,CSCE,2
 Computer Engineering (B.S),2016-2017,3302,CSCE,2
 Computer Engineering (B.S),2016-2017,3701,CSCE,2
 Computer Engineering (B.S),2016-2017,3401,CSCE,2
+Computer Engineering (B.S),2016-2017,3402,CSCE,2
 Computer Engineering (B.S),2016-2017,3611,CSCE,2
 Computer Engineering (B.S),2016-2017,4301,CSCE,2
 Computer Engineering (B.S),2016-2017,4311,CSCE,2
