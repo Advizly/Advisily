@@ -178,7 +178,7 @@ def insertPlans():
                     if(not err):
                         db.commit()
                         print(cursor.rowcount, "plans inserted sucessfully")
-                    else: print(" didn't insert plans")
+                    else: print(" didn't insert plans with caalogId & courseId=",catalogId,courseId,courseCode)
     except ValueError:
                 print(ValueError)
 
@@ -254,8 +254,8 @@ def insertRequisiteSets():
 # insertCourseTypes()
 # insertCatalogs()
 # insertPaces()
-# insertPlans()
-insertCatalogCourses()
+insertPlans()
+# insertCatalogCourses()
 
-insertCourseRequites()
-insertRequisiteSets()
+# insertCourseRequites()
+# insertRequisiteSets()

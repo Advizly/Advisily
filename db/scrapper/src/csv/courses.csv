@@ -1,5 +1,5 @@
 courseCode,courseTitle,prefix,credits
--11,Maths Elective,XXXX,NULL
+-11,Maths Elective,MACT,NULL
 -10,Major Elective,XXXX,NULL
 -9,General Elective,XXXX,NULL
 -8,Arab World Studies II,XXXX,3
@@ -461,6 +461,7 @@ courseCode,courseTitle,prefix,credits
 1001,Fundamentals of Computing I,CSCE,3
 1101,Fundamentals of Computing II,CSCE,3
 1102,Fundamentals of Computing II Lab,CSCE,1
+2201,Data Structure & Algorithms,CSCE,3
 2202,Analysis and Design of Algorithms,CSCE,3
 2203,Analysis and Design of Algorithms Lab,CSCE,1
 2301,Digital Design I,CSCE,3

@@ -1,5 +1,6 @@
 majorTitle,catalogYear,courseCode,prefix,semesterNumber
 Computer Engineering (B.S),2016-2017,1001,CSCE,1
+Computer Engineering (B.S),2016-2017,1121,MACT,1
 Computer Engineering (B.S),2016-2017,1001,ENGR,1
 Computer Engineering (B.S),2016-2017,1005,ENGR,1
 Computer Engineering (B.S),2016-2017,1011,PHYS,1
@@ -7,7 +8,6 @@ Computer Engineering (B.S),2016-2017,1012,PHYS,1
 Computer Engineering (B.S),2016-2017,1010,RHET,1
 Computer Engineering (B.S),2016-2017,1010,CORE,1
 Computer Engineering (B.S),2016-2017,1101,CSCE,2
-Computer Engineering (B.S),2016-2017,1102,CSCE,2
 Computer Engineering (B.S),2016-2017,1005,CHEM,2
 Computer Engineering (B.S),2016-2017,1015,CHEM,2
 Computer Engineering (B.S),2016-2017,1021,PHYS,2
@@ -15,8 +15,8 @@ Computer Engineering (B.S),2016-2017,1022,PHYS,2
 Computer Engineering (B.S),2016-2017,1122,MACT,2
 Computer Engineering (B.S),2016-2017,1020,RHET,2
 Computer Engineering (B.S),2016-2017,1020,LALT,2
-Computer Engineering (B.S),2016-2017,2301,CSCE,3
-Computer Engineering (B.S),2016-2017,2302,CSCE,3
+Computer Engineering (B.S),2016-2017,2201,CSCE,3
+Computer Engineering (B.S),2016-2017,2301,CSCE,4
 Computer Engineering (B.S),2016-2017,2102,ENGR,3
 Computer Engineering (B.S),2016-2017,2211,PHYS,3
 Computer Engineering (B.S),2016-2017,2213,PHYS,3
@@ -37,7 +37,6 @@ Computer Engineering (B.S),2016-2017,-3,XXXX,5
 Computer Engineering (B.S),2016-2017,3304,CSCE,6
 Computer Engineering (B.S),2016-2017,3611,CSCE,6
 Computer Engineering (B.S),2016-2017,3401,CSCE,6
-Computer Engineering (B.S),2016-2017,3402,CSCE,6
 Computer Engineering (B.S),2016-2017,2141,MACT,6
 Computer Engineering (B.S),2016-2017,2104,ENGR,6
 Computer Engineering (B.S),2016-2017,-4,XXXX,6
