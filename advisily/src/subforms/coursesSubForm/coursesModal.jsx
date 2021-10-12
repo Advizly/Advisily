@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import useApi from "../../hooks/useApi";
 
 import {
-  getAllCourses,
-  getPrefixes as getPrefixesApi,
-} from "../../services/coursesService";
-import { formatCourseData } from "../../utils/coursesUtils";
+  formatCourseData,
+  mapCoursestoPrefixes,
+} from "../../utils/coursesUtils";
 import { FormCheckbox } from "../../components/form";
 import { COURSES_IDS } from "./fieldNames";
-function CoursesModal({ show, onClose }) {
-  const prefixesApi = useApi(getPrefixesApi);
-  const coursesApi = useApi(getAllCourses, mapCoursestoPrefixes);
-
-  useEffect(() => {
-    prefixesApi.request();
-    coursesApi.request();
-  }, []);
-
+function CoursesModal({ show, onClose, courses, prefixes }) {
   const handleClose = () => {
     setSelectedPrefix("");
     onClose();
   };
   const [selectedPrefix, setSelectedPrefix] = useState(null);
+  const coursesPrefixMap = mapCoursestoPrefixes(courses);
 
   const renderCourses = () => {
-    const { data: prefixes } = prefixesApi;
-    const { data: courses } = coursesApi;
-
     if (selectedPrefix)
-      return courses[selectedPrefix].map((course) => {
+      return coursesPrefixMap[selectedPrefix].map((course) => {
         const { courseId, formatedTitle } = formatCourseData(course);
         return (
           <>
@@ -48,6 +36,7 @@ function CoursesModal({ show, onClose }) {
       .sort((p1, p2) => {
         if (p1 < p2) return -1;
         if (p2 < p1) return 1;
+
         return 0;
       })
 
@@ -104,16 +93,3 @@ function CoursesModal({ show, onClose }) {
 }
 
 export default CoursesModal;
-function mapCoursestoPrefixes(courses) {
-  let prefixMap = {};
-
-  courses.forEach((course) => {
-    const { prefix } = course;
-    if (prefix === "XXXX") return; //skip pseudo-courses
-
-    if (prefixMap[prefix] !== undefined) prefixMap[prefix].push(course);
-    else prefixMap[prefix] = [course];
-  });
-
-  return prefixMap;
-}

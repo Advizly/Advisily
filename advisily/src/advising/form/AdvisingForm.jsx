@@ -31,42 +31,47 @@ function AdvisingForm(props) {
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
-  const { studentId, standingId, semesterNumber } = useAuth(true);
+  const { studentId, standingId } = useAuth(true);
 
   const initialValues = {
     ...defaultValues,
     ...userMajorInfo,
     ...userCoursesInfo,
-    semesterNumber: semesterNumber === null ? "" : semesterNumber,
     standingId: standingId === null ? "" : standingId,
+    semesterNumber: 1,
   };
   const handleSubmit = async (values, { setSubmitting }) => {
+    console.log("Submitting: ", values);
+
     if (window.confirm("Are you sure you want to submit?")) {
       try {
         const {
           minorIds: oldMinorIds,
           majorId: oldMajorId,
-          econdMajorId: oldSecondMajorId,
+          secondMajorId: oldSecondMajorId,
+          catalogId: oldCatalogId,
+          secondCatalogId: oldSecondCatalogId,
         } = userMajorInfo;
-        const { semesterNumber, standingId } = values;
+        const { standingId } = values;
 
-        userService.update(studentId, { semesterNumber, standingId });
+        userService.update(studentId, { standingId });
         updateStudentCourses(
           studentId,
           values.coursesIds,
           userCoursesInfo.coursesIds
         );
-
         updateUserMajor(
           studentId,
           values.majorId,
           values.catalogId,
+          oldCatalogId,
           oldMajorId
         );
         updateUserMajor(
           studentId,
           values.secondMajorId,
           values.secondCatalogId,
+          oldSecondCatalogId,
           oldSecondMajorId
         );
 

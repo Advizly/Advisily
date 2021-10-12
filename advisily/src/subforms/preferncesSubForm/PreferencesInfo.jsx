@@ -11,9 +11,12 @@ import { getPaces } from "../../services/pacesService";
 import {
   OVERLOADING,
   OVERLOADING_CREDITS,
+  // eslint-disable-next-line
   PACE_ID,
-  SEMESTERS_PLANNED,
+  SEMESTERS_TO_PLAN,
+  // eslint-disable-next-line
   SUMMER_CREDITS,
+  // eslint-disable-next-line
   TAKING_SUMMER,
   TAKING_WINTER,
   WINTER_CREDITS,
@@ -23,6 +26,7 @@ import semesters from "../../constant/semesters";
 
 function PreferencesInfo() {
   const { values, setFieldValue } = useFormikContext();
+  // eslint-disable-next-line
   const { takingSummer, takingWinter, overloading } = values;
 
   const handleOnChange = (target, fieldToResetName, resetValue = 0) => {
@@ -30,7 +34,7 @@ function PreferencesInfo() {
     if (stringToBool(target.value) === false)
       setFieldValue(fieldToResetName, resetValue);
   };
-
+  // eslint-disable-next-line
   const [paces, setPaces] = useState([]);
   useEffect(() => {
     getPaces().then((res) => setPaces(res));
@@ -48,12 +52,12 @@ function PreferencesInfo() {
       <FormInput
         type="number"
         name={OVERLOADING_CREDITS}
-        label="How many crdeits are you taking in total:"
+        label="How many crdeits are you taking next semester IN TOTAL:"
         min={1}
         visible={stringToBool(overloading)}
       />
       <hr />
-      <FormPolarRadioGroup
+      {/* <FormPolarRadioGroup
         name={TAKING_SUMMER}
         label="Are you planning to take course(s) next Summer?"
         onChange={({ target }) => {
@@ -68,7 +72,7 @@ function PreferencesInfo() {
         max={7}
         visible={stringToBool(takingSummer)}
       />
-      <hr />
+      <hr /> */}
       <FormPolarRadioGroup
         name={TAKING_WINTER}
         label="Are you planning to take course(s) next Winter?"
@@ -86,7 +90,7 @@ function PreferencesInfo() {
       />
 
       <hr />
-      <FormSelectGroup
+      {/* <FormSelectGroup
         label={"What pace would you like to follow?"}
         name={PACE_ID}
         items={paces}
@@ -94,10 +98,10 @@ function PreferencesInfo() {
         idSelector="paceId"
         nameSelector="paceTitle"
       />
-      <hr />
+      <hr /> */}
       <FormSelectGroup
         label={"Up to how many semester would you like to be planned?"}
-        name={SEMESTERS_PLANNED}
+        name={SEMESTERS_TO_PLAN}
         items={semesters}
       />
     </>

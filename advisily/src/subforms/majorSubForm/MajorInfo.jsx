@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useFormikContext } from "formik";
 
+// eslint-disable-next-line
 import { FormPolarRadioGroup, FormSelectGroup } from "../../components/form";
 import { stringToBool } from "../../utils/stringUtils";
 import useMajors from "../../hooks/useMajors";
@@ -11,7 +12,9 @@ import {
   SECOND_MAJOR_ID,
   SECOND_CATALOG_ID,
   MINOR_IDS,
+  // eslint-disable-next-line
   IS_DOUBLE_MAJORING,
+  // eslint-disable-next-line
   IS_MINORING,
   SEMESTER_NUMBER,
   STANDING_ID,
@@ -29,9 +32,10 @@ function MajorInfo() {
 
   const { values, setFieldValue } = useFormikContext();
   const { isMinoring, isDoubleMajoring } = values;
-
+  // eslint-disable-next-line
   const { majors, minors } = useMajors();
   const { catalogs: firstMajorCatalogs } = useCatalogs(values.majorId);
+  // eslint-disable-next-line
   const { catalogs: secondMajorCatalogs } = useCatalogs(values.secondMajorId);
   useEffect(() => {
     let mounted = true; //prevents memory leak
@@ -65,8 +69,8 @@ function MajorInfo() {
         name={SEMESTER_NUMBER}
       />
       <p className="my-1">
-        The number of semesters you have taken starting from English 0210 or
-        RHET 1010
+        (The number of semesters you have taken starting from English 0210 or
+        RHET 1010)
       </p>
       <br />
 
@@ -75,6 +79,10 @@ function MajorInfo() {
         items={majors}
         name={MAJOR_ID}
         defaultOption={"--select a major--"}
+        onChange={({ target }) => {
+          setFieldValue(CATALOG_ID, "");
+          setFieldValue(MAJOR_ID, target.value);
+        }}
       />
 
       <br />
@@ -86,9 +94,8 @@ function MajorInfo() {
         defaultOption={"--select a catalog--"}
         visible={values.majorId}
       />
-      <br />
+      {/* <br />
 
-      {/* Minor(s) */}
       <FormPolarRadioGroup
         name={IS_MINORING}
         label="Are you taking minor(s)?"
@@ -108,7 +115,6 @@ function MajorInfo() {
           minors
         </p>
       )}
-      {/* Double Major */}
       <FormPolarRadioGroup
         name={IS_DOUBLE_MAJORING}
         label="Are you double majoring?"
@@ -129,7 +135,7 @@ function MajorInfo() {
         defaultOption={"---select a catalog---"}
         items={secondMajorCatalogs}
       />
-      <hr />
+      <hr /> */}
     </>
   );
 }

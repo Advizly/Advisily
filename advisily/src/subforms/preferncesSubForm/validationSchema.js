@@ -3,7 +3,7 @@ import {
   OVERLOADING,
   OVERLOADING_CREDITS,
   PACE_ID,
-  SEMESTERS_PLANNED,
+  SEMESTERS_TO_PLAN,
   SUMMER_CREDITS,
   TAKING_SUMMER,
   TAKING_WINTER,
@@ -46,5 +46,5 @@ export default Yup.object({
         .label(SUMMER_CREDITS_LABEL),
     }),
   [PACE_ID]: Yup.string().required(REQUIRED_MESSAGE),
-  [SEMESTERS_PLANNED]: Yup.number().required(REQUIRED_MESSAGE).min(1),
+  [SEMESTERS_TO_PLAN]: Yup.number().required(REQUIRED_MESSAGE).min(1),
 });

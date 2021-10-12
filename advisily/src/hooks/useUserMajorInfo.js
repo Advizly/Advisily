@@ -42,6 +42,7 @@ const useUserMajorInfo = () => {
       getStudentMinorsIds(user.studentId);
     }
   }, [user]);
+
   return {
     ...firstMajor,
     ...secondMajor,

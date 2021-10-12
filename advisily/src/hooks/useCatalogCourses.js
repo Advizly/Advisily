@@ -1,51 +1,38 @@
 import { useEffect, useState } from "react";
 
-import {
-  getCoreCourses,
-  getConcCourses,
-  getCollateralCourses,
-  getElectiveCourses,
-  getEngCoreCourses,
-} from "../services/catalogsService";
-
+import { getCatalogCourses } from "../services/catalogsService";
+import { getAllCourses } from "../services/coursesService";
+import { CourseTypeIds } from "../config.json";
 import { groupCourses } from "../utils/coursesUtils";
 import useAuth from "./useAuth";
 
 const NUMBER_OF_COLS = 3;
 
 const useCatalogCourses = (catalogId) => {
-  const [coreCourses, setCoreCourses] = useState([]);
-  const [concCourses, setConcCourses] = useState([]);
-  const [collateralCourses, setCollateralCourses] = useState([]);
-  const [electiveCourses, setElectiveCourses] = useState([]);
-  const [engCoreCourses, setEngCoreCourses] = useState([]);
-  const user = useAuth();
-
-  useEffect(() => {
-    if (user && catalogId) {
-      getCoreCourses(catalogId).then((courses) =>
-        setCoreCourses(groupCourses(courses, NUMBER_OF_COLS))
-      );
-      getCollateralCourses(catalogId).then((courses) =>
-        setCollateralCourses(groupCourses(courses, NUMBER_OF_COLS))
-      );
-      getConcCourses(catalogId).then((courses) =>
-        setConcCourses(groupCourses(courses, NUMBER_OF_COLS))
-      );
-      getElectiveCourses(catalogId).then((courses) =>
-        setElectiveCourses(groupCourses(courses, NUMBER_OF_COLS))
-      );
-      getEngCoreCourses(catalogId).then((courses) =>
-        setEngCoreCourses(groupCourses(courses, NUMBER_OF_COLS))
-      );
-    }
-  }, [user, catalogId]);
-  return {
-    coreCourses,
-    concCourses,
-    collateralCourses,
-    electiveCourses,
-    engCoreCourses,
-  };
+  // // const [catalogCoursesCategorized, setCatalogCoursesCategorized] = useState(
+  // //   []
+  // // );
+  // const [allCourses, setAllCourses] = useState([]);
+  // const user = useAuth();
+  // async function getAndFilterCourses() {
+  //   const catalogCoursesIds = await getCatalogCourses(catalogId).then(
+  //     (courses) => {
+  //       categoriseCatalogCourses(courses);
+  //       return courses.map((course) => course.courseId);
+  //     }
+  //   );
+  //   const courses = await getAllCourses();
+  //   courses.filter((course) => !catalogCoursesIds.includes(course.courseId));
+  //   setAllCourses(courses);
+  // }
+  // useEffect(() => {
+  //   if (user && catalogId) {
+  //     getAndFilterCourses();
+  //   }
+  // }, [user, catalogId]);
+  // return {
+  //   catalogCoursesCategorized,
+  //   allCourses,
+  // };
 };
 export default useCatalogCourses;

@@ -1,24 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
 
+// eslint-disable-next-line
 import { FormCheckbox, FormGroup, FormInput } from "../../components/form";
 import { Row, ColMedium } from "../../components/grid";
-import { formatCourseData } from "../../utils/coursesUtils";
-import useCatalogCourses from "../../hooks/useCatalogCourses";
+import {
+  categoriseCatalogCourses,
+  formatCourseData,
+  groupCourses,
+} from "../../utils/coursesUtils";
 
-import { COURSES_IDS, GENERAL_ELECTIVE_CREDITS } from "./fieldNames";
+// eslint-disable-next-line
+import { COURSES_IDS, EXEMPTED_CREDITS } from "./fieldNames";
 import CoursesModal from "./coursesModal";
+
+import useApi from "../../hooks/useApi";
+
+import {
+  getPrefixes as getPrefixesApi,
+  getAllCourses,
+} from "../../services/coursesService";
+import { getCatalogCourses } from "../../services/catalogsService";
+
 function CoursesSubForm() {
   const { values, setFieldValue } = useFormikContext();
-  const {
-    concCourses,
-    collateralCourses,
-    coreCourses,
-    electiveCourses,
-    engCoreCourses,
-  } = useCatalogCourses(values.catalogId);
 
-  const handleCourseCheck = (target) => {
+  const prefixesApi = useApi(getPrefixesApi);
+  const catalogApi = useApi(getCatalogCourses, handleCatalogCouresesResponse);
+  const coursesApi = useApi(getAllCourses);
+
+  useEffect(() => {
+    prefixesApi.request();
+    coursesApi.request();
+  }, []);
+  useEffect(() => {
+    if (values.catalogId) catalogApi.request(values.catalogId);
+  }, [values.catalogId]);
+
+  const handleCourseCheck = ({ target }) => {
     const { name, checked, value } = target;
     const selectedIds = values[name].map((id) => id);
 
@@ -67,14 +86,12 @@ function CoursesSubForm() {
             label={formatedTitle}
             name={COURSES_IDS}
             value={JSON.stringify(courseId)}
-            onChange={({ target }) => {
-              handleCourseCheck(target);
-            }}
+            onChange={handleCourseCheck}
           />
           {!prerequisiteFullfilled(course) && (
-            <div className="alert alert-warning ">
-              <strong>Warning:</strong> you didn't fullfil the prerequisites for
-              this course
+            <div className="alert alert-warning">
+              <strong>Warning:</strong> Did you fulfill the
+              prerequisites/corequisite for this course?
             </div>
           )}
         </ColMedium>
@@ -88,9 +105,21 @@ function CoursesSubForm() {
     ));
   };
 
+  const renderCatalogCourses = (catalogCourses) => {
+    return catalogCourses.map((catalogCourse) => {
+      return (
+        <>
+          <h5>{catalogCourse.courseType}</h5>
+          {renderCoursesTabular(catalogCourse.courses)}
+          <hr />
+        </>
+      );
+    });
+  };
+
   if (!values.catalogId)
     return (
-      <p className="text-center ">
+      <p className="text-center">
         Please select you declaration catalog catalog first.
       </p>
     );
@@ -105,37 +134,16 @@ function CoursesSubForm() {
         Uncheck all?
       </button>
       <br />
-
       <FormGroup
         name={COURSES_IDS}
         label="Please select all the courses you will have finished by the end of the current semester:"
       >
-        <h5>Core Requirements</h5>
-        {renderCoursesTabular(coreCourses)}
-        <hr />
+        <p className="clr-danger">
+          (exempted and transferred courses, as well)
+        </p>
+        <br />
+        {renderCatalogCourses(catalogApi.data)}
 
-        {engCoreCourses.length ? (
-          <>
-            <h5>Engineering Core Requirements</h5>
-            {renderCoursesTabular(engCoreCourses)}
-            <hr />
-          </>
-        ) : null}
-        <h5>Concenteration Requirements</h5>
-        {renderCoursesTabular(concCourses)}
-        <hr />
-
-        {collateralCourses.length ? (
-          <>
-            <h5>Collateral Requirements</h5>
-            {renderCoursesTabular(collateralCourses)}
-            <hr />
-          </>
-        ) : null}
-
-        <h5>Major Electives</h5>
-        {renderCoursesTabular(electiveCourses)}
-        <hr />
         <h5>General Electives</h5>
 
         <button
@@ -145,7 +153,19 @@ function CoursesSubForm() {
         >
           Add general electives
         </button>
-        <CoursesModal show={showModal} onClose={() => setShowModal(false)} />
+        <CoursesModal
+          show={showModal}
+          onClose={() => setShowModal(false)}
+          prefixes={prefixesApi.data}
+          courses={coursesApi.data}
+        />
+        <br />
+        <hr />
+        <FormInput
+          name={EXEMPTED_CREDITS}
+          label="How many credits(if any) are you exmpted from?"
+          type="number"
+        />
         <hr />
       </FormGroup>
     </>
@@ -153,3 +173,18 @@ function CoursesSubForm() {
 }
 
 export default CoursesSubForm;
+function handleCatalogCouresesResponse(courses) {
+  const categorized = categoriseCatalogCourses(courses);
+  categorized.forEach((category) => {
+    category.courses.sort((c1, c2) => {
+      if (c1.prefix < c2.prefix) return -1;
+      if (c2.prefix > c1.prefix) return 1;
+      return c1.courseCode - c2.courseCode;
+    });
+    category.courses = groupCourses(category.courses, 3);
+  });
+  categorized.sort((c1, c2) =>
+    c1.courseType < c2.courseType ? -1 : c1.courseType > c2.courseType
+  );
+  return categorized;
+}

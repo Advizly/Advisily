@@ -2,7 +2,7 @@ import {
   OVERLOADING,
   OVERLOADING_CREDITS,
   PACE_ID,
-  SEMESTERS_PLANNED,
+  SEMESTERS_TO_PLAN,
   SUMMER_CREDITS,
   TAKING_SUMMER,
   TAKING_WINTER,
@@ -17,7 +17,7 @@ const preferencesDefaultValues = {
   [SUMMER_CREDITS]: 0,
   [WINTER_CREDITS]: 0,
   [PACE_ID]: "1",
-  [SEMESTERS_PLANNED]: "1",
+  [SEMESTERS_TO_PLAN]: "1",
 };
 
 export default preferencesDefaultValues;

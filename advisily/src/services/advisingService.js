@@ -26,7 +26,7 @@ export const updateAdvisingSessions = async (sessionInfo) => {
 };
 
 export const generatePlan = async (advisingSessionId) => {
-  const res = await http.post(`${apiEndpoint}/generate-plan`, {
+  await http.post(`${apiEndpoint}/generate-plan`, {
     advisingSessionId,
   });
 };

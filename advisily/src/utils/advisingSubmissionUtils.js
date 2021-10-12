@@ -8,13 +8,18 @@ export const updateUserMajor = (
   studentId,
   newMajorId,
   catalogId,
+  oldCatalogId,
   oldMajorId = null
 ) => {
+  console.log("HERE", studentId, newMajorId, oldMajorId);
   if (!oldMajorId && newMajorId)
     userService.addStudentMajor(studentId, newMajorId, catalogId);
-  else if (oldMajorId && newMajorId !== oldMajorId) {
-    userService.addStudentMajor(studentId, newMajorId, catalogId);
+  else if (
+    oldMajorId &&
+    (newMajorId !== oldMajorId || oldCatalogId !== catalogId)
+  ) {
     userService.deleteStudentMajor(studentId, oldMajorId);
+    userService.addStudentMajor(studentId, newMajorId, catalogId);
   }
 };
 
@@ -59,7 +64,6 @@ export const updateAdvisingInfo = async (studentId, values) => {
     advisingService.updateAdvisingSessions(updateAdvisingData);
   }
 };
-
 
 const userMajorUtils = {
   updateUserMajor,
