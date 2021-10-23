@@ -42,7 +42,6 @@ async function getAdvisingSession({ advisingSessionId }) {
 }
 
 async function addAdvisingSession(advisingData) {
-  console.log("advisingData", advisingData);
   advisingData.sessionDate = new Date();
   const { studentId } = advisingData;
   const session = await getAdvisingSessions({ studentId });
@@ -128,6 +127,7 @@ async function generatePlan({ advisingSessionId }) {
     const catalogCourses = await getCatCourses({ catalogId });
     const catalog = await getCatalog({ catalogId });
     catalog.courses = catalogCourses;
+
     let resultSemesters = logic.generatePlan({
       user,
       planCourses,
@@ -137,11 +137,16 @@ async function generatePlan({ advisingSessionId }) {
 
     resultSemesters.forEach(({ resultCourses, semesterNumber }) => {
       resultCourses.forEach((course) =>
-        addAdvisingResults({ ...course, advisingSessionId, semesterNumber })
+        addAdvisingResults({
+          ...course,
+          advisingSessionId,
+          semesterNumber,
+        }).catch((err) => console.log("Error adding advising results: ", err))
       );
     });
   } catch (err) {
     console.log(err);
+    throw "Unexpected error while generating plan";
   }
 }
 

@@ -16,6 +16,7 @@ module.exports = {
   _isGeneralElective,
   _isMajorElective,
   _isMathElective,
+  _isMajorConcenteration,
   addCourseTypes,
   groupBySemester,
 };
@@ -42,6 +43,7 @@ function prerequisiteFulfilled(course, user, planCourses) {
 
       if (r.requisiteTypeId === RequisiteIds.FINISHED_300_LEVEL)
         return finished300LevelCourses(user, planCourses);
+
       return true;
     });
   });
@@ -127,11 +129,15 @@ function _isMathElective(course) {
   if (
     courseTypeId !== undefined &&
     (courseTypeId === Course_Types.MathElectives ||
-      courseTypeId == Course_Types.MathOrMajorElective)
+      courseTypeId === Course_Types.MathOrMajorElective)
   )
     return true;
 
   return courseCode === MATH_ELECTIVE_CODE;
+}
+function _isMajorConcenteration(course) {
+  const { courseTypeId } = course;
+  return courseTypeId && courseTypeId === Course_Types.Concentration;
 }
 
 function getUserElectives({ userCourses, catalogCourses }) {
@@ -169,7 +175,7 @@ function addCourseTypes(courses, catalogCourses) {
       courseTypeId = Course_Types.GeneralElectives;
 
     if (courseTypeId === undefined)
-      console.log(course.courseTitle, course.courseCode);
+      console.log("From addCourseTypes", course.courseTitle, course.courseCode);
 
     return {
       ...course,

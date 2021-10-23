@@ -11,50 +11,38 @@ const {
   _isElective,
   addCourseTypes,
   _isGeneralElective,
+  _isMajorConcenteration,
 } = require("./utils");
 
 module.exports = { generatePlan };
 
 function generatePlan({ user, planCourses, advisingSession, catalog }) {
-  console.log("Plan courses");
   planCourses = addCourseTypes(planCourses, catalog.courses);
-  planCourses.push({
-    courseId: 1432,
-    credits: 3,
-    requisites: [],
-    semesterNumber: 1,
-    courseTypeId: Course_Types.Collateral,
-  }); // calc 1
 
   const { exemptedCredits } = advisingSession;
-  // console.log(exemptedCredits);
-  // for (let i = 0; i < Math.ceil(exemptedCredits / 3.0); i++)
-  //   planCourses.push({
-  //     courseId: 2,
-  //     credits: 3,
-  //     requisites: [],
-  //     semesterNumber: 9,
-  //     courseTypeId: Course_Types.GeneralElectives,
-  //   }); //general elective
+  for (let i = 0; i < Math.ceil(exemptedCredits / 3.0); i++)
+    planCourses.push({
+      courseId: 2,
+      courseCode: -9,
+      credits: 3,
+      requisites: [],
+      semesterNumber: 9,
+      courseTypeId: Course_Types.GeneralElectives,
+    }); //general elective
 
   const semestersToPlan = 10;
   let resultSemesters = [];
-  const coursesIdsMap = {};
-  // planCourses.forEach((course) => (coursesIdsMap[course.courseId] = course));
-
-  // planCoursess = addWeight(planCourses);
 
   user.totalCredits = user.courses
     .map((course) => course.credits)
     .reduce((c1, c2) => c1 + c2, 0);
 
   for (let i = 0; i < semestersToPlan; i++) {
-    console.log("user courses");
-
     user.courses = addCourseTypes(user.courses, catalog.courses);
-    user.courses = sortBySemester(user.courses);
+    user.courses = sortByPriority(user.courses);
+    const planCoursesCopy = _.cloneDeep(planCourses);
 
-    let filteredCourses = filterPlanCourses({ planCourses, user, catalog });
+    let filteredCourses = filterPlanCourses(planCoursesCopy, user, catalog);
 
     filteredCourses.forEach(
       //convert null credits to 3 by default
@@ -62,11 +50,11 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
         (course.credits = course.credits !== null ? course.credits : 3)
     );
 
-    const sortedCourses = sortBySemester(filteredCourses);
+    // const sortedCourses = sortByPriority(filteredCourses);
 
     const resultCourses = getResultCourses(
       user,
-      sortedCourses,
+      filteredCourses,
       advisingSession
     );
     resultSemesters.push({ resultCourses, semesterNumber: i + 1 });
@@ -90,12 +78,10 @@ function updateUser(user, resultCourses) {
 
   if (user.totalCredits > JUNIOR_CREDITS) user.standingId = StandingsIds.JUNIOR;
   if (user.totalCredits > SENIOR_CREDITS) user.standingId = StandingsIds.SENIOR;
-  // console.log("User standing: ", user.standingId, user.totalCredits);
 }
 
 function getResultCourses(user, courses, advisingSession) {
   const { overloadingCredits } = advisingSession;
-  const { semesterNumber } = user;
   if (!courses.length) return [];
 
   courses = mapCoRequisitesToIds(courses, user.courses);
@@ -116,6 +102,7 @@ function getResultCourses(user, courses, advisingSession) {
   for (let i = 0; i < courses.length && !reachedMaxCredits; i++) {
     const course = courses[i];
     obj.course = course;
+
     if (!obj.resultCoursesIds.includes(course.courseId) || _isElective(course))
       tryAddingCourse(obj);
 
@@ -173,10 +160,9 @@ function tryAddingCourse(obj) {
 }
 
 function mapCoRequisitesToIds(courses, userCourses) {
-  for (let i = 0; i < courses.length; i++) {
-    coReqIds = getCoRequisitesIds(courses[i], userCourses);
-    courses[i].requisites = coReqIds;
-  }
+  for (let i = 0; i < courses.length; i++)
+    courses[i].requisites = getCoRequisitesIds(courses[i], userCourses);
+
   return courses;
 }
 
@@ -188,8 +174,14 @@ function getCoRequisitesIds(course, userCourses) {
     const set = reqSet
       .filter((requisite) => {
         const { requisiteTypeId, courseId } = requisite;
+
         if (courseTaken(courseId, userCourses)) return false; //skip taken requisites
-        if (requisiteTypeId !== 2 && requisiteTypeId !== 3) return false; //skip non-conncurent requisites
+        if (
+          requisiteTypeId !== undefined &&
+          requisiteTypeId !== 2 &&
+          requisiteTypeId !== 3
+        )
+          return false; //skip non-conncurent requisites
 
         return true;
       })
@@ -200,11 +192,50 @@ function getCoRequisitesIds(course, userCourses) {
   return reqSets;
 }
 
-function sortBySemester(courses) {
+function isInChain(course) {
+  const chain = [
+    { prefix: "PHYS", courseCode: 2211 }, //PHYS III
+    { prefix: "PHYS", courseCode: 2212 }, //PHYS III lab
+    { prefix: "CSCE", courseCode: 2301 }, //digital I
+    { prefix: "CSCE", courseCode: 2302 }, //digital I lab
+    { prefix: "CSCE", courseCode: 2303 }, //Computer Org. & Assembey Lang.
+    { prefix: "CSCE", courseCode: 3301 }, //Computer architecture
+    { prefix: "CSCE", courseCode: 3302 }, //Computer architecture lab
+    { prefix: "CSCE", courseCode: 3401 }, //OS
+    { prefix: "CSCE", courseCode: 4301 }, //OS lab
+    { prefix: "CSCE", courseCode: 4301 }, //Embeded
+    { prefix: "CSCE", courseCode: 4302 }, //Embeded lab
+    { prefix: "CSCE", courseCode: 4411 }, //distributed
+  ];
+  const res = chain.some(
+    (chainCourse) =>
+      course.prefix === chainCourse.prefix &&
+      course.courseCode == chainCourse.courseCode
+  );
+  return res;
+}
+
+function sortByPriority(courses) {
+  // return courses;
   return courses.sort((c1, c2) => {
+    if (isInChain(c1) && !isInChain(c2)) return -1;
+    if (!isInChain(c1) && isInChain(c2)) return 1;
     if (_isGeneralElective(c1) && !_isGeneralElective(c2)) return 1;
     if (!_isGeneralElective(c1) && _isGeneralElective(c2)) return -1;
-    return c1.semesterNumber - c2.semesterNumber;
+    if (_isMajorConcenteration(c1) && _isElective(c2)) return -1;
+    if (_isMajorConcenteration(c2) && _isElective(c1)) return 1;
+    if (c1.semesterNumber != c2.semesterNumber)
+      return c1.semesterNumber - c2.semesterNumber;
+    return c1.courseCode - c2.courseCode;
+  });
+}
+function decreasePriority(courses, courseTypeId) {
+  return courses.sort((c1, c2) => {
+    if (c1.courseTypeId === courseTypeId && c2.courseTypeId !== courseTypeId)
+      return 1;
+    return c1.courseTypeId !== courseTypeId && c2.courseTypeId === courseTypeId
+      ? -1
+      : 0;
   });
 }
 

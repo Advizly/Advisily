@@ -11,7 +11,7 @@ const {
 } = require("./utils");
 
 module.exports = { filterPlanCourses };
-function filterPlanCourses({ planCourses, user, catalog }) {
+function filterPlanCourses(planCourses, user, catalog) {
   let filtered = filterRequisites(planCourses, user);
 
   filtered = removeTakenElectives(filtered, user.courses, catalog);
@@ -55,7 +55,6 @@ function removeTakenElectives(filteredCourses, userCourses, catalog) {
    *
    * -
    */
-  console.log("\n\n\n");
 
   for (let i = 0; i < electives.length; i++) {
     let nextElectiveIndex = -1;
@@ -71,7 +70,6 @@ function removeTakenElectives(filteredCourses, userCourses, catalog) {
       );
 
     if (_isGeneralElective(elective) || nextElectiveIndex === -1) {
-      console.log("removing general");
       nextElectiveIndex = filteredCourses.findIndex((course) =>
         _isGeneralElective(course)
       );
