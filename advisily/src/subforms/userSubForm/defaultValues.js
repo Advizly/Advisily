@@ -2,7 +2,7 @@ import {
   FIRST_NAME,
   LAST_NAME,
   EMAIL,
-  STUDENT_ID,
+  USER_ID,
   PASSWORD,
   REPEAT_PASSWORD,
 } from "./fieldNames";
@@ -11,7 +11,7 @@ const userDefaultValues = {
   [FIRST_NAME]: "",
   [LAST_NAME]: "",
   [EMAIL]: "",
-  [STUDENT_ID]: "",
+  [USER_ID]: "",
   [PASSWORD]: "",
   [REPEAT_PASSWORD]: "",
 };

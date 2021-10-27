@@ -5,6 +5,7 @@ module.exports = {
   getAdvisingSession,
   getAdvisingResults,
   getAdvisingResultCourses,
+  getUserAdvisingSessionId,
   addAdvisingSession,
   updateAdvisingSession,
   generatePlan,
@@ -60,6 +61,12 @@ function generatePlan(req, res, next) {
     .catch(next);
 }
 
+function getUserAdvisingSessionId(req, res, next) {
+  advisingService
+    .getUserAdvisingSessionId(req.body)
+    .then((r) => res.send(r))
+    .catch(next);
+}
 function getPaces(req, res, next) {
   advisingService
     .getPaces()

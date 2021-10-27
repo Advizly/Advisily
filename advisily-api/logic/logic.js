@@ -61,7 +61,7 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
 
     updateUser(user, resultCourses);
   }
-  return resultSemesters;
+  return { resultSemesters, isLate: false };
 }
 
 function addWeight(planCourses) {

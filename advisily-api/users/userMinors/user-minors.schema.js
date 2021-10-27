@@ -9,19 +9,19 @@ module.exports = {
 
 function getUserMinors() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
   });
 }
 function addUserMinor() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     minorId: ID_SCHEMA_REQUIRED,
     catalogId: ID_SCHEMA,
   });
 }
 function deleteUserMinor() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     minorId: ID_SCHEMA_REQUIRED,
     catalogId: ID_SCHEMA,
   });

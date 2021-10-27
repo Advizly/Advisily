@@ -9,7 +9,7 @@
     "database": "advisily"
   },
   "port": "",
-  "requiresAuth": true,
+  "requiresAuth": false,
 
   "emailFrom": "",
   "ethrealSmtpOptions": {

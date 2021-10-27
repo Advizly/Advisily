@@ -18,3 +18,9 @@ tips for later:
    Expemted courses note: "exmpeted courses/waived courses must complete degree credits."\
 
 **Notes from testing:**
+
+1. scrap courses better (Arabic languages not retrieved).
+2. group courses
+3. what is MGMT 3201 counted as? should I include as prerequisite to senior I?
+4. ce student number 13 catalog is 2018-2019 but he is taking courses for the old catalogs
+5. arab courses, how are they calculated in general electives?

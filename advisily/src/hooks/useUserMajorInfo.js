@@ -14,8 +14,8 @@ const useUserMajorInfo = () => {
   });
   const [minors, setMinors] = useState({ minorIds: [], isMinoring: "false" });
 
-  const getStudentMajorsInfo = async (studentId) => {
-    const majors = await getStudentMajors(studentId);
+  const getStudentMajorsInfo = async (userId) => {
+    const majors = await getStudentMajors(userId);
     if (majors && majors.length)
       setFirstMajor({
         majorId: majors[0].majorId,
@@ -28,8 +28,8 @@ const useUserMajorInfo = () => {
         isDoubleMajoring: "true",
       });
   };
-  const getStudentMinorsIds = async (studentId) => {
-    const minors = await getStudentMinors(studentId);
+  const getStudentMinorsIds = async (userId) => {
+    const minors = await getStudentMinors(userId);
     const minorIds = minors.map((m) => m.minorId);
     const isMinoring = minorIds.length ? "true" : "false";
     setMinors({ minorIds, isMinoring });
@@ -38,8 +38,8 @@ const useUserMajorInfo = () => {
   const user = useAuth();
   useEffect(() => {
     if (user) {
-      getStudentMajorsInfo(user.studentId);
-      getStudentMinorsIds(user.studentId);
+      getStudentMajorsInfo(user.userId);
+      getStudentMinorsIds(user.userId);
     }
   }, [user]);
 

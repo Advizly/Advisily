@@ -88,6 +88,7 @@ function CoursesSubForm() {
             value={JSON.stringify(courseId)}
             onChange={handleCourseCheck}
           />
+
           {!prerequisiteFullfilled(course) && (
             <div className="alert alert-warning">
               <strong>Warning:</strong> Did you fulfill the

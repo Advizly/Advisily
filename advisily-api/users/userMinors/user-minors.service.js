@@ -8,23 +8,23 @@ module.exports = {
 
 const baseUserCoursesQuery = "SELECT DISTINCT * from userMinors";
 
-async function getUserMinors({ studentId }) {
-  const sql = baseUserCoursesQuery + " WHERE studentId=?";
-  const [data, err] = await query(sql, [studentId]);
+async function getUserMinors({ userId }) {
+  const sql = baseUserCoursesQuery + " WHERE userId=?";
+  const [data, err] = await query(sql, [userId]);
   if (err) throw "Error getting user majors.";
 
   return data;
 }
 
-async function addUserMinor({ studentId, minorId, catalogId }) {
+async function addUserMinor({ userId, minorId, catalogId }) {
   const sql = "INSERT IGNORE INTO userMinors SET ?";
-  const [, err] = await query(sql, { studentId, minorId, catalogId });
+  const [, err] = await query(sql, { userId, minorId, catalogId });
   if (err) throw "Error adding user major.";
 }
 
-async function deleteUserMinor({ studentId, minorId }) {
-  const sql = "DELETE FROM userMinors WHERE studentId= ? AND minorId=?";
+async function deleteUserMinor({ userId, minorId }) {
+  const sql = "DELETE FROM userMinors WHERE userId= ? AND minorId=?";
 
-  const [, err] = await query(sql, [studentId, minorId]);
+  const [, err] = await query(sql, [userId, minorId]);
   if (err) throw "Error deleting user major.";
 }

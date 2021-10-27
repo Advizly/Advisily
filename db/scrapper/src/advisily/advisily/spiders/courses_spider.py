@@ -17,6 +17,7 @@ import csv
 
 
 pseudo_courses=[
+{"courseCode":-11,"courseTitle":"Maths Elective","credits":"NULL","prefix":"XXXX"},
 {"courseCode":-10,"courseTitle":"Major Elective","credits":"NULL","prefix":"XXXX"},
 {"courseCode":-9,"courseTitle":"General Elective","credits":"NULL","prefix":"XXXX"},
 {"courseCode":-8,"courseTitle":"Arab World Studies II","credits":3,"prefix":"XXXX"},

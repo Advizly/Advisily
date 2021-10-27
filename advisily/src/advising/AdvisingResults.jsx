@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   getAdvisingResultCourses,
   retrieveAdvisingSession,
+  getUserAdvisingSessionId,
 } from "../services/advisingService";
 import { getCurrentUser } from "../services/authService";
 import {
@@ -15,28 +15,34 @@ import {
 
 import { Row, ColMedium } from "../components/grid";
 import useApi from "../hooks/useApi";
-import { useUserCourses } from "../hooks";
 import { getStudentCourses } from "../services/userService";
 
 function AdvisingResults(props) {
+  const [advisingSessionId, setAdvisingSessionId] = useState(null);
   const resultCoursesApi = useApi(
     getAdvisingResultCourses,
     sortAndRemoveNullCredits
   );
 
+  const advisingSessionIdApi = useApi(getUserAdvisingSessionId, (res) =>
+    setAdvisingSessionId(res)
+  );
+
   const userCoursesApi = useApi(getStudentCourses, (courses) => {
-    console.log("courses", courses);
     return renderCoursesList(courses);
   });
 
   const user = getCurrentUser();
-  const advisingSessionId = retrieveAdvisingSession() || user.advisingSessionId;
   useEffect(() => {
-    resultCoursesApi.request(advisingSessionId);
+    if (advisingSessionId) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
-    if (user) userCoursesApi.request(user.studentId);
-  }, [user.studentId]);
+    if (user) {
+      userCoursesApi.request(user.userId);
+
+      if (!advisingSessionId) advisingSessionIdApi.request(user.userId);
+    }
+  }, [user.userId]);
 
   const renderCoursesList = (courses) => {
     return courses.map((course) => {

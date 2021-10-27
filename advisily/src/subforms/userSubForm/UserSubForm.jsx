@@ -4,7 +4,7 @@ import {
   FIRST_NAME,
   LAST_NAME,
   EMAIL,
-  STUDENT_ID,
+  USER_ID,
   PASSWORD,
   REPEAT_PASSWORD,
 } from "./fieldNames";
@@ -31,8 +31,8 @@ const UserSubForm = () => {
         aria-required="true"
       />
       <FormInput
-        label="Student ID"
-        name={STUDENT_ID}
+        label="AUC ID"
+        name={USER_ID}
         type="number"
         aria-required="true"
       />

@@ -14,12 +14,19 @@ module.exports = {
   addAdvisingSession,
   updateAdvisingSession,
   generatePlan,
+  getUserAdvisingSessionId,
   addAdvisingResults,
 };
 
 function getAdvisingSessions() {
   return Joi.object({
-    studentId: ID_SCHEMA,
+    userId: ID_SCHEMA,
+  });
+}
+
+function getUserAdvisingSessionId() {
+  return Joi.object({
+    userId: ID_SCHEMA,
   });
 }
 
@@ -48,7 +55,7 @@ function addAdvisingSession() {
     overloadingCredits: CREDITS_SCHEMA.required(),
     paceId: ID_SCHEMA_REQUIRED,
     summerCredits: CREDITS_SCHEMA.max(7).required(),
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     semestersToPlan: ID_SCHEMA.max(10),
     winterCredits: CREDITS_SCHEMA.max(4).required(),
   });
@@ -57,7 +64,7 @@ function addAdvisingSession() {
 function updateAdvisingSession() {
   return Joi.object({
     advisingSessionId: ID_SCHEMA.required(),
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     overloadingCredits: CREDITS_SCHEMA.required(),
     summerCredits: CREDITS_SCHEMA.max(7).required(),
     winterCredits: CREDITS_SCHEMA.max(4).required(),

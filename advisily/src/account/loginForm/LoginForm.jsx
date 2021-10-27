@@ -25,7 +25,6 @@ function LoginForm(props) {
       const { status } = response;
       if (response && (status === 400 || status === 401)) {
         console.log(response.data);
-        // setErrors({ studentId: "", password: "" });
       }
       console.log(response);
       setStatus({ error: response.data.error });
@@ -45,12 +44,7 @@ function LoginForm(props) {
           type="email"
           aria-required="true"
         />
-        {/* <FormInput
-          label="AUC ID"
-          name="studentId"
-          type="number"
-          aria-required="true"
-        /> */}
+
         <FormInput
           label="Password"
           name={PASSWORD}

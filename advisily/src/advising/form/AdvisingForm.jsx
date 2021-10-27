@@ -31,7 +31,7 @@ function AdvisingForm(props) {
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
-  const { studentId, standingId } = useAuth(true);
+  const { userId, standingId } = useAuth(true);
 
   const initialValues = {
     ...defaultValues,
@@ -54,37 +54,37 @@ function AdvisingForm(props) {
         } = userMajorInfo;
         const { standingId } = values;
 
-        userService.update(studentId, { standingId });
+        userService.update(userId, { standingId });
         updateStudentCourses(
-          studentId,
+          userId,
           values.coursesIds,
           userCoursesInfo.coursesIds
         );
         updateUserMajor(
-          studentId,
+          userId,
           values.majorId,
           values.catalogId,
           oldCatalogId,
           oldMajorId
         );
         updateUserMajor(
-          studentId,
+          userId,
           values.secondMajorId,
           values.secondCatalogId,
           oldSecondCatalogId,
           oldSecondMajorId
         );
 
-        updateUserMinors(studentId, values.minorIds, oldMinorIds);
-        // updateAdvisingInfo(studentId, values);
+        updateUserMinors(userId, values.minorIds, oldMinorIds);
+        // updateAdvisingInfo(userId, values);
         const { advisingSessionId } = await advisingService.addAdvisingSession({
           ...values,
-          studentId,
+          userId,
         });
         await advisingService.generatePlan(advisingSessionId);
         advisingService.saveAdvisingSession(advisingSessionId);
       } catch (e) {
-        console.log(e);
+        console.log("ERROR in submission: ", e);
       }
 
       props.history.replace("/advising/results");

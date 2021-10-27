@@ -3,15 +3,15 @@ import http from "./httpService";
 const apiEndPoint = apiBaseUrl + "/users";
 
 /*User  is expected to have the following:
-    studentId, firstName,lastName, auc email, password, repeatPassword
+    userId, firstName,lastName, auc email, password, repeatPassword
 */
 export const register = (userInfo) => {
   return http.post(`${apiEndPoint}/register`, userInfo);
 };
-export const getUser = async (studentId) => {
+export const getUser = async (userId) => {
   const { data, headers } = await http.get(`${apiEndPoint}/user`, {
     params: {
-      studentId,
+      userId,
     },
   });
   if (!data) return null;
@@ -34,73 +34,73 @@ export const resendVerification = async (email) => {
   return await http.post(`${apiEndPoint}/resend-verification`, { email });
 };
 
-export const getStudentMajors = async (studentId) => {
+export const getStudentMajors = async (userId) => {
   const { data: majors } = await http.get(`${apiEndPoint}/user-majors`, {
-    params: { studentId },
+    params: { userId },
   });
   return majors;
 };
-export const getStudentMinors = async (studentId) => {
+export const getStudentMinors = async (userId) => {
   const { data: minors } = await http.get(`${apiEndPoint}/user-minors`, {
-    params: { studentId },
+    params: { userId },
   });
   return minors;
 };
 
-export const getStudentCourses = async (studentId) => {
+export const getStudentCourses = async (userId) => {
   const { data: studentCourses } = await http.get(
     `${apiEndPoint}/user-courses`,
-    { params: { studentId } }
+    { params: { userId } }
   );
 
   return studentCourses;
 };
 
-export const addStudentCourse = async (studentId, courseId) => {
+export const addStudentCourse = async (userId, courseId) => {
   await http.post(`${apiEndPoint}/user-courses`, {
-    studentId,
+    userId,
     courseId,
   });
 };
-export const deleteStudentCourse = async (studentId, courseId) => {
+export const deleteStudentCourse = async (userId, courseId) => {
   const config = {
-    data: { studentId, courseId },
+    data: { userId, courseId },
   };
   const res = await http.delete(`${apiEndPoint}/user-courses`, config);
   return res;
 };
 
-export const addStudentMajor = async (studentId, majorId, catalogId) => {
+export const addStudentMajor = async (userId, majorId, catalogId) => {
   const res = await http.post(`${apiEndPoint}/user-majors`, {
-    studentId,
+    userId,
     majorId,
     catalogId,
   });
   return res;
 };
 
-export const deleteStudentMajor = async (studentId, majorId) => {
+export const deleteStudentMajor = async (userId, majorId) => {
   const res = await http.delete(`${apiEndPoint}/user-majors`, {
     data: {
-      studentId,
+      userId,
       majorId,
     },
   });
   return res;
 };
-export const addStudentMinor = async (studentId, minorId) => {
+export const addStudentMinor = async (userId, minorId) => {
   const config = {
-    studentId,
+    userId,
     minorId,
   };
   const res = await http.post(`${apiEndPoint}/user-minors`, config);
   return res;
 };
 
-export const deleteStudentMinor = async (studentId, minorId) => {
+export const deleteStudentMinor = async (userId, minorId) => {
   const config = {
     data: {
-      studentId,
+      userId,
       minorId,
     },
   };
@@ -108,8 +108,8 @@ export const deleteStudentMinor = async (studentId, minorId) => {
   return res;
 };
 
-export const update = async (studentId, updatedData) => {
-  const res = await http.put(`${apiEndPoint}/${studentId}`, updatedData);
+export const update = async (userId, updatedData) => {
+  const res = await http.put(`${apiEndPoint}/${userId}`, updatedData);
   return res;
 };
 

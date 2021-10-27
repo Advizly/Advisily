@@ -16,7 +16,7 @@ function Profile(props) {
         <strong>Email: </strong> {user.email}
       </p>
       <p>
-        <strong>Student ID: </strong> {user.studentId}
+        <strong>Student ID: </strong> {user.userId}
       </p>
     </>
   );

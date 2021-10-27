@@ -28,7 +28,7 @@ function basicInfo(user) {
   return _.pick(user, [
     "firstName",
     "lastName",
-    "studentId",
+    "userId",
     "email",
     "isVerified",
     "advisingSessionId",

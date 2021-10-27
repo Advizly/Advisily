@@ -5,26 +5,26 @@ import { userService, advisingService } from "../services";
 //delete old major only if two majors(old and new) are different
 
 export const updateUserMajor = (
-  studentId,
+  userId,
   newMajorId,
   catalogId,
   oldCatalogId,
   oldMajorId = null
 ) => {
-  console.log("HERE", studentId, newMajorId, oldMajorId);
+  console.log("HERE", userId, newMajorId, oldMajorId);
   if (!oldMajorId && newMajorId)
-    userService.addStudentMajor(studentId, newMajorId, catalogId);
+    userService.addStudentMajor(userId, newMajorId, catalogId);
   else if (
     oldMajorId &&
     (newMajorId !== oldMajorId || oldCatalogId !== catalogId)
   ) {
-    userService.deleteStudentMajor(studentId, oldMajorId);
-    userService.addStudentMajor(studentId, newMajorId, catalogId);
+    userService.deleteStudentMajor(userId, oldMajorId);
+    userService.addStudentMajor(userId, newMajorId, catalogId);
   }
 };
 
 export const updateUserMinors = (
-  studentId,
+  userId,
   selectedMinorIds,
   oldMinorIds = []
 ) => {
@@ -34,12 +34,12 @@ export const updateUserMinors = (
   const deleteMinorIds = oldMinorIds.filter(
     (id) => selectedMinorIds.indexOf(id) === -1
   );
-  newMinorIds.forEach((id) => userService.addStudentMinor(studentId, id));
-  deleteMinorIds.forEach((id) => userService.deleteStudentMinor(studentId, id));
+  newMinorIds.forEach((id) => userService.addStudentMinor(userId, id));
+  deleteMinorIds.forEach((id) => userService.deleteStudentMinor(userId, id));
 };
 
 export const updateStudentCourses = (
-  studentId,
+  userId,
   selectedIds,
   initialCoursesIds = []
 ) => {
@@ -49,18 +49,18 @@ export const updateStudentCourses = (
   const deletedIds = initialCoursesIds.filter(
     (id) => selectedIds.indexOf(id) === -1
   );
-  newIds.forEach((id) => userService.addStudentCourse(studentId, id));
-  deletedIds.forEach((id) => userService.deleteStudentCourse(studentId, id));
+  newIds.forEach((id) => userService.addStudentCourse(userId, id));
+  deletedIds.forEach((id) => userService.deleteStudentCourse(userId, id));
 };
 
-export const updateAdvisingInfo = async (studentId, values) => {
-  const advisingSession = await advisingService.getAdvisingSession(studentId);
+export const updateAdvisingInfo = async (userId, values) => {
+  const advisingSession = await advisingService.getAdvisingSession(userId);
 
   if (!advisingSession.length)
-    advisingService.addAdvisingSession({ ...values, studentId });
+    advisingService.addAdvisingSession({ ...values, userId });
   else {
     const { advisingSessionId } = advisingSession[0];
-    const updateAdvisingData = { advisingSessionId, ...values, studentId };
+    const updateAdvisingData = { advisingSessionId, ...values, userId };
     advisingService.updateAdvisingSessions(updateAdvisingData);
   }
 };

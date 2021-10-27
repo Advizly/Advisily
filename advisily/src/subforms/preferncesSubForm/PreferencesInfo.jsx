@@ -100,7 +100,7 @@ function PreferencesInfo() {
       />
       <hr /> */}
       <FormSelectGroup
-        label={"Up to how many semester would you like to be planned?"}
+        label={"Up to how many semesters would you like to be planned?"}
         name={SEMESTERS_TO_PLAN}
         items={semesters}
       />

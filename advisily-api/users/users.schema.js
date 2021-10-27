@@ -28,7 +28,7 @@ module.exports = {
 
 function register() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     firstName: NAME_SCHEMA_REQUIRED,
     lastName: NAME_SCHEMA_REQUIRED,
     password: PASSWORD_SCHEMA_REQUIRED,
@@ -60,7 +60,7 @@ function resendVerification() {
 }
 function getUser() {
   return Joi.object({
-    studentId: Joi.number().positive().integer(),
+    userId: Joi.number().positive().integer(),
     firstName: NAME_SCHEMA,
     lastName: NAME_SCHEMA,
     email: Joi.string().email({
@@ -79,7 +79,7 @@ function loginSchema() {
 }
 function updateSchema() {
   return Joi.object({
-    studentId: ID_SCHEMA,
+    userId: ID_SCHEMA,
     firstName: NAME_SCHEMA,
     lastName: NAME_SCHEMA,
     email: EMAIL_SCHEMA,

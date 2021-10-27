@@ -9,19 +9,19 @@ module.exports = {
 
 function getUserMajors() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
   });
 }
 function addUserMajor() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     majorId: ID_SCHEMA_REQUIRED,
     catalogId: ID_SCHEMA_REQUIRED,
   });
 }
 function deleteUserMajor() {
   return Joi.object({
-    studentId: ID_SCHEMA_REQUIRED,
+    userId: ID_SCHEMA_REQUIRED,
     majorId: ID_SCHEMA_REQUIRED,
     catalogId: ID_SCHEMA,
   });

@@ -3,7 +3,7 @@ import {
   FIRST_NAME,
   LAST_NAME,
   EMAIL,
-  STUDENT_ID,
+  USER_ID,
   PASSWORD,
   REPEAT_PASSWORD,
 } from "./fieldNames";
@@ -46,7 +46,7 @@ export default Yup.object({
     .required(REQUIRED_MESSAGE)
     .matches(EMAIL_FORMAT, AUC_EMAIL_ONLY),
 
-  [STUDENT_ID]: Yup.number()
+  [USER_ID]: Yup.number()
     .integer()
     .min(MIN_ID_VALUE, ID_VALUE_TOO_SMALL)
     .max(MAX_ID_VALUE, ID_VALUE_TOO_LARGE)

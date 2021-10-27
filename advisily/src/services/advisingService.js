@@ -8,9 +8,9 @@ export const getAdvisingSessions = async () => {
   return advisingSessions;
 };
 
-export const getAdvisingSession = async (studentId) => {
+export const getAdvisingSession = async (userId) => {
   const { data: advisingSessions } = await http.get(apiEndpoint, {
-    params: { studentId },
+    params: { userId },
   });
   return advisingSessions;
 };
@@ -43,6 +43,10 @@ export const saveAdvisingSession = (advisingSessionId) => {
 export const retrieveAdvisingSession = () =>
   localStorage.getItem("advisingSessionId");
 
+export const getUserAdvisingSessionId = async (userId) => {
+  const { data } = await http.get(`${apiEndpoint}/getUserAdvisingId/${userId}`);
+  return data.advisingSessionId;
+};
 const advisingService = {
   getAdvisingSessions,
   getAdvisingSession,

@@ -7,15 +7,15 @@ function useUserCourses(props) {
   const [coursesIds, setStudentCourseIds] = useState([]);
   const [generalElecCredits, setGeneralElecCredits] = useState(0);
 
-  const getGeneralElecCredits = async (studentId) => {
-    const advisingSession = await getAdvisingSession(studentId);
+  const getGeneralElecCredits = async (userId) => {
+    const advisingSession = await getAdvisingSession(userId);
     if (!advisingSession.length) return;
 
     setGeneralElecCredits(advisingSession[0].generalElecCredits);
   };
 
-  const getCoursesIds = async (studentId) => {
-    const studentCourses = await getStudentCourses(studentId);
+  const getCoursesIds = async (userId) => {
+    const studentCourses = await getStudentCourses(userId);
     const coursesIds = studentCourses.map((c) => JSON.stringify(c.courseId));
     setStudentCourseIds(coursesIds);
   };
@@ -23,8 +23,8 @@ function useUserCourses(props) {
   useEffect(() => {
     const user = getCurrentUser();
     if (user) {
-      getCoursesIds(user.studentId);
-      getGeneralElecCredits(user.studentId);
+      getCoursesIds(user.userId);
+      getGeneralElecCredits(user.userId);
     }
   }, []);
 

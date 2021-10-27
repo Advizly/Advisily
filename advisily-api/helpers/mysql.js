@@ -32,7 +32,7 @@ function getPool() {
   });
 }
 
-function query(query, values) {
+function query(query, values, endConnection = true) {
   const connection = getConnection();
 
   const promise = new Promise((resolve, reject) => {
@@ -41,7 +41,7 @@ function query(query, values) {
 
       return resolve(results);
     });
-    connection.end();
+    if (endConnection) connection.end();
   });
 
   return promiseHandler(promise);

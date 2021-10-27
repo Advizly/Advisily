@@ -1,5 +1,5 @@
 {
-  "apiBaseUrl": "http://localhost:4000/api",
+  "apiBaseUrl": "http://localhost:5000/api",
   "CourseTypeIds": {
     "core": 1,
     "concentertaion": 2,

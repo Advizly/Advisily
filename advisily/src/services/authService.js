@@ -31,7 +31,7 @@ export const logout = () => {
 
 export const refreshUser = async (user) => {
   try {
-    const res = await getUser(user.studentId);
+    const res = await getUser(user.userId);
     const { user: newUser, token } = res;
     if (!newUser) throw new Error("Error refreshing user");
     if (!newUser.isVerified) return user;

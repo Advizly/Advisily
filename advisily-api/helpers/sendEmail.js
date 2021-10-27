@@ -3,7 +3,12 @@ const config = require("config");
 
 const sendEmail = async ({ to, subject, html, from = config.emailFrom }) => {
   const transporter = nodemailer.createTransport(config.gmailSmtpOptions);
-  await transporter.sendMail({ from, to, subject, html });
+  try {
+    await transporter.sendMail({ from, to, subject, html });
+  } catch (err) {
+    console.log("Error while sending email:", err);
+    throw "Error sending an email";
+  }
 };
 
 module.exports = sendEmail;

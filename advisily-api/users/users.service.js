@@ -38,12 +38,13 @@ async function register(user) {
 
   const oldUser = await _getUserBy({
     email: user.email,
-    studentId: user.studentId,
+    userId: user.userId,
   });
   if (oldUser) throw "A user with this Student ID or email already registered.";
 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
+  console.log(err);
   if (err) throw "Error registering user.";
 
   sendVerificationEmail(user);
@@ -85,25 +86,21 @@ async function getUser(conditions) {
 }
 
 async function update(id, params) {
-  let user = await _getUserBy({ studentId: id });
+  let user = await _getUserBy({ userId: id });
   if (!user) throw "User of given ID not found.";
 
-  const { email, studentId } = params;
+  const { email, userId } = params;
 
   if (email && email !== user.email && !!(await _getUserBy({ email })))
     throw "A user with this Student ID  already registered.";
 
-  if (
-    studentId &&
-    studentId !== user.studentId &&
-    !!(await _getUserBy({ studentId }))
-  )
+  if (userId && userId !== user.userId && !!(await _getUserBy({ userId })))
     throw "A user with this Student ID  already registered.";
 
   if (params.password) params.password = await hash(params.password);
 
   user = { ...user, ...params };
-  const sql = "UPDATE users SET ? WHERE studentId=? ";
+  const sql = "UPDATE users SET ? WHERE userId=? ";
   const [data, err] = await query(sql, [user, id]);
   if (err) throw "Error updating user";
 
@@ -175,7 +172,7 @@ async function resendVerification(email) {
 }
 
 //internal helper to get user by conditions.
-//input: conditions object { studentId?, firstName?,lastName?,email?}
+//input: conditions object { userId?, firstName?,lastName?,email?}
 //output: first user that matches all the conditions given.
 async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
@@ -202,7 +199,7 @@ function sendForgotPasswordEmail(user) {
 const sendVerificationEmail = (user) => {
   const verifyUrl = `${hostUrl}/api/users/verify-email?token=${user.verificationToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to verify your email address</p>`;
-
+  console.log("Sending :", user);
   sendEmail({
     to: user.email,
     subject: "Advisily -- Email Verification",

@@ -23,7 +23,10 @@ function register(req, res, next) {
       res
         .header("x-auth-token", authToken)
         .header("access-control-expose-headers", "x-auth-token")
-        .json({ message: "User registered successfuly. You can login.", user })
+        .json({
+          message: "User registered successfuly. Verify you email to login.",
+          user,
+        })
     )
     .catch(next);
 }

@@ -1,0 +1,698 @@
+.mobile-menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --select2-height: 2.5em;
+  }
+  
+  #gateway-popup table.block_n2_and_content, 
+	#gateway-page table.block_n2_and_content {
+    margin: 0;
+    padding: 0;
+		width: 100%;
+	}
+
+  .mobile-menu-toggle {
+    border-bottom: 1px solid#fff;
+    background: rgba(0,0,0,.75);
+    color: #fff;
+  }
+
+  table.block_n2_and_content select, 
+  table.block_n2_and_content textarea, 
+  table.block_n2_and_content input[type="date"], 
+  table.block_n2_and_content input[type="datetime"], 
+  table.block_n2_and_content input[type="datetime-local"], 
+  table.block_n2_and_content input[type="email"], 
+  table.block_n2_and_content input[type="month"], 
+  table.block_n2_and_content input[type="number"], 
+  table.block_n2_and_content input[type="password"], 
+  table.block_n2_and_content input[type="search"], 
+  table.block_n2_and_content input[type="tel"], 
+  table.block_n2_and_content input[type="text"], 
+  table.block_n2_and_content input[type="time"], 
+  table.block_n2_and_content input[type="url"], 
+  table.block_n2_and_content input[type="week"], 
+  table.block_n2_and_content button, 
+  table.block_n2_and_content input[type="reset"], 
+  table.block_n2_and_content input[type="submit"], 
+  table.block_n2_and_content input[type="button"] {
+    font-size: 1em;
+    line-height: 1em;
+    min-height: 2.75em;
+  }
+
+  /* Begin future styles */
+  /* Not yet working because placeholder text is not being used on form fields */
+  table.block_n2_and_content select::placeholder, 
+  table.block_n2_and_content textarea::placeholder, 
+  table.block_n2_and_content input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(0,0,0,.5); /* Temporary - need to use placeholder text */
+    opacity: .5; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: rgba(0,0,0,.5); /* Temporary - need to use placeholder text */
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: rgba(0,0,0,.5); /* Temporary - need to use placeholder text */
+  }
+  /* End future styles */
+
+
+  table.block_n2_and_content select,
+  .webkit table.block_n2_and_content select {
+    padding: 0 2.25em 0 .5em !important;
+    appearance: none;
+    -moz-appearance: none;
+    background-image: 
+      linear-gradient(45deg, transparent 50%, black 50%), 
+      linear-gradient(135deg, black 50%, transparent 50%);
+    background-position: 
+      calc(100% - 1.1em) 1em,
+      calc(100% - 0.55em) 1em;
+    background-size: 
+      .6em .6em, 
+      .6em .6em;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0 !important;
+  }
+  /* For IE */
+  select::-ms-expand {
+    display: none;
+  }
+
+  /* Acalog Header */
+  #acalog-client-header {
+    padding: 0;
+  }
+
+  /* General Page Structure */
+
+  #gateway-popup #table_block_n2_and_content_wrapper, 
+  #gateway-page #table_block_n2_and_content_wrapper {
+    padding: 0;
+  }
+
+  table.block_n2_and_content.table-default {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+    table-layout: unset;
+    max-width: 100%;
+  }
+
+  table.block_n2_and_content.table-default > tbody {
+    display: flex;
+    flex-direction: column;
+  }
+
+  table.block_n2_and_content > tbody > tr:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    align-content: stretch;
+  }
+
+  #gateway-popup tr[role='main'] table.block_n2_and_content, 
+  #gateway-page tr[role='main'] table.block_n2_and_content {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #gateway-popup .block_n2, 
+  #gateway-page .block_n2 {
+    flex: 1 1 100%;
+    padding: 0;
+    order: 0;
+    width: auto;
+  }
+
+  /* SELECT CATALOG - with text */
+  #catalog-select-table {
+    margin: 0;
+  }
+
+  #catalog-select-table .block_n3_right.float_right {
+    float: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #gateway-popup #select_catalog, 
+  #gateway-page #select_catalog {
+    width: 100% !important;
+  }
+
+  #catalog-select-text {
+    line-height: 1;
+  }
+
+  form[name='select_catalog'] table.default_no_width tbody,
+  form[name='select_catalog'] table.default_no_width tbody td {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  form[name='select_catalog'] table.default_no_width tbody td.select_catalog_submit_container {
+    display: none;
+  }
+
+  /* SELECT CATALOG - no text */
+
+  .block_date_outer_left,
+  .block_date_inner,
+  .blockblock_date_outer_right,
+  .small_date_pad,
+  .block_date_outer_right {
+    display: none;
+  }
+
+  #gateway-popup td.block_n2_and_content td.block_n2_and_content, 
+  #gateway-page td.block_n2_and_content td.block_n2_and_content {
+    padding: 0;
+    width: 100%;
+  }
+
+  td.block_n2_and_content {
+    padding-bottom: 0 !important;
+  }
+
+  td.block_n2_and_content td.block_n2_and_content table {
+    height: auto;
+  }
+
+  #gateway-popup tr[role='main'] > .block_n2_and_content > table.block_n2_and_content > tbody > tr:first-child, 
+  #gateway-page tr[role='main'] > .block_n2_and_content > table.block_n2_and_content > tbody > tr:first-child {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .block_n3_off.block_n3_left {
+    display: none;
+  }
+
+  .block_n3_off.block_n3_right.float_right,
+  .block_n3_off.block_n3_right.align_right {
+    background: rgba(0,0,0,.75);
+    border-bottom: 1px solid #fff;
+    float: none;
+    text-align: left;
+    padding: 0;
+  }
+
+  form[name='select_catalog'] table {
+    width: 100%;
+  }
+
+  #catalog_select_parent {
+    height: var(--select2-height);
+    margin: 1em;
+    position: relative;
+  }
+
+  #catalog_select_parent .select2.select2-container {
+    position: absolute;
+    width: 100% !important;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* CATALOG SEARCH + NAVIGATION CONTAINER */
+  #acalog-nav > .block_n2_content {
+		padding: 0;
+	}
+
+  .links_table {
+    width: 100%;
+  }
+
+  #gateway-popup .block_n2_content, 
+  #gateway-page .block_n2_content {
+    top: unset;
+    width: 100%;
+  }
+
+  /* SEARCH - All versions */
+
+  #gateway-popup .block_n2_search, 
+  #gateway-page .block_n2_search {
+    background: rgba(0,0,0,.15);
+    border-bottom: 1px solid #fff;
+    padding: 0;
+    text-align: left;
+  }
+
+  .block_n2_search form[name="n2_search"] {
+    padding: 1em;
+  }
+
+  .block_n2_search span {
+    margin: 0;
+  }
+
+  #gateway-popup .n2_search_header, 
+  #gateway-page .n2_search_header {
+    background: transparent;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #global-search-fieldset .show.clearfix {
+   position: relative;
+   width: 100%; 
+  }
+
+  #global-search-fieldset .show.clearfix input#keyword {
+    padding: 0 2.5em 0 .5em !important;
+    width: 100% !important;
+  }
+
+  #gateway-page #keyword-submit-icon {
+    align-items: center;
+    border-width: 0 !important;
+    border: none !important;
+    display: flex !important;
+    float: none;
+    font-family: 'FontAwesome' !important;
+    font-size: 1.5em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    height: 100% !important;
+    width: 1.75em !important;
+  }
+
+  #gateway-page #keyword-submit-icon::before {
+    content: '\f002';
+    margin: 0 auto;
+  }
+
+  #gateway-page #keyword-submit-icon span {
+    display: none;
+  }
+
+  #keyword-submit-icon .acalog-icons-visible, .gateway-toolbar-item .acalog-icons-visible {
+    height: 2.75em;
+    width: 2.75em;
+  }
+
+  #global-search-fieldset span.n2_search {
+    margin: 0 -1em;
+  }
+
+  #global-search-fieldset span.n2_search a {
+    border-top: 1px solid rgba(255,255,255,.5);
+    display: block;
+    margin-bottom: -1em;
+    padding: 1em;
+  }
+
+  /* Keyword field to search all catalog content. */
+
+  #global-search-fieldset .no_display + .n2_search {
+    margin-top: 1em;
+  }
+
+  /* Keyword field and search location. */
+  .n2_search_header + .show {
+    margin-bottom: .5em;
+  }
+
+
+  /* Keyword field, search location, and Whole Word/Phrase checkbox. */
+
+  #exact_match_n2,
+  #exact_match {
+    font-size: 1em;
+    margin: 0 .5em;
+    padding: 1em;
+
+    /* Double-sized Checkboxes */
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(1);
+  }
+
+  @supports not (-webkit-touch-callout: none) {
+      #exact_match_n2,
+      #exact_match {
+        -ms-transform: scale(2); /* IE */
+        -moz-transform: scale(2); /* FF */
+        -webkit-transform: scale(2); /* Safari and Chrome */
+        -o-transform: scale(2); /* Opera */
+        transform: scale(2);
+      }
+  }
+
+  #exact_match_n2 + label,
+  #exact_match + label {
+    display: inline-block;
+    height: 1em;
+    line-height: 1;
+    font-size: .9em;
+    padding: .875em 0;
+  }
+
+  .block_n2_and_content .select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-size: 1em;
+    height: 100%;
+    padding-left: .5em !important;
+  }
+
+  /* NAVIGATION */
+
+  .mobile-menu-toggle {
+    cursor: pointer;
+    display: block;
+    padding: 1em;
+  }
+
+  .mobile-menu-toggle::before {
+    font-family: 'FontAwesome';
+    margin-right: .5em;
+    content: '\f077';
+    display: inline-block;
+    transition: all .2s;   
+  }
+
+  .mobile-menu-toggle.open::before {
+    transform: rotate(180deg);
+  }
+
+  #gateway-popup .block_n2_links, 
+  #gateway-page .block_n2_links {
+    margin-top: 0;
+    display: none;
+    transition: all .2s;
+  }
+
+  #gateway-popup .block_n2_links.open, 
+  #gateway-page .block_n2_links.open {
+    display: table;
+  }
+
+  #gateway-popup .block_n2_tools .n2_links, 
+  #gateway-page .block_n2_tools .n2_links {
+    margin-bottom: 0;
+  }
+
+  #gateway-popup #acalog-navigation, 
+  #gateway-page #acalog-navigation {
+    padding: 0;
+  }
+
+  #gateway-popup .n2_links, 
+  #gateway-page .n2_links {
+    padding: 0;
+    margin: 0;
+  }
+
+  #gateway-popup .n2_links a, 
+  #gateway-page .n2_links a {
+    background-image: none;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .5);
+    box-sizing: border-box;
+    min-height: 2.75em;
+    line-height: 1;
+    margin: 0;
+    padding: 0 1em;
+    text-align: left;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  /* MY PORTFOLIO */
+
+  #gateway-popup .block_n2_tools, 
+  #gateway-page .block_n2_tools {
+    display: none;
+    margin: 0;
+    padding: 0;
+    transition: all .2s;
+  }
+
+  #gateway-popup .block_n2_tools.open, 
+  #gateway-page .block_n2_tools.open {
+    display: block;
+  }
+
+  /* Content */
+  #gateway-popup .block_content_outer, 
+  #gateway-page .block_content_outer {
+    order: 1;
+    padding: 0;
+    width: auto;
+  }
+
+  .block_content_outer > table {
+    width: 100%;
+  }
+
+  #gateway-popup .block_content, 
+  #gateway-page .block_content {
+    padding: 1em;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  /* Force content tables to shrink */
+
+  .block_content > .table_default > tbody > tr:last-child table,
+  .block_content > .table_default > tbody > tr:last-child table td,
+  .block_content_outer a,
+  .block_content > .table_default > tbody > tr:last-child p,
+  .block_content > .table_default > tbody > tr:last-child h2,
+  .block_content > .table_default > tbody > tr:last-child span {
+    max-width: 100% !important;
+    width: auto !important;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  /* Back to Top link */
+  #gateway-back-to-top-icon-container {
+    margin-left: 0 !important;
+    right: 0;
+  }
+
+  /* Course Filter */
+  #course_search table tr:nth-child(3),
+  #course_search table tr:nth-child(6) {
+    display: none;
+  }
+
+  #course_search table tr {
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+  }
+
+  #course_search table tr td {
+    flex: 1 1 100%;
+  }
+
+  #course_search #course-filter-description,
+  .nowrap {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  #course_search table tr[aria-labelledby='search-with-filters'] {
+    flex-direction: column;
+  }
+
+  #course_search table tr[aria-labelledby='search-with-filters'] label.no_display {
+    display: block !important;
+  }
+
+  #course_search input[type='text'],
+  #course_search input[type='submit'],
+  #course_search select {
+    width: 100% !important;
+  }
+
+  /* My Portfolio Login */
+  .portfolio_form tr td:nth-child(2) {
+    display: none;
+  }
+
+  /* Course Description Text Indent Fix */
+  .width_15 {
+    width: 1em !important;
+  }
+
+  .width_15 + td {
+    line-height: 1;
+    padding-bottom: 1em;
+    text-indent: -1em;
+  }
+
+  .width_15 + td a {
+    line-height: 1.25;
+  }
+
+  .width_15 + td a.link-open,
+  .width_15 + td table * {
+    text-indent: 0;
+  }
+
+  .width_15 + td a::after { 
+    content: ' ';
+    clear:both;
+    display: block;
+    float: none;
+  }
+
+  .gateway-mini-toolbar div, 
+  .gateway-mini-toolbar a {
+    text-indent: 0;
+  }
+
+  /* Program Filter Text Indent Fix */
+  .program-list {
+    margin-left: 1em;
+  }
+
+  .program-list li {
+    text-indent: -1em;
+  }  
+}
+
+/* Wrap My Portfolio Login for small screens */
+
+@media (max-width: 500px) {
+  /* My Portfolio */
+  .portfolio_form,
+  .portfolio_form tbody {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .portfolio_form tr {
+    display: flex;
+  }
+
+  .portfolio_form tr:first-child {
+    flex-direction: column;
+  }
+
+  .portfolio_form tr td {
+    flex: 1 1 100%;
+  }
+
+  .portfolio_form #login_field,
+  .portfolio_form #reset_password {
+    width: 100%;
+  }
+
+  /* Reduce H1 for small Screens */
+  #gateway-popup #acalog-page-title,
+  #gateway-page #acalog-page-title {
+    font-size: 1.75em;
+    line-height: 1.5;
+  }
+}
+
+/* Tooltip Overrides for very small screens */
+@media (max-width: 390px) {
+  .tooltip {
+    left: 0 !important;
+    max-width: 100%;
+    padding: .5em !important;
+    width: calc(100% - 1.5em) !important;
+  }
+
+  #gateway-page .block_content .tooltip h3 {
+    margin-top: 10px;
+  }
+}
+
+
+/* Advanced Search */
+
+@media (max-width: 600px) {
+  #search_form tr {
+    align-content: stretch;
+    align-items: stretch;
+    display: flex;
+  }
+
+  #search_form tr td {
+    flex: 1 1 100%;
+  }
+
+  #search_form tr[aria-labelledby='search_keyword_field'] {
+    flex-direction: column;
+  }
+
+  #search_form input[type='text'],
+  #search_form input[type='submit'] {
+    width: 100% !important;
+  }
+
+  #search_form .td_first {
+    width: auto !important;
+  }
+
+  #search_form .td_first br {
+    display: none;
+  }
+
+  .acalog-highlight-ignore.nowrap {
+    white-space: normal;
+  }
+
+  .header_2 {
+    clear: both;
+    display: block;
+    float: none;
+  }
+
+  .acalog-highlight-ignore + .float_right,
+	.acalog-highlight-ignore + .align_right {
+    float: none;
+    text-align: left;
+  }
+}
