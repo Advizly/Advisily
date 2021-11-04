@@ -4,6 +4,7 @@ import {
   getAdvisingResultCourses,
   retrieveAdvisingSession,
   getUserAdvisingSessionId,
+  getAdvisingResults,
 } from "../services/advisingService";
 import { getCurrentUser } from "../services/authService";
 import {
@@ -15,14 +16,32 @@ import {
 
 import { Row, ColMedium } from "../components/grid";
 import useApi from "../hooks/useApi";
-import { getStudentCourses } from "../services/userService";
+import { getStudentCourses, getUsers } from "../services/userService";
 
 function AdvisingResults(props) {
+  const [userIndex, setUserIndex] = useState(0);
+  const incrementIndex = () => {
+    setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
+  };
+  const decrementIndex = () => {
+    setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
+  };
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const getUsersApi = useApi(getUsers, (users) => {
+    setUsers(users);
+    setUser(users[userIndex]);
+  });
+  useEffect(() => {
+    getUsersApi.request();
+  }, []);
+  useEffect(() => {
+    setUser(users[userIndex]);
+  }, [userIndex]);
+
+  // const user=getCurrentUser()
   const [advisingSessionId, setAdvisingSessionId] = useState(null);
-  const resultCoursesApi = useApi(
-    getAdvisingResultCourses,
-    sortAndRemoveNullCredits
-  );
+  const resultCoursesApi = useApi(getAdvisingResults);
 
   const advisingSessionIdApi = useApi(getUserAdvisingSessionId, (res) =>
     setAdvisingSessionId(res)
@@ -32,17 +51,17 @@ function AdvisingResults(props) {
     return renderCoursesList(courses);
   });
 
-  const user = getCurrentUser();
   useEffect(() => {
-    if (advisingSessionId) resultCoursesApi.request(advisingSessionId);
+    if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
-    if (user) {
+    console.log("USER EFFECT");
+    if (user && user.userId) {
       userCoursesApi.request(user.userId);
 
-      if (!advisingSessionId) advisingSessionIdApi.request(user.userId);
+      advisingSessionIdApi.request(user.userId);
     }
-  }, [user.userId]);
+  }, [user]);
 
   const renderCoursesList = (courses) => {
     return courses.map((course) => {
@@ -53,50 +72,85 @@ function AdvisingResults(props) {
       return <li key={courseId}>{formatedTitle}</li>;
     });
   };
-  const renderCourses = (courses) => {
-    const sortedCourses = sortCourses(courses);
-    const groupedCourses = groupCoursesBySemesterNumber(sortedCourses);
+  console.log("USER:", user);
 
-    const semesters = groupedCourses.map((group) => {
-      const { semesterNumber } = group;
+  const renderResults = (results) => {
+    console.log("RESULT: ,", results);
+    if (!results || !results.semesters) return null;
 
-      const semesterCoursesUI = renderCoursesList(group.courses);
-
-      const totalCredits = group.courses
-        .map((c) => c.credits)
-        .reduce((c1, c2) => c1 + c2, 0);
-
+    const result = results.semesters.map(({ semesterNumber, courses }) => {
+      const sortedCourses = sortCourses(courses);
+      const totalCredits = sortedCourses
+        .map((c) => (c.credits !== null ? c.credits : 3))
+        .reduce((c1, c2) => c1 + c2);
       return (
-        <ColMedium>
-          <h5>Semester Number: {semesterNumber}</h5>
-          {semesterCoursesUI}
+        <>
+          <h5>Semester Number {semesterNumber}</h5>
+          {renderCoursesList(sortedCourses)}
           <br />
-          <strong>Total credits: </strong>
-          {totalCredits}
-        </ColMedium>
+          <p>
+            <strong>Total Credits: </strong>
+            {totalCredits}
+          </p>
+          <hr />
+        </>
       );
     });
+    return result;
 
-    const semestersGrouped = groupCourses(semesters, 2);
-    return semestersGrouped.map((group) => (
-      <>
-        <Row>{group}</Row>
-        <hr />
-      </>
-    ));
+    // const rows = groupCourses(result, 2);
+    // return rows.map((columns) => {
+    //   return (
+    //     <Row>
+    //       {columns.map((column) => (
+    //         <ColMedium>{column}</ColMedium>
+    //       ))}
+    //     </Row>
+    //   );
+    // });
   };
 
   return (
     <div className="d-flex justify-content-center">
       <div className="frame ">
         <h1 className="text-center">Your results are here!</h1>
+        <div className="d-flex justify-content-between">
+          <button className="btn " onClick={decrementIndex}>
+            Previous
+          </button>
+          <button className="btn " onClick={incrementIndex}>
+            Next
+          </button>
+        </div>
         <br />
+        {user && (
+          <>
+            <h3 className="text-center">User Info</h3>
+            <p>
+              <strong>User Id: </strong>
+              {user.userId}
+            </p>
+            <p>
+              <strong>Name: </strong>
+              {user.firstName + " " + user.lastName}
+            </p>
+            <p>
+              <strong>Email: </strong>
+              {user.email}
+            </p>
+            <p>
+              <strong>Standing: </strong>
+              {user.standing}
+            </p>
+            <hr />
+          </>
+        )}
 
         <h3 className="text-center">User courses</h3>
         {userCoursesApi.data}
         <hr />
         <h3 className="text-center">Advised Courses</h3>
-        {renderCourses(resultCoursesApi.data)}
+        {renderResults(resultCoursesApi.data)}
 
         <div className="d-flex justify-content-between">
           <button className="btn ">Download</button>

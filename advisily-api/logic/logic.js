@@ -19,7 +19,7 @@ module.exports = { generatePlan };
 function generatePlan({ user, planCourses, advisingSession, catalog }) {
   planCourses = addCourseTypes(planCourses, catalog.courses);
 
-  const { exemptedCredits } = advisingSession;
+  const { exemptedCredits, advisingSessionId } = advisingSession;
   for (let i = 0; i < Math.ceil(exemptedCredits / 3.0); i++)
     planCourses.push({
       courseId: 2,
@@ -31,7 +31,8 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
     }); //general elective
 
   const semestersToPlan = 10;
-  let resultSemesters = [];
+  let resultSemesters = [],
+    resultCourses = [];
 
   user.totalCredits = user.courses
     .map((course) => course.credits)
@@ -50,18 +51,29 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
         (course.credits = course.credits !== null ? course.credits : 3)
     );
 
-    // const sortedCourses = sortByPriority(filteredCourses);
-
-    const resultCourses = getResultCourses(
+    const selectedCourses = getResultCourses(
       user,
       filteredCourses,
       advisingSession
     );
-    resultSemesters.push({ resultCourses, semesterNumber: i + 1 });
+    if (selectedCourses.length === 0) break;
+    const semesterNumber = i + 1;
+    resultSemesters.push({
+      semesterNumber,
+      generalElecCredits: 0,
+      advisingSessionId,
+    });
+    selectedCourses.forEach(({ courseId }) =>
+      resultCourses.push({
+        courseId,
+        semesterNumber,
+        advisingSessionId,
+      })
+    );
 
-    updateUser(user, resultCourses);
+    updateUser(user, selectedCourses);
   }
-  return { resultSemesters, isLate: false };
+  return { resultCourses, resultSemesters, isLate: false };
 }
 
 function addWeight(planCourses) {
@@ -81,6 +93,8 @@ function updateUser(user, resultCourses) {
 }
 
 function getResultCourses(user, courses, advisingSession) {
+  const sortedCourses = sortByPriority(courses);
+
   const { overloadingCredits } = advisingSession;
   if (!courses.length) return [];
 
@@ -99,8 +113,8 @@ function getResultCourses(user, courses, advisingSession) {
     MAX_CREDITS,
   };
 
-  for (let i = 0; i < courses.length && !reachedMaxCredits; i++) {
-    const course = courses[i];
+  for (let i = 0; i < sortedCourses.length && !reachedMaxCredits; i++) {
+    const course = sortedCourses[i];
     obj.course = course;
 
     if (!obj.resultCoursesIds.includes(course.courseId) || _isElective(course))
@@ -216,10 +230,26 @@ function isInChain(course) {
 }
 
 function sortByPriority(courses) {
+  let foundMajorCourse = false;
   // return courses;
   return courses.sort((c1, c2) => {
-    if (isInChain(c1) && !isInChain(c2)) return -1;
-    if (!isInChain(c1) && isInChain(c2)) return 1;
+    if (!foundMajorCourse)
+      if (_isMajorConcenteration(c1) && !_isMajorConcenteration(c2)) {
+        foundMajorCourse = true;
+        return -1;
+      } else if (!_isMajorConcenteration(c1) && _isMajorConcenteration(c2)) {
+        foundMajorCourse = true;
+        return 1;
+      }
+    if (isInChain(c1) && !isInChain(c2)) {
+      foundMajorCourse = true;
+      return -1;
+    }
+    if (!isInChain(c1) && isInChain(c2)) {
+      foundMajorCourse = true;
+      return 1;
+    }
+
     if (_isGeneralElective(c1) && !_isGeneralElective(c2)) return 1;
     if (!_isGeneralElective(c1) && _isGeneralElective(c2)) return -1;
     if (_isMajorConcenteration(c1) && _isElective(c2)) return -1;

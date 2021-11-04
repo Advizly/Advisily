@@ -174,8 +174,8 @@ function addCourseTypes(courses, catalogCourses) {
     if (_isGeneralElective(course) || courseTypeId === undefined)
       courseTypeId = Course_Types.GeneralElectives;
 
-    if (courseTypeId === undefined)
-      console.log("From addCourseTypes", course.courseTitle, course.courseCode);
+    // if (courseTypeId === undefined)
+      // console.log("From addCourseTypes", course.courseTitle, course.courseCode);
 
     return {
       ...course,

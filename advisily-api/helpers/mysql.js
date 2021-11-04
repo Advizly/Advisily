@@ -32,8 +32,8 @@ function getPool() {
   });
 }
 
-function query(query, values, endConnection = true) {
-  const connection = getConnection();
+function query(query, values, endConnection = true, connection = null) {
+  if (connection == null) connection = getConnection();
 
   const promise = new Promise((resolve, reject) => {
     connection.query(query, values, (err, results) => {

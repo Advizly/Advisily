@@ -1,4 +1,4 @@
-studentId,prefix,courseCode,coruseTitle
+studentId,prefix,courseCode,courseTitle
 1,CSCE,1001,Fundamentals of Computing I
 1,ENGL,210,Academic English for the Liberal Arts
 1,MACT,1121,Calculus I
@@ -502,7 +502,7 @@ studentId,prefix,courseCode,coruseTitle
 14,MACT,3223,Statistical Inference
 15,ECON,2011,Introduction to Microeconomics
 15,ECON,2021,Introduction to Macroeconomics
-15,ELTV,XXXX,General Electives
+15,XXXX,-9,General Electives
 15,CSCE,1001,Fundamentals of Computer Science
 15,ECON,2061,Mathematics for Economists I
 15,ENGL,210,Academic English for the Liberal Arts

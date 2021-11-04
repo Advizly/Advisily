@@ -44,7 +44,6 @@ async function register(user) {
 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
-  console.log(err);
   if (err) throw "Error registering user.";
 
   sendVerificationEmail(user);
@@ -69,9 +68,21 @@ async function login({ email, password }) {
 }
 
 async function getUsers() {
-  const [users, err] = await query(baseGetUsersQuery);
+  const sql =
+    baseGetUsersQuery +
+    " INNER JOIN standings as s on s.standingId=users.standingId order by userId";
+  const [users, err] = await query(sql);
   if (err) throw err;
-  return users;
+
+  const resultUsers = [];
+  for (let i = 0; i < users.length; i++) {
+    const authToken = getAuthToken(users[i]);
+    resultUsers.push({
+      ...basicInfo(users[i]),
+      authToken,
+    });
+  }
+  return resultUsers;
 }
 
 async function getUser(conditions) {
@@ -177,10 +188,11 @@ async function resendVerification(email) {
 async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
   if (!values.length) return null;
-
-  const getStudentQuery = baseGetUsersQuery + ` WHERE ${columns} LIMIT 1`;
+  let getStudentQuery =
+    baseGetUsersQuery +
+    " INNER JOIN standings as s on s.standingId=users.standingId";
+  getStudentQuery = getStudentQuery + ` WHERE ${columns} LIMIT 1`;
   const [data, err] = await query(getStudentQuery, values);
-
   if (err) throw "Error getting user.";
   return data.length ? data[0] : null;
 }
@@ -199,7 +211,7 @@ function sendForgotPasswordEmail(user) {
 const sendVerificationEmail = (user) => {
   const verifyUrl = `${hostUrl}/api/users/verify-email?token=${user.verificationToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to verify your email address</p>`;
-  console.log("Sending :", user);
+  console.log("Sending email to :", user);
   sendEmail({
     to: user.email,
     subject: "Advisily -- Email Verification",

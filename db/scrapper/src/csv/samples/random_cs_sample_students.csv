@@ -1,0 +1,16 @@
+userId,firstName,lastName,email,password,isVerified,majorPrefix,catalogYear,creditHrs
+1,1,1,student1@aucegypt.edu,abcd1234,1,CSCI,2020-2021,6
+2,2,2,student2@aucegypt.edu,abcd1234,1,CSCI,2020-2021,18
+3,3,3,student3@aucegypt.edu,abcd1234,1,CSCI,2020-2021,29
+4,4,4,student4@aucegypt.edu,abcd1234,1,CSCI,2019-2020,32
+5,5,5,student5@aucegypt.edu,abcd1234,1,CSCI,2021-2022,48
+6,6,6,student6@aucegypt.edu,abcd1234,1,CSCI,2019-2020,57
+7,7,7,student7@aucegypt.edu,abcd1234,1,CSCI,2021-2022,67
+8,8,8,student8@aucegypt.edu,abcd1234,1,CSCI,2019-2020,78
+9,9,9,student9@aucegypt.edu,abcd1234,1,CSCI,2017-2018,86
+10,10,10,student10@aucegypt.edu,abcd1234,1,CSCI,2019-2020,97
+11,11,11,student11@aucegypt.edu,abcd1234,1,CSCI,2017-2018,104
+12,12,12,student12@aucegypt.edu,abcd1234,1,CSCI,2017-2018,117
+13,13,13,student13@aucegypt.edu,abcd1234,1,CSCI,2018-2019,125
+14,14,14,student14@aucegypt.edu,abcd1234,1,CSCI,2019-2020,133
+15,15,15,student15@aucegypt.edu,abcd1234,1,CSCI,2017-2018,142

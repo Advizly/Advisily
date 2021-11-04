@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Form, SubmitButton } from "../../components/form";
 import CoursesSubForm from "../../subforms/coursesSubForm/coursesSubForm";
@@ -40,6 +40,7 @@ function AdvisingForm(props) {
     standingId: standingId === null ? "" : standingId,
     semesterNumber: 1,
   };
+
   const handleSubmit = async (values, { setSubmitting }) => {
     console.log("Submitting: ", values);
 

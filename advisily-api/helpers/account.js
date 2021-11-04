@@ -33,6 +33,7 @@ function basicInfo(user) {
     "isVerified",
     "advisingSessionId",
     "standingId",
+    "standing",
     "semesterNumber",
   ]);
 }

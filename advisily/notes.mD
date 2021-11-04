@@ -21,6 +21,13 @@ tips for later:
 
 1. scrap courses better (Arabic languages not retrieved).
 2. group courses
-3. what is MGMT 3201 counted as? should I include as prerequisite to senior I?
+3. What is MGMT 3201 counted as? should I include as prerequisite to senior I?
 4. ce student number 13 catalog is 2018-2019 but he is taking courses for the old catalogs
-5. arab courses, how are they calculated in general electives?
+5. Arab courses, how are they calculated in general electives?
+6. Force Distributed for fall only
+7. Force Chain courses all the time. (done)
+8. use signle-sign on.
+9. add note to relieve responsibilitiy.
+10. change looking ahead to "see more" option with disclaimer saying its accuracy is decreasing.
+11. Add port for Mrs Noha to see advised students and mark completed ones.
+12. students should approve their results or ask to see their advisor.

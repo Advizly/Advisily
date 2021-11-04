@@ -1,5 +1,6 @@
-1,Freshmen
-2,Sophomore
-3,Junior
-4,Senior
-5,Graduating Senior
+standingId,standing,creditHrs
+1,Freshmen,0
+2,Sophomore,30
+3,Junior,60
+4,Senior,90
+5,Graduating Senior,100

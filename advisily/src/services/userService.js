@@ -18,6 +18,13 @@ export const getUser = async (userId) => {
 
   return { user: data, token: headers["x-auth-token"] };
 };
+
+export const getUsers = async () => {
+  const { data: users } = await http.get(`${apiEndPoint}`);
+
+  return users;
+};
+
 export const validateResetToken = async (token) => {
   return await http.post(`${apiEndPoint}/validate-reset-token`, { token });
 };
@@ -117,6 +124,7 @@ const userService = {
   register,
   update,
   getUser,
+  getUsers,
   getStudentMajors,
   getStudentMinors,
   getStudentCourses,

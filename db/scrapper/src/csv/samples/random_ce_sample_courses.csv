@@ -1,0 +1,697 @@
+studentId,prefix,courseCode,courseTitle
+15,CSCE,1001,Fundamentals of Computing I
+15,ENGR,1001,Introduction to Engineering
+15,MACT,1122,Calculus II
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,SCI,1020,Scientific Thinking
+15,CORE,1010,Freshman Seminar: Utopias and Dystopias
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,MACT,2131,Discrete Mathematics
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: Utopias and Dystopias
+15,SEMR,1023,"Celebrating Ideas: A Voyage Through Books, film, Art and Theater"
+15,ALNG,2103,Intermediate Arabic
+15,ALNG,2104,Intermediate Modern Stand Ar
+15,PHYS,1011,"Classical Mech.,Sound & Heat"
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CORE,1010,Freshman Seminar: Who am I
+15,CSCE,1001,Fundamentals of Computing I
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: Who am I
+15,MACT,1122,Calculus II
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,ENGR,1001,Introduction to Engineering
+15,LALT,1020,Libraries and Learning Technologies
+15,PHYS,1021,Physics 2: Electricity and Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,SEMR,1110,Creative Thinking and Problem Solving
+15,CSCE,1001,Fundamentals of Computing I
+15,ENGR,1001,Introduction to Engineering
+15,MACT,1121,Calculus I
+15,CHEM,1005,General Chemistry I
+15,CORE,1010,Freshman Seminar: Human Quest
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,MACT,1122,Calculus II
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: Human Quest
+15,CHEM,1015,General Chemistry Laboratory
+15,LALT,1020,Libraries and Learning Technologies
+15,RHET,1020,Research Writing: The Rhetoric of Cultural Diplomacy: Film Art and Museums
+15,SCI,1020,Scientific Thinking
+15,CORE,1099,"Selected Topic for Core Curriculum: ""New Normal Leadership"""
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2203,Analysis and Design of Algorithms Lab
+15,MACT,2123,Calculus III
+15,MACT,2131,Discrete Mathematics
+15,PHYS,1021,Physics 2: Electricity and Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,ALNG,2103,Intermediate Arabic
+15,ALNG,2104,Intermediate Modern Stand Ar
+15,PSYC,2099,Sel Topics in Psychology
+15,CORE,1010,"Freshman Seminar: ""Vision Machines"""
+15,CSCE,1001,Fundamentals of Computing I
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,"Freshman Writing: ""Vision Machines"""
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,LALT,1020,Libraries and Learning Technologies
+15,MACT,1122,Calculus II
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,MACT,2131,Discrete Mathematics
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,SCI,1020,Scientific Thinking
+15,ARCH,1511,Free-hand Representation for Architects
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,CSCE,1001,Fundamentals of Computing I
+15,CORE,1010,Freshman Seminar: Vision Machines
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Comp II Lab
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: Vision Machines
+15,MACT,1122,Calculus II
+15,ARCH,1511,Free-hand Rep for Architects
+15,ARCH,1521,Digital Representation Tools for Architects
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,LALT,1020,Libraries and Learning Technologies
+15,PHIL,2100,Philosophical Thinking
+15,RHET,1020,Research Writing
+15,SCI,1020,Scientific Thinking
+15,ARCH,1521,Digital Rep Tools For Arch
+15,ARTV,1099,Selected Topic for Core Curriculum: Art and Technology
+15,MACT,2123,Calculus III
+15,MACT,2131,Discrete Mathematics
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2203,Analysis and Design of Algorithms Lab
+15,MACT,2141,Differential Equations
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,RHET,3220,Public Speaking
+15,ARCH,1511,Free-hand Rep for Architects
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,ARCH,1521,Digital Representation Tools for Architects
+15,ARCH,2512,Foundations of 3D Design
+15,CORE,1010,Freshman Seminar: How Do We Know What's True?
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: How Do We Know What's True?
+15,CSCE,1001,Fundamentals of Computing I
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,LALT,1020,Libraries and Learning Technologies
+15,MACT,1122,Calculus II
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,ARCH,2211,Hist&Phil of Mod&Cont Arch
+15,ARCH,2221,Human Aspects in Architectural Design
+15,ARCH,2411,Surveying for Architects
+15,ARCH,2551,Intro to Arch Design
+15,PHIL,2100,Philosophical Thinking
+15,SCI,1020,Scientific Thinking
+15,ARCH,2231,Environmental Control Systems and Sustainable Design
+15,ARCH,2552,Architectural Design Studio I
+15,ARCH,3331,Construction Materials and Quality Control
+15,ARCH,3531,Housing Design and Geographic Information Systems
+15,CENG,3112,Structural Analysis and Design Principles for Architects
+15,CHEM,1015,General Chemistry Laboratory
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,MACT,1122,Calculus II
+15,CORE,1010,Freshman Writing: High & Low
+15,CSCE,1001,Fundamentals of Computing I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: High & Low
+15,SCI,1020,Scientific Thinking
+15,LALT,1020,Libraries&Learning Tech
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,MACT,2131,Discrete Mathematics
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2203,Anlys&Design of Algorithms Lab
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,CSCE,3303,Fundamental Microelectronics
+15,EDUC,1099,Sel Top for Core Curriculum
+15,MACT,2123,Calculus III
+15,CSCE,3304,Digital Design II
+15,MACT,3224,Probability and Statistics
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Introduction to Machine Learning
+15,DSGN,3117,History of Advertising in the Arab World
+15,ENGR,3222,Engineering Economy
+15,MACT,2124,Calculus IV
+15,MACT,2132,Linear Algebra
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,MACT,1121,Calculus I
+15,CORE,1010,Freshman Seminar: The Human Quest
+15,MACT,1122,Calculus II
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: The Human Quest
+15,SCI,1020,Scientific Thinking
+15,CSCE,1001,Fundamentals of Computing I
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,LALT,1020,Libraries and Learning Technologies
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,ANTH,1099,"Selected Topic for Core Curriculum: Cyborgs, Avatars, and Everyday"
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,ENGR,3222,Engineering Economy
+15,MACT,2123,Calculus III
+15,PHIL,2100,Philosophical Thinking
+15,CORE,2096,Sel Topics for the Core Curriculum in the Global Studies: Music: The Stories of People and Cultures
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,ENGR,2104,Eng Mechanics II (Dynamics)
+15,MACT,2141,Differential Equations
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,MACT,2131,Discrete Mathematics
+15,MACT,3224,Probability and Statistics
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,PSYC,1000,Introduction to Psychology
+15,ARIC,2104,Modern Arabic Lit. in trans.
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2203,Analysis and Design of Algorithms Lab
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,SOC,2301,Social Problems of the Middle East
+15,XXXX,-9,General Elective
+15,XXXX,-9,General Elective
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mech.,Sound & Heat"
+15,CORE,1010,Freshman Seminar: Who Am I?
+15,CSCE,1001,Fundamentals of Computing I
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,MACT,1122,Calculus II
+15,RHET,1010,Freshman Writing: Who Am I?
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Computing II Lab
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,LALT,1020,Libraries and Learning Technologies
+15,PHYS,1012,General Physics Laboratory
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,SCI,1020,Scientific Thinking
+15,CSCE,2202,ANL&DSGN OF ALGORITHMS
+15,CSCE,2203,Anlys&Design of Algorithms Lab
+15,ENGR,3222,Engineering Economy
+15,MACT,2131,Discrete Mathematics
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3701,Software Engineering
+15,MACT,2123,Calculus III
+15,SEMR,1099,"Sel Top in Core Curriculum: Values, Activism & new Egypt: Community Based Learning"
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Object-Oriented Development
+15,ENGR,2104,Engineering Mechanics II (Dynamics)
+15,MACT,2132,Linear Algebra
+15,PSYC,1000,Introduction to Psychology
+15,ALNG,2103,Intermediate Arabic
+15,ALNG,2104,Intermediate Modern Stand Ar
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,1001,Fundamentals of Computing I
+15,SEMR,1023,"Celebrating Ideas: A Voyage Through Books, film, Art and Theater"
+15,MACT,1121,Calculus I
+15,CORE,1010,Freshman Seminar: The Human Quest
+15,CSCE,1101,Fundamentals of Computing II
+15,CSCE,1102,Fundamentals of Comp II Lab
+15,MACT,1122,Calculus II
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing: The Human Quest
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,LALT,1020,Libraries and Learning Technologies
+15,MACT,2131,Discrete Mathematics
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,RHET,1020,"Research Writing: Creativity and Innovation in Science, Art and Business"
+15,SCI,1020,Scientific Thinking
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,3303,Fundamental Microelectronics
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,MACT,2123,Calculus III
+15,PHIL,2100,Philosophical Thinking
+15,MACT,3224,Probability and Statistics
+15,CSCE,2202,ANL&DSGN OF ALGORITHMS
+15,CSCE,2203,Anlys&Design of Algorithms Lab
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3701,Software Engineering
+15,ENGR,3222,Engineering Economy
+15,MACT,2141,Differential Equations
+15,ARIC,2097,"Selected Topics for the Core Curriculum in Arab World Studies: ""Religion & Politics in Islam"""
+15,BADM,2001,Introduction to Business
+15,CSCE,3304,Digital Design II
+15,CSCE,3401,Operating systems
+15,CSCE,3402,Operating Systems Lab
+15,MACT,2132,Linear Algebra
+15,CSCE,4702,Secure Systems Engineering
+15,CHEM,1005,General Chemistry I
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,4411,Fundamentals of Distributed Systems
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Object-Oriented Development
+15,CSCE,4950,Industrial Training
+15,FILM,3120,Cinema in Egypt and the Arab World
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,CHEM,1005,General Chemistry I
+15,CORE,1010,Freshman Seminar: Who Am I?
+15,CSCE,1001,Fundamentals of Computer Science
+15,MACT,1122,Calculus II
+15,RHET,1010,Freshman Writing: Who Am I?
+15,BADM,2001,Introduction to Business
+15,CHEM,1015,General Chemistry Laboratory
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,LALT,1010,Libraries and Learning Technologies
+15,RHET,1020,Research Writing
+15,SCI,1020,Scientific Thinking
+15,ACCT,2001,Financial Accounting
+15,CSCE,1101,Programming Fundamentals
+15,ECLT,1099,Selected Topic for Core Curriculum:Banned Books? Culture and the Public
+15,MACT,1122,Calculus II
+15,PHIL,2100,Philosophical Thinking
+15,CSCE,2201,Data Structures & Algorithms
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,ENGR,3222,Engineering Economy
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,ARIC,3114,The Arabic Novel
+15,ARTV,2113,Introduction to Visual Cultures
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,CSCE,2202,ANL&DSGN OF ALGORITHMS
+15,CSCE,2301,Digital Design I
+15,DSGN,2113,Introduction to Visual Cultures
+15,MACT,2131,Discrete Mathematics
+15,PHYS,2211,Introduction to Electronics
+15,SOC,2005,Arab Society
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,SOC,3304,Social Class and Inequality
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Analysis & Design of Algorithms
+15,MACT,2123,Calculus III
+15,MACT,3224,Probability and Statistics
+15,SOC,2301,Social Problems of Middle East
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,3401,Operating systems
+15,PHIL,5130,Philosophy of Mind
+15,DSGN,3270,Selected Topics in Design: Introduction to Game Design and Development
+15,MACT,2123,Calculus III
+15,CSCE,2501,Fundamentals of Database Systems
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3401,Operating systems
+15,CSCE,3701,Software Engineering
+15,ECLT,3030,Literature and Cinema: Practices of Cinematic Adaptation
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Mobile Apps Development
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,MACT,2123,Calculus III
+15,MUSC,2640,Chamber Music Ensembles: “A CaPop Choir”
+15,CSCE,3304,Digital Design II
+15,CSCE,3611,Digital Signal Processing
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Object-Oriented Development
+15,MUSC,2000,World Music
+15,CORE,1010,Freshman Seminar:Advertology
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,MACT,1121,Calculus I
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing:Advertology
+15,CHEM,1005,General Chemistry I
+15,CORE,1010,Freshman Seminar:Who Am I?
+15,CSCE,1001,Fundamentals of Computer Science
+15,FILM,2120,"""Intro to Film Art"""
+15,RHET,1010,Freshman Writing:Who Am I?
+15,MACT,1122,Calculus II
+15,CSCE,1101,Fundamentals of Computing II
+15,LALT,1020,Libraries and Learning Technologies
+15,MUSC,2300,Introduction to Music Technology
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,SCI,1020,Scientific Thinking
+15,CSCE,2201,Data Structures & Algorithms
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2212,Electronics Laboratory
+15,POLS,1001,Introduction to Political Science
+15,ARIC,2104,Modern Arabic Lit. in trans.
+15,ECLT,3030,"Literature and Cinema: Writing Back, Filming Back"
+15,ENGR,3222,Engineering Economy
+15,MACT,2123,Calculus III
+15,MACT,2131,Discrete Mathematics
+15,ARIC,2104,Modern Arabic Literature in Translation
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,CSCE,2303,Comp Org.& Assmbly Lang Prog
+15,CSCE,3303,Fundamental Microelectronics
+15,ARIC,2097,"Selected Topics for the Core Curriculum in Arab World Studies: ""Religion & Politics in Islam"""
+15,CSCE,2501,Fundmnt of database Syst
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3701,Software Engineering
+15,MACT,2141,Differential Equations
+15,CSCE,3304,Digital Design II
+15,CSCE,3401,Operating systems
+15,CSCE,3611,Digital Signal Processing
+15,MACT,2132,Linear Algebra
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,ENGR,2104,Engineering Mechanics II (Dynamics)
+15,ENGR,5101,Cross Talk: Implementation Science and Engineering
+15,MACT,3224,Probability and Statistics
+15,XXXX,-9,General Elective
+15,CSCE,1001,Fundamentals of Computer Science
+15,MACT,1121,Calculus I
+15,MACT,1122,Calculus II
+15,CORE,1010,Freshman Seminar:Creative Expressions of Resistence
+15,CSCE,1101,Programming Fundamentals
+15,MACT,2123,Calculus III
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing:Creative Expressions of Resistence
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,LALT,1020,Libraries and Learning Technologies
+15,MACT,2123,Calculus III
+15,MACT,2131,Discrete Mathematics
+15,PHYS,1021,Electricity & Magnetism
+15,RHET,1020,Research Writing
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,2201,Data Structures & Algorithms
+15,PHIL,2113,Introduction to Ethics
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,SCI,1020,Scientific Thinking
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,CSCE,2303,Comp Org.& Assmbly Lang Prog
+15,ECLT,1023,Exper Creativity:Texts&Images
+15,FILM,2120,Introduction to Film Art
+15,MACT,2141,Differential Equations
+15,MACT,3224,Probability and Statistics
+15,PHIL,2100,Philosophical Thinking
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3701,Software Engineering
+15,SOC,2301,Social Problems of Middle East
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,MACT,2141,Differential Equations
+15,ARIC,2104,Modern Arabic Literature in Translation
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3611,Digital Signal Processing
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Object Oriented Development
+15,ENGR,2102,Eng Mechanics I (Statics)
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Mobile Apps Development
+15,CSCE,2501,Fundamentals of Database Systems
+15,CSCE,3401,Operating systems
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: IoT Networking Protocol
+15,ENGR,2104,Engineering Mechanics II (Dynamics)
+15,ENGR,3222,Engineering Economy
+15,MUSC,2000,World Music
+15,CSCE,3304,Digital Design II
+15,MACT,3224,Probability and Statistics
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,4411,Fundamentals of Distributed Systems
+15,CSCE,4604,Practical Machine Deep Learning
+15,CSCE,4950,Industrial Training
+15,CSCE,4980,Senior Project I
+15,MACT,2132,Linear Algebra
+15,SEMR,4018,Cross-Cultural Perceptions and Representations
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,PHYS,1012,General Physics Laboratory
+15,SEMR,1023,"Celebrating Ideas: A Voyage Through Books, film, Art and Theater"
+15,ARCH,1511,Free-hand Representation for Architects
+15,ARCH,1521,Digital Representation Tools for Architects
+15,ARCH,2512,Foundations of 3-Dimensional Design
+15,CORE,1010,Freshman Seminar:Creative Expressions of Resistance
+15,CSCE,1001,Fundamentals of Computer Science
+15,RHET,1010,Freshman Writing:Creative Expressions of Resistance
+15,MACT,1122,Calculus II
+15,SCI,1020,Scientific Thinking
+15,CSCE,1101,Fundamentals of Computing II
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,LALT,1020,Libraries and Learning Technologies
+15,MACT,2123,Calculus III
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,CSCE,2201,Data Structures & Algorithms
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,ENGR,3222,Engineering Economy
+15,MACT,2131,Discrete Mathematics
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,SOC,3304,Social Class and Inequality
+15,ARIC,2206,Art and Architecture of the City of Cairo
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3701,Software Engineering
+15,ENGR,2104,Engineering Mechanics II (Dynamics)
+15,MACT,2141,Differential Equations
+15,CSCE,2202,Analysis and Design of Algorithms
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3401,Operating systems
+15,MACT,2132,Linear Algebra
+15,MACT,3224,Probability and Statistics
+15,ARIC,3097,"Selected Themes and Topics in Arabic Literature: "" Humor and Irony in Arabic Literature"""
+15,CHEM,1015,General Chemistry Laboratory
+15,CSCE,3304,Digital Design II
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,3611,Digital Signal Processing
+15,CSCE,4411,Fundamentals of Distributed Systems
+15,MUSC,1800,Prvt Lsson in Voice or an Inst
+15,CSCE,4301,Embedded Systems
+15,CSCE,4302,Embedded Systems Lab
+15,CSCE,4604,Pract Machine Deep Learning
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Introduction to Information Theory
+15,ENGR,3202,Engineering Analysis and Computation I
+15,ENGR,4990,Entrepreneurial Development and Innovation: Community Based Learning
+15,CSCE,4702,Secure Systems Engineering
+15,ARIC,3116,The Arabic Short Story
+15,BADM,2001,Introduction to Business
+15,CSCE,2501,Fundamentals of Database Systems
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Object-Oriented Development
+15,CSCE,4950,Industrial Training
+15,CSCE,4980,Senior Project I
+15,ALNG,2103,Intermediate Arabic
+15,ALNG,2104,Intermediate Modern Stand Ar
+15,MACT,1121,Calculus I
+15,MACT,1122,Calculus II
+15,PHYS,1011,"Classical Mech.,Sound & Heat"
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,CORE,1010,Freshman Seminar:The Human Quest
+15,CSCE,1001,Fundamentals of Computer Science
+15,ENGR,1001,Introduction to Engineering
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing:The Human Quest
+15,CSCE,1101,Programming Fundamentals
+15,MACT,2123,Calculus III
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,PSYC,1000,Introduction to Psychology
+15,SCI,1020,Scientific Thinking
+15,LALT,1020,Libraries&Learning Tech
+15,RHET,1020,Research Writing
+15,CSCE,2201,Data Structures & Algorithms
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,MACT,2131,Discrete Mathematics
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,CSCE,2202,ANL&DSGN OF ALGORITHMS
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,ENGR,2104,Eng Mechanics II (Dynamics)
+15,SEMR,1023,"Celebrating Ideas: A Voyage Through Books, film, Art and Theater"
+15,ARIC,2346,Survey of Arab History
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,3701,Software Engineering
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: IoT Networking Protocol
+15,MACT,3224,Probability and Statistics
+15,CSCE,3104,Concepts of Programming Languages
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3401,Operating systems
+15,LING,2200,Introduction to Linguistics
+15,MACT,2141,Differential Equations
+15,CSCE,3102,Advanced Programming in Java
+15,CSCE,3304,Digital Design II
+15,CSCE,3611,Digital Signal Processing
+15,CSCE,4411,Fundamentals of Distributed Systems
+15,ENGR,3222,Engineering Economy
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,4604,Pract Machine Deep Learning
+15,ENGR,3202,Engineering Analysis and Computation I
+15,MACT,2132,Linear Algebra
+15,SOC,2302,Arab Family Structure&Dynamics
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,CSCE,2501,Fundamentals of Database Systems
+15,CSCE,4301,Embedded Systems
+15,CSCE,4302,Embedded Systems Lab
+15,CSCE,4980,Senior Project I
+15,EDUC,4098,Selected Topics for Core Curriculum
+15,ENGR,3322,Fundamentals of Thermofluids
+15,CHEM,1005,General Chemistry I
+15,CHEM,1015,General Chemistry Laboratory
+15,MACT,1121,Calculus I
+15,CORE,1010,Freshman Seminar:Vision Machines
+15,MACT,1122,Calculus II
+15,PHYS,1011,"Classical Mechanics, Sound and Heat"
+15,PHYS,1012,General Physics Laboratory
+15,RHET,1010,Freshman Writing:Vision Machines
+15,CSCE,1001,Fundamentals of Computer Science
+15,ENGR,1001,Introduction to Engineering
+15,ENGR,1005,Descriptive Geometry and Engineering Drawing
+15,LALT,1020,Libraries&Learning Tech
+15,PHYS,1021,Electricity & Magnetism
+15,PHYS,1022,General Physics Laboratory II
+15,RHET,1020,Research Writing
+15,SCI,1020,Scientific Thinking
+15,CSCE,1101,Programming Fundamentals
+15,MACT,2123,Calculus III
+15,PHIL,2100,Philosophical Thinking
+15,PHYS,2211,Introduction to Electronics
+15,PHYS,2213,Electronics Lab for Computer Scientists & Computer Engineers
+15,THTR,1101,The World of the Theatre
+15,CSCE,2201,Data Structures & Algorithms
+15,CSCE,2301,Digital Design I
+15,CSCE,2302,Digital Design I Lab
+15,ENGR,2102,Engineering Mechanics I (Statics)
+15,MACT,2131,Discrete Mathematics
+15,PSYC,1000,Introduction to Psychology
+15,ARIC,2346,Survey of Arab History
+15,CSCE,2303,Computer Organization & Assembly Language Programming
+15,CSCE,3701,Software Engineering
+15,ENGR,3222,Engineering Economy
+15,MACT,2141,Differential Equations
+15,MACT,3224,Probability and Statistics
+15,ARIC,3106,Arabic Literature & Film
+15,BADM,2001,Introduction to Business
+15,CSCE,3301,Computer Architecture
+15,CSCE,3302,Computer Architecture Lab
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Analysis & Design of Algorithms
+15,MACT,2141,Differential Equations
+15,CSCE,3303,Fundamental Microelectronics
+15,CSCE,3401,Operating systems
+15,CSCE,3611,Digital Signal Processing
+15,LING,2201,Languages of the World
+15,MACT,2132,Linear Algebra
+15,CSCE,2501,Fundamentals of Database Systems
+15,CSCE,4411,Fundamentals of Distributed Systems
+15,ENGR,2104,Engineering Mechanics II (Dynamics)
+15,ENGR,3202,Engineering Analysis and Computation I
+15,ENGR,3322,Fundamentals of Thermofluids
+15,CSCE,3104,Concepts of Programming Languages
+15,CSCE,3304,Digital Design II
+15,CSCE,3312,Computer Networks
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,4702,Secure Systems Engineering
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Introduction to Information Theory
+15,CSCE,4980,Senior Project I
+15,CSCE,3101,"Programming Language: ""Programming Language in Python"""
+15,DSGN,3270,Selected Topics in Design: Introduction to Game Design and Development
+15,CSCE,4301,Embedded Systems
+15,CSCE,4302,Embedded Systems Lab
+15,CSCE,4950,Industrial Training
+15,CSCE,4981,Senior Project II
+15,ENTR,3102,Entrepreneurship and Innovation
+15,CSCE,3313,Computer Networks Lab
+15,CSCE,4702,Secure Systems Engineering
+15,CSCE,4930,Selected Topics in Computer Science and Engineering: Introduction to Information Theory
+15,CSCE,4980,Senior Project I
+15,CSCE,3101,"Programming Language: ""Programming Language in Python"""
+15,DSGN,3270,Selected Topics in Design: Introduction to Game Design and Development
+15,CSCE,4301,Embedded Systems
+15,CSCE,4302,Embedded Systems Lab
+15,CSCE,4950,Industrial Training
+15,CSCE,4981,Senior Project II
+15,ENTR,3102,Entrepreneurship and Innovation

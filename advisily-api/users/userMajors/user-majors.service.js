@@ -17,11 +17,10 @@ async function getUserMajors({ userId }) {
 }
 
 async function addUserMajor({ userId, majorId, catalogId }) {
-  console.log("userId", userId, majorId);
   const sql = "INSERT IGNORE INTO userMajors SET ?";
   const [data, err] = await query(sql, { userId, majorId, catalogId });
   if (err) {
-    console.log("Error:", err);
+    console.error("Error:", err);
     throw "Error adding user major.";
   }
 }

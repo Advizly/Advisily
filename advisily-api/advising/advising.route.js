@@ -52,4 +52,11 @@ router.post(
   [auth, requestValidator(schemas.generatePlan())],
   controller.generatePlan
 );
+
+router.post(
+  "/generate-all-plans",
+  // [auth, requestValidator(schemas.generatePlan())],
+  controller.generateAllPlans
+);
+
 module.exports = router;

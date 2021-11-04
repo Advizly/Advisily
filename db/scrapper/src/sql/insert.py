@@ -135,11 +135,11 @@ def insertCatalogCourses():
     db.commit()
 
 def insertStandings():
-    sql="INSERT INTO standings(standingId,standing) VALUES (%s,%s)"
+    sql="INSERT INTO standings(standingId,standing,creditHrs) VALUES (%s,%s,%s)"
     with open(f"{csv_folder}/standings.csv","r") as standings_folder:
         standings_reader=csv.DictReader(standings_folder)
-        for paceRow in standings_reader:
-            cursor.execute(sql,list(paceRow.values()))
+        for standingRow in standings_reader:
+            cursor.execute(sql,list(standingRow.values()))
         db.commit()
 
 
@@ -257,15 +257,15 @@ def insertRequisiteSets():
 
 
 # insertStandings()
-insertMajors()
+# insertMajors()
 # insertMinors()
 # insertCourses()
 # insertRequisiteTypes()
 # insertCourseTypes()
-insertCatalogs()
+# insertCatalogs()
 # insertPaces()
-insertPlans()
-insertCatalogCourses()
+# insertPlans()
+# insertCatalogCourses()
 
 # insertCourseRequites()
 # insertRequisiteSets()

@@ -37,6 +37,12 @@ export const getAdvisingResultCourses = async (advisingSessionId) => {
   return courses;
 };
 
+export const getAdvisingResults = async (advisingSessionId) => {
+  const { data: results } = await http.get(
+    `${apiEndpoint}/${advisingSessionId}/results`
+  );
+  return results;
+};
 export const saveAdvisingSession = (advisingSessionId) => {
   localStorage.setItem("advisingSessionId", advisingSessionId);
 };
@@ -53,6 +59,7 @@ const advisingService = {
   addAdvisingSession,
   updateAdvisingSessions,
   generatePlan,
+  getAdvisingResults,
   getAdvisingResultCourses,
   saveAdvisingSession,
   retrieveAdvisingSession,
