@@ -14,8 +14,13 @@ const users = require("./users/users.route");
 let port = 5000;
 if (config.has("port")) port = config.get("port");
 
+//app.get('/', function (req, res) { res.redirect('/build/index.html') });
+
+
 app.use(express.json());
 app.use(headerConfig);
+
+//app.get("/", academics);
 
 app.use("/api/academics", academics);
 app.use("/api/catalogs", catalogs);
@@ -25,3 +30,4 @@ app.use("/api/advising", advising);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`App listening on port ${port}....`));
+

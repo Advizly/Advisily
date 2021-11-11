@@ -1,5 +1,7 @@
 module.exports = function errorHandler(err, req, res, next) {
   if (!err) return;
+        console.log(err);
+
   switch (true) {
     case typeof err === "string":
       const validationError = res.statusCode === 422;

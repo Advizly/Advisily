@@ -6,3 +6,6 @@
 6. clarify that the user should select courses that count equivalent to some course.
 7. Idea: ask the user if they have a course that counts as another course. if so, take the alternative course
 8. to continue: update the method of adding advising results to match new schema.
+
+9. Algorithms and discrete get higher priority
+10. Finish 300 level courses first.

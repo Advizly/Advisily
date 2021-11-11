@@ -13,6 +13,7 @@ function getConnection() {
   const password = config.get("password");
   const database = config.get("database");
   const user = config.get("user");
+  
 
   return mysql.createConnection({ host, password, database, user });
 }
@@ -29,6 +30,7 @@ function getPool() {
     database,
     user,
     connectionLimit: 10,
+	chartset: 'utf8',
   });
 }
 

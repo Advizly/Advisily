@@ -44,7 +44,9 @@ async function register(user) {
 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
-  if (err) throw "Error registering user.";
+console.log("ERROR:",err);
+  if (err)
+	  throw "Error registering user.";
 
   sendVerificationEmail(user);
   const authToken = getAuthToken(user);
@@ -56,7 +58,10 @@ async function register(user) {
 }
 
 async function login({ email, password }) {
+	
+	console.log("LOgging in");
   const user = await _getUserBy({ email });
+
   if (!user) throw "Email not found.";
 
   const validPassword = await bcrypt.compare(password, user.password);
@@ -70,7 +75,7 @@ async function login({ email, password }) {
 async function getUsers() {
   const sql =
     baseGetUsersQuery +
-    " INNER JOIN standings as s on s.standingId=users.standingId order by userId";
+    " LEFT OUTER JOIN standings as s on s.standingId=users.standingId order by userId";
   const [users, err] = await query(sql);
   if (err) throw err;
 
@@ -187,13 +192,15 @@ async function resendVerification(email) {
 //output: first user that matches all the conditions given.
 async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
-  if (!values.length) return null;
+  if (!values.length) return null;	
   let getStudentQuery =
     baseGetUsersQuery +
-    " INNER JOIN standings as s on s.standingId=users.standingId";
+    " LEFT OUTER JOIN standings as s on s.standingId=users.standingId";
   getStudentQuery = getStudentQuery + ` WHERE ${columns} LIMIT 1`;
   const [data, err] = await query(getStudentQuery, values);
   if (err) throw "Error getting user.";
+    
+  console.log(data,getStudentQuery);
   return data.length ? data[0] : null;
 }
 
