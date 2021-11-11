@@ -16,9 +16,12 @@ if (config.has("port")) port = config.get("port");
 
 //app.get('/', function (req, res) { res.redirect('/build/index.html') });
 
-
 app.use(express.json());
 app.use(headerConfig);
+app.use((req, res, next) => {
+  console.log(`${req.method} req at: ${req.url}`);
+  next();
+});
 
 //app.get("/", academics);
 
@@ -30,4 +33,3 @@ app.use("/api/advising", advising);
 app.use(errorHandler);
 
 app.listen(port, () => console.log(`App listening on port ${port}....`));
-

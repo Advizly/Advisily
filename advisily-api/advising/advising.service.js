@@ -304,7 +304,7 @@ async function generateAllPlans() {
     generalElecCredits: 0,
     exemptedCredits: 0,
   };
-  console.log("USER LENGTH:", users.length);
+  // console.log("USER LENGTH:", users.length);
   let error = null;
   for (let i = 0; i < users.length; i++) {
     addAdvisingSession({

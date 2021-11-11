@@ -2,9 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { ADVISILY } from "../constant/websiteName";
+import { SIGN_UP_ROUTE } from "../account/routes";
+import { ADVISING_HOME_ROUTE } from "../advising/routes";
 
 function Home({ user }) {
-  const redirectTo = user ? "/advising" : "sign-up";
+  const redirectTo = user ? ADVISING_HOME_ROUTE : SIGN_UP_ROUTE;
   return (
     <div className="text-center home-container">
       <h1> Your new academic advisor is here!</h1>

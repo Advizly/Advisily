@@ -31,7 +31,7 @@ function ForgotPassword(props) {
       title="Reset Password"
       onSubmit={handleSubmit}
     >
-      <FormInput type="email" name="email" label="AUC Eamil" />
+      <FormInput type="email" name="email" label="AUC Email" />
       <SubmitButton />
     </Form>
   );

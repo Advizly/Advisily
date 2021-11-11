@@ -44,9 +44,7 @@ async function register(user) {
 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
-console.log("ERROR:",err);
-  if (err)
-	  throw "Error registering user.";
+  if (err) throw "Error registering user.";
 
   sendVerificationEmail(user);
   const authToken = getAuthToken(user);
@@ -58,8 +56,6 @@ console.log("ERROR:",err);
 }
 
 async function login({ email, password }) {
-	
-	console.log("LOgging in");
   const user = await _getUserBy({ email });
 
   if (!user) throw "Email not found.";
@@ -132,11 +128,12 @@ async function verifyEmail(token) {
 
   [data, err] = await query(getUserQuery, token);
   if (err) throw err;
+  console.log(getUserQuery);
   if (!data.length) throw "User not found.";
 
   const user = data[0];
   user.isVerified = true;
-  user.verificationToken = null;
+  // user.verificationToken = null;
 
   [, err] = await query(updateStudentQuery, [user, user.email]);
   if (err) throw "Error verifying user.";
@@ -192,15 +189,14 @@ async function resendVerification(email) {
 //output: first user that matches all the conditions given.
 async function _getUserBy(conditions) {
   const { columns, values } = parseConditions(conditions);
-  if (!values.length) return null;	
+  if (!values.length) return null;
   let getStudentQuery =
     baseGetUsersQuery +
     " LEFT OUTER JOIN standings as s on s.standingId=users.standingId";
   getStudentQuery = getStudentQuery + ` WHERE ${columns} LIMIT 1`;
   const [data, err] = await query(getStudentQuery, values);
   if (err) throw "Error getting user.";
-    
-  console.log(data,getStudentQuery);
+
   return data.length ? data[0] : null;
 }
 
@@ -218,7 +214,7 @@ function sendForgotPasswordEmail(user) {
 const sendVerificationEmail = (user) => {
   const verifyUrl = `${hostUrl}/api/users/verify-email?token=${user.verificationToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to verify your email address</p>`;
-  console.log("Sending email to :", user);
+  // console.log("Sending email to :", user);
   sendEmail({
     to: user.email,
     subject: "Advisily -- Email Verification",

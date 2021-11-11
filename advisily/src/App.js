@@ -54,6 +54,7 @@ function App() {
               </Switch>
             </main>
           </Route>
+          <Route path={NOT_FOUND_ROUTE} component={NotFound} />
         </Switch>
 
         <Footer />

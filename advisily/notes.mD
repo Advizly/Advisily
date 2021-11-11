@@ -31,3 +31,6 @@ tips for later:
 10. change looking ahead to "see more" option with disclaimer saying its accuracy is decreasing.
 11. Add port for Mrs Noha to see advised students and mark completed ones.
 12. students should approve their results or ask to see their advisor.
+
+**_IMPORTANT_**
+fix general elec logic

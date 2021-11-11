@@ -66,3 +66,7 @@ function promisesAll() {
 
   promises.push(p1);
 }
+
+
+ "hostUrl": "http://10.7.60.113:5000",
+  "frontendUrl": "http://10.7.60.113:9000",

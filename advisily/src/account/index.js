@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import ResetPassword from "./resetPassword/ResetPassword";
 import ForgotPassword from "./forgotPassword/ForgotPassword";
@@ -15,6 +15,7 @@ import {
   SIGN_UP_ROUTE,
   VERIFY_EMAIL_ROUTE,
 } from "./routes";
+import { NOT_FOUND_ROUTE } from "../common";
 import auth from "../services/authService";
 
 function AccountRouter({ history }) {
@@ -29,6 +30,7 @@ function AccountRouter({ history }) {
       <Route path={VERIFY_EMAIL_ROUTE} component={VerifyEmail} />
       <Route path={LOGIN_ROUTE} component={LoginForm} />
       <Route path={SIGN_UP_ROUTE} component={SignUpForm} />
+      <Redirect to={{ pathname: { NOT_FOUND_ROUTE } }} />
     </Switch>
   );
 }

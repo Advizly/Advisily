@@ -1,6 +1,6 @@
 {
-  "hostUrl": "http://10.7.60.113:5000",
-  "frontendUrl": "http://10.7.60.113:9000",
+  "hostUrl": "http://localhost:5000",
+  "frontendUrl": "http://localhost:3000",
   "jwtPrivateKey": "",
   "db": {
     "host": "localhost",
