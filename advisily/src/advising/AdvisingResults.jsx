@@ -19,7 +19,6 @@ import useApi from "../hooks/useApi";
 import { getStudentCourses, getUsers } from "../services/userService";
 
 function AdvisingResults(props) {
-<<<<<<< Updated upstream
   // const [userIndex, setUserIndex] = useState(0);
   // const incrementIndex = () => {
   //   setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
@@ -42,29 +41,6 @@ function AdvisingResults(props) {
   // }, [userIndex]);
 
   const user = getCurrentUser();
-=======
-  const [userIndex, setUserIndex] = useState(31);
-  const incrementIndex = () => {
-    setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
-  };
-  const decrementIndex = () => {
-    setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
-  };
-  const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([]);
-  const getUsersApi = useApi(getUsers, (users) => {
-    setUsers(users);
-    setUser(users[userIndex]);
-  });
-  useEffect(() => {
-    getUsersApi.request();
-  }, []);
-  useEffect(() => {
-    setUser(users[userIndex]);
-  }, [userIndex]);
-
-  // const user=getCurrentUser()
->>>>>>> Stashed changes
   const [advisingSessionId, setAdvisingSessionId] = useState(null);
   const resultCoursesApi = useApi(getAdvisingResults);
 

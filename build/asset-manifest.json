@@ -1,29 +1,29 @@
 {
   "files": {
-    "main.css": "./static/css/main.32fe48df.chunk.css",
-    "main.js": "./static/js/main.f98aecf5.chunk.js",
-    "main.js.map": "./static/js/main.f98aecf5.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.f1ae2e22.js",
-    "runtime-main.js.map": "./static/js/runtime-main.f1ae2e22.js.map",
-    "static/css/2.df93ccea.chunk.css": "./static/css/2.df93ccea.chunk.css",
-    "static/js/2.859939e3.chunk.js": "./static/js/2.859939e3.chunk.js",
-    "static/js/2.859939e3.chunk.js.map": "./static/js/2.859939e3.chunk.js.map",
-    "static/js/3.736c7100.chunk.js": "./static/js/3.736c7100.chunk.js",
-    "static/js/3.736c7100.chunk.js.map": "./static/js/3.736c7100.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.df93ccea.chunk.css.map": "./static/css/2.df93ccea.chunk.css.map",
-    "static/css/main.32fe48df.chunk.css.map": "./static/css/main.32fe48df.chunk.css.map",
-    "static/js/2.859939e3.chunk.js.LICENSE.txt": "./static/js/2.859939e3.chunk.js.LICENSE.txt",
-    "static/media/index.css": "./static/media/Montserrat-Regular.3cd78665.ttf",
-    "static/media/auc-logo.fb665a08.png": "./static/media/auc-logo.fb665a08.png",
-    "static/media/sherif.bd1c984d.jpg": "./static/media/sherif.bd1c984d.jpg",
-    "static/media/youssef.42266403.jpg": "./static/media/youssef.42266403.jpg"
+    "main.css": "/static/css/main.8dc1d5cf.chunk.css",
+    "main.js": "/static/js/main.64653a1f.chunk.js",
+    "main.js.map": "/static/js/main.64653a1f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.dc9d580f.js",
+    "runtime-main.js.map": "/static/js/runtime-main.dc9d580f.js.map",
+    "static/css/2.df93ccea.chunk.css": "/static/css/2.df93ccea.chunk.css",
+    "static/js/2.087dfabc.chunk.js": "/static/js/2.087dfabc.chunk.js",
+    "static/js/2.087dfabc.chunk.js.map": "/static/js/2.087dfabc.chunk.js.map",
+    "static/js/3.736c7100.chunk.js": "/static/js/3.736c7100.chunk.js",
+    "static/js/3.736c7100.chunk.js.map": "/static/js/3.736c7100.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.df93ccea.chunk.css.map": "/static/css/2.df93ccea.chunk.css.map",
+    "static/css/main.8dc1d5cf.chunk.css.map": "/static/css/main.8dc1d5cf.chunk.css.map",
+    "static/js/2.087dfabc.chunk.js.LICENSE.txt": "/static/js/2.087dfabc.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/static/media/Montserrat-Regular.3cd78665.ttf",
+    "static/media/auc-logo.fb665a08.png": "/static/media/auc-logo.fb665a08.png",
+    "static/media/sherif.bd1c984d.jpg": "/static/media/sherif.bd1c984d.jpg",
+    "static/media/youssef.42266403.jpg": "/static/media/youssef.42266403.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.f1ae2e22.js",
+    "static/js/runtime-main.dc9d580f.js",
     "static/css/2.df93ccea.chunk.css",
-    "static/js/2.859939e3.chunk.js",
-    "static/css/main.32fe48df.chunk.css",
-    "static/js/main.f98aecf5.chunk.js"
+    "static/js/2.087dfabc.chunk.js",
+    "static/css/main.8dc1d5cf.chunk.css",
+    "static/js/main.64653a1f.chunk.js"
   ]
 }

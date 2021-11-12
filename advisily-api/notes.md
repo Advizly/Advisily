@@ -15,4 +15,4 @@
 4- add 2020-2021 catalogs and later
 5- add add api to verify results
 6- delete algorithms labs from old catalogs
-7-
+7- change everything to https

@@ -17,10 +17,7 @@ import validationSchema from "./validationSchema";
 import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
-<<<<<<< Updated upstream
-=======
     // console.log("API URL: ", apiBaseUrl);
->>>>>>> Stashed changes
     // console.log("Values: ", values);
     try {
       await auth.login(values);
@@ -29,9 +26,9 @@ function LoginForm(props) {
       const { response } = ex;
       const { status } = response;
       if (response && (status === 400 || status === 401)) {
-        console.log(response.data);
+        // console.log(response.data);
       }
-      console.log(response);
+      // console.log(response);
       setStatus({ error: response.data.error });
     }
   };

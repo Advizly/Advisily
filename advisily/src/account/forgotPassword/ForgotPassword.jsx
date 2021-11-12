@@ -14,7 +14,7 @@ function ForgotPassword(props) {
   const handleSubmit = async ({ email }, { setStatus }) => {
     try {
       const res = await forgotPassword(email);
-      console.log(res.data.message);
+      // console.log(res.data.message);
       alert(res.data.message);
     } catch (ex) {
       const { response } = ex;

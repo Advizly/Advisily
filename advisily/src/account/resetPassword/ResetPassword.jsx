@@ -22,7 +22,6 @@ function ResetPassword(props) {
   const { location, history } = props;
   useEffect(() => {
     const { token: queryToken } = queryString.parse(location.search);
-    console.log("Query :", queryToken);
     history.replace(location.pathname);
     validateResetToken(queryToken)
       .then(() => {

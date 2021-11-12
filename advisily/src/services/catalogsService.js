@@ -2,7 +2,7 @@ import { apiBaseUrl, CourseTypeIds } from "../config.json";
 
 import http from "./httpService";
 
-const apiEndPoint = apiBaseUrl + "/catalogs";
+const apiEndPoint = "/catalogs";
 const catCourseUrl = `${apiEndPoint}/courses`;
 const planCoursesUrl = `${apiEndPoint}/plans/courses`;
 

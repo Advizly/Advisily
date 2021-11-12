@@ -1,7 +1,6 @@
-import { apiBaseUrl } from "../config";
-import http from "axios";
+import http from "./httpService";
 
-const apiEndPoint = apiBaseUrl + "/academics/minors";
+const apiEndPoint = "/academics/minors";
 export const getMinors = async () => {
   const { data: minors } = await http.get(apiEndPoint);
   return minors;
