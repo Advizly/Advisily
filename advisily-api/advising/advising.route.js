@@ -36,6 +36,11 @@ router.post(
   controller.addAdvisingSession
 );
 
+router.post(
+  "/verifyResults",
+  [auth, requestValidator(schemas.verifyResults())],
+  controller.verifyResults
+);
 router.get(
   "/getUserAdvisingId/:userId",
   [(auth, requestValidator(schemas.getUserAdvisingSessionId(), "params"))],

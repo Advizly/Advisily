@@ -39,6 +39,13 @@ function AdvisingHome(props) {
           </p>
         </li>
         <li>
+          <strong>Only main semsters</strong>
+          <p>
+            The system takes into consideration the main semesters
+            only(fall/spring). Winters and summers are not currently supported.
+          </p>
+        </li>
+        <li>
           <strong>Seeing ahead in the future is not accurate</strong>
           <p>
             The more semesters generated ahead of time, the less accurate the

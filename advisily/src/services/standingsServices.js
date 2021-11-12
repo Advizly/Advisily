@@ -1,6 +1,5 @@
-import { apiBaseUrl } from "../config";
 import http from "./httpService";
-const apiEndPoint = apiBaseUrl + "/academics/standings";
+const apiEndPoint = "/academics/standings";
 
 export const getStandings = async () => {
   const { data: standings } = await http.get(apiEndPoint);

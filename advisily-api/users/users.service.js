@@ -118,9 +118,8 @@ async function update(id, params) {
 
   if (params.password) params.password = await hash(params.password);
 
-  user = { ...user, ...params };
   const sql = "UPDATE users SET ? WHERE userId=? ";
-  const [data, err] = await query(sql, [user, id]);
+  const [data, err] = await query(sql, [params, id]);
   if (err) throw "Error updating user";
 
   return data;
@@ -155,7 +154,6 @@ async function forgotPassword(email) {
 
   const updateStudentQuery = baseUpdateQuery + " WHERE email=?";
   let [, err] = await query(updateStudentQuery, [passwordData, email]);
-  console.log(err);
   if (err) throw { err, message: "Error resetting password." };
 
   [, err] = await sendForgotPasswordEmail(user); //);

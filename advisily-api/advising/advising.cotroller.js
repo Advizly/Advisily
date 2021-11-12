@@ -7,12 +7,19 @@ module.exports = {
   getAdvisingResultCourses,
   getUserAdvisingSessionId,
   addAdvisingSession,
+  verifyResults,
   updateAdvisingSession,
   generateAllPlans,
   generatePlan,
   getPaces,
 };
 
+function verifyResults(req, res, next) {
+  advisingService
+    .verifyResults(req.body)
+    .then((result) => res.json(result))
+    .catch(next);
+}
 function generateAllPlans(req, res, next) {
   advisingService
     .generateAllPlans()

@@ -1,6 +1,6 @@
 module.exports = function errorHandler(err, req, res, next) {
   if (!err) return;
-        console.log(err);
+  console.log(err);
 
   switch (true) {
     case typeof err === "string":
@@ -18,7 +18,6 @@ module.exports = function errorHandler(err, req, res, next) {
       }
 
     default:
-      console.log(err);
       res.status(500).json({ error: "Unknown error" });
   }
 };

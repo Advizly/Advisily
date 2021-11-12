@@ -51,6 +51,13 @@ export const getUserAdvisingSessionId = async (userId) => {
   const { data } = await http.get(`${apiEndpoint}/getUserAdvisingId/${userId}`);
   return data.advisingSessionId;
 };
+
+export const verifyResults = async (advisingSessionId) => {
+  const { data } = await http.post(`${apiEndpoint}/verifyResults`, {
+    advisingSessionId,
+  });
+  return data;
+};
 const advisingService = {
   getAdvisingSessions,
   getAdvisingSession,
@@ -61,5 +68,6 @@ const advisingService = {
   getAdvisingResultCourses,
   saveAdvisingSession,
   retrieveAdvisingSession,
+  verifyResults,
 };
 export default advisingService;

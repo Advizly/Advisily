@@ -37,7 +37,7 @@ const useCatalogCourses = (catalogId) => {
       catalogCourses
     );
     setGeneralElectiveCourses(generalElectives);
-    console.log(generalElectives);
+    // console.log(generalElectives);
   };
 
   const divideCatalogCourses = (catalogCourses) => {};

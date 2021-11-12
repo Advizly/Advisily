@@ -27,7 +27,7 @@ function VerifyEmail(props) {
   const handleSubmit = async ({ email }, { setStatus }) => {
     try {
       const res = await resendVerification(email);
-      console.log(res);
+      // console.log(res);
       alert("Email sent successfully");
     } catch (error) {
       const { response } = error;

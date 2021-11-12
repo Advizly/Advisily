@@ -7,5 +7,3 @@ const advisingDefautlValues = {
   ...coursesDefaultValues,
 };
 export default advisingDefautlValues;
-
-console.log(majorDefaultValues);

@@ -25,6 +25,7 @@ import {
 
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
+import Disclaimer from "../Disclaimer";
 
 function AdvisingForm(props) {
   const { step, back, next } = useFormStep(0);
@@ -32,7 +33,6 @@ function AdvisingForm(props) {
 
   const userCoursesInfo = useUserCourses();
   const { userId, standingId } = useAuth(true);
-
   const initialValues = {
     ...defaultValues,
     ...userMajorInfo,
@@ -42,7 +42,7 @@ function AdvisingForm(props) {
   };
 
   const handleSubmit = async (values, { setSubmitting }) => {
-    console.log("Submitting: ", values);
+    // console.log("Submitting: ", values);
 
     if (window.confirm("Are you sure you want to submit?")) {
       try {
@@ -97,18 +97,7 @@ function AdvisingForm(props) {
   const getFormChild = () => {
     switch (step) {
       case 0:
-        return (
-          <>
-            <p className="h5">
-              <strong className="h4 clr-danger">Important: </strong>
-              This system is meant to help you with your advising but it is not
-              perfect. You are still <strong>responsible</strong> to check your
-              catalog and courses plan to ensure no issues will happen during
-              registeration.
-            </p>
-            <br />
-          </>
-        );
+        return <Disclaimer />;
       case 1:
         return <MajorInfo />;
       case 2:
@@ -123,7 +112,7 @@ function AdvisingForm(props) {
   const getFormTitle = () => {
     switch (step) {
       case 0:
-        return "DISCLAIMER";
+        return "DISCLAIMER!";
       case 1:
         return "Major Info";
       case 2:

@@ -22,9 +22,27 @@ module.exports = {
   generatePlan,
   getPaces,
   generateAllPlans,
+  verifyResults,
 };
-
 const baseGetSessionQuery = "select * from advisingSessions";
+
+async function verifyResults({ advisingSessionId }) {
+  let data, err;
+  let sql = "SELECT * from advisingResults WHERE advisingSessionId=? ";
+  [data, err] = await query(sql, [advisingSessionId]);
+  if (err || !data.length) {
+    console.log("Error:", err);
+    throw "Error finding advising results";
+  }
+
+  sql = "UPDATE advisingResults set isVerified= 1 WHERE advisingSessionId= ? ";
+  [data, err] = await query(sql, [advisingSessionId]);
+  if (err) {
+    console.log("Error:", err);
+    throw "Error verifying advising results";
+  }
+  return data;
+}
 async function getAdvisingSessions({ userId }) {
   let sql = baseGetSessionQuery;
   if (userId) sql += " WHERE userId=?";
@@ -277,7 +295,6 @@ async function generatePlan({ advisingSessionId }) {
       advisingSession,
       catalog,
     });
-    console.log("HERE: ", catalogId, userMajors[0]);
     await addAdvisingResults({ ...results, advisingSessionId });
   } catch (err) {
     console.log(err);

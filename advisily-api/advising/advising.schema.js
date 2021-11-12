@@ -14,6 +14,8 @@ module.exports = {
   addAdvisingSession,
   updateAdvisingSession,
   generatePlan,
+  verifyResults,
+
   getUserAdvisingSessionId,
   addAdvisingResults,
 };
@@ -83,9 +85,15 @@ function generatePlan() {
 }
 
 function addAdvisingResults() {
-  return joi.object({
+  return Joi.object({
     advisingSessionId: ID_SCHEMA_REQUIRED,
     courseId: ID_SCHEMA_REQUIRED,
     semesterNumber: Joi.number().integer().positive(),
+  });
+}
+
+function verifyResults() {
+  return Joi.object({
+    advisingSessionId: ID_SCHEMA_REQUIRED,
   });
 }
