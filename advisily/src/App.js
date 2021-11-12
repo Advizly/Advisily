@@ -1,5 +1,11 @@
 import "./App.css";
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch,
+  HashRouter,
+} from "react-router-dom";
 
 import { AboutUs, ContactUs, Footer, Header, Home, NotFound } from "./common";
 import {
@@ -16,15 +22,12 @@ import AccountRouter, { ACCOUNT_ROUTE } from "./account";
 
 import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
-import CoursesModal from "./subforms/coursesSubForm/coursesModal";
 
 function App() {
   const user = useAuth();
 
-  // return <CoursesModal />;
-
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="page-container">
         <Header user={user} />
 
@@ -59,7 +62,7 @@ function App() {
 
         <Footer />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

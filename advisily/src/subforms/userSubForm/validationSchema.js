@@ -22,7 +22,7 @@ const ID_VALUE_TOO_SMALL =
 const ID_VALUE_TOO_LARGE = "Studnet ID must consist of no more than 9 digits";
 
 const INVALID_EMAIL_FORMAT = "Invalid email format";
-const EMAIL_FORMAT = /^.+@aucegypt.edu$/;
+const EMAIL_FORMAT = /^.+@aucegypt.edu$/i;
 const AUC_EMAIL_ONLY = "You can use AUC email only";
 
 const MIN_PASSWORD_LENGTH = 8;
@@ -48,8 +48,9 @@ export default Yup.object({
 
   [USER_ID]: Yup.number()
     .integer()
-    .min(MIN_ID_VALUE, ID_VALUE_TOO_SMALL)
-    .max(MAX_ID_VALUE, ID_VALUE_TOO_LARGE)
+    .positive()
+    // .min(MIN_ID_VALUE, ID_VALUE_TOO_SMALL)
+    // .max(MAX_ID_VALUE, ID_VALUE_TOO_LARGE)
     .required(REQUIRED_MESSAGE),
 
   [PASSWORD]: Yup.string()

@@ -13,6 +13,7 @@ const {
   basicInfo,
   hash,
 } = require("../helpers/account");
+const promiseHandler = require("../helpers/promiseHandler");
 
 module.exports = {
   getUsers,
@@ -36,17 +37,23 @@ async function register(user) {
   user.isVerified = false;
   user.verificationToken = await getRandomToken();
 
-  const oldUser = await _getUserBy({
-    email: user.email,
+  let oldUser = await _getUserBy({
     userId: user.userId,
   });
-  if (oldUser) throw "A user with this Student ID or email already registered.";
+  if (oldUser) throw "A user with this Student ID  already registered.";
+
+  oldUser = await _getUserBy({
+    email: user.email,
+  });
+  if (oldUser) throw "A user with this Student email already registered.";
 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
   if (err) throw "Error registering user.";
 
-  sendVerificationEmail(user);
+  [, err] = await sendVerificationEmail(user);
+  if (err)
+    throw "Error sending verification email. Try resending verification email from the login page.";
   const authToken = getAuthToken(user);
 
   return {
@@ -142,15 +149,17 @@ async function verifyEmail(token) {
 async function forgotPassword(email) {
   const user = await _getUserBy({ email });
   if (!user) throw "User of given email not found.";
-
   user.passwordResetToken = await getRandomToken();
   user.resetTokenExpires = new Date(Date.now() + 24 * 3600 * 1000); //expires in 24 hours
+  const passwordData = _.pick(user, ["passwordResetToken", "resetTokenExpire"]);
 
   const updateStudentQuery = baseUpdateQuery + " WHERE email=?";
-  const [, err] = await query(updateStudentQuery, [user, email]);
-  if (err) return res.status(400).send(err);
+  let [, err] = await query(updateStudentQuery, [passwordData, email]);
+  console.log(err);
+  if (err) throw { err, message: "Error resetting password." };
 
-  sendForgotPasswordEmail(user);
+  [, err] = await sendForgotPasswordEmail(user); //);
+  if (err) throw { err, message: "Error resetting password." };
 }
 
 async function resetPassword({ token, password }) {
@@ -181,7 +190,8 @@ async function resendVerification(email) {
   if (!user) throw "User of given email not found.";
 
   if (user.isVerified) throw "User already verified.";
-  sendVerificationEmail(user);
+  let [, err] = await sendVerificationEmail(user);
+  if (err) throw "Error sending verification email.";
 }
 
 //internal helper to get user by conditions.
@@ -194,32 +204,37 @@ async function _getUserBy(conditions) {
     baseGetUsersQuery +
     " LEFT OUTER JOIN standings as s on s.standingId=users.standingId";
   getStudentQuery = getStudentQuery + ` WHERE ${columns} LIMIT 1`;
+
   const [data, err] = await query(getStudentQuery, values);
   if (err) throw "Error getting user.";
 
   return data.length ? data[0] : null;
 }
 
-function sendForgotPasswordEmail(user) {
+async function sendForgotPasswordEmail(user) {
   const verifyUrl = `${frontendUrl}/account/reset-password?token=${user.passwordResetToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to reset your password. This link will expire in 24 hours</p>`;
 
-  sendEmail({
-    to: user.email,
-    subject: "Advisily -- Password Reset",
-    html: `${msg}`,
-  });
+  return promiseHandler(
+    sendEmail({
+      to: user.email,
+      subject: "Advisily -- Password Reset",
+      html: `${msg}`,
+    })
+  );
 }
 
 const sendVerificationEmail = (user) => {
   const verifyUrl = `${hostUrl}/api/users/verify-email?token=${user.verificationToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to verify your email address</p>`;
   // console.log("Sending email to :", user);
-  sendEmail({
-    to: user.email,
-    subject: "Advisily -- Email Verification",
-    html: `<p>Almost done!.<p/><br/> 
+  return promiseHandler(
+    sendEmail({
+      to: user.email,
+      subject: "Advisily -- Email Verification",
+      html: `<p>Almost done!.<p/><br/> 
           <p>${user.firstName}, you are one step away from meeting your new advisor.<p/>
     ${msg}`,
-  });
+    })
+  );
 };

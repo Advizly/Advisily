@@ -1,6 +1,7 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
 const apiEndPoint = apiBaseUrl + "/users";
+console.log("apiBaseUrl", apiBaseUrl);
 
 /*User  is expected to have the following:
     userId, firstName,lastName, auc email, password, repeatPassword

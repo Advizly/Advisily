@@ -73,7 +73,7 @@ function PreferencesInfo() {
         visible={stringToBool(takingSummer)}
       />
       <hr /> */}
-      <FormPolarRadioGroup
+      {/* <FormPolarRadioGroup
         name={TAKING_WINTER}
         label="Are you planning to take course(s) next Winter?"
         onChange={({ target }) => {
@@ -87,9 +87,9 @@ function PreferencesInfo() {
         min={0}
         max={4}
         visible={stringToBool(takingWinter)}
-      />
+      /> */}
 
-      <hr />
+      {/* <hr /> */}
       {/* <FormSelectGroup
         label={"What pace would you like to follow?"}
         name={PACE_ID}
@@ -99,11 +99,11 @@ function PreferencesInfo() {
         nameSelector="paceTitle"
       />
       <hr /> */}
-      <FormSelectGroup
+      {/* <FormSelectGroup
         label={"Up to how many semesters would you like to be planned?"}
         name={SEMESTERS_TO_PLAN}
         items={semesters}
-      />
+      /> */}
     </>
   );
 }

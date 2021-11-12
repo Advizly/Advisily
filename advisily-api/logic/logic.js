@@ -249,6 +249,7 @@ function sortByPriority(courses) {
       foundMajorCourse = true;
       return 1;
     }
+    if (priortirizeDiscrete(c1, c2)) return priortirizeDiscrete(c1, c2);
 
     if (_isGeneralElective(c1) && !_isGeneralElective(c2)) return 1;
     if (!_isGeneralElective(c1) && _isGeneralElective(c2)) return -1;
@@ -259,6 +260,28 @@ function sortByPriority(courses) {
     return c1.courseCode - c2.courseCode;
   });
 }
+
+function priortirizeDiscrete(c1, c2) {
+  // priortirize DiscreteOver Calculus
+  const DISCRETE_CODE = 2131;
+  const CALCULUS_CODE = 2123;
+  if (
+    !c1 ||
+    !c2 ||
+    !c1.prefix ||
+    !c2.prefix ||
+    c1.prefix !== "MACT" ||
+    c2.prefix !== "MACT"
+  )
+    return false;
+
+  if (c1.courseCode == DISCRETE_CODE && c2.courseCode == CALCULUS_CODE)
+    return -1;
+  if (c1.courseCode == CALCULUS_CODE && c2.courseCode == DISCRETE_CODE)
+    return 1;
+  return 0;
+}
+
 function decreasePriority(courses, courseTypeId) {
   return courses.sort((c1, c2) => {
     if (c1.courseTypeId === courseTypeId && c2.courseTypeId !== courseTypeId)

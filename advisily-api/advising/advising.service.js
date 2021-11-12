@@ -245,6 +245,15 @@ async function clearAdvisingResults({ advisingSessionId }) {
   return data;
 }
 
+async function testTime() {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log("AFTER some time...");
+      resolve(true);
+    }, [4000]);
+  });
+}
+
 async function generatePlan({ advisingSessionId }) {
   try {
     const advisingSession = await getAdvisingSession({ advisingSessionId });
@@ -268,6 +277,7 @@ async function generatePlan({ advisingSessionId }) {
       advisingSession,
       catalog,
     });
+    console.log("HERE: ", catalogId, userMajors[0]);
     await addAdvisingResults({ ...results, advisingSessionId });
   } catch (err) {
     console.log(err);
@@ -306,17 +316,16 @@ async function generateAllPlans() {
   };
   // console.log("USER LENGTH:", users.length);
   let error = null;
-  for (let i = 0; i < users.length; i++) {
-    addAdvisingSession({
-      ...advisingData,
-      userId: users[i].userId,
-    })
-      .then(({ advisingSessionId }) =>
-        generatePlan({ advisingSessionId }).catch((err) => (error = err))
-      )
-      .then(() => setTimeout(() => {}, [500]))
-      .catch((err) => (error = err));
-  }
+  // for (let i = 20; i < 32; i++) {
+  addAdvisingSession({
+    ...advisingData,
+    userId: 22, //users[i].userId,
+  })
+    .then(({ advisingSessionId }) =>
+      generatePlan({ advisingSessionId }).catch((err) => (error = err))
+    )
+    .catch((err) => (error = err));
+  // }
   if (error) {
     console.error("Error in generate all plans:", err);
     throw error;

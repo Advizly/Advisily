@@ -1,6 +1,5 @@
 import { apiBaseUrl } from "../config";
 import http from "./httpService";
-
 const apiEndpoint = apiBaseUrl + "/advising";
 
 export const getAdvisingSessions = async () => {

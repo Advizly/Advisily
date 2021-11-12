@@ -138,8 +138,9 @@ function CoursesSubForm() {
       <FormGroup
         name={COURSES_IDS}
         label="Please select all the courses you will have finished by the end of the current semester:"
+        labelClass="fs-4 fw-bold"
       >
-        <p className="clr-danger">
+        <p className="clr-danger fs-4 fw-bold">
           (exempted and transferred courses, as well)
         </p>
         <br />
@@ -164,7 +165,7 @@ function CoursesSubForm() {
         <hr />
         <FormInput
           name={EXEMPTED_CREDITS}
-          label="How many credits(if any) are you exmpted from?"
+          label="How many credits(if any) are you exempted from?"
           type="number"
         />
         <hr />

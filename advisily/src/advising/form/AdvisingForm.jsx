@@ -27,7 +27,7 @@ import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 
 function AdvisingForm(props) {
-  const { step, back, next } = useFormStep(3);
+  const { step, back, next } = useFormStep(0);
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
@@ -96,6 +96,19 @@ function AdvisingForm(props) {
 
   const getFormChild = () => {
     switch (step) {
+      case 0:
+        return (
+          <>
+            <p className="h5">
+              <strong className="h4 clr-danger">Important: </strong>
+              This system is meant to help you with your advising but it is not
+              perfect. You are still <strong>responsible</strong> to check your
+              catalog and courses plan to ensure no issues will happen during
+              registeration.
+            </p>
+            <br />
+          </>
+        );
       case 1:
         return <MajorInfo />;
       case 2:
@@ -109,6 +122,8 @@ function AdvisingForm(props) {
   };
   const getFormTitle = () => {
     switch (step) {
+      case 0:
+        return "DISCLAIMER";
       case 1:
         return "Major Info";
       case 2:
@@ -130,7 +145,7 @@ function AdvisingForm(props) {
       {getFormChild()}
 
       <div className="d-flex justify-content-between ">
-        {step > 1 && (
+        {step > 0 && (
           <button className="btn my-3" onClick={back} type="button">
             Back
           </button>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { apiBaseUrl } from "../../config.json";
 
 import { Form, FormInput, SubmitButton } from "../../components/form";
 // import GoogleLoginButton from "../../components/GoogleLoginButton";
@@ -16,10 +17,14 @@ import validationSchema from "./validationSchema";
 import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
-    console.log("Values: ", values);
+<<<<<<< Updated upstream
+=======
+    // console.log("API URL: ", apiBaseUrl);
+>>>>>>> Stashed changes
+    // console.log("Values: ", values);
     try {
       await auth.login(values);
-      window.location = "/advising";
+      window.location = "/";
     } catch (ex) {
       const { response } = ex;
       const { status } = response;

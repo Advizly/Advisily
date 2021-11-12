@@ -9,3 +9,10 @@
 
 9. Algorithms and discrete get higher priority
 10. Finish 300 level courses first.
+
+**After deployment edits:**
+3- configure ip's correctly;
+4- add 2020-2021 catalogs and later
+5- add add api to verify results
+6- delete algorithms labs from old catalogs
+7-

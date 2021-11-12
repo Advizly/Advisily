@@ -12,27 +12,40 @@ function AdvisingHome(props) {
             <strong>No more waiting!</strong>
             <p>
               with an automated advisor you don't need to schedule an
-              appointment, wait for your turn, and
+              appointment and wait for your turn.
             </p>
           </li>
           <li>
             <strong>Quick</strong>
-            <p>You are only a couple of button presses away from your plan</p>
+            <p>You are only a couple of button presses away from your plan.</p>
           </li>
           <li>
-            <strong>Convenience</strong>
-            <p>You get to choose your preferences and we create your plan a</p>
-          </li>
-          <li>
-            <strong>As many sessions as you want</strong>
+            <strong>See ahead in the future</strong>
             <p>
-              Advising sessions are not once per semester. You can come again at
-              any time, edit your preferences, and get a new plan.
+              We will create for you a plan up until graduation. However, seeing
+              further ahead in the future is less accurate.
             </p>
           </li>
         </ul>
-
-        <h3>How things work?</h3>
+        <h3>Important notes </h3>
+        <li>
+          <strong>It is not perfect</strong>
+          <p>
+            This is just an automated advisor that is meant to help you with
+            your advising. It is still subject to error, so you have to review
+            the results and ensure there are no problem. If you have any doubts
+            about your results, you may schedule an appointment with your human
+            advisor.
+          </p>
+        </li>
+        <li>
+          <strong>Seeing ahead in the future is not accurate</strong>
+          <p>
+            The more semesters generated ahead of time, the less accurate the
+            results.
+          </p>
+        </li>
+        {/* <h3>How things work?</h3>
         <p>
           <em>Your role </em>&mdash; You only need to answer some questions
           about major-related info and your preferences and leave the rest to
@@ -41,8 +54,8 @@ function AdvisingHome(props) {
         <p>
           <em>Our role </em>&mdash; We generate a plan for you courses according
           to your preferences.
-        </p>
-        <h3>What are you waiting for?</h3>
+        </p> */}
+        {/* <h3>What are you waiting for?</h3> */}
         <div className="my-5 text-center">
           <Link to="/advising/form" className="m-4">
             <button className="btn btn-primary btn-lg">
