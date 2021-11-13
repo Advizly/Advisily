@@ -25,6 +25,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const user = useAuth();
+  console.log(process.env);
 
   return (
     <HashRouter>
