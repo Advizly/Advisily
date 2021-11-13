@@ -20,28 +20,28 @@ import useApi from "../hooks/useApi";
 import { getStudentCourses, getUsers } from "../services/userService";
 
 function AdvisingResults(props) {
-  const [userIndex, setUserIndex] = useState(0);
-  const incrementIndex = () => {
-    setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
-  };
-  const decrementIndex = () => {
-    setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
-  };
+  // const [userIndex, setUserIndex] = useState(0);
+  // const incrementIndex = () => {
+  //   setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
+  // };
+  // const decrementIndex = () => {
+  //   setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
+  // };
 
-  const [user, setUser] = useState(null);
-  const [users, setUsers] = useState([]);
-  const getUsersApi = useApi(getUsers, (users) => {
-    setUsers(users);
-    setUser(users[userIndex]);
-  });
-  useEffect(() => {
-    getUsersApi.request();
-  }, []);
-  useEffect(() => {
-    setUser(users[userIndex]);
-  }, [userIndex]);
+  // const [user, setUser] = useState(null);
+  // const [users, setUsers] = useState([]);
+  // const getUsersApi = useApi(getUsers, (users) => {
+  //   setUsers(users);
+  //   setUser(users[userIndex]);
+  // });
+  // useEffect(() => {
+  //   getUsersApi.request();
+  // }, []);
+  // useEffect(() => {
+  //   setUser(users[userIndex]);
+  // }, [userIndex]);
 
-  // const user = getCurrentUser();
+  const user = getCurrentUser();
   const [advisingSessionId, setAdvisingSessionId] = useState(null);
   const [disableVerifyBtn, setDisableVerifyBtn] = useState(false);
   const resultCoursesApi = useApi(getAdvisingResults);
@@ -58,11 +58,12 @@ function AdvisingResults(props) {
     if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
+    console.log("Use effect")
     if (user && user.userId) {
       advisingSessionIdApi.request(user.userId);
       userCoursesApi.request(user.userId);
     }
-  }, [user]);
+  }, [user.userId]);
 
   const renderCoursesList = (courses) => {
     return courses.map((course) => {
@@ -120,7 +121,16 @@ function AdvisingResults(props) {
     <>
       <h1 className="text-center">Your results are here!</h1>
       <br />
-      <h4 className="fw-bold ">Important Note:</h4>
+      <h5 className="fw-bold ">Important Notes:</h5>
+      <ol>
+      <li>
+       It is recommended to take CSCE 3304 - Digital Design II after CSCE 3301 - Computer Architecture.
+      </li>
+
+  <li> CSCE 4411 - Fundamentals of Distributed Systems is offered in Fall only.</li>
+  <li>All students admitted to the University starting Fall 2019 must complete one generic course in Arab World studies and another course that focuses on Egypt that must be taken from the Arab World Studies (Egypt Category). For more information, please refer to the <a href="https://catalog.aucegypt.edu/">catalog</a>.</li>
+  <li> Before starting your Senior Project I, you must have completed all your CSCE 3000-level concentration courses. In addition, you must have taken two 4000-level courses or will be taking them concurrently with Senior Project I.</li>
+        </ol>
       <p>
         If you are not satisfied with your results you should contact your
         advisor and schedule a meeting. You can find you advisor in degree works
@@ -137,16 +147,16 @@ function AdvisingResults(props) {
         </strong>{" "}
         button so that your hold will be removed later.
       </p>
-      <div className="d-flex justify-content-between">
+      {/* <div className="d-flex justify-content-between">
         <button className="btn " onClick={decrementIndex}>
           Previous
         </button>
         <button className="btn " onClick={incrementIndex}>
           Next
         </button>
-      </div>
+      </div> */}
       <br />
-      {user && (
+      {/* {user && (
         <>
           <h3 className="text-center">User Info</h3>
           <p>
@@ -170,7 +180,7 @@ function AdvisingResults(props) {
       )}
       <h3 className="text-center">User courses</h3>
       {userCoursesApi.data}
-      <hr />
+      <hr /> */}
       <h3 className="text-center">Advised Courses</h3>
       {renderResults(resultCoursesApi.data)}
     </>

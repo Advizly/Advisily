@@ -38,12 +38,10 @@ main {
   padding: 20px;
 }
 
-p {
+p, li {
   font-size: 18px;
 }
-li {
-  font-size: 20px;
-}
+
 /* h1,
 h2,
 h3,

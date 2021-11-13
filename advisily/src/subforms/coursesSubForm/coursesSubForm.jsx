@@ -84,6 +84,8 @@ function CoursesSubForm() {
   const renderCourseRow = (row) => {
     return row.map((course) => {
       const { courseId, formatedTitle } = formatCourseData(course);
+      // const selectedTopics=course.courseCode==4930
+      
       return (
         <ColMedium key={courseId}>
           <FormCheckbox
@@ -99,6 +101,12 @@ function CoursesSubForm() {
               prerequisites/corequisite for this course?
             </div>
           )}
+          {/* {selectedTopics&&(<>
+          <button className="btn btn-sm w-1 m-2">+</button>
+          <button className="btn  btn-sm w-1 m-2">-</button>
+          </>
+          )
+    } */}
         </ColMedium>
       );
     });
@@ -142,9 +150,9 @@ function CoursesSubForm() {
       <FormGroup
         name={COURSES_IDS}
         label="Please select all the courses you will have finished by the end of the current semester:"
-        labelClass="fs-4 fw-bold"
+        labelClass="fs-5 fw-bold"
       >
-        <p className="clr-danger fs-4 fw-bold">
+        <p className="clr-danger fs-5 fw-normal">
           (exempted and transferred courses, as well)
         </p>
         <br />

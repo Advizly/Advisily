@@ -22,8 +22,7 @@ function AdvisingHome(props) {
           <li>
             <strong>See ahead in the future</strong>
             <p>
-              We will create for you a plan up until graduation. However, seeing
-              further ahead in the future is less accurate.
+              You can choose to create a plan for more than one semester ahead.
             </p>
           </li>
         </ul>
