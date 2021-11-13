@@ -161,18 +161,37 @@ async function forgotPassword(email) {
 }
 
 async function resetPassword({ token, password }) {
-  let data, err;
+  let data, err, user;
 
-  const user = await validateResetToken(token);
+  [user, err] = await promiseHandler(validateResetToken(token));
+  if (err) throw err;
+  // console.log("USER: ", user,err);
+  user = _.pick(user, ["email"]);
   user.password = await hash(password);
   user.passwordResetToken = null;
-  user.resetTokenExpires = null;
+  user.resetTokenExpire = null;
 
   const updateStudentQuery = baseUpdateQuery + " WHERE email=?";
   [data, err] = await query(updateStudentQuery, [user, user.email]);
+  // console.log(err,data);
   if (err) throw "Error resetting password.";
 }
+async function resetPassword({ token, password }) {
+  let data, err, user;
 
+  [user, err] = await promiseHandler(validateResetToken(token));
+  if (err) throw err;
+  // console.log("USER: ", user,err);
+  user = _.pick(user, ["email"]);
+  user.password = await hash(password);
+  user.passwordResetToken = null;
+  user.resetTokenExpire = null;
+
+  const updateStudentQuery = baseUpdateQuery + " WHERE email=?";
+  [data, err] = await query(updateStudentQuery, [user, user.email]);
+  // console.log(err,data);
+  if (err) throw "Error resetting password.";
+}
 async function validateResetToken(token) {
   const user = await _getUserBy({
     passwordResetToken: token,
