@@ -20,28 +20,28 @@ import useApi from "../hooks/useApi";
 import { getStudentCourses, getUsers } from "../services/userService";
 
 function AdvisingResults(props) {
-  // const [userIndex, setUserIndex] = useState(0);
-  // const incrementIndex = () => {
-  //   setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
-  // };
-  // const decrementIndex = () => {
-  //   setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
-  // };
+  const [userIndex, setUserIndex] = useState(0);
+  const incrementIndex = () => {
+    setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);
+  };
+  const decrementIndex = () => {
+    setUserIndex(userIndex - 1 >= 0 ? userIndex - 1 : userIndex);
+  };
 
-  // const [user, setUser] = useState(null);
-  // const [users, setUsers] = useState([]);
-  // const getUsersApi = useApi(getUsers, (users) => {
-  //   setUsers(users);
-  //   setUser(users[userIndex]);
-  // });
-  // useEffect(() => {
-  //   getUsersApi.request();
-  // }, []);
-  // useEffect(() => {
-  //   setUser(users[userIndex]);
-  // }, [userIndex]);
+  const [user, setUser] = useState(null);
+  const [users, setUsers] = useState([]);
+  const getUsersApi = useApi(getUsers, (users) => {
+    setUsers(users);
+    setUser(users[userIndex]);
+  });
+  useEffect(() => {
+    getUsersApi.request();
+  }, []);
+  useEffect(() => {
+    setUser(users[userIndex]);
+  }, [userIndex]);
 
-  const user = getCurrentUser();
+  // const user = getCurrentUser();
   const [advisingSessionId, setAdvisingSessionId] = useState(null);
   const [disableVerifyBtn, setDisableVerifyBtn] = useState(false);
   const resultCoursesApi = useApi(getAdvisingResults);
@@ -50,16 +50,19 @@ function AdvisingResults(props) {
     setAdvisingSessionId(res)
   );
 
-  // const userCoursesApi = useApi(getStudentCourses, (courses) => {
-  //   return renderCoursesList(courses);
-  // });
+  const userCoursesApi = useApi(getStudentCourses, (courses) => {
+    return renderCoursesList(courses);
+  });
 
   useEffect(() => {
     if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
-    if (user && user.userId) advisingSessionIdApi.request(user.userId);
-  }, [user.userId]);
+    if (user && user.userId) {
+      advisingSessionIdApi.request(user.userId);
+      userCoursesApi.request(user.userId);
+    }
+  }, [user]);
 
   const renderCoursesList = (courses) => {
     return courses.map((course) => {
@@ -134,16 +137,16 @@ function AdvisingResults(props) {
         </strong>{" "}
         button so that your hold will be removed later.
       </p>
-      {/* <div className="d-flex justify-content-between">
-          <button className="btn " onClick={decrementIndex}>
-            Previous
-          </button>
-          <button className="btn " onClick={incrementIndex}>
-            Next
-          </button>
-        </div> */}
+      <div className="d-flex justify-content-between">
+        <button className="btn " onClick={decrementIndex}>
+          Previous
+        </button>
+        <button className="btn " onClick={incrementIndex}>
+          Next
+        </button>
+      </div>
       <br />
-      {/* {user && (
+      {user && (
         <>
           <h3 className="text-center">User Info</h3>
           <p>
@@ -164,10 +167,10 @@ function AdvisingResults(props) {
           </p>
           <hr />
         </>
-      )} */}
-      {/* <h3 className="text-center">User courses</h3>
+      )}
+      <h3 className="text-center">User courses</h3>
       {userCoursesApi.data}
-      <hr /> */}
+      <hr />
       <h3 className="text-center">Advised Courses</h3>
       {renderResults(resultCoursesApi.data)}
     </>

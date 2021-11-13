@@ -321,7 +321,7 @@ async function getUserAdvisingSessionId({ userId }) {
 }
 
 async function generateAllPlans() {
-  const users = await getUsers(); //.filter((user) => user.userId > 15);
+  const users = (await getUsers()).filter((user) => user.isVerified); //.filter((user) => user.userId > 15);
   const advisingData = {
     overloadingCredits: 0,
     summerCredits: 0,
@@ -333,19 +333,20 @@ async function generateAllPlans() {
   };
   // console.log("USER LENGTH:", users.length);
   let error = null;
-  // for (let i = 20; i < 32; i++) {
-  addAdvisingSession({
-    ...advisingData,
-    userId: 22, //users[i].userId,
-  })
-    .then(({ advisingSessionId }) =>
-      generatePlan({ advisingSessionId }).catch((err) => (error = err))
-    )
-    .catch((err) => (error = err));
-  // }
-  if (error) {
-    console.error("Error in generate all plans:", err);
-    throw error;
+  for (let i = 0; i < users.length; i++) {
+    await addAdvisingSession({
+      ...advisingData,
+      userId: users[i].userId,
+    })
+      .then(({ advisingSessionId }) =>
+        generatePlan({ advisingSessionId }).catch((err) => (error = err))
+      )
+      .catch((err) => (error = err));
+    // }
+    if (error) {
+      console.error("Error in generate all plans:", err);
+      throw error;
+    }
   }
   return { Success: 1 };
 }

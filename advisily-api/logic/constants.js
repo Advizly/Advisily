@@ -32,6 +32,16 @@ const RequisiteIds = {
   INSTRUCTOR_CONSENT: 6,
   FINISHED_300_LEVEL: 7,
 };
+
+const generalElectiveCourse = {
+  courseId: 3,
+  courseCode: -9,
+  credits: 3,
+  requisites: [],
+  semesterNumber: 9,
+  courseTypeId: Course_Types.GeneralElectives,
+};
+
 module.exports = {
   Course_Types,
   MATH_ELECTIVE_CODE,
@@ -41,4 +51,5 @@ module.exports = {
   JUNIOR_CREDITS,
   SENIOR_CREDITS,
   RequisiteIds,
+  generalElectiveCourse,
 };

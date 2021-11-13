@@ -127,5 +127,5 @@ def _get_courseId_by_title(courseTitle):
 
 
 
-# insertUsers()
+insertUsers()
 insertUserCourses()

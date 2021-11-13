@@ -11,7 +11,11 @@ import {
 } from "../../utils/coursesUtils";
 
 // eslint-disable-next-line
-import { COURSES_IDS, EXEMPTED_CREDITS } from "./fieldNames";
+import {
+  COURSES_IDS,
+  EXEMPTED_CREDITS,
+  GENERAL_ELECTIVE_CREDITS,
+} from "./fieldNames";
 import CoursesModal from "./coursesModal";
 
 import useApi from "../../hooks/useApi";
@@ -148,13 +152,20 @@ function CoursesSubForm() {
 
         <h5>General Electives</h5>
 
-        <button
+        <FormInput
+          label="Enter the number of credits you used from you general electives"
+          type="number"
+          min={0}
+          name={GENERAL_ELECTIVE_CREDITS}
+        />
+
+        {/* <button
           className="btn btn-secondary"
           type="button"
           onClick={() => setShowModal(true)}
         >
           Add general electives
-        </button>
+        </button> */}
         <CoursesModal
           show={showModal}
           onClose={() => setShowModal(false)}
@@ -163,10 +174,13 @@ function CoursesSubForm() {
         />
         <br />
         <hr />
+        <h5>Exempted Credits</h5>
+
         <FormInput
           name={EXEMPTED_CREDITS}
-          label="How many credits(if any) are you exempted from?"
+          label="How many credits(if any) are you exempted from?(excluding the arabic courses)"
           type="number"
+          min={0}
         />
         <hr />
       </FormGroup>

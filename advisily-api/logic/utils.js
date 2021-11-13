@@ -104,36 +104,28 @@ function _isElective(course) {
 
 function _isMajorElective(course) {
   const { courseTypeId, courseCode } = course;
-  if (
+  if (courseCode === MAJOR_ELECTIVE_CODE) return true;
+  return (
     courseTypeId !== undefined &&
     (courseTypeId === Course_Types.MajorElectives ||
       courseTypeId == Course_Types.MathOrMajorElective)
-  )
-    return true;
-
-  return courseCode === MAJOR_ELECTIVE_CODE;
+  );
 }
 function _isGeneralElective(course) {
   const { courseTypeId, courseCode } = course;
-  if (
-    courseTypeId !== undefined &&
-    courseTypeId === Course_Types.GeneralElectives
-  )
-    return true;
-
-  return courseCode === GENERAL_ELECTIVE_CODE;
+  if (courseCode === GENERAL_ELECTIVE_CODE) return true;
+  return (
+    courseTypeId !== undefined && courseTypeId === Course_Types.GeneralElectives
+  );
 }
 function _isMathElective(course) {
   const { courseTypeId, courseCode } = course;
-
-  if (
+  if (courseCode === MATH_ELECTIVE_CODE) return true;
+  return (
     courseTypeId !== undefined &&
     (courseTypeId === Course_Types.MathElectives ||
       courseTypeId === Course_Types.MathOrMajorElective)
-  )
-    return true;
-
-  return courseCode === MATH_ELECTIVE_CODE;
+  );
 }
 function _isMajorConcenteration(course) {
   const { courseTypeId } = course;
@@ -175,7 +167,7 @@ function addCourseTypes(courses, catalogCourses) {
       courseTypeId = Course_Types.GeneralElectives;
 
     // if (courseTypeId === undefined)
-      // console.log("From addCourseTypes", course.courseTitle, course.courseCode);
+    // console.log("From addCourseTypes", course.courseTitle, course.courseCode);
 
     return {
       ...course,

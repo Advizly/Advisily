@@ -4,6 +4,7 @@ const {
   JUNIOR_CREDITS,
   SENIOR_CREDITS,
   Course_Types,
+  generalElectiveCourse,
 } = require("./constants");
 const { filterPlanCourses } = require("./filters");
 const {
@@ -19,16 +20,16 @@ module.exports = { generatePlan };
 function generatePlan({ user, planCourses, advisingSession, catalog }) {
   planCourses = addCourseTypes(planCourses, catalog.courses);
 
-  const { exemptedCredits, advisingSessionId } = advisingSession;
+  const {
+    exemptedCredits,
+    advisingSessionId,
+    // semestersToPlan,
+    generalElecCredits,
+  } = advisingSession;
   for (let i = 0; i < Math.ceil(exemptedCredits / 3.0); i++)
-    planCourses.push({
-      courseId: 2,
-      courseCode: -9,
-      credits: 3,
-      requisites: [],
-      semesterNumber: 9,
-      courseTypeId: Course_Types.GeneralElectives,
-    }); //general elective
+    planCourses.push(generalElectiveCourse); //general elective
+  for (let i = 0; i < Math.floor(generalElecCredits / 3.0); i++)
+    user.courses.push(generalElectiveCourse);
 
   const semestersToPlan = 10;
   let resultSemesters = [],

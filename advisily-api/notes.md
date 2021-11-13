@@ -13,6 +13,8 @@
 **After deployment edits:**
 3- configure ip's correctly;
 4- add 2020-2021 catalogs and later
-5- add add api to verify results
 6- delete algorithms labs from old catalogs
 7- change everything to https
+
+**For later**
+8- Look up how to remove the need to publish the api and make the frontend handle this .

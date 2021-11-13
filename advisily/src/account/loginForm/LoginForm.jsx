@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { apiBaseUrl } from "../../config.json";
 
 import { Form, FormInput, SubmitButton } from "../../components/form";
 // import GoogleLoginButton from "../../components/GoogleLoginButton";
@@ -17,7 +16,7 @@ import validationSchema from "./validationSchema";
 import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
-    // console.log("API URL: ", apiBaseUrl);
+    // console.log("API URL: ", process.env);
     // console.log("Values: ", values);
     try {
       await auth.login(values);

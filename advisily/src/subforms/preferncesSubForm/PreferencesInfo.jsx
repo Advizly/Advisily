@@ -99,11 +99,13 @@ function PreferencesInfo() {
         nameSelector="paceTitle"
       />
       <hr /> */}
-      {/* <FormSelectGroup
-        label={"Up to how many semesters would you like to be planned?"}
+      <FormSelectGroup
+        label={
+          "Up to how many semesters would you like to be planned ahead in time?"
+        }
         name={SEMESTERS_TO_PLAN}
         items={semesters}
-      /> */}
+      />
     </>
   );
 }
