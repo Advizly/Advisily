@@ -1,4 +1,10 @@
 /discarded
 
 **/**n/.~lock*
+
+node_modules/
+
+build*/
+
 build/
+
