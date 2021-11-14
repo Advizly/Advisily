@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8mb4 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `advisingResultCourses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `advisingResultCourses` (
   `courseId` int NOT NULL,
   `semesterNumber` int NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE `advisingResultCourses` (
   KEY `fk_advisingResultCourses_advisingResultSemesters1_idx` (`advisingSessionId`),
   CONSTRAINT `fk_advising_result_courses_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_advisingResultCourses_advisingResultSemesters1` FOREIGN KEY (`advisingSessionId`) REFERENCES `advisingResultSemesters` (`advisingSessionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,14 +49,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `advisingResultSemesters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `advisingResultSemesters` (
   `advisingSessionId` int NOT NULL,
   `semesterNumber` int NOT NULL,
   `generalElecCredits` int DEFAULT '0',
   PRIMARY KEY (`advisingSessionId`,`semesterNumber`),
   CONSTRAINT `fk_advisingResultSemesters_advisingResults1` FOREIGN KEY (`advisingSessionId`) REFERENCES `advisingResults` (`advisingSessionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `advisingResults`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `advisingResults` (
   `advisingSessionId` int NOT NULL,
   `isLate` tinyint(1) DEFAULT '0',
@@ -85,7 +85,7 @@ CREATE TABLE `advisingResults` (
   PRIMARY KEY (`advisingSessionId`),
   KEY `fk_AdvisingResults_advisingSessions1_idx` (`advisingSessionId`),
   CONSTRAINT `fk_AdvisingResults_advisingSessions1` FOREIGN KEY (`advisingSessionId`) REFERENCES `advisingSessions` (`advisingSessionId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +104,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `advisingSessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `advisingSessions` (
   `advisingSessionId` int NOT NULL AUTO_INCREMENT,
   `userId` int DEFAULT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `advisingSessions` (
   KEY `fk_advising_sessions_2_idx` (`paceId`),
   CONSTRAINT `fk_advising_session_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_advising_sessions_2` FOREIGN KEY (`paceId`) REFERENCES `paces` (`paceId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=969 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=969 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +143,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `catalogCourses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `catalogCourses` (
   `catalogId` int NOT NULL,
   `courseId` int NOT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE `catalogCourses` (
   CONSTRAINT `fk_catalog_courses_1` FOREIGN KEY (`catalogId`) REFERENCES `catalogs` (`catalogId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_catalog_courses_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_catalog_courses_3` FOREIGN KEY (`courseTypeId`) REFERENCES `courseTypes` (`courseTypeId`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -173,7 +173,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `catalogs`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `catalogs` (
   `catalogId` int NOT NULL AUTO_INCREMENT,
   `majorId` int NOT NULL,
@@ -188,7 +188,7 @@ CREATE TABLE `catalogs` (
   UNIQUE KEY `majorId_season_year` (`majorId`,`year`),
   KEY `fk_catalogs_1_idx` (`majorId`),
   CONSTRAINT `fk_catalogs_1` FOREIGN KEY (`majorId`) REFERENCES `majors` (`majorId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -207,7 +207,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `courseRequisites`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `courseRequisites` (
   `courseId` int NOT NULL,
   `setId` int NOT NULL AUTO_INCREMENT,
@@ -215,7 +215,7 @@ CREATE TABLE `courseRequisites` (
   UNIQUE KEY `courseId_setId_UNIQUE` (`courseId`,`setId`),
   KEY `fk_courses_prerequisites_1_idx` (`courseId`),
   CONSTRAINT `fk_courses_prerequisites_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=85 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,12 +234,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `courseTypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `courseTypes` (
   `courseTypeId` int NOT NULL AUTO_INCREMENT,
   `courseType` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`courseTypeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -258,7 +258,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `courses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `courses` (
   `courseId` int NOT NULL AUTO_INCREMENT,
   `courseCode` int NOT NULL,
@@ -267,7 +267,7 @@ CREATE TABLE `courses` (
   `prefix` varchar(10) NOT NULL,
   PRIMARY KEY (`courseId`),
   UNIQUE KEY `courseCode_departmendId_UNIQUE` (`courseCode`,`prefix`)
-) ENGINE=InnoDB AUTO_INCREMENT=2342 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2342 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -286,13 +286,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `majors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `majors` (
   `majorId` int NOT NULL AUTO_INCREMENT,
   `majorTitle` varchar(125) DEFAULT NULL,
   `majorPrefix` varchar(16) DEFAULT NULL,
   PRIMARY KEY (`majorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=149 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,12 +311,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `minors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `minors` (
   `minorId` int NOT NULL AUTO_INCREMENT,
   `minorTitle` varchar(125) DEFAULT NULL,
   PRIMARY KEY (`minorId`)
-) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -335,12 +335,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `paces`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `paces` (
   `paceId` int NOT NULL AUTO_INCREMENT,
   `paceTitle` varchar(225) DEFAULT NULL,
   PRIMARY KEY (`paceId`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +359,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `planCourses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `planCourses` (
   `catalogId` int NOT NULL,
   `courseId` int NOT NULL,
@@ -368,7 +368,7 @@ CREATE TABLE `planCourses` (
   KEY `fk_planCourses_1_idx` (`courseId`),
   CONSTRAINT `fk_planCourses_1` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_planCourses_2` FOREIGN KEY (`catalogId`) REFERENCES `catalogs` (`catalogId`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -387,7 +387,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `requisiteSets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `requisiteSets` (
   `setId` int NOT NULL,
   `requisiteId` int DEFAULT NULL,
@@ -398,7 +398,7 @@ CREATE TABLE `requisiteSets` (
   CONSTRAINT `fk_requisiteSets_1` FOREIGN KEY (`requisiteId`) REFERENCES `courses` (`courseId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_requisiteSets_2` FOREIGN KEY (`requisiteTypeId`) REFERENCES `requisiteTypes` (`requisiteTypeId`) ON UPDATE CASCADE,
   CONSTRAINT `fk_requisiteSets_3` FOREIGN KEY (`setId`) REFERENCES `courseRequisites` (`setId`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -417,12 +417,12 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `requisiteTypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `requisiteTypes` (
   `requisiteTypeId` int NOT NULL AUTO_INCREMENT,
   `requisiteType` varchar(45) NOT NULL,
   PRIMARY KEY (`requisiteTypeId`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -441,13 +441,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `standings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `standings` (
   `standingId` int NOT NULL AUTO_INCREMENT,
   `standing` varchar(127) NOT NULL,
   `creditHrs` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`standingId`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -466,7 +466,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `userCourses`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `userCourses` (
   `userId` int NOT NULL,
   `courseId` int NOT NULL,
@@ -476,7 +476,7 @@ CREATE TABLE `userCourses` (
   KEY `fk_user_courses_1_idx` (`userId`),
   CONSTRAINT `fk_student_courses_2` FOREIGN KEY (`courseId`) REFERENCES `courses` (`courseId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_user_courses_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -495,7 +495,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `userMajors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `userMajors` (
   `userId` int NOT NULL,
   `majorId` int NOT NULL,
@@ -507,7 +507,7 @@ CREATE TABLE `userMajors` (
   CONSTRAINT `fk_users_majors_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_users_majors_2` FOREIGN KEY (`majorId`) REFERENCES `majors` (`majorId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_users_majors_3` FOREIGN KEY (`catalogId`) REFERENCES `catalogs` (`catalogId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -526,7 +526,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `userMinors`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `userMinors` (
   `userId` int NOT NULL,
   `minorId` int NOT NULL,
@@ -538,7 +538,7 @@ CREATE TABLE `userMinors` (
   CONSTRAINT `fk_user_minors_1` FOREIGN KEY (`userId`) REFERENCES `users` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_user_minors_2` FOREIGN KEY (`minorId`) REFERENCES `minors` (`minorId`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_user_minors_3` FOREIGN KEY (`catalogId`) REFERENCES `catalogs` (`catalogId`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -556,7 +556,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!50503 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `userId` int NOT NULL,
   `firstName` varchar(125) NOT NULL,
@@ -576,7 +576,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `passwordResetToken_UNIQUE` (`passwordResetToken`),
   KEY `fk_users_standings1_idx` (`standingId`),
   CONSTRAINT `fk_users_standings1` FOREIGN KEY (`standingId`) REFERENCES `standings` (`standingId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
