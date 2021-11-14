@@ -43,7 +43,7 @@ function verifyEmail(req, res, next) {
 
   usersService
     .verifyEmail(token)
-    .then(() => res.status(200).redirect(`${frontendUrl}/#/account/login`))
+    .then(() => res.status(200).redirect(`${frontendUrl}account/login`))
     .catch(next);
 }
 

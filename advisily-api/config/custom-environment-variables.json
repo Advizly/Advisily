@@ -1,4 +1,6 @@
 {
+  "hostUrl": "API_BASE_URL",
+  "frontendUrl": "FRONT_END_URL",
   "jwtPrivateKey": "advisily_jwtPrivateKey",
   "db": {
     "host": "DB_HOST",

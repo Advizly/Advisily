@@ -1,6 +1,7 @@
 const config = require("config");
 const frontendUrl = config.get("frontendUrl");
 const hostUrl = config.get("hostUrl");
+console.log(frontendUrl, hostUrl);
 
 const _ = require("lodash");
 const bcrypt = require("bcrypt");
@@ -139,7 +140,7 @@ async function verifyEmail(token) {
 
   const user = data[0];
   user.isVerified = true;
-  // user.verificationToken = null;
+  user.verificationToken = null;
 
   [, err] = await query(updateStudentQuery, [user, user.email]);
   if (err) throw "Error verifying user.";
@@ -242,7 +243,7 @@ async function sendForgotPasswordEmail(user) {
 }
 
 const sendVerificationEmail = (user) => {
-  const verifyUrl = `${hostUrl}/api/users/verify-email?token=${user.verificationToken}`;
+  const verifyUrl = `${hostUrl}/users/verify-email?token=${user.verificationToken}`;
   let msg = `<p>Please click <a href=${verifyUrl}>here<a/> to verify your email address</p>`;
   // console.log("Sending email to :", user);
   return promiseHandler(

@@ -14,7 +14,7 @@ function Header({ user }) {
     <Nav>
       <ColMedium numOfCols="4" className="d-flex">
         <NavLink className="navbar-brand " to="/">
-          <Logo />
+          {/* <Logo /> */}
         </NavLink>
 
         <NavList>

@@ -8,7 +8,7 @@ import { ADVISING_HOME_ROUTE } from "../advising/routes";
 function Home({ user }) {
   const redirectTo = user ? ADVISING_HOME_ROUTE : SIGN_UP_ROUTE;
   return (
-    <div className="text-center home-container">
+    <div className="text-center home-container ">
       <h1> Your new academic advisor is here!</h1>
       <p className="home-text font-italic my-4">
         {ADVISILY} is an automated advisor to help you choose your courses.
