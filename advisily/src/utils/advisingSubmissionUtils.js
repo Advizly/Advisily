@@ -41,8 +41,13 @@ export const updateUserMinors = (
 export const updateStudentCourses = (
   userId,
   selectedIds,
-  initialCoursesIds = []
+  initialCoursesIds = [],
+  extraMajorElectives = 0
 ) => {
+  const majorElectiveId = 2;
+  for (let i = 0; i < extraMajorElectives; i++)
+    selectedIds.push(majorElectiveId);
+
   const newIds = selectedIds.filter(
     (id) => initialCoursesIds.indexOf(id) === -1
   );

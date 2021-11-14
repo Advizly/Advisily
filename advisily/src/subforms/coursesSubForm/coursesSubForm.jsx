@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useFormikContext } from "formik";
 
 // eslint-disable-next-line
-import { FormCheckbox, FormGroup, FormInput } from "../../components/form";
+import {
+  FormCheckbox,
+  FormGroup,
+  FormInput,
+  FormPolarRadioGroup,
+} from "../../components/form";
 import { Row, ColMedium } from "../../components/grid";
 import {
   categoriseCatalogCourses,
@@ -15,6 +20,7 @@ import {
   COURSES_IDS,
   EXEMPTED_CREDITS,
   GENERAL_ELECTIVE_CREDITS,
+  EXTRA_MAJOR_ELECTIVES,
 } from "./fieldNames";
 import CoursesModal from "./coursesModal";
 
@@ -85,7 +91,7 @@ function CoursesSubForm() {
     return row.map((course) => {
       const { courseId, formatedTitle } = formatCourseData(course);
       // const selectedTopics=course.courseCode==4930
-      
+
       return (
         <ColMedium key={courseId}>
           <FormCheckbox
@@ -157,7 +163,14 @@ function CoursesSubForm() {
         </p>
         <br />
         {renderCatalogCourses(catalogApi.data)}
-
+        {/* <h5>Can't find major electives you took?</h5>
+        <FormInput
+          label="Enter the number of extra concenteration elective courses:"
+          type="number"
+          min={0}
+          name={EXTRA_MAJOR_ELECTIVES}
+        />
+        <hr /> */}
         <h5>General Electives</h5>
 
         <FormInput
@@ -174,13 +187,13 @@ function CoursesSubForm() {
         >
           Add general electives
         </button> */}
-        <CoursesModal
+        {/* <CoursesModal
           show={showModal}
           onClose={() => setShowModal(false)}
           prefixes={prefixesApi.data}
           courses={coursesApi.data}
         />
-        <br />
+        <br /> */}
         <hr />
         <h5>Exempted Credits</h5>
 

@@ -59,7 +59,8 @@ function AdvisingForm(props) {
         updateStudentCourses(
           userId,
           values.coursesIds,
-          userCoursesInfo.coursesIds
+          userCoursesInfo.coursesIds,
+          values.extraMajorElectives
         );
         updateUserMajor(
           userId,

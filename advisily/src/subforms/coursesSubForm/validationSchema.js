@@ -3,6 +3,7 @@ import {
   COURSES_IDS,
   GENERAL_ELECTIVE_CREDITS,
   EXEMPTED_CREDITS,
+  EXTRA_MAJOR_ELECTIVES,
 } from "./fieldNames";
 
 const REQUIRED_MESSAGE = "This field is required";
@@ -19,4 +20,5 @@ export default Yup.object({
     .label(GENERAL_ELECTIVE_LABEL),
 
   [EXEMPTED_CREDITS]: Yup.number().integer().min(0).label("This field"),
+  [EXTRA_MAJOR_ELECTIVES]: Yup.number().integer().min(0).label("This field"),
 });

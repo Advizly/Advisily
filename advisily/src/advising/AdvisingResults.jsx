@@ -18,6 +18,7 @@ import {
 import { Row, ColMedium } from "../components/grid";
 import useApi from "../hooks/useApi";
 import { getStudentCourses, getUsers } from "../services/userService";
+import hoursPdf from "../assets/pdfs/FacultyOfficeHours.pdf";
 
 function AdvisingResults(props) {
   // const [userIndex, setUserIndex] = useState(0);
@@ -58,7 +59,7 @@ function AdvisingResults(props) {
     if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
-    console.log("Use effect")
+    console.log("Use effect");
     if (user && user.userId) {
       advisingSessionIdApi.request(user.userId);
       userCoursesApi.request(user.userId);
@@ -120,33 +121,52 @@ function AdvisingResults(props) {
   const resultsAvailableUI = () => (
     <>
       <h1 className="text-center">Your results are here!</h1>
-      <br />
-      <h5 className="fw-bold ">Important Notes:</h5>
-      <ol>
-      <li>
-       It is recommended to take CSCE 3304 - Digital Design II after CSCE 3301 - Computer Architecture.
-      </li>
-
-  <li> CSCE 4411 - Fundamentals of Distributed Systems is offered in Fall only.</li>
-  <li>All students admitted to the University starting Fall 2019 must complete one generic course in Arab World studies and another course that focuses on Egypt that must be taken from the Arab World Studies (Egypt Category). For more information, please refer to the <a href="https://catalog.aucegypt.edu/">catalog</a>.</li>
-  <li> Before starting your Senior Project I, you must have completed all your CSCE 3000-level concentration courses. In addition, you must have taken two 4000-level courses or will be taking them concurrently with Senior Project I.</li>
-        </ol>
       <p>
-        If you are not satisfied with your results you should contact your
-        advisor and schedule a meeting. You can find you advisor in degree works
-        through{" "}
+        Your advising hold will be released, if you still want to see a human
+        advisor, please click <a href={hoursPdf}>here</a> to check your advisor
+        schedule. You can find you advisor in degree works through{" "}
         <a href="https://ssb-prod.ec.aucegypt.edu/PROD/twbkwbis.P_ValLogin">
           banner self-service
         </a>
         .
       </p>
-      <p>
+
+      <br />
+      <h5 className="fw-bold ">Important Notes:</h5>
+      <ol>
+        <li>
+          It is recommended to take CSCE 3304 - Digital Design II after CSCE
+          3301 - Computer Architecture.
+        </li>
+
+        <li>
+          {" "}
+          CSCE 4411 - Fundamentals of Distributed Systems is offered in Fall
+          only.
+        </li>
+        <li>
+          All students admitted to the University starting Fall 2019 must
+          complete one generic course in Arab World studies and another course
+          that focuses on Egypt that must be taken from the Arab World Studies
+          (Egypt Category). For more information, please refer to the{" "}
+          <a href="https://catalog.aucegypt.edu/">catalog</a>.
+        </li>
+        <li>
+          {" "}
+          Before starting your Senior Project I, you must have completed all
+          your CSCE 3000-level concentration courses. In addition, you must have
+          taken two 4000-level courses or will be taking them concurrently with
+          Senior Project I.
+        </li>
+      </ol>
+
+      {/* <p>
         {" "}
         If you are satisfied, please press on <strong>
           "Verify Results"
         </strong>{" "}
         button so that your hold will be removed later.
-      </p>
+      </p> */}
       {/* <div className="d-flex justify-content-between">
         <button className="btn " onClick={decrementIndex}>
           Previous
@@ -212,11 +232,11 @@ function AdvisingResults(props) {
     <div className="d-flex justify-content-center">
       <div className="frame ">
         {resultsAvailable() ? resultsAvailableUI() : noResultsUI()}
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-end">
           <Link to="/advising/form" replace>
             <button className="btn">New Advising Session?</button>
           </Link>
-          {!!resultsAvailable() && !resultCoursesApi.data.isVerified && (
+          {/* {!!resultsAvailable() && !resultCoursesApi.data.isVerified && (
             <button
               disabled={disableVerifyBtn}
               className="btn btn-primary"
@@ -225,7 +245,7 @@ function AdvisingResults(props) {
             >
               Verify Results
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
