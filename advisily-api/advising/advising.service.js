@@ -284,6 +284,7 @@ async function generatePlan({ advisingSessionId }) {
     const userMajors = await getUserMajors({ userId });
 
     const { catalogId } = userMajors[0];
+    // const catalogId = 29;
     const planCourses = await getPlanCourses({ catalogId });
 
     const catalogCourses = await getCatCourses({ catalogId });

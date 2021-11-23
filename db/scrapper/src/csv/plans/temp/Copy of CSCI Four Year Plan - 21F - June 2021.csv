@@ -1,0 +1,52 @@
+majorTitle,prefix,courseCode,courseTitle,semesterNumber,catalogYear
+Computer Science (B.S),CSCE,1001,Fundamentals of Computing I,1,2021-2022
+Computer Science (B.S),PHYS,1011,Classical Mechanics Sound and Heat ,1,2021-2022
+Computer Science (B.S),PHYS,1012,General Physics Laboratory I,1,2021-2022
+Computer Science (B.S),MACT,1122,Calculus II,1,2021-2022
+Computer Science (B.S),RHET,1010,Freshman Writing,1,2021-2022
+Computer Science (B.S),CORE,1010,Freshman Seminar,1,2021-2022
+Computer Science (B.S),CSCE,1101,Fundamentals of Computing II,2,2021-2022
+Computer Science (B.S),CSCE,1102,Fundamentals of Computing II Lab (1 cr.),2,2021-2022
+Computer Science (B.S),PHYS,1021,Electricity and Magnetism,2,2021-2022
+Computer Science (B.S),PHYS,1022,General Physics Laboratory II,2,2021-2022
+Computer Science (B.S),MACT,2123,Calculus III,2,2021-2022
+Computer Science (B.S),RHET,1020,Research Writing,2,2021-2022
+Computer Science (B.S),LALT,1020,Libraries & Learning Technologies,2,2021-2022
+Computer Science (B.S),SCI,1020,Scientific Thinking,2,2021-2022
+Computer Science (B.S),CSCE,2301,Digital Design I,3,2021-2022
+Computer Science (B.S),CSCE,2302,Digital Design I Lab,3,2021-2022
+Computer Science (B.S),MACT,2132,Linear Algebra,3,2021-2022
+Computer Science (B.S),MACT,2131,Discrete Mathematics,3,2021-2022
+Computer Science (B.S),XXXX,-2,Pathways 2: Cultural Explorations,3,2021-2022
+Computer Science (B.S),PHIL,2100,Philosophical Thinking,3,2021-2022
+Computer Science (B.S),CSCE,2202,Analysis & Design of Algorithms,4,2021-2022
+Computer Science (B.S),CSCE,2203,Analysis & Design of Algorithms Lab,4,2021-2022
+Computer Science (B.S),CSCE,2303,Computer Organization & Assembly Language  Programming,4,2021-2022
+Computer Science (B.S),CSCE,2501,Fundamentals of Database Systems,4,2021-2022
+Computer Science (B.S),MACT,3211,Applied Probability,4,2021-2022
+Computer Science (B.S),XXXX,-3,Global Studies,4,2021-2022
+Computer Science (B.S),CSCE,3104,Concepts of Programming Languages,5,2021-2022
+Computer Science (B.S),CSCE,3301,Computer Architecture,5,2021-2022
+Computer Science (B.S),CSCE,3302,Computer Architecture Lab,5,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 1,5,2021-2022
+Computer Science (B.S),MACT,3223,Statistical Inference,5,2021-2022
+Computer Science (B.S),XXXX,-7,Arab World Studies 1 (Generic Arab),5,2021-2022
+Computer Science (B.S),CSCE,3401,Operating Systems,6,2021-2022
+Computer Science (B.S),CSCE,3402,Operating Systems Lab,6,2021-2022
+Computer Science (B.S),CSCE,3701,Software Engineering,6,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 2,6,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 3,6,2021-2022
+Computer Science (B.S),XXXX,-8,Arab World Studies 2 (Egypt Category),6,2021-2022
+Computer Science (B.S),XXXX,-4,Humanities and Social Sciences (Secondary Level) ,6,2021-2022
+Computer Science (B.S),CSCE,4201,Theory of Computing,7,2021-2022
+Computer Science (B.S),CSCE,4950,Industrial Training,7,2021-2022
+Computer Science (B.S),CSCE,4980,Senior Project I (Core Capstone I),7,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 4,7,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 5,7,2021-2022
+Computer Science (B.S),CSCE,-10,Computer Science Elective 6,7,2021-2022
+Computer Science (B.S),XXXX,-9,General Elective,7,2021-2022
+Computer Science (B.S),CSCE,4101,Compiler Design,8,2021-2022
+Computer Science (B.S),CSCE,4981,Senior Project II (Core Capstone I),8,2021-2022
+Computer Science (B.S),XXXX,-6,Core Capstone II,8,2021-2022
+Computer Science (B.S),XXXX,-9,General Elective,8,2021-2022
+Computer Science (B.S),XXXX,-9,General Elective,8,2021-2022

@@ -161,8 +161,9 @@ def insertRequisiteTypes():
 
 def insertPlans():
     insert_sql="INSERT INTO planCourses(semesterNumber,catalogId,courseId) VALUES (%s, %s,%s)"
-    plan_years=["2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
-    plan_majors=["ce","cs"]
+    # plan_years=["2016-2017","2017-2018","2018-2019","2019-2020","2020-2021"]
+    plan_years=["2020-2021"]
+    plan_majors=["cs"]
     try:
         for major in plan_majors:    
             for year in plan_years:
@@ -211,6 +212,7 @@ def _get_catalogId(catalogYear,majorTitle):
     return catalogId[0] if catalogId else None
 
 def _get_courseId_by_code_prefix(courseCode,prefix):
+    print(courseCode,prefix)
     sql="SELECT courseId from courses WHERE courseCode= %s  AND prefix = %s LIMIT 1"
     cursor.execute(sql,[courseCode,prefix])
     courseId=cursor.fetchone()
@@ -264,7 +266,7 @@ def insertRequisiteSets():
 # insertCourseTypes()
 # insertCatalogs()
 # insertPaces()
-# insertPlans()
+insertPlans()
 # insertCatalogCourses()
 
 # insertCourseRequites()
