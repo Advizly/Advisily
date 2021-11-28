@@ -35,5 +35,6 @@ function basicInfo(user) {
     "standingId",
     "standing",
     "semesterNumber",
+    "isAdmin",
   ]);
 }

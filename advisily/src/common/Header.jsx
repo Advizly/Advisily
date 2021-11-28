@@ -7,7 +7,8 @@ import Brand from "../components/Brand";
 import { ColMedium } from "../components/grid";
 
 import { LOGIN_ROUTE, SIGN_UP_ROUTE } from "../account/routes";
-import { LOGOUT_ROUTE } from "../profile";
+import { LOGOUT_ROUTE, PROFILE_ROUTE } from "../profile";
+import { ADVISED_USERS_ROUTE, ADVISING_HOME_ROUTE } from "../advising/routes";
 
 function Header({ user }) {
   return (
@@ -19,7 +20,10 @@ function Header({ user }) {
 
         <NavList>
           <NavItem label="Home" to="/" />
-          {user && <NavItem label="Advise" to="/advising" />}
+          {user && <NavItem label="Advise" to={ADVISING_HOME_ROUTE} />}
+          {user && user.isAdmin && (
+            <NavItem label="Advised Students" to={ADVISED_USERS_ROUTE} />
+          )}
         </NavList>
       </ColMedium>
       <ColMedium numOfCols="4">
@@ -40,7 +44,7 @@ function Header({ user }) {
           )}
           {user && (
             <>
-              <NavItem to="/me" label={user.firstName} />
+              <NavItem to={PROFILE_ROUTE} label={user.firstName} />
               <NavItem to={LOGOUT_ROUTE} label="Logout" extraClasses="btn" />
             </>
           )}

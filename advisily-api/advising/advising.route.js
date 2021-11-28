@@ -7,13 +7,14 @@ const controller = require("./advising.cotroller");
 const schemas = require("./advising.schema");
 const requestValidator = require("../middleware/requestValidator");
 
+router.get("/paces", controller.getPaces);
+
+router.get("/getAdvisedUsers", auth, controller.getAdvisedUsers);
 router.get(
   "/",
   [auth, requestValidator(schemas.getAdvisingSessions())],
   controller.getAdvisingSessions
 );
-
-router.get("/paces", controller.getPaces);
 
 router.get(
   "/:advisingSessionId",

@@ -114,10 +114,17 @@
 .card {
   margin-top: 60px;
   border: 3px solid #ccc !important;
-  border-radius: 8% !important;
+  border-radius: 10% !important;
+}
+.card-medium {
   min-height: 400px !important;
   max-width: 450px;
-  text-align: center;
+}
+.card-wide {
+  /* display: flex; */
+  /* flex: 1; */
+  min-width: 500px;
+  border-radius: 10px !important;
 }
 .card-image-rounded {
   overflow: hidden;

@@ -15,7 +15,7 @@ function AboutUs(props) {
       </div>
       <Row className="d-flex justify-content-center">
         <ColMedium numOfCols="6" className="d-flex justify-content-center">
-          <Card>
+          <Card extraClasses="card-medium">
             <RoundedPicture src={sherifPic} alt="Sherif Aly" />
             <CardBody
               title="Sherif Aly"
@@ -28,7 +28,7 @@ function AboutUs(props) {
           </Card>
         </ColMedium>
         <ColMedium numOfCols="6" className="d-flex justify-content-center">
-          <Card>
+          <Card extraClasses="card-medium">
             <RoundedPicture src={youssefPic} alt="Youssef Agiza" />
             <CardBody
               title="Youssef Agiza"

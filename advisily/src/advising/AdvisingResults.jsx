@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link, useRouteMatch, useLocation } from "react-router-dom";
 import {
   getAdvisingResultCourses,
   retrieveAdvisingSession,
@@ -21,6 +21,10 @@ import { getStudentCourses, getUsers } from "../services/userService";
 import hoursPdf from "../assets/pdfs/FacultyOfficeHours.pdf";
 
 function AdvisingResults(props) {
+  const params = useParams();
+  const res = useRouteMatch();
+  const location = useLocation();
+  console.log(params, res, location.state, res.params);
   // const [userIndex, setUserIndex] = useState(0);
   // const incrementIndex = () => {
   //   setUserIndex(userIndex + 1 < users.length ? userIndex + 1 : userIndex);

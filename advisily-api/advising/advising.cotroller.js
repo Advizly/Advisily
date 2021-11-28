@@ -11,8 +11,16 @@ module.exports = {
   updateAdvisingSession,
   generateAllPlans,
   generatePlan,
+  getAdvisedUsers,
   getPaces,
 };
+
+function getAdvisedUsers(req, res, next) {
+  advisingService
+    .getAdvisedUsers()
+    .then((result) => res.json(result))
+    .catch(next);
+}
 
 function verifyResults(req, res, next) {
   advisingService

@@ -58,9 +58,15 @@ export const verifyResults = async (advisingSessionId) => {
   });
   return data;
 };
+export const getAdvisedUsers = async () => {
+  const { data: users } = await http.get(`${apiEndpoint}/getAdvisedUsers`);
+  return users;
+};
+
 const advisingService = {
   getAdvisingSessions,
   getAdvisingSession,
+  getAdvisedUsers,
   addAdvisingSession,
   updateAdvisingSessions,
   generatePlan,

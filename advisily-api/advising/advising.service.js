@@ -11,6 +11,7 @@ const { query, getConnection } = require("../helpers/mysql");
 
 const logic = require("../logic/logic");
 const _ = require("lodash");
+const { basicInfo } = require("../helpers/account");
 module.exports = {
   getAdvisingSessions,
   getAdvisingSession,
@@ -23,8 +24,19 @@ module.exports = {
   getPaces,
   generateAllPlans,
   verifyResults,
+  getAdvisedUsers,
 };
 const baseGetSessionQuery = "select * from advisingSessions";
+
+async function getAdvisedUsers() {
+  const sql =
+    "SELECT * from users where userId IN(select userId from advisingSessions)";
+
+  let [users, err] = await query(sql);
+  if (err) throw "Error getting users list";
+
+  return users.map((user) => basicInfo(user));
+}
 
 async function verifyResults({ advisingSessionId }) {
   let data, err;
@@ -350,4 +362,14 @@ async function generateAllPlans() {
     }
   }
   return { Success: 1 };
+}
+
+async function getUserAdvisingList() {
+  const sql =
+    "SELECT * from users where userId IN(select userId from advisingSessions)";
+
+  let [users, err] = query(sql);
+  if (err) throw "Error getting users list";
+
+  return users;
 }
