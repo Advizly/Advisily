@@ -1,2 +1,2 @@
-# AutomatedAdvisingSystemAUC
-An Automatic Advising System (AAS) that automates academic advising to reduce the amount of intervention needed by human advisor.
+# Advisily
+ is an Automated Advising System that automates academic advising in the American University in Cairo (AUC) to minimize the amount of intervention needed by human advisor.
