@@ -1,26 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link, useRouteMatch, useLocation } from "react-router-dom";
 import {
-  getAdvisingResultCourses,
-  retrieveAdvisingSession,
+  // getAdvisingResultCourses,
+  // retrieveAdvisingSession,
   getUserAdvisingSessionId,
   getAdvisingResults,
-  verifyResults,
 } from "../services/advisingService";
 import { getCurrentUser } from "../services/authService";
 import {
   formatCourseData,
-  groupCourses,
-  groupCoursesBySemesterNumber,
+  // groupCourses,
+  // groupCoursesBySemesterNumber,
   sortCourses,
 } from "../utils/coursesUtils";
 
 import { Row, ColMedium } from "../components/grid";
 import useApi from "../hooks/useApi";
-import { getStudentCourses, getUsers } from "../services/userService";
+import {
+  getStudentCourses,
+  // getUsers
+} from "../services/userService";
 import hoursPdf from "../assets/pdfs/FacultyOfficeHours.pdf";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { DonwloadPage, Quixote } from "../common/PDF";
 
-function AdvisingResults(props) {
+function AdvisingResults({}) {
   const params = useParams();
   const res = useRouteMatch();
   const location = useLocation();
@@ -45,10 +49,9 @@ function AdvisingResults(props) {
   // useEffect(() => {
   //   setUser(users[userIndex]);
   // }, [userIndex]);
-
   const user = getCurrentUser();
+
   const [advisingSessionId, setAdvisingSessionId] = useState(null);
-  const [disableVerifyBtn, setDisableVerifyBtn] = useState(false);
   const resultCoursesApi = useApi(getAdvisingResults);
 
   const advisingSessionIdApi = useApi(getUserAdvisingSessionId, (res) =>
@@ -63,7 +66,6 @@ function AdvisingResults(props) {
     if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);
   }, [advisingSessionId]);
   useEffect(() => {
-    console.log("Use effect");
     if (user && user.userId) {
       advisingSessionIdApi.request(user.userId);
       userCoursesApi.request(user.userId);
@@ -105,17 +107,6 @@ function AdvisingResults(props) {
       );
     });
     return result;
-
-    // const rows = groupCourses(result, 2);
-    // return rows.map((columns) => {
-    //   return (
-    //     <Row>
-    //       {columns.map((column) => (
-    //         <ColMedium>{column}</ColMedium>
-    //       ))}
-    //     </Row>
-    //   );
-    // });
   };
   const resultsAvailable = () =>
     resultCoursesApi.data &&
@@ -164,13 +155,6 @@ function AdvisingResults(props) {
         </li>
       </ol>
 
-      {/* <p>
-        {" "}
-        If you are satisfied, please press on <strong>
-          "Verify Results"
-        </strong>{" "}
-        button so that your hold will be removed later.
-      </p> */}
       {/* <div className="d-flex justify-content-between">
         <button className="btn " onClick={decrementIndex}>
           Previous
@@ -216,40 +200,14 @@ function AdvisingResults(props) {
     </div>
   );
 
-  const handleVerify = async () => {
-    if (!advisingSessionId)
-      return alert("Sorry! An error occurred while verifying your results");
-
-    if (window.confirm("Are you sure you want to verify these results?")) {
-      try {
-        await verifyResults(advisingSessionId);
-        alert("Success! Your results were verified");
-        setDisableVerifyBtn(true);
-        window.location.reload(true);
-      } catch (e) {
-        console.log(e);
-        alert("Sorry! An error occurred while verifying your results");
-      }
-    }
-  };
   return (
     <div className="d-flex justify-content-center">
       <div className="frame ">
         {resultsAvailable() ? resultsAvailableUI() : noResultsUI()}
-        <div className="d-flex justify-content-end">
+        <div className="d-flex justify-content-between">
           <Link to="/advising/form" replace>
             <button className="btn">New Advising Session?</button>
           </Link>
-          {/* {!!resultsAvailable() && !resultCoursesApi.data.isVerified && (
-            <button
-              disabled={disableVerifyBtn}
-              className="btn btn-primary"
-              type="button"
-              onClick={handleVerify}
-            >
-              Verify Results
-            </button>
-          )} */}
         </div>
       </div>
     </div>
