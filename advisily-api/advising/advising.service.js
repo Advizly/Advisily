@@ -35,7 +35,9 @@ async function getAllResults() {
   sql =
     "SELECT * from users \
      	INNER JOIN advisily.advisingSessions ON users.userId = advisingSessions.userId\
-      INNER JOIN advisingResults ON advisingResults.advisingSessionId = advisingSessions.advisingSessionId";
+      INNER JOIN advisingResults ON advisingResults.advisingSessionId = advisingSessions.advisingSessionId\
+      INNER JOIN standings ON standings.standingId=users.standingId\
+      ";
 
   const semesterSql =
     "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ?";
@@ -43,16 +45,20 @@ async function getAllResults() {
     "SELECT * FROM advisingResultCourses\
          INNER JOIN courses on courses.courseId=advisingResultCourses.courseId\
          WHERE advisingSessionId = ?";
+  const finishedCoursesSql =
+    "SELECT * FROM userCourses\
+              INNER JOIN courses on courses.courseId=userCourses.courseId\
+              WHERE userId = ?";
 
   [results, err] = await query(sql);
   if (err) throw "Error getting results for all users";
 
   for (let i = 0; i < results.length; i++) {
-    const { advisingSessionId } = results[i];
+    const { advisingSessionId, userId } = results[i];
     let [courses, err1] = await query(coursesSql, [advisingSessionId]);
     let [semesters, err2] = await query(semesterSql, [advisingSessionId]);
-
-    if (err1 || err2) throw "Error getting results for all users";
+    let [finishedCourses, err3] = await query(finishedCoursesSql, [userId]);
+    if (err1 || err2 || err3) throw "Error getting results for all users";
 
     semesters = semesters.map((semester) => {
       semester.courses = courses.filter(
@@ -62,6 +68,7 @@ async function getAllResults() {
     });
 
     results[i].semesters = semesters;
+    results[i].finishedCourses = finishedCourses;
   }
 
   return results.map((result) => removeSensitive(result));
