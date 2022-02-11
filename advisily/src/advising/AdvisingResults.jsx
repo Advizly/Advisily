@@ -21,8 +21,6 @@ import {
   // getUsers
 } from "../services/userService";
 import hoursPdf from "../assets/pdfs/FacultyOfficeHours.pdf";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import { DonwloadPage, Quixote } from "../common/PDF";
 
 function AdvisingResults({}) {
   const params = useParams();
@@ -58,9 +56,9 @@ function AdvisingResults({}) {
     setAdvisingSessionId(res)
   );
 
-  const userCoursesApi = useApi(getStudentCourses, (courses) => {
-    return renderCoursesList(courses);
-  });
+  const userCoursesApi = useApi(getStudentCourses, (courses) =>
+    renderCoursesList(courses)
+  );
 
   useEffect(() => {
     if (advisingSessionId && user) resultCoursesApi.request(advisingSessionId);

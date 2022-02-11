@@ -1,11 +1,5 @@
 import "./App.css";
-import {
-  BrowserRouter,
-  Redirect,
-  Route,
-  Switch,
-  HashRouter,
-} from "react-router-dom";
+import { Redirect, Route, Switch, HashRouter } from "react-router-dom";
 
 import { AboutUs, ContactUs, Footer, Header, Home, NotFound } from "./common";
 import {
@@ -24,7 +18,7 @@ import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const user = useAuth();
+  const user = useAuth(true);
 
   return (
     <HashRouter>

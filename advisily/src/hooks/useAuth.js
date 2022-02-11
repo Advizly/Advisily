@@ -4,6 +4,7 @@ import auth from "../services/authService";
 function useAuth(refresh) {
   const [user, setUser] = useState(auth.getCurrentUser());
   useEffect(() => {
+    console.log("Use effect called: getting user");
     if (refresh) auth.refreshUser(user).then((newUser) => setUser(newUser));
   }, [refresh]);
 

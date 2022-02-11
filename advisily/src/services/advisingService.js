@@ -24,7 +24,7 @@ export const updateAdvisingSessions = async (sessionInfo) => {
 };
 
 export const generatePlan = async (advisingSessionId) => {
-  await http.post(`${apiEndpoint}/generate-plan`, {
+  await http.post(`${apiEndpoint}/generatePlan`, {
     advisingSessionId,
   });
 };
@@ -62,6 +62,11 @@ export const getAdvisedUsers = async () => {
   const { data: users } = await http.get(`${apiEndpoint}/getAdvisedUsers`);
   return users;
 };
+/* New results api */
+export const getAllResults = async () => {
+  const { data: results } = await http.get(`${apiEndpoint}/getAllResults`);
+  return results;
+};
 
 const advisingService = {
   getAdvisingSessions,
@@ -75,5 +80,6 @@ const advisingService = {
   saveAdvisingSession,
   retrieveAdvisingSession,
   verifyResults,
+  getAllResults,
 };
 export default advisingService;
