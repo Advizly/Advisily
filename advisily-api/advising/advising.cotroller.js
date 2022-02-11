@@ -13,8 +13,15 @@ module.exports = {
   generatePlan,
   getAdvisedUsers,
   getPaces,
+  getAllResults,
 };
 
+function getAllResults(req, res, next) {
+  advisingService
+    .getAllResults()
+    .then((result) => res.json(result))
+    .catch(next);
+}
 function getAdvisedUsers(req, res, next) {
   advisingService
     .getAdvisedUsers()

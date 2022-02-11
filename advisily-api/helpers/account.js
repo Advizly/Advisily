@@ -10,6 +10,7 @@ module.exports = {
   getRandomToken,
   hash,
   basicInfo,
+  removeSensitive,
 };
 function getAuthToken(user) {
   return jwt.sign(basicInfo(user), privateKey);
@@ -36,5 +37,15 @@ function basicInfo(user) {
     "standing",
     "semesterNumber",
     "isAdmin",
+  ]);
+}
+//similar to basicInfo but removes instead of picks...
+//... used in getting all results
+function removeSensitive(user) {
+  return _.omit(user, [
+    "password",
+    "verificationToken",
+    "passwordResetToken",
+    "resetTokenExpire",
   ]);
 }

@@ -11,7 +11,7 @@ const { query, getConnection } = require("../helpers/mysql");
 
 const logic = require("../logic/logic");
 const _ = require("lodash");
-const { basicInfo } = require("../helpers/account");
+const { basicInfo, removeSensitive } = require("../helpers/account");
 module.exports = {
   getAdvisingSessions,
   getAdvisingSession,
@@ -25,8 +25,47 @@ module.exports = {
   generateAllPlans,
   verifyResults,
   getAdvisedUsers,
+  getAllResults,
 };
 const baseGetSessionQuery = "select * from advisingSessions";
+
+async function getAllResults() {
+  let sql, users, results, err;
+
+  sql =
+    "SELECT * from users \
+     	INNER JOIN advisily.advisingSessions ON users.userId = advisingSessions.userId\
+      INNER JOIN advisingResults ON advisingResults.advisingSessionId = advisingSessions.advisingSessionId";
+
+  const semesterSql =
+    "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ?";
+  const coursesSql =
+    "SELECT * FROM advisingResultCourses\
+         INNER JOIN courses on courses.courseId=advisingResultCourses.courseId\
+         WHERE advisingSessionId = ?";
+
+  [results, err] = await query(sql);
+  if (err) throw "Error getting results for all users";
+
+  for (let i = 0; i < results.length; i++) {
+    const { advisingSessionId } = results[i];
+    let [courses, err1] = await query(coursesSql, [advisingSessionId]);
+    let [semesters, err2] = await query(semesterSql, [advisingSessionId]);
+
+    if (err1 || err2) throw "Error getting results for all users";
+
+    semesters = semesters.map((semester) => {
+      semester.courses = courses.filter(
+        (course) => course.semesterNumber === semester.semesterNumber
+      );
+      return semester;
+    });
+
+    results[i].semesters = semesters;
+  }
+
+  return results.map((result) => removeSensitive(result));
+}
 
 async function getAdvisedUsers() {
   const sql =
