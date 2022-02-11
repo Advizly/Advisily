@@ -9,7 +9,7 @@ const requestValidator = require("../middleware/requestValidator");
 
 router.get("/paces", controller.getPaces);
 
-router.get("/get-all-results", [], controller.getAllResults);
+router.get("/getAllResults", [], controller.getAllResults);
 router.get("/getAdvisedUsers", auth, controller.getAdvisedUsers);
 router.get(
   "/",
@@ -55,13 +55,13 @@ router.get(
 // );
 
 router.post(
-  "/generate-plan",
+  "/generatePlan",
   [auth, requestValidator(schemas.generatePlan())],
   controller.generatePlan
 );
 
 router.post(
-  "/generate-all-plans",
+  "/generateAllPlans",
   // [auth, requestValidator(schemas.generatePlan())],
   controller.generateAllPlans
 );
