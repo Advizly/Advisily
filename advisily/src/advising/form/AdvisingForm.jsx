@@ -26,13 +26,17 @@ import {
 import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 import Disclaimer from "../Disclaimer";
+import NotOperating from "../../common/NotOperating";
 
 function AdvisingForm(props) {
   const { step, back, next } = useFormStep(0);
   const userMajorInfo = useUserMajorInfo();
 
   const userCoursesInfo = useUserCourses();
-  const { userId, standingId } = useAuth(true);
+  const { userId, standingId, isAdmin } = useAuth(true);
+
+  if (!isAdmin) return <NotOperating />;
+
   const initialValues = {
     ...defaultValues,
     ...userMajorInfo,
