@@ -1,6 +1,6 @@
 {
-  "hostUrl": "http://advisilybackend.ngrok.io",
-  "frontendUrl": "http://advisily.ngrok.io/#/",
+  "hostUrl": "",
+  "frontendUrl": "",
   "jwtPrivateKey": "",
   "db": {
     "host": "localhost",

@@ -20,7 +20,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prod": "NODE_ENV=production node index.js",
+    "dev": "NODE_ENV=development node index.js"
   },
   "repository": {
     "type": "git",
