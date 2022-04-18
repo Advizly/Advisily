@@ -35,9 +35,13 @@ function generatePlan({ user, planCourses, advisingSession, catalog }) {
   let resultSemesters = [],
     resultCourses = [];
 
+  user.courses.forEach(
+    (course) => (course.credits = course.credits !== null ? course.credits : 3)
+  );
   user.totalCredits = user.courses
     .map((course) => course.credits)
     .reduce((c1, c2) => c1 + c2, 0);
+  upadteUserStanding(user);
 
   for (let i = 0; i < semestersToPlan; i++) {
     user.courses = addCourseTypes(user.courses, catalog.courses);
@@ -88,7 +92,10 @@ function addWeight(planCourses) {
 function updateUser(user, resultCourses) {
   user.courses = user.courses.concat(resultCourses);
   resultCourses.forEach((course) => (user.totalCredits += course.credits));
-
+  upadteUserStanding(user);
+}
+function upadteUserStanding(user) {
+  // console.log(user.totalCredits);
   if (user.totalCredits > JUNIOR_CREDITS) user.standingId = StandingsIds.JUNIOR;
   if (user.totalCredits > SENIOR_CREDITS) user.standingId = StandingsIds.SENIOR;
 }
