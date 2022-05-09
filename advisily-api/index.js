@@ -15,7 +15,7 @@ let port = 5000;
 if (config.has("port")) port = config.get("port");
 
 //app.get('/', function (req, res) { res.redirect('/build/index.html') });
-
+console.log(process.env.NODE_ENV);
 app.use(express.json());
 app.use(headerConfig);
 app.use((req, res, next) => {

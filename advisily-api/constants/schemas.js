@@ -1,5 +1,5 @@
 const Joi = require("joi");
-const { JoiPassword } = require("joi-password");
+const { joiPassword } = require("joi-password");
 
 const TOKEN_SCHEMA = Joi.string();
 const ID_SCHEMA = Joi.number().positive().integer();
@@ -8,7 +8,8 @@ const EMAIL_SCHEMA = Joi.string()
   .insensitive()
   .email({ minDomainSegments: 2, tlds: { allow: ["edu"] } })
   .message("Invalid email.");
-const PASSWORD_SCHEMA = JoiPassword.string()
+const PASSWORD_SCHEMA = joiPassword
+  .string()
   .min(8)
   .max(30)
   .minOfNumeric(1)
