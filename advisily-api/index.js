@@ -18,6 +18,8 @@ if (config.has("port")) port = config.get("port");
 
 //console.log(config);
 
+//console.log(process.env.NODE_ENV);
+
 app.use(express.json());
 app.use(headerConfig);
 app.use((req, res, next) => {
