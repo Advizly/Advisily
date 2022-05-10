@@ -224,6 +224,7 @@ async function _getUserBy(conditions) {
   getStudentQuery = getStudentQuery + ` WHERE ${columns} LIMIT 1`;
 
   const [data, err] = await query(getStudentQuery, values);
+  console.log(err);
   if (err) throw "Error getting user.";
 
   return data.length ? data[0] : null;
