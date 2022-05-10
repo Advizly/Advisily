@@ -36,11 +36,7 @@ function AdvisingForm(props) {
   const userCoursesInfo = useUserCourses();
   const { userId, standingId, isAdmin } = useAuth(true);
 
-<<<<<<< HEAD
-//  if (!isAdmin) return <NotOperating />;
-=======
   if (!operating) return <NotOperating />;
->>>>>>> 38a7506e99e9077174038e516fb0aec10808424e
 
   const initialValues = {
     ...defaultValues,
