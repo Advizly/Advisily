@@ -27,6 +27,7 @@ import validationSchema from "./validationSchema";
 import defaultValues from "./defaultValues";
 import Disclaimer from "../Disclaimer";
 import NotOperating from "../../common/NotOperating";
+import {operating}from "../../config.json"
 
 function AdvisingForm(props) {
   const { step, back, next } = useFormStep(0);
@@ -35,7 +36,11 @@ function AdvisingForm(props) {
   const userCoursesInfo = useUserCourses();
   const { userId, standingId, isAdmin } = useAuth(true);
 
+<<<<<<< HEAD
 //  if (!isAdmin) return <NotOperating />;
+=======
+  if (!operating) return <NotOperating />;
+>>>>>>> 38a7506e99e9077174038e516fb0aec10808424e
 
   const initialValues = {
     ...defaultValues,
@@ -136,6 +141,7 @@ function AdvisingForm(props) {
       onSubmit={handleSubmit}
       enableReinitialize={true}
     >
+      <NotOperating/>
       {getFormChild()}
 
       <div className="d-flex justify-content-between ">
