@@ -25,7 +25,9 @@
       "pass": "EMAIL_PASSWORD"
     }
   },
-
+  "cors": {
+    "origin": "FRONTEND_URL"
+  },
   "hostUrl": "HOST_URL",
   "frontendUrl": "FRONTEND_URL"
 }
