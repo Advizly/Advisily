@@ -1,4 +1,4 @@
 {
-  "hostUrl": "http://advisilybackend.ngrok.io/api",
-  "frontendUrl": "http://advisily.ngrok.io/#"
+  "hostUrl": "http://api.advizly.com/api",
+  "frontendUrl": "http://www.advizly.com/#"
 }
