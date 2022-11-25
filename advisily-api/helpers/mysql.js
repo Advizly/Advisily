@@ -2,20 +2,17 @@ const mysql = require("mysql");
 const promiseHandler = require("./promiseHandler");
 const _ = require("lodash");
 require("dotenv").config();
-const config = require("config").get("db");
+const config = require("config");
 
 module.exports.query = query;
 module.exports.getConnection = getConnection;
 module.exports.parseConditions = parseConditions;
 
 function getConnection() {
-  const host = config.get("host");
-  const password = config.get("password");
-  const database = config.get("database");
-  const user = config.get("user");
-  
+  const db = config.get("db");
+  const con = mysql.createConnection(db);
 
-  return mysql.createConnection({ host, password, database, user });
+  return con;
 }
 
 function getPool() {
@@ -30,7 +27,7 @@ function getPool() {
     database,
     user,
     connectionLimit: 10,
-	chartset: 'utf8',
+    chartset: "utf8",
   });
 }
 

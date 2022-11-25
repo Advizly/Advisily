@@ -21,8 +21,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prod": "NODE_ENV=production node index.js",
-    "dev": "NODE_ENV=development node index.js"
+    "prod": " pm2 reload ecosystem.config.cjs --env production",
+    "dev": "NODE_ENV=development nodemon index.js"
   },
   "repository": {
     "type": "git",
