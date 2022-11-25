@@ -1,1 +1,1 @@
-export const ADVISILY = "Advisily";
+export const ADVISILY = "Advizly";

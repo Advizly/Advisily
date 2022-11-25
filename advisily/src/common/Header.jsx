@@ -20,7 +20,7 @@ function Header({ user }) {
 
         <NavList>
           <NavItem label="Home" to="/" />
-          {user && <NavItem label="Advise" to={ADVISING_HOME_ROUTE} />}
+          {user && <NavItem label="Advising" to={ADVISING_HOME_ROUTE} />}
           {!!(user && user.isAdmin) && (
             <NavItem label="Advised Students" to={ADVISED_USERS_ROUTE} />
           )}
