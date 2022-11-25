@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 function App() {
   const user = useAuth(true);
 
+  // console.log(process.env)
   return (
     <HashRouter>
       <div className="page-container">
