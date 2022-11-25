@@ -151,6 +151,12 @@ function AdvisingResults({}) {
           taken two 4000-level courses or will be taking them concurrently with
           Senior Project I.
         </li>
+        <li>
+          If you are following the new 4.5 year plan, kindly note that ENGR
+          2105: Engineering Mechanics is a different course from ENGR 2102:
+          Engineering Mechanics I(statics) and ENGR 2104: Engineering Mechanics
+          II (dynamics). You should either take both ENGR 2102 and
+        </li>
       </ol>
 
       {/* <div className="d-flex justify-content-between">
