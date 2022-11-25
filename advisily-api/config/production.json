@@ -1,4 +1,10 @@
 {
-  "hostUrl": "https://api.advizly.com/api",
-  "frontendUrl": "https://www.advizly.com/#"
+  "hostUrl": "",
+  "frontendUrl": "",
+
+  "cors": {
+    "origin": "www.advizly.com",
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+    "allowedHeaders": "Content-Type, Authorization, Content-Length, X-Requested-With, x-auth-token"
+  }
 }

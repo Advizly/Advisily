@@ -24,5 +24,8 @@
       "user": "EMAIL_USER",
       "pass": "EMAIL_PASSWORD"
     }
-  }
+  },
+
+  "hostUrl": "HOST_URL",
+  "frontendUrl": "FRONTEND_URL"
 }
