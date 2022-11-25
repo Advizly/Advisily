@@ -1,4 +1,8 @@
 {
   "hostUrl": "http://localhost:5000/api",
-  "frontendUrl": "http://localhost:3000/#"
+  "frontendUrl": "http://localhost:3000/#",
+  "cors": {
+    "disabled": false,
+    "origin": "http://localhost:3000"
+  }
 }
