@@ -137,7 +137,6 @@ function AdvisingForm(props) {
       onSubmit={handleSubmit}
       enableReinitialize={true}
     >
-      <NotOperating/>
       {getFormChild()}
 
       <div className="d-flex justify-content-between ">
