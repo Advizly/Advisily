@@ -1,5 +1,5 @@
 {
-    "apiBaseUrl": "https://localhost:5000/api",
+    "apiBaseUrl": "http://localhost:5000/api",
     "CourseTypeIds": {
         "core": 1,
         "concentertaion": 2,
@@ -9,5 +9,5 @@
         "mathElec": 6,
         "mathOrMajorElec": 7
     },
-    "operating": false
+    "operating": true 
 }
