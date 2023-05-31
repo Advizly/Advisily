@@ -23,7 +23,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prod": " pm2 reload ecosystem.config.cjs --env production",
-    "dev": "NODE_ENV=development nodemon index.js"
+    "dev": "NODE_ENV=development nodemon index.js",
+    "prod-local": "NODE_ENV=production nodemon index.js"
   },
   "repository": {
     "type": "git",

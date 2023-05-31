@@ -13,6 +13,7 @@ function AdvisedUserCard({ user, ...rest }) {
   //     nameeee: "name",
   //   });
   // };
+  console.log(user)
 
   return (
     <Card extraClasses="card-wide">
@@ -23,6 +24,9 @@ function AdvisedUserCard({ user, ...rest }) {
             <br />
             <strong>Email: </strong>
             {user.email}
+            <br />
+            <strong>Advising Date: </strong>
+            {new Date(user.sessionDate).toLocaleDateString()}
           </div>
           <div>
             {/* <Link
