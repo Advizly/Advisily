@@ -6,22 +6,26 @@ const schemas = require("./user-courses.schema");
 
 const auth = require("../../middleware/auth");
 const requestValidator = require("../../middleware/requestValidator");
+const verifyJwt = require("../../middleware/verifyJwt");
 
 router.get(
   "/",
-  [auth, requestValidator(schemas.getUserCourses(), "query", {})],
+  requestValidator(schemas.getUserCourses(), "query", {}),
+  verifyJwt,
   controller.getUserCourses
 );
 
 router.post(
   "/",
-  [auth, requestValidator(schemas.addUserCourse())],
+  auth, requestValidator(schemas.addUserCourse()),
+  verifyJwt,
   controller.addUserCourse
 );
 
 router.delete(
   "/",
-  [auth, requestValidator(schemas.deleteUserCourse())],
+  requestValidator(schemas.deleteUserCourse()),
+  verifyJwt,
   controller.deleteUserCourse
 );
 

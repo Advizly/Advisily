@@ -13,7 +13,10 @@ export const getUser = async (userId) => {
       userId,
     },
   });
-  if (!data) return null;
+  
+  if (!data){
+     return null;
+  }
 
   return { user: data, token: headers["x-auth-token"] };
 };

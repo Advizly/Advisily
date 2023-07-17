@@ -27,10 +27,12 @@ module.exports = {
   login,
   resendVerification,
   update,
+  deleteUser,
 };
 
 const baseGetUsersQuery = "SELECT * FROM users";
 const baseUpdateQuery = "UPDATE users SET ?";
+const baseDeleteQuery = "DELETE FROM users"
 
 async function register(user) {
   user = _.omit(user, ["repeatPassword"]);
@@ -94,11 +96,23 @@ async function getUsers() {
   return resultUsers;
 }
 
+async function deleteUser(userId){
+  
+  const sql = baseDeleteQuery + " where userId = ?"
+  console.log(userId)
+  const [user, err] = await query(sql,[userId])
+  console.log(user)
+  if(err) throw err
+
+  return user
+}
+
 async function getUser(conditions) {
   const user = await _getUserBy(conditions);
   if (!user) throw "User not found.";
 
   const authToken = getAuthToken(user);
+  
   return {
     ...basicInfo(user),
     authToken,

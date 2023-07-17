@@ -14,7 +14,7 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.6.3",
-    "nodemon": "^2.0.15",
+    "nodemon": "^2.0.22",
     "serve-static": "^1.14.1"
   },
   "name": "advisily-api",

@@ -7,10 +7,14 @@ module.exports = {
 };
 
 function getUserCourses(req, res, next) {
+  if(req.user.userId === req.body.userId || req.user.isAdmin){
   userCoursesService
     .getUserCourses(req.body)
     .then((courses) => res.send(courses))
     .catch(next);
+  }else{
+    res.status(403).json("NOT ALLOWED")
+  }
 }
 
 function addUserCourse(req, res, next) {

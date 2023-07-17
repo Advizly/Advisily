@@ -14,6 +14,7 @@ module.exports = {
   resendVerification,
   login,
   update,
+  deleteUser,
 };
 
 function register(req, res, next) {
@@ -32,10 +33,29 @@ function register(req, res, next) {
 }
 
 function getUsers(req, res, next) {
+  if(req.user.isAdmin){
   usersService
     .getUsers()
     .then((users) => res.send(users))
     .catch(next);
+  }else{
+    res.status(403).json("NOT ALLOWED")
+  }
+}
+
+function deleteUser(req,res,next){
+  console.log(req.user.userId)
+  if(req.user.userId === Number(req.params.userId) || req.user.isAdmin){
+    console.log("req.params.userId")
+
+    const userId = req.params.userId 
+    usersService.deleteUser(userId)
+    .then(user=>res.send(user))
+    .catch(next)
+  }else{
+    res.status(403).json("NOT ALLOWED")
+  }
+  
 }
 
 function verifyEmail(req, res, next) {
@@ -95,15 +115,22 @@ function resendVerification(req, res, next) {
 }
 
 function getUser(req, res, next) {
+  console.log("HIII")
+  if(req.user.userId === req.body.userId || req.user.isAdmin){
   usersService
     .getUser(req.body)
     .then(({ authToken, ...userInfo }) => {
-      res
+      res.set('Content-Type', 'text/plain');
+    res 
         .header("x-auth-token", authToken)
         .header("access-control-expose-headers", "x-auth-token")
         .json(userInfo);
     })
+    
     .catch(next);
+  }else{
+    res.status(403).json("NOT ALLOWED")
+  }
 }
 
 function login(req, res, next) {

@@ -24,6 +24,7 @@ module.exports = {
   resendVerification,
   loginSchema,
   updateSchema,
+  deleteUser,
 };
 
 function register() {
@@ -42,6 +43,14 @@ function resetPassword() {
     token: TOKEN_SCHEMA_REQUIRED,
     password: PASSWORD_SCHEMA_REQUIRED,
   });
+}
+
+
+
+function deleteUser(){
+  return Joi.object({
+    userId:ID_SCHEMA_REQUIRED
+  })
 }
 
 function verifyEmail() {
