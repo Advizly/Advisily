@@ -197,31 +197,45 @@ async function getAdvisingResultCourses({ advisingSessionId }) {
 }
 
 async function addAdvisingResults(resultData) {
+    const {results1, results2, advisingSessionId} = resultData;
     const connection = getConnection();
     let data, err, sql;
-    const { resultSemesters, advisingSessionId, isLate, resultCourses } = _.pick(
-        resultData, ["resultSemesters", "advisingSessionId", "resultCourses", "isLate"]
-    );
+    const { resultSemesters: resultSemesters1, isLate: isLate1, resultCourses: resultCourses1, planType: planType1 } = results1
+    const { resultSemesters: resultSemesters2, isLate: isLate2, resultCourses: resultCourses2, planType: planType2 } = results2
 
     sql = "INSERT INTO advisingResults SET ?";
     [data, err] = await query(
-        sql, { advisingSessionId, isLate },
+        sql, { advisingSessionId, isLate: isLate1 },
         false,
         connection
     );
     if (err) throw "Error while inserting advising results.";
 
     sql = "INSERT INTO advisingResultSemesters SET ?";
-    resultSemesters.forEach(async(semester) => {
-        [data, err] = await query(sql, semester, false, connection);
+    resultSemesters1.forEach(async(semester) => {
+        [data, err] = await query(sql, {...semester, planType: planType1}, false, connection);
+        if (err) throw "Error while inserting advising results semesters.";
+    });
+
+    resultSemesters2.forEach(async(semester) => {
+        [data, err] = await query(sql, {...semester, planType: planType2}, false, connection);
         if (err) throw "Error while inserting advising results semesters.";
     });
 
     sql = "INSERT INTO advisingResultCourses SET ?";
-    resultCourses.forEach(async(course) => {
-        [data, err] = await query(sql, course, false, connection);
+    resultCourses1.forEach(async(course) => {
+        [data, err] = await query(sql, {...course, planType: planType1}, false, connection);
         if (err) throw "Error while inserting advising results courses.";
     });
+
+    
+    resultCourses2.forEach(async(course) => {
+        [data, err] = await query(sql, {...course, planType: planType2}, false, connection);
+        if (err) throw "Error while inserting advising results courses.";
+    });
+
+
+    
 
     connection.end();
     return data;
@@ -346,13 +360,21 @@ async function generatePlan({ advisingSessionId }) {
         const catalogCourses = await getCatCourses({ catalogId });
         const catalog = await getCatalog({ catalogId });
         catalog.courses = catalogCourses;
-        let results = logic.generatePlan({
+        let results1 = logic.generatePlanConOrPreAsCon({
             user,
             planCourses,
             advisingSession,
             catalog,
         });
-        await addAdvisingResults({...results, advisingSessionId });
+
+        let results2 = logic.generatePlanConOrPreAsPre({
+            user,
+            planCourses,
+            advisingSession,
+            catalog,
+        });
+        
+        await addAdvisingResults({ results1, results2, advisingSessionId });
     } catch (err) {
         console.log(err);
         throw "Unexpected error while generating plan";

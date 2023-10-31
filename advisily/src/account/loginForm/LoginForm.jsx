@@ -17,7 +17,7 @@ import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
     // console.log("API URL: ", process.env);
-    // console.log("Values: ", values);
+     console.log("Values: ", values);
     try {
       await auth.login(values);
       window.location = "/";

@@ -17,6 +17,7 @@ const {
 const promiseHandler = require("../helpers/promiseHandler");
 
 module.exports = {
+  deleteUser,
   getUsers,
   getUser,
   verifyEmail,
@@ -31,6 +32,7 @@ module.exports = {
 
 const baseGetUsersQuery = "SELECT * FROM users";
 const baseUpdateQuery = "UPDATE users SET ?";
+const baseDeleteQuery = "DELETE FROM users"
 
 async function register(user) {
   user = _.omit(user, ["repeatPassword"]);
@@ -47,7 +49,8 @@ async function register(user) {
     email: user.email,
   });
   if (oldUser) throw "A user with this Student email already registered.";
-
+  
+ 
   const insertUserQuery = "INSERT INTO users SET ?";
   [data, err] = await query(insertUserQuery, [user]);
   if (err) throw "Error registering user.";
@@ -55,7 +58,9 @@ async function register(user) {
   [, err] = await sendVerificationEmail(user);
   if (err)
     throw "Error sending verification email. Try resending verification email from the login page.";
-  const authToken = getAuthToken(user);
+  const authToken = getAuthToken(user)
+  user.authToken = authToken;
+  console.log(user)
 
   return {
     ...basicInfo(user),
@@ -69,11 +74,16 @@ async function login({ email, password }) {
   if (!user) throw "Email not found.";
 
   const validPassword = await bcrypt.compare(password, user.password);
+
   if (!validPassword) throw "Invalid email and password combination.";
   if (!user.isVerified)
     throw { message: "Please verify your email first.", statusCode: 401 };
 
-  return getAuthToken(user);
+  const token = getAuthToken(user)
+  
+  user.token = token
+
+  return user;
 }
 
 async function getUsers() {
@@ -94,7 +104,20 @@ async function getUsers() {
   return resultUsers;
 }
 
+async function deleteUser(userId){
+  
+  const sql = baseDeleteQuery + " where userId = ?"
+  console.log(userId)
+  const [user, err] = await query(sql,[userId])
+  console.log(user)
+  if(err) throw err
+
+  return user
+}
+
 async function getUser(conditions) {
+  console.log("HIII")
+  console.log(process.env.advisily_jwt_expires_in)
   const user = await _getUserBy(conditions);
   if (!user) throw "User not found.";
 

@@ -8,10 +8,7 @@ import {
 } from "../services/advisingService";
 import { getCurrentUser } from "../services/authService";
 import {
-  formatCourseData,
-  // groupCourses,
-  // groupCoursesBySemesterNumber,
-  sortCourses,
+  renderCoursesList
 } from "../utils/coursesUtils";
 
 import { Row, ColMedium } from "../components/grid";
@@ -20,7 +17,9 @@ import {
   getStudentCourses,
   // getUsers
 } from "../services/userService";
+import ResultsComponent  from "../components/AdvisingResults";
 import hoursPdf from "../assets/pdfs/FacultyOfficeHours.pdf";
+
 
 function AdvisingResults({}) {
   const params = useParams();
@@ -70,42 +69,9 @@ function AdvisingResults({}) {
     }
   }, [user.userId]);
 
-  const renderCoursesList = (courses) => {
-    return courses.map((course) => {
-      let { courseId, formatedTitle } = formatCourseData(course);
-      if (courseId === 1 || courseId === 2)
-        courseId = `${courseId}` + Math.random() * 100 * Math.random();
+  
 
-      return <li key={courseId}>{formatedTitle}</li>;
-    });
-  };
-
-  const renderResults = (results) => {
-    if (!results || !results.semesters || !results.semesters.length)
-      return null;
-
-    const result = results.semesters.map(({ semesterNumber, courses }) => {
-      const sortedCourses = sortCourses(courses);
-      let totalCredits;
-      if (sortedCourses.length)
-        totalCredits = sortedCourses
-          .map((c) => (c.credits !== null ? c.credits : 3))
-          .reduce((c1, c2) => c1 + c2, 0);
-      return (
-        <>
-          <h5>Semester Number {semesterNumber}</h5>
-          {renderCoursesList(sortedCourses)}
-          <br />
-          <p>
-            <strong>Total Credits: </strong>
-            {totalCredits}
-          </p>
-          <hr />
-        </>
-      );
-    });
-    return result;
-  };
+  
   const resultsAvailable = () =>
     resultCoursesApi.data &&
     resultCoursesApi.data.semesters &&
@@ -194,7 +160,7 @@ function AdvisingResults({}) {
       {userCoursesApi.data}
       <hr /> */}
       <h3 className="text-center">Advised Courses</h3>
-      {renderResults(resultCoursesApi.data)}
+      <ResultsComponent resultCoursesApi={resultCoursesApi.data} />
     </>
   );
   const noResultsUI = () => (

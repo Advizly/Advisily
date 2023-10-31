@@ -1,11 +1,11 @@
 import { CourseTypeIds } from "../config.json";
 
 export const formatCourseData = (course) => {
-  const { courseId, courseCode, courseTitle, prefix } = course;
+  const { courseId, courseCode, courseTitle, prefix, planType } = course;
   const titleCode = courseCode < 0 ? "XXX" : courseCode;
   const formatedTitle = prefix + " " + titleCode + " - " + courseTitle;
 
-  return { courseId, formatedTitle };
+  return { courseId, planType, formatedTitle };
 };
 
 export const sortCourses = (courses) => {
@@ -17,6 +17,16 @@ export const sortCourses = (courses) => {
     if (c1.courseCode > c2.courseCode) return 1;
 
     return c1.courseTitle < c2.courseTitle ? -1 : 1;
+  });
+};
+
+export const renderCoursesList = (courses) => {
+  return courses.map((course) => {
+    let { courseId, formatedTitle } = formatCourseData(course);
+    if (courseId === 1 || courseId === 2)
+      courseId = `${courseId}` + Math.random() * 100 * Math.random();
+    console.log(course + " " +formatedTitle)
+    return <li key={courseId +  Math.random()}>{formatedTitle}</li>;
   });
 };
 

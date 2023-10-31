@@ -36,7 +36,10 @@ function query(query, values, endConnection = true, connection = null) {
 
   const promise = new Promise((resolve, reject) => {
     connection.query(query, values, (err, results) => {
-      if (err) return reject(err); //res.status(400).send(err);
+      if (err) {
+        console.log(err);
+        return reject(err);
+       } //res.status(400).send(err);
 
       return resolve(results);
     });

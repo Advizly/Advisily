@@ -27,4 +27,16 @@ router.get(
   catalogController.getPlanCourses
 );
 
+router.get(
+  "/years",
+  requestValidator(schemas.getCatalogs(), "query"),
+  catalogController.getYears
+);
+
+router.post(
+  "/",
+  requestValidator(schemas.createCatalog(), "body"),
+  catalogController.createCatalog
+);
+
 module.exports = router;

@@ -1,0 +1,3196 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/SEIFELSHABSHIRI/Advizily/1.0.0
+info:
+  description: Catalog API
+  version: "1.0.0"
+  title: Advisily Catalog API
+  contact:
+    email: seifelshabshiri@aucegypt.edu
+  license:
+    name: Apache 2.0
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+
+paths:
+  /catalogs:
+    get:
+      tags:
+        - developers
+      summary: Gets catalogs with the right majorId
+      operationId: getCatalogs
+      description: |
+        Takes major id as input and returns a list of catalogs in that major for each availble year.
+      parameters:
+        - in: query
+          name: majorId
+          description: Id of major
+          required: false
+          schema:
+            type: integer
+
+      responses:
+        "200":
+          description: Connected successfully to database and made query
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/catcourses"
+        "400":
+          description: Failed to connect to database
+
+  /catalogs/catalog:
+    get:
+      tags:
+        - developers
+      summary: Gets one catalog based on catalog id.
+      operationId: getCatalog
+      description: |
+        Takes catalog Id as input and returns one catalog with that specific id.
+      parameters:
+        - in: query
+          name: catalogId
+          description: Id of catalog
+          required: true
+          schema:
+            type: integer
+
+      responses:
+        "200":
+          description: Connected successfully to database and made query
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/catalog"
+        "400":
+          description: Failed to connect to database
+
+  /catalogs/courses:
+    get:
+      tags:
+        - developers
+      summary: Gets all the courses in a certian catalog
+      description: |
+        Takes catalog Id or course Id as input (both not required) and returns a list of courses for a specific catalog based on the catalog id or a list of courses based on the course type id or based on both.
+      parameters:
+        - in: query
+          name: catalogId
+          description: Id of catalog
+          required: false
+          schema:
+            type: integer
+        - in: query
+          name: courseTypeId
+          description: Id of catalog
+          required: false
+          schema:
+            type: integer
+
+      responses:
+        "200":
+          description: Connected successfully to database and made query
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: "#/components/schemas/catcourses"
+        "400":
+          description: Failed to connect to database
+  /catalogs/plans/courses:
+    get:
+      tags:
+        - developers
+      summary: Gets all the courses in a certian plan based on the catlog id and the semester number
+      description: Takes the catalog Id and semester number as inout and returns a list of courses
+      parameters: 
+        - in: query
+          name: catalogId
+          description: Id of catalog
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Connected successfully to database and made query
+          content:
+            application/json:
+              schema:
+                type: object
+                $ref: '#/components/schemas/catcourses'
+        '400':
+          description: Failed to connect to database
+
+
+
+components:
+  schemas:
+    planCatalogs:
+      type: array
+      items:
+        type: object
+      example:
+      - catalogId: 27
+        courseId: 460
+        courseTypeId: 2
+        courseCode: 1001
+        courseTitle: Fundamentals of Computing I
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites: []
+      - catalogId: 27
+        courseId: 461
+        courseTypeId: 2
+        courseCode: 1101
+        courseTitle: Fundamentals of Computing II
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 460
+            courseCode: 1001
+            courseTitle: Fundamentals of Computing I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 462
+            courseCode: 1102
+            courseTitle: Fundamentals of Computing II Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 462
+        courseTypeId: 2
+        courseCode: 1102
+        courseTitle: Fundamentals of Computing II Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 464
+        courseTypeId: 2
+        courseCode: 2202
+        courseTitle: Analysis and Design of Algorithms
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+          - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 465
+            courseCode: 2203
+            courseTitle: Analysis and Design of Algorithms Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 465
+        courseTypeId: 2
+        courseCode: 2203
+        courseTitle: Analysis and Design of Algorithms Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 464
+            courseCode: 2202
+            courseTitle: Analysis and Design of Algorithms
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+          - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 466
+        courseTypeId: 2
+        courseCode: 2301
+        courseTitle: Digital Design I
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+          - courseId: 467
+            courseCode: 2302
+            courseTitle: Digital Design I Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 468
+        courseTypeId: 2
+        courseCode: 2303
+        courseTitle: Computer Organization and Assembly Language Programming
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 466
+            courseCode: 2301
+            courseTitle: Digital Design I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 828
+            courseCode: 2101
+            courseTitle: Digital Logic Design
+            credits: 3
+            prefix: ECNG
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 467
+        courseTypeId: 2
+        courseCode: 2302
+        courseTitle: Digital Design I Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 466
+            courseCode: 2301
+            courseTitle: Digital Design I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 474
+        courseTypeId: 2
+        courseCode: 3104
+        courseTitle: Concepts of Programming Languages
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 475
+        courseTypeId: 2
+        courseCode: 3301
+        courseTitle: Computer Architecture
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 466
+            courseCode: 2301
+            courseTitle: Digital Design I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 468
+            courseCode: 2303
+            courseTitle: Computer Organization and Assembly Language Programming
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 476
+            courseCode: 3302
+            courseTitle: Computer Architecture Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 476
+        courseTypeId: 2
+        courseCode: 3302
+        courseTitle: Computer Architecture Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 475
+            courseCode: 3301
+            courseTitle: Computer Architecture
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 488
+        courseTypeId: 2
+        courseCode: 3701
+        courseTitle: Software Engineering
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 482
+        courseTypeId: 2
+        courseCode: 3401
+        courseTitle: Operating Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 468
+            courseCode: 2303
+            courseTitle: Computer Organization and Assembly Language Programming
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 483
+            courseCode: 3402
+            courseTitle: Operating Systems Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 483
+        courseTypeId: 2
+        courseCode: 3402
+        courseTitle: Operating Systems Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 482
+            courseCode: 3401
+            courseTitle: Operating Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+          - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 490
+        courseTypeId: 2
+        courseCode: 4201
+        courseTitle: Theory of Computing
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 5
+            requisiteType: senior standing
+      - catalogId: 27
+        courseId: 489
+        courseTypeId: 2
+        courseCode: 4101
+        courseTitle: Compiler Design
+        credits: 3
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 474
+            courseCode: 3104
+            courseTitle: Concepts of Programming Languages
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 725
+        courseTypeId: 2
+        courseCode: 4950
+        courseTitle: Industrial Training
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 5
+            requisiteType: senior standing
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+      - catalogId: 27
+        courseId: 726
+        courseTypeId: 2
+        courseCode: 4980
+        courseTitle: Senior Project I
+        credits: 1
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 5
+            requisiteType: senior standing
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 7
+            requisiteType: finished 300 level courses
+      - catalogId: 27
+        courseId: 727
+        courseTypeId: 2
+        courseCode: 4981
+        courseTitle: Senior Project II
+        credits: 2
+        prefix: CSCE
+        courseType: Concentration Requirements
+        requisites:
+        - - courseId: 726
+            courseCode: 4980
+            courseTitle: Senior Project I
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 469
+        courseTypeId: 3
+        courseCode: 2501
+        courseTitle: Fundamentals of Database Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 471
+        courseTypeId: 3
+        courseCode: 3101
+        courseTitle: Programming Language
+        credits:
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 460
+            courseCode: 1001
+            courseTitle: Fundamentals of Computing I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 472
+        courseTypeId: 3
+        courseCode: 3102
+        courseTitle: Programming in Java
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 473
+        courseTypeId: 3
+        courseCode: 3103
+        courseTitle: Object Oriented Programming
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 479
+        courseTypeId: 3
+        courseCode: 3311
+        courseTitle: Data and Computer Communications
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 500
+        courseTypeId: 3
+        courseCode: 4602
+        courseTitle: Introduction to Artificial Neural Networks
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1438
+            courseCode: 2123
+            courseTitle: Calculus III
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 491
+        courseTypeId: 3
+        courseCode: 4301
+        courseTitle: Embedded Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 475
+            courseCode: 3301
+            courseTitle: Computer Architecture
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 482
+            courseCode: 3401
+            courseTitle: Operating Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 480
+            courseCode: 3312
+            courseTitle: Computer Networks
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 492
+            courseCode: 4302
+            courseTitle: Embedded Systems Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 477
+        courseTypeId: 3
+        courseCode: 3303
+        courseTitle: Fundamental Microelectronics
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 466
+            courseCode: 2301
+            courseTitle: Digital Design I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 478
+        courseTypeId: 3
+        courseCode: 3304
+        courseTitle: Digital Design II
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 466
+            courseCode: 2301
+            courseTitle: Digital Design I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 477
+            courseCode: 3303
+            courseTitle: Fundamental Microelectronics
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 480
+        courseTypeId: 3
+        courseCode: 3312
+        courseTitle: Computer Networks
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 481
+            courseCode: 3313
+            courseTitle: Computer Networks Lab
+            credits: 1
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 487
+        courseTypeId: 3
+        courseCode: 3611
+        courseTitle: Digital Signal Processing
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 4
+            requisiteType: junior standing
+      - catalogId: 27
+        courseId: 494
+        courseTypeId: 3
+        courseCode: 4314
+        courseTitle: Local Area Networks Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 493
+            courseCode: 4313
+            courseTitle: Local and Metropolitan Area Networks
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 493
+        courseTypeId: 3
+        courseCode: 4313
+        courseTitle: Local and Metropolitan Area Networks
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 479
+            courseCode: 3311
+            courseTitle: Data and Computer Communications
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 492
+        courseTypeId: 3
+        courseCode: 4302
+        courseTitle: Embedded Systems Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 491
+            courseCode: 4301
+            courseTitle: Embedded Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 481
+        courseTypeId: 3
+        courseCode: 3313
+        courseTitle: Computer Networks Lab
+        credits: 1
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 480
+            courseCode: 3312
+            courseTitle: Computer Networks
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 504
+        courseTypeId: 3
+        courseCode: 4701
+        courseTitle: Object-Oriented Analysis and Design
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 488
+            courseCode: 3701
+            courseTitle: Software Engineering
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 495
+        courseTypeId: 3
+        courseCode: 4411
+        courseTitle: Fundamentals of Distributed Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 482
+            courseCode: 3401
+            courseTitle: Operating Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 496
+        courseTypeId: 3
+        courseCode: 4421
+        courseTitle: Computer Security
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 482
+            courseCode: 3401
+            courseTitle: Operating Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 505
+        courseTypeId: 3
+        courseCode: 4702
+        courseTitle: Secure Systems Engineering
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 488
+            courseCode: 3701
+            courseTitle: Software Engineering
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 482
+            courseCode: 3401
+            courseTitle: Operating Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 497
+        courseTypeId: 3
+        courseCode: 4501
+        courseTitle: Database Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 469
+            courseCode: 2501
+            courseTitle: Fundamentals of Database Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 503
+        courseTypeId: 3
+        courseCode: 4621
+        courseTitle: Computer Graphics
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 498
+        courseTypeId: 3
+        courseCode: 4502
+        courseTitle: Design of Web-based Systems
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 469
+            courseCode: 2501
+            courseTitle: Fundamentals of Database Systems
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 501
+        courseTypeId: 3
+        courseCode: 4603
+        courseTitle: Fundamentals of Computer Vision
+        credits: 3
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId: 461
+            courseCode: 1101
+            courseTitle: Fundamentals of Computing II
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 507
+        courseTypeId: 3
+        courseCode: 4930
+        courseTitle: Selected Topics in Computer Science and Engineering
+        credits:
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 4
+            requisiteType: junior standing
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 5
+            requisiteType: senior standing
+      - catalogId: 27
+        courseId: 506
+        courseTypeId: 3
+        courseCode: 4910
+        courseTitle: Guided Studies in Computer Science and Engineering
+        credits:
+        prefix: CSCE
+        courseType: Major Electives
+        requisites:
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+      - catalogId: 27
+        courseId: 1447
+        courseTypeId: 8
+        courseCode: 3143
+        courseTitle: Numerical Methods
+        credits: 3
+        prefix: MACT
+        courseType: Maths Elective or Major Elective
+        requisites:
+        - - courseId: 460
+            courseCode: 1001
+            courseTitle: Fundamentals of Computing I
+            credits: 3
+            prefix: CSCE
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+          - courseId: 1442
+            courseCode: 2141
+            courseTitle: Differential Equations
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+          - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 1445
+        courseTypeId: 3
+        courseCode: 3133
+        courseTitle: Formal and Mathematical Logic
+        credits: 3
+        prefix: MACT
+        courseType: Major Electives
+        requisites:
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 1756
+            courseCode: 2010
+            courseTitle: Truth, Lies, and Logical Reasoning
+            credits: 3
+            prefix: PHIL
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 1756
+            courseCode: 2010
+            courseTitle: Truth, Lies, and Logical Reasoning
+            credits: 3
+            prefix: PHIL
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+      - catalogId: 27
+        courseId: 1457
+        courseTypeId: 3
+        courseCode: 4134
+        courseTitle: Modern Algebra
+        credits: 3
+        prefix: MACT
+        courseType: Major Electives
+        requisites:
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+      - catalogId: 27
+        courseId: 1459
+        courseTypeId: 8
+        courseCode: 4212
+        courseTitle: Stochastic Processes
+        credits: 3
+        prefix: MACT
+        courseType: Maths Elective or Major Elective
+        requisites:
+        - - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1442
+            courseCode: 2141
+            courseTitle: Differential Equations
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1449
+            courseCode: 3211
+            courseTitle: Applied Probability
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 1441
+            courseCode: 2132
+            courseTitle: Linear Algebra
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1442
+            courseCode: 2141
+            courseTitle: Differential Equations
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1451
+            courseCode: 3224
+            courseTitle: Probability and Statistics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 1458
+        courseTypeId: 8
+        courseCode: 4135
+        courseTitle: Graph Theory
+        credits: 3
+        prefix: MACT
+        courseType: Maths Elective or Major Elective
+        requisites:
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1449
+            courseCode: 3211
+            courseTitle: Applied Probability
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1451
+            courseCode: 3224
+            courseTitle: Probability and Statistics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+        - - courseId: 1440
+            courseCode: 2131
+            courseTitle: Discrete Mathematics
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 6
+            requisiteType: instructor consent
+      - catalogId: 27
+        courseId: 1442
+        courseTypeId: 7
+        courseCode: 2141
+        courseTitle: Differential Equations
+        credits: 3
+        prefix: MACT
+        courseType: Maths Elective
+        requisites:
+        - - courseId: 1435
+            courseCode: 1122
+            courseTitle: Calculus II
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 1434
+        courseTypeId: 4
+        courseCode: 1121
+        courseTitle: Calculus I
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites: []
+      - catalogId: 27
+        courseId: 1435
+        courseTypeId: 4
+        courseCode: 1122
+        courseTitle: Calculus II
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1434
+            courseCode: 1121
+            courseTitle: Calculus I
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 1440
+        courseTypeId: 4
+        courseCode: 2131
+        courseTitle: Discrete Mathematics
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1434
+            courseCode: 1121
+            courseTitle: Calculus I
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 1438
+        courseTypeId: 4
+        courseCode: 2123
+        courseTitle: Calculus III
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1435
+            courseCode: 1122
+            courseTitle: Calculus II
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 1441
+        courseTypeId: 4
+        courseCode: 2132
+        courseTitle: Linear Algebra
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1435
+            courseCode: 1122
+            courseTitle: Calculus II
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 1451
+        courseTypeId: 4
+        courseCode: 3224
+        courseTitle: Probability and Statistics
+        credits: 3
+        prefix: MACT
+        courseType: Collateral Requirements
+        requisites: []
+      - catalogId: 27
+        courseId: 1788
+        courseTypeId: 4
+        courseCode: 1011
+        courseTitle: Classical Mechanics, Sound and Heat
+        credits: 3
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1434
+            courseCode: 1121
+            courseTitle: Calculus I
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1789
+            courseCode: 1012
+            courseTitle: General Physics Laboratory I
+            credits: 1
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 1790
+        courseTypeId: 4
+        courseCode: 1021
+        courseTitle: Electricity and Magnetism
+        credits: 3
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1788
+            courseCode: 1011
+            courseTitle: Classical Mechanics, Sound and Heat
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1789
+            courseCode: 1012
+            courseTitle: General Physics Laboratory I
+            credits: 1
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1435
+            courseCode: 1122
+            courseTitle: Calculus II
+            credits: 3
+            prefix: MACT
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+          - courseId: 1791
+            courseCode: 1022
+            courseTitle: General Physics Laboratory II
+            credits: 1
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 1789
+        courseTypeId: 4
+        courseCode: 1012
+        courseTitle: General Physics Laboratory I
+        credits: 1
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1788
+            courseCode: 1011
+            courseTitle: Classical Mechanics, Sound and Heat
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 1791
+        courseTypeId: 4
+        courseCode: 1022
+        courseTitle: General Physics Laboratory II
+        credits: 1
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1790
+            courseCode: 1021
+            courseTitle: Electricity and Magnetism
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 1795
+        courseTypeId: 4
+        courseCode: 2211
+        courseTitle: Introduction to Electronics
+        credits: 3
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1790
+            courseCode: 1021
+            courseTitle: Electricity and Magnetism
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1796
+            courseCode: 2212
+            courseTitle: Electronics Laboratory
+            credits: 2
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+        - - courseId: 1790
+            courseCode: 1021
+            courseTitle: Electricity and Magnetism
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 1797
+            courseCode: 2213
+            courseTitle: Electronics lab for Computer Scientists & Computer Engineers
+            credits: 1
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 1797
+        courseTypeId: 4
+        courseCode: 2213
+        courseTitle: Electronics lab for Computer Scientists & Computer Engineers
+        credits: 1
+        prefix: PHYS
+        courseType: Collateral Requirements
+        requisites:
+        - - courseId: 1795
+            courseCode: 2211
+            courseTitle: Introduction to Electronics
+            credits: 3
+            prefix: PHYS
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 4
+        courseTypeId: 1
+        courseCode: -8
+        courseTitle: Arab World Studies II
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 5
+        courseTypeId: 1
+        courseCode: -7
+        courseTitle: Arab World Studies I
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 6
+        courseTypeId: 1
+        courseCode: -6
+        courseTitle: Core Capstone II
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites:
+        - - courseId:
+            courseCode:
+            courseTitle:
+            credits:
+            prefix:
+            requisiteTypeId: 5
+            requisiteType: senior standing
+      - catalogId: 27
+        courseId: 8
+        courseTypeId: 1
+        courseCode: -4
+        courseTitle: Humanities and Social Sciences
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 9
+        courseTypeId: 1
+        courseCode: -3
+        courseTitle: Global Studies
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 10
+        courseTypeId: 1
+        courseCode: -2
+        courseTitle: 'Pathways II: Cultural Explorations'
+        credits: 3
+        prefix: XXXX
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 2093
+        courseTypeId: 1
+        courseCode: 1010
+        courseTitle: Freshman Writing
+        credits: 3
+        prefix: RHET
+        courseType: Core Curriculum
+        requisites:
+        - - courseId: 221
+            courseCode: 1010
+            courseTitle: Freshman Seminar
+            credits: 3
+            prefix: CORE
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 221
+        courseTypeId: 1
+        courseCode: 1010
+        courseTitle: Freshman Seminar
+        credits: 3
+        prefix: CORE
+        courseType: Core Curriculum
+        requisites:
+        - - courseId: 2093
+            courseCode: 1010
+            courseTitle: Freshman Writing
+            credits: 3
+            prefix: RHET
+            requisiteTypeId: 2
+            requisiteType: concurrent
+      - catalogId: 27
+        courseId: 2094
+        courseTypeId: 1
+        courseCode: 1020
+        courseTitle: Research Writing
+        credits: 3
+        prefix: RHET
+        courseType: Core Curriculum
+        requisites:
+        - - courseId: 2093
+            courseCode: 1010
+            courseTitle: Freshman Writing
+            credits: 3
+            prefix: RHET
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+          - courseId: 221
+            courseCode: 1010
+            courseTitle: Freshman Seminar
+            credits: 3
+            prefix: CORE
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      - catalogId: 27
+        courseId: 439
+        courseTypeId: 1
+        courseCode: 1020
+        courseTitle: Scientific Thinking
+        credits: 3
+        prefix: SCI
+        courseType: Core Curriculum
+        requisites: []
+      - catalogId: 27
+        courseId: 1329
+        courseTypeId: 1
+        courseCode: 1020
+        courseTitle: Libraries and Learning Technologies
+        credits: 0
+        prefix: LALT
+        courseType: Core Curriculum
+        requisites:
+        - - courseId: 2094
+            courseCode: 1020
+            courseTitle: Research Writing
+            credits: 3
+            prefix: RHET
+            requisiteTypeId: 3
+            requisiteType: prerequisite or concurrent
+      - catalogId: 27
+        courseId: 1758
+        courseTypeId: 1
+        courseCode: 2100
+        courseTitle: Philosophical Thinking
+        credits: 3
+        prefix: PHIL
+        courseType: Core Curriculum
+        requisites:
+        - - courseId: 2093
+            courseCode: 1010
+            courseTitle: Freshman Writing
+            credits: 3
+            prefix: RHET
+            requisiteTypeId: 1
+            requisiteType: prerequisite
+      
+    catalog:
+      type: object
+      example:
+        catalogId: 31
+        majorId: 141
+        year: 2016-2017
+        coreCredits: 33
+        concReqCredits: 59
+        concElecCredits: 15
+        collateralCredits: 0
+        generalElecCredits: 9
+        engCoreCredits: 52
+    catalogs:
+      type: array
+      items:
+        type: object
+      example:
+        - catalogId: 31
+          majorId: 141
+          year: 2016-2017
+          coreCredits: 33
+          concReqCredits: 59
+          concElecCredits: 15
+          collateralCredits: 0
+          generalElecCredits: 9
+          engCoreCredits: 52
+        - catalogId: 32
+          majorId: 141
+          year: 2017-2018
+          coreCredits: 33
+          concReqCredits: 59
+          concElecCredits: 15
+          collateralCredits: 0
+          generalElecCredits: 9
+          engCoreCredits: 52
+        - catalogId: 33
+          majorId: 141
+          year: 2018-2019
+          coreCredits: 33
+          concReqCredits: 59
+          concElecCredits: 15
+          collateralCredits: 0
+          generalElecCredits: 9
+          engCoreCredits: 52
+        - catalogId: 34
+          majorId: 141
+          year: 2019-2020
+          coreCredits: 33
+          concReqCredits: 59
+          concElecCredits: 15
+          collateralCredits: 0
+          generalElecCredits: 3
+          engCoreCredits: 52
+        - catalogId: 35
+          majorId: 141
+          year: 2020-2021
+          coreCredits: 33
+          concReqCredits: 59
+          concElecCredits: 15
+          collateralCredits: 0
+          generalElecCredits: 3
+          engCoreCredits: 52
+        - catalogId: 36
+          majorId: 141
+          year: 2021-2022
+          coreCredits: 33
+          concReqCredits: 56
+          concElecCredits: 18
+          collateralCredits: 0
+          generalElecCredits: 3
+          engCoreCredits: 52
+
+    catcourses:
+      type: array
+      items:
+        type: object
+      example:
+        - catalogId: 27
+          courseId: 460
+          courseTypeId: 2
+          courseCode: 1001
+          courseTitle: Fundamentals of Computing I
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites: []
+        - catalogId: 27
+          courseId: 461
+          courseTypeId: 2
+          courseCode: 1101
+          courseTitle: Fundamentals of Computing II
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 460
+                courseCode: 1001
+                courseTitle: Fundamentals of Computing I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 462
+                courseCode: 1102
+                courseTitle: Fundamentals of Computing II Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 462
+          courseTypeId: 2
+          courseCode: 1102
+          courseTitle: Fundamentals of Computing II Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 464
+          courseTypeId: 2
+          courseCode: 2202
+          courseTitle: Analysis and Design of Algorithms
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+              - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 465
+                courseCode: 2203
+                courseTitle: Analysis and Design of Algorithms Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 465
+          courseTypeId: 2
+          courseCode: 2203
+          courseTitle: Analysis and Design of Algorithms Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 464
+                courseCode: 2202
+                courseTitle: Analysis and Design of Algorithms
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+              - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 466
+          courseTypeId: 2
+          courseCode: 2301
+          courseTitle: Digital Design I
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+              - courseId: 467
+                courseCode: 2302
+                courseTitle: Digital Design I Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 468
+          courseTypeId: 2
+          courseCode: 2303
+          courseTitle: Computer Organization and Assembly Language Programming
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 466
+                courseCode: 2301
+                courseTitle: Digital Design I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 828
+                courseCode: 2101
+                courseTitle: Digital Logic Design
+                credits: 3
+                prefix: ECNG
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 467
+          courseTypeId: 2
+          courseCode: 2302
+          courseTitle: Digital Design I Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 466
+                courseCode: 2301
+                courseTitle: Digital Design I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 474
+          courseTypeId: 2
+          courseCode: 3104
+          courseTitle: Concepts of Programming Languages
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 475
+          courseTypeId: 2
+          courseCode: 3301
+          courseTitle: Computer Architecture
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 466
+                courseCode: 2301
+                courseTitle: Digital Design I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 468
+                courseCode: 2303
+                courseTitle: Computer Organization and Assembly Language Programming
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 476
+                courseCode: 3302
+                courseTitle: Computer Architecture Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 476
+          courseTypeId: 2
+          courseCode: 3302
+          courseTitle: Computer Architecture Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 475
+                courseCode: 3301
+                courseTitle: Computer Architecture
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 488
+          courseTypeId: 2
+          courseCode: 3701
+          courseTitle: Software Engineering
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 482
+          courseTypeId: 2
+          courseCode: 3401
+          courseTitle: Operating Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 468
+                courseCode: 2303
+                courseTitle: Computer Organization and Assembly Language Programming
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 483
+                courseCode: 3402
+                courseTitle: Operating Systems Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 483
+          courseTypeId: 2
+          courseCode: 3402
+          courseTitle: Operating Systems Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 482
+                courseCode: 3401
+                courseTitle: Operating Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+              - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 490
+          courseTypeId: 2
+          courseCode: 4201
+          courseTitle: Theory of Computing
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 5
+                requisiteType: senior standing
+        - catalogId: 27
+          courseId: 489
+          courseTypeId: 2
+          courseCode: 4101
+          courseTitle: Compiler Design
+          credits: 3
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 474
+                courseCode: 3104
+                courseTitle: Concepts of Programming Languages
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 725
+          courseTypeId: 2
+          courseCode: 4950
+          courseTitle: Industrial Training
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 5
+                requisiteType: senior standing
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+        - catalogId: 27
+          courseId: 726
+          courseTypeId: 2
+          courseCode: 4980
+          courseTitle: Senior Project I
+          credits: 1
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 5
+                requisiteType: senior standing
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 7
+                requisiteType: finished 300 level courses
+        - catalogId: 27
+          courseId: 727
+          courseTypeId: 2
+          courseCode: 4981
+          courseTitle: Senior Project II
+          credits: 2
+          prefix: CSCE
+          courseType: Concentration Requirements
+          requisites:
+            - - courseId: 726
+                courseCode: 4980
+                courseTitle: Senior Project I
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 469
+          courseTypeId: 3
+          courseCode: 2501
+          courseTitle: Fundamentals of Database Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 471
+          courseTypeId: 3
+          courseCode: 3101
+          courseTitle: Programming Language
+          credits: null
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 460
+                courseCode: 1001
+                courseTitle: Fundamentals of Computing I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 472
+          courseTypeId: 3
+          courseCode: 3102
+          courseTitle: Programming in Java
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 473
+          courseTypeId: 3
+          courseCode: 3103
+          courseTitle: Object Oriented Programming
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 479
+          courseTypeId: 3
+          courseCode: 3311
+          courseTitle: Data and Computer Communications
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 500
+          courseTypeId: 3
+          courseCode: 4602
+          courseTitle: Introduction to Artificial Neural Networks
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1438
+                courseCode: 2123
+                courseTitle: Calculus III
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 491
+          courseTypeId: 3
+          courseCode: 4301
+          courseTitle: Embedded Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 475
+                courseCode: 3301
+                courseTitle: Computer Architecture
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 482
+                courseCode: 3401
+                courseTitle: Operating Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 480
+                courseCode: 3312
+                courseTitle: Computer Networks
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 492
+                courseCode: 4302
+                courseTitle: Embedded Systems Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 477
+          courseTypeId: 3
+          courseCode: 3303
+          courseTitle: Fundamental Microelectronics
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 466
+                courseCode: 2301
+                courseTitle: Digital Design I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 478
+          courseTypeId: 3
+          courseCode: 3304
+          courseTitle: Digital Design II
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 466
+                courseCode: 2301
+                courseTitle: Digital Design I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 477
+                courseCode: 3303
+                courseTitle: Fundamental Microelectronics
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 480
+          courseTypeId: 3
+          courseCode: 3312
+          courseTitle: Computer Networks
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 481
+                courseCode: 3313
+                courseTitle: Computer Networks Lab
+                credits: 1
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 487
+          courseTypeId: 3
+          courseCode: 3611
+          courseTitle: Digital Signal Processing
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 4
+                requisiteType: junior standing
+        - catalogId: 27
+          courseId: 494
+          courseTypeId: 3
+          courseCode: 4314
+          courseTitle: Local Area Networks Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 493
+                courseCode: 4313
+                courseTitle: Local and Metropolitan Area Networks
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 493
+          courseTypeId: 3
+          courseCode: 4313
+          courseTitle: Local and Metropolitan Area Networks
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 479
+                courseCode: 3311
+                courseTitle: Data and Computer Communications
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 492
+          courseTypeId: 3
+          courseCode: 4302
+          courseTitle: Embedded Systems Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 491
+                courseCode: 4301
+                courseTitle: Embedded Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 481
+          courseTypeId: 3
+          courseCode: 3313
+          courseTitle: Computer Networks Lab
+          credits: 1
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 480
+                courseCode: 3312
+                courseTitle: Computer Networks
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 504
+          courseTypeId: 3
+          courseCode: 4701
+          courseTitle: Object-Oriented Analysis and Design
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 488
+                courseCode: 3701
+                courseTitle: Software Engineering
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 495
+          courseTypeId: 3
+          courseCode: 4411
+          courseTitle: Fundamentals of Distributed Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 482
+                courseCode: 3401
+                courseTitle: Operating Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 496
+          courseTypeId: 3
+          courseCode: 4421
+          courseTitle: Computer Security
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 482
+                courseCode: 3401
+                courseTitle: Operating Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 505
+          courseTypeId: 3
+          courseCode: 4702
+          courseTitle: Secure Systems Engineering
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 488
+                courseCode: 3701
+                courseTitle: Software Engineering
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 482
+                courseCode: 3401
+                courseTitle: Operating Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 497
+          courseTypeId: 3
+          courseCode: 4501
+          courseTitle: Database Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 469
+                courseCode: 2501
+                courseTitle: Fundamentals of Database Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 503
+          courseTypeId: 3
+          courseCode: 4621
+          courseTitle: Computer Graphics
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 498
+          courseTypeId: 3
+          courseCode: 4502
+          courseTitle: Design of Web-based Systems
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 469
+                courseCode: 2501
+                courseTitle: Fundamentals of Database Systems
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 501
+          courseTypeId: 3
+          courseCode: 4603
+          courseTitle: Fundamentals of Computer Vision
+          credits: 3
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: 461
+                courseCode: 1101
+                courseTitle: Fundamentals of Computing II
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 507
+          courseTypeId: 3
+          courseCode: 4930
+          courseTitle: Selected Topics in Computer Science and Engineering
+          credits: null
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 4
+                requisiteType: junior standing
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 5
+                requisiteType: senior standing
+        - catalogId: 27
+          courseId: 506
+          courseTypeId: 3
+          courseCode: 4910
+          courseTitle: Guided Studies in Computer Science and Engineering
+          credits: null
+          prefix: CSCE
+          courseType: Major Electives
+          requisites:
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+        - catalogId: 27
+          courseId: 1447
+          courseTypeId: 8
+          courseCode: 3143
+          courseTitle: Numerical Methods
+          credits: 3
+          prefix: MACT
+          courseType: Maths Elective or Major Elective
+          requisites:
+            - - courseId: 460
+                courseCode: 1001
+                courseTitle: Fundamentals of Computing I
+                credits: 3
+                prefix: CSCE
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+              - courseId: 1442
+                courseCode: 2141
+                courseTitle: Differential Equations
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+              - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 1445
+          courseTypeId: 3
+          courseCode: 3133
+          courseTitle: Formal and Mathematical Logic
+          credits: 3
+          prefix: MACT
+          courseType: Major Electives
+          requisites:
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 1756
+                courseCode: 2010
+                courseTitle: Truth, Lies, and Logical Reasoning
+                credits: 3
+                prefix: PHIL
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 1756
+                courseCode: 2010
+                courseTitle: Truth, Lies, and Logical Reasoning
+                credits: 3
+                prefix: PHIL
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+        - catalogId: 27
+          courseId: 1457
+          courseTypeId: 3
+          courseCode: 4134
+          courseTitle: Modern Algebra
+          credits: 3
+          prefix: MACT
+          courseType: Major Electives
+          requisites:
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+        - catalogId: 27
+          courseId: 1459
+          courseTypeId: 8
+          courseCode: 4212
+          courseTitle: Stochastic Processes
+          credits: 3
+          prefix: MACT
+          courseType: Maths Elective or Major Elective
+          requisites:
+            - - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1442
+                courseCode: 2141
+                courseTitle: Differential Equations
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1449
+                courseCode: 3211
+                courseTitle: Applied Probability
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 1441
+                courseCode: 2132
+                courseTitle: Linear Algebra
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1442
+                courseCode: 2141
+                courseTitle: Differential Equations
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1451
+                courseCode: 3224
+                courseTitle: Probability and Statistics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 1458
+          courseTypeId: 8
+          courseCode: 4135
+          courseTitle: Graph Theory
+          credits: 3
+          prefix: MACT
+          courseType: Maths Elective or Major Elective
+          requisites:
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1449
+                courseCode: 3211
+                courseTitle: Applied Probability
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1451
+                courseCode: 3224
+                courseTitle: Probability and Statistics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+            - - courseId: 1440
+                courseCode: 2131
+                courseTitle: Discrete Mathematics
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 6
+                requisiteType: instructor consent
+        - catalogId: 27
+          courseId: 1442
+          courseTypeId: 7
+          courseCode: 2141
+          courseTitle: Differential Equations
+          credits: 3
+          prefix: MACT
+          courseType: Maths Elective
+          requisites:
+            - - courseId: 1435
+                courseCode: 1122
+                courseTitle: Calculus II
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 1434
+          courseTypeId: 4
+          courseCode: 1121
+          courseTitle: Calculus I
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites: []
+        - catalogId: 27
+          courseId: 1435
+          courseTypeId: 4
+          courseCode: 1122
+          courseTitle: Calculus II
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1434
+                courseCode: 1121
+                courseTitle: Calculus I
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 1440
+          courseTypeId: 4
+          courseCode: 2131
+          courseTitle: Discrete Mathematics
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1434
+                courseCode: 1121
+                courseTitle: Calculus I
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 1438
+          courseTypeId: 4
+          courseCode: 2123
+          courseTitle: Calculus III
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1435
+                courseCode: 1122
+                courseTitle: Calculus II
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 1441
+          courseTypeId: 4
+          courseCode: 2132
+          courseTitle: Linear Algebra
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1435
+                courseCode: 1122
+                courseTitle: Calculus II
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 1451
+          courseTypeId: 4
+          courseCode: 3224
+          courseTitle: Probability and Statistics
+          credits: 3
+          prefix: MACT
+          courseType: Collateral Requirements
+          requisites: []
+        - catalogId: 27
+          courseId: 1788
+          courseTypeId: 4
+          courseCode: 1011
+          courseTitle: Classical Mechanics, Sound and Heat
+          credits: 3
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1434
+                courseCode: 1121
+                courseTitle: Calculus I
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1789
+                courseCode: 1012
+                courseTitle: General Physics Laboratory I
+                credits: 1
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 1790
+          courseTypeId: 4
+          courseCode: 1021
+          courseTitle: Electricity and Magnetism
+          credits: 3
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1788
+                courseCode: 1011
+                courseTitle: Classical Mechanics, Sound and Heat
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1789
+                courseCode: 1012
+                courseTitle: General Physics Laboratory I
+                credits: 1
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1435
+                courseCode: 1122
+                courseTitle: Calculus II
+                credits: 3
+                prefix: MACT
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+              - courseId: 1791
+                courseCode: 1022
+                courseTitle: General Physics Laboratory II
+                credits: 1
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 1789
+          courseTypeId: 4
+          courseCode: 1012
+          courseTitle: General Physics Laboratory I
+          credits: 1
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1788
+                courseCode: 1011
+                courseTitle: Classical Mechanics, Sound and Heat
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 1791
+          courseTypeId: 4
+          courseCode: 1022
+          courseTitle: General Physics Laboratory II
+          credits: 1
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1790
+                courseCode: 1021
+                courseTitle: Electricity and Magnetism
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 1795
+          courseTypeId: 4
+          courseCode: 2211
+          courseTitle: Introduction to Electronics
+          credits: 3
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1790
+                courseCode: 1021
+                courseTitle: Electricity and Magnetism
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1796
+                courseCode: 2212
+                courseTitle: Electronics Laboratory
+                credits: 2
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+            - - courseId: 1790
+                courseCode: 1021
+                courseTitle: Electricity and Magnetism
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 1797
+                courseCode: 2213
+                courseTitle: Electronics lab for Computer Scientists & Computer Engineers
+                credits: 1
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 1797
+          courseTypeId: 4
+          courseCode: 2213
+          courseTitle: Electronics lab for Computer Scientists & Computer Engineers
+          credits: 1
+          prefix: PHYS
+          courseType: Collateral Requirements
+          requisites:
+            - - courseId: 1795
+                courseCode: 2211
+                courseTitle: Introduction to Electronics
+                credits: 3
+                prefix: PHYS
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 4
+          courseTypeId: 1
+          courseCode: -8
+          courseTitle: Arab World Studies II
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 5
+          courseTypeId: 1
+          courseCode: -7
+          courseTitle: Arab World Studies I
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 6
+          courseTypeId: 1
+          courseCode: -6
+          courseTitle: Core Capstone II
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: null
+                courseCode: null
+                courseTitle: null
+                credits: null
+                prefix: null
+                requisiteTypeId: 5
+                requisiteType: senior standing
+        - catalogId: 27
+          courseId: 8
+          courseTypeId: 1
+          courseCode: -4
+          courseTitle: Humanities and Social Sciences
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 9
+          courseTypeId: 1
+          courseCode: -3
+          courseTitle: Global Studies
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 10
+          courseTypeId: 1
+          courseCode: -2
+          courseTitle: "Pathways II: Cultural Explorations"
+          credits: 3
+          prefix: XXXX
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 2093
+          courseTypeId: 1
+          courseCode: 1010
+          courseTitle: Freshman Writing
+          credits: 3
+          prefix: RHET
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: 221
+                courseCode: 1010
+                courseTitle: Freshman Seminar
+                credits: 3
+                prefix: CORE
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 221
+          courseTypeId: 1
+          courseCode: 1010
+          courseTitle: Freshman Seminar
+          credits: 3
+          prefix: CORE
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: 2093
+                courseCode: 1010
+                courseTitle: Freshman Writing
+                credits: 3
+                prefix: RHET
+                requisiteTypeId: 2
+                requisiteType: concurrent
+        - catalogId: 27
+          courseId: 2094
+          courseTypeId: 1
+          courseCode: 1020
+          courseTitle: Research Writing
+          credits: 3
+          prefix: RHET
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: 2093
+                courseCode: 1010
+                courseTitle: Freshman Writing
+                credits: 3
+                prefix: RHET
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+              - courseId: 221
+                courseCode: 1010
+                courseTitle: Freshman Seminar
+                credits: 3
+                prefix: CORE
+                requisiteTypeId: 1
+                requisiteType: prerequisite
+        - catalogId: 27
+          courseId: 439
+          courseTypeId: 1
+          courseCode: 1020
+          courseTitle: Scientific Thinking
+          credits: 3
+          prefix: SCI
+          courseType: Core Curriculum
+          requisites: []
+        - catalogId: 27
+          courseId: 1329
+          courseTypeId: 1
+          courseCode: 1020
+          courseTitle: Libraries and Learning Technologies
+          credits: 0
+          prefix: LALT
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: 2094
+                courseCode: 1020
+                courseTitle: Research Writing
+                credits: 3
+                prefix: RHET
+                requisiteTypeId: 3
+                requisiteType: prerequisite or concurrent
+        - catalogId: 27
+          courseId: 1758
+          courseTypeId: 1
+          courseCode: 2100
+          courseTitle: Philosophical Thinking
+          credits: 3
+          prefix: PHIL
+          courseType: Core Curriculum
+          requisites:
+            - - courseId: 2093
+                courseCode: 1010
+                courseTitle: Freshman Writing
+                credits: 3
+                prefix: RHET
+                requisiteTypeId: 1
+                requisiteType: prerequisite

@@ -1,12 +1,16 @@
 const _ = require("lodash");
 const { query, parseConditions } = require("../helpers/mysql");
 const { addCoursesRequisites } = require("../helpers/coursesRequisites");
+const c = require("config");
+const { func } = require("joi");
 
 module.exports = {
   getCatalogs,
   getCatalog,
   getCatCourses,
   getPlanCourses,
+  getMajorYears,
+  createCatalog
 };
 
 const baseQuery = "select * from catalogs";
@@ -19,11 +23,28 @@ const baseGetPlanCoursesQuery =
   "select * from planCourses AS pc\
    INNER JOIN courses AS c  on pc.courseId=c.courseId";
 
+async function createCatalog(catalog){
+  let insertCatalogSql = "INSERT INTO catalogs SET ?"
+  const [data, err] = await query(insertCatalogSql, [catalog]);
+  if (err) throw "Error adding catalog.";
+  return "Successfully inserted catalog";
+}
+async function getMajorYears(conditions){
+  let sql = "select year from catalogs";
+  const {columns, values} = parseConditions(conditions);
+
+  if (values.length) sql += ` WHERE ${columns}`;
+  const [data, err] = await query(sql, values);
+  if (err) throw "Error getting catalogs";
+  let yearsArray = data.map(item => item.year);
+
+  return yearsArray;
+
+}
 async function getCatalogs(conditions) {
   let sql = baseQuery;
   const { columns, values } = parseConditions(conditions);
   if (values.length) sql += ` WHERE ${columns}`;
-
   const [data, err] = await query(sql, values);
   if (err) throw "Error getting catalogs";
   return data;

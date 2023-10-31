@@ -10,7 +10,7 @@
     "port": 3306
   },
   "port": "",
-  "requiresAuth": false,
+  "requiresAuth": true,
 
   "emailFrom": "",
   "ethrealSmtpOptions": {

@@ -5,6 +5,8 @@ module.exports = {
   getCatalog,
   getCatCourses,
   getPlanCourses,
+  getYears,
+  createCatalog
 };
 
 function getCatalogs(req, res, next) {
@@ -19,7 +21,12 @@ function getCatCourses(req, res, next) {
     .then((catCourses) => res.send(catCourses))
     .catch(next);
 }
-
+function getYears(req, res, next){
+  catalogService
+    .getMajorYears(req.body)
+    .then((years)=>res.send(years))
+    .catch(next)
+}
 function getCatalog(req, res, next) {
   catalogService
     .getCatalog(req.body)
@@ -32,4 +39,11 @@ function getPlanCourses(req, res, next) {
     .getPlanCourses(req.body)
     .then((courses) => res.send(courses))
     .catch(next);
+}
+
+function createCatalog(req, res, next){
+  catalogService
+    .createCatalog(req.body)
+    .then(success=>res.send(success))
+    .catch(next)
 }

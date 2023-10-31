@@ -4,6 +4,7 @@ const _ = require("lodash");
 const frontendUrl = require("config").get("frontendUrl");
 
 module.exports = {
+  deleteUser,
   getUsers,
   getUser,
   verifyEmail,
@@ -17,18 +18,25 @@ module.exports = {
 };
 
 function register(req, res, next) {
-  usersService
-    .register(req.body)
-    .then(({ authToken, ...user }) =>
-      res
-        .header("x-auth-token", authToken)
-        .header("access-control-expose-headers", "x-auth-token")
-        .json({
+  usersService.register(req.body)
+    .then(({ authToken, ...user }) =>{
+      return (res.header("x-auth-token", authToken).header("access-control-expose-headers", "x-auth-token").json({
           message: "User registered successfuly. Verify you email to login.",
           user,
-        })
+        }))
+
+      }
+
     )
     .catch(next);
+}
+
+function deleteUser(req,res,next){
+  const userId = req.params.userId //TODO: change to path params
+  console.log(req.params)
+  usersService.deleteUser(userId)
+  .then(user=>res.send(user))
+  .catch(next)
 }
 
 function getUsers(req, res, next) {
@@ -102,6 +110,7 @@ function getUser(req, res, next) {
         .header("x-auth-token", authToken)
         .header("access-control-expose-headers", "x-auth-token")
         .json(userInfo);
+        
     })
     .catch(next);
 }
@@ -109,8 +118,8 @@ function getUser(req, res, next) {
 function login(req, res, next) {
   usersService
     .login(req.body)
-    .then((token) => {
-      res.send(token);
+    .then((user) => {
+      res.send(user);
     })
     .catch(next);
 }

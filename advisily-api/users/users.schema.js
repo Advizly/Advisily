@@ -15,6 +15,7 @@ const {
 } = require("../constants/schemas");
 
 module.exports = {
+  deleteUser,
   register,
   getUser,
   resetPassword,
@@ -34,7 +35,14 @@ function register() {
     password: PASSWORD_SCHEMA_REQUIRED,
     repeatPassword: REPEAT_PASSWORD_SCHEMA,
     email: EMAIL_SCHEMA_REQUIRED,
+    authToken: TOKEN_SCHEMA,
   });
+}
+
+function deleteUser(){
+  return Joi.object({
+    userId:ID_SCHEMA_REQUIRED
+  })
 }
 
 function resetPassword() {

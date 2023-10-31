@@ -13,7 +13,7 @@ module.exports = {
   removeSensitive,
 };
 function getAuthToken(user) {
-  return jwt.sign(basicInfo(user), privateKey);
+  return jwt.sign(basicInfo(user), privateKey, {expiresIn: "2h"});
 }
 
 async function getRandomToken() {

@@ -18,11 +18,15 @@ export const loginWithJwt = (jwt) => {
   http.setJwt(getJwt());
 };
 export const login = async ({ email, password }) => {
-  const { data: jwt } = await http.post(apiEndPoint, {
+  const { data: user } = await http.post(apiEndPoint, {
     email,
     password,
   });
-  localStorage.setItem(tokenKey, jwt);
+  if(user){
+    const jwt = user.token;
+    console.log(jwt)
+    localStorage.setItem(tokenKey, jwt);
+  }
 };
 export const logout = () => {
   localStorage.removeItem(tokenKey);
