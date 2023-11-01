@@ -106,9 +106,9 @@ function AdvisingForm(props) {
         return <Disclaimer />;
       case 1:
         return <MajorInfo />;
+      // case 2:
+      //   return <PreferencesInfo />;
       case 2:
-        return <PreferencesInfo />;
-      case 3:
         return <CoursesSubForm />;
 
       default:
@@ -121,9 +121,9 @@ function AdvisingForm(props) {
         return "DISCLAIMER!";
       case 1:
         return "Major Info";
+      // case 2:
+      //   return "Preferences";
       case 2:
-        return "Preferences";
-      case 3:
         return "Finished Courses";
       default:
         return "Advising";
@@ -145,12 +145,12 @@ function AdvisingForm(props) {
             Back
           </button>
         )}
-        {step < 3 && (
+        {step < 2 && (
           <button className="btn my-3 ms-auto" onClick={next} type="button">
             Next
           </button>
         )}
-        {step === 3 && <SubmitButton label="Generate Plan" />}
+        {step === 2 && <SubmitButton label="Generate Plan" />}
       </div>
     </Form>
   );
