@@ -13,7 +13,9 @@ const corsConfig = require("./middleware/cors");
 const academics = require("./academics");
 const advising = require("./advising/advising.route");
 const catalogs = require("./catalog/catalogs.route");
+const courses = require("./courses/courses.route");
 const users = require("./users/users.route");
+
 
 const port = config.has("port") ? config.get("port") : 5000;
 
@@ -34,6 +36,7 @@ app.use("/api/academics", academics);
 app.use("/api/catalogs", catalogs);
 app.use("/api/users", users);
 app.use("/api/advising", advising);
+app.use("/api/courses", courses);
 
 app.use(errorHandler);
 

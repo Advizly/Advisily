@@ -39,4 +39,23 @@ router.post(
   catalogController.createCatalog
 );
 
+router.post(
+  "/course",
+  requestValidator(schemas.createCourse(), "body"),
+  catalogController.createCourse
+)
+
+router.post(
+  "/copyCatCourses",
+  requestValidator(schemas.copyCourses(), "body"),
+  catalogController.copyCatalogCourses
+);
+
+router.post(
+  "/copyPlanCourses",
+  requestValidator(schemas.copyCourses(), "body"),
+  catalogController.copyPlanCourses
+);
+
+
 module.exports = router;

@@ -6,8 +6,36 @@ module.exports = {
   getCatCourses,
   getPlanCourses,
   getYears,
-  createCatalog
+  createCatalog,
+  createCourse,
+  copyPlanCourses,
+  copyCatalogCourses
 };
+
+function copyPlanCourses(req, res, next) {
+  const { sourceCatalogId, targetCatalogId } = req.body;
+
+  catalogService
+    .copyPlanCourses(sourceCatalogId, targetCatalogId)
+    .then((insertedCourses) => res.send(insertedCourses))
+    .catch(next);
+}
+
+function copyCatalogCourses(req, res, next) {
+  const { sourceCatalogId, targetCatalogId } = req.body;
+
+  catalogService
+    .copyCatalogCourses(sourceCatalogId, targetCatalogId)
+    .then((insertedCourses) => res.send(insertedCourses))
+    .catch(next);
+}
+
+function createCourse(req,res,next){
+  catalogService
+    .createCourse(req.body)
+    .then((course) => res.send(course))
+    .catch(next);
+}
 
 function getCatalogs(req, res, next) {
   catalogService
