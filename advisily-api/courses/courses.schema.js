@@ -1,11 +1,17 @@
 const Joi = require("joi");
 const { ID_SCHEMA, ID_SCHEMA_REQUIRED } = require("../constants/schemas");
 
-module.exports = { createCourse, getTypes, addCourseToPlan, removeCourse, getDistinctCoursesByPrefix };
+module.exports = { createCourse, getTypes, addCourseToPlan, removeCourse, getDistinctCoursesByPrefix, getCourseByCode };
 
 function getDistinctCoursesByPrefix() {
   return Joi.object({
     prefix: Joi.string().required()
+  });
+}
+
+function getCourseByCode() {
+  return Joi.object({
+    courseCode: Joi.number().required()
   });
 }
 

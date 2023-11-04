@@ -12,9 +12,29 @@ module.exports = {
   removeCourseFromCatalog,
   removeCourseFromPlan,
   getDistinctPrefixes,
-  getDistinctCoursesByPrefix
+  getDistinctCoursesByPrefix,
+  getMajors,
+  getCourseByCode
 };
 
+  async function getMajors(){
+    let sql = "select * from majors"
+    const [data, err] = await query(sql);
+    if (err) throw "Error adding course.";
+  
+    return  data ;
+  }
+
+  async function getCourseByCode(courseCode, prefix) {
+    const sql = "SELECT * FROM courses WHERE courseCode = ? and prefix=?";
+    const [course, err] = await query(sql, [courseCode, prefix]);
+    
+    if (err) {
+      throw new Error("Error fetching course by course code.");
+    }
+  
+    return course;
+  }
 
    async function createCourse(course) {
     let insertCourseSql = "INSERT INTO courses SET ?";

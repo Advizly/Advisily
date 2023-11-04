@@ -1,0 +1,419 @@
+{
+	"info": {
+		"_postman_id": "d181f6aa-40ae-442d-b1f9-e0b0a0b733d3",
+		"name": "Advisily-catalogs",
+		"description": "catalogs API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25807244"
+	},
+	"item": [
+		{
+			"name": "AllCatalogs",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/catalogs?majorId=142",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs"
+					],
+					"query": [
+						{
+							"key": "majorId",
+							"value": "142"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCatalog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"majorId\": \"142\",\r\n  \"year\": \"2023-2024\",\r\n  \"coreCredits\": 45,\r\n  \"concReqCredits\": 30,\r\n  \"concElecCredits\": 15,\r\n  \"collateralCredits\": 10,\r\n  \"generalElecCredits\": 20,\r\n  \"engCoreCredits\": 50\r\n02n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/catalogs/",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createCourse",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseCode\": 1011,\r\n  \"courseTitle\": \"Introduction to Computer Science\",\r\n  \"credits\": 3\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/courses",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTypes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/courses/types",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "copyCatCourses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sourceCatalogId\":36,\r\n    \"targetCatalogId\":43\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/catalogs/copyCatcourses",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs",
+						"copyCatcourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "copyPlanCourses",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"sourceCatalogId\":36,\r\n    \"targetCatalogId\":43\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/catalogs/copyPlancourses",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs",
+						"copyPlancourses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCourseToPlan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseId\": 460,\r\n  \"catalogId\": 43,\r\n  \"semesterNumber\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/courses/addCourseToPlan",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"addCourseToPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeCourseFromCatalog",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseId\": 460,\r\n  \"catalogId\": 43\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/courses/removeCourseFromCatalog",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"removeCourseFromCatalog"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeCourseFromPlan",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseId\": 460,\r\n  \"catalogId\": 43\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/api/courses/removeCourseFromPlan",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"removeCourseFromPlan"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetPrefixes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/courses/distinctPrefixes",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"distinctPrefixes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCourseByPrefix",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/courses/coursesByPrefix?prefix=CSCE",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"coursesByPrefix"
+					],
+					"query": [
+						{
+							"key": "prefix",
+							"value": "CSCE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getYearsByMajor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/catalogs/years?majorId=142",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs",
+						"years"
+					],
+					"query": [
+						{
+							"key": "majorId",
+							"value": "142"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllMajors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/courses/majors",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"majors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getByCouerseCodeAndPrefix",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/courses/courseByCodePrefix?courseCode=1000&prefix=CSCE",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"courses",
+						"courseByCodePrefix"
+					],
+					"query": [
+						{
+							"key": "courseCode",
+							"value": "1000"
+						},
+						{
+							"key": "prefix",
+							"value": "CSCE"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getCatalogPlanCourses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/api/catalogs/plans/courses?catalogId=25",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"catalogs",
+						"plans",
+						"courses"
+					],
+					"query": [
+						{
+							"key": "catalogId",
+							"value": "25"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import auth from "../services/authService";
+const tokenKey = "token";
+
 
 function useAuth(refresh) {
   const [user, setUser] = useState(auth.getCurrentUser());

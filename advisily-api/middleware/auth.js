@@ -12,6 +12,7 @@ module.exports = function (req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
+    console.log(err)
     next("Invalid tokne. Authentication failed.");
   }
 };

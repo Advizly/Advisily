@@ -33,6 +33,13 @@ router.post(
 
 router.get("/distinctPrefixes", coursesController.getDistinctPrefixes);
 
+router.get("/majors", coursesController.getMajors)
+
+router.get(
+  "/courseByCodePrefix",
+  requestValidator(schemas.getCourseByCode(), "query"),
+  coursesController.getCourseByCode
+);
 
 router.delete(
   "/removeCourseFromPlan",

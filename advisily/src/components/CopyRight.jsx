@@ -4,7 +4,7 @@ function CopyRight(props) {
   return (
     <div className="copy-right">
       <p>
-        2021 &copy;
+        2023 &copy;
         <a className="navbar-brand" href="https://www.aucegypt.edu/home">
           The American University in Cairo.
         </a>
