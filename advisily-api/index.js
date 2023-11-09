@@ -14,7 +14,7 @@ const advising = require("./advising/advising.route");
 const catalogs = require("./catalog/catalogs.route");
 const users = require("./users/users.route");
 
-const port = config.has("port") ? config.get("port") : 5000;
+const port = config.has("port") ? config.get("port"): 5000;
 
 app.use(express.json());
 app.use(headerConfig);
