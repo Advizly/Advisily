@@ -1,6 +1,8 @@
 import React from "react";
 
 function ContactUs(props) {
+  console.log("HIIIIIII");
+
   return (
     <div className=" text-center p-5">
       <h1>Contact Us</h1>

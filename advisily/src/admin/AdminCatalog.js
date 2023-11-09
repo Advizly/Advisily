@@ -3,7 +3,6 @@ import {useState} from 'react'
 import {InputLabel,MenuItem} from "@mui/material"
 import {Select} from "@mui/material"
 import * as React from 'react';
-import { MaterialReactTable } from 'material-react-table';
 import { data } from './makeData.js';
 import { useMemo } from 'react';
 import { Box } from '@mui/material';
@@ -31,6 +30,7 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
   return randomArrayItem(roles);
@@ -271,6 +271,8 @@ function EditToolbar(props) {
 
 
 function AdminCatalog() {
+  const {majorId} = useParams();
+  
     const [catalog,setCatalog] = useState(-1);
       const [showComboBox, setShowComboBox] = useState(false);
 

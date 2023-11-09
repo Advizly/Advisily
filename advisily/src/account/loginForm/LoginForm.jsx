@@ -15,6 +15,7 @@ import defaultValues from "./defaultValues";
 import validationSchema from "./validationSchema";
 import { PASSWORD, EMAIL } from "./fieldNames";
 function LoginForm(props) {
+  console.log("ENTERED LOGIN")
   const onSubmit = async (values, { setErrors, setStatus, ...rest }) => {
     // console.log("API URL: ", process.env);
      console.log("Values: ", values);
