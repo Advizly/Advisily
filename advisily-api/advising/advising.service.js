@@ -76,12 +76,13 @@ async function getAllResults() {
 
 async function getAdvisedUsers() {
     const sql =
-        "SELECT * from users where userId IN(select userId from advisingSessions where DATE(sessionDate) > '2022-1-1 00:00:00' )";
+        "SELECT * from users u INNER JOIN advisingSessions a on u.userId=a.userId  where DATE(sessionDate) > '2023-1-1 00:00:00' ";
 
     let [users, err] = await query(sql);
     if (err) throw "Error getting users list";
 
-    return users.map((user) => basicInfo(user));
+    
+    return users.map((user) => removeSensitive(user));
 }
 
 async function verifyResults({ advisingSessionId }) {

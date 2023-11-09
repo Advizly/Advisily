@@ -1,6 +1,12 @@
 import "./App.css";
 import { Redirect, Route, Switch, HashRouter } from "react-router-dom";
-
+import React, {useState, useEffect} from 'react'
+import {  Box, Button } from "@mui/material";
+import { BrowserRouter, Navigate, Routes } from 'react-router-dom';
+import {AdminCatalog} from "./admin";
+import {AdminView} from "./admin";
+import {AdminMajors} from "./admin";
+import { ADMIN_HOME_ROUTE, ADMIN_CATALOG_ROUTE }from "./admin" 
 import { AboutUs, ContactUs, Footer, Header, Home, NotFound } from "./common";
 import {
   ABOUT_US_ROUTE,
@@ -38,9 +44,29 @@ function App() {
                 <ProtectedRoute
                   path={ADVISING_HOME_ROUTE}
                   component={AdvisingRouter}
+                
+                />
+                
+                <ProtectedRoute
+                   path={'/admin/catalog'}
+                   component={AdminCatalog}
+                   requiresAdmin = {true}
+                />
+                <ProtectedRoute
+                   path={'/admin/major'}
+                   component={AdminMajors}
+                   requiresAdmin = {true}
+                />
+                <ProtectedRoute
+                  path={ADMIN_HOME_ROUTE}
+                  component={AdminView}
+                  requiresAdmin = {true}
+                />
+                <ProtectedRoute
+                 
                 />
                 <Route path={ACCOUNT_ROUTE} component={AccountRouter} />
-
+              
                 <ProtectedRoute path={PROFILE_ROUTE} component={Profile} />
                 <Route path={LOGOUT_ROUTE} component={Logout} />
 

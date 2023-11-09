@@ -16,8 +16,12 @@ const catalogs = require("./catalog/catalogs.route");
 const courses = require("./courses/courses.route");
 const users = require("./users/users.route");
 
+<<<<<<< HEAD
 
 const port = config.has("port") ? config.get("port") : 5000;
+=======
+const port = config.has("port") ? config.get("port") : 5000;
+>>>>>>> origin/frontend-admin
 
 app.use(express.json());
 app.use(headerConfig);

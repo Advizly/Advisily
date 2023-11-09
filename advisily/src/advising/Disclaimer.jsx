@@ -16,6 +16,9 @@ function Disclaimer(props) {
        <br/>
         It is <em><strong>your responsibility</strong></em> to make sure you meet all necessary graduation requirements as per your 
         {" "}<a href="https://catalog.aucegypt.edu/">catalog</a>, and that you have covered the prerequisites of the advised courses accordingly.
+        <br/>
+
+        Please be aware that your results can be viewed by system admins and advisors to release the hold on your account. This doesn't not imply that they will be revised.
       </p>
       <br />
     </div>

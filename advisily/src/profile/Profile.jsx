@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 function Profile(props) {
   const user = useAuth();
 
-  if (!user) return null;
+  if (!user) console.log("fakojsosfkafokjsa");
 
   return (
     <>
