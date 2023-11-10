@@ -16,7 +16,6 @@ router.get("/",
   controller.getUsers);
 router.get(
   "/verify-email",
-  auth,
   requestValidator(schemas.verifyEmail(), "query"),
   controller.verifyEmail
 );
