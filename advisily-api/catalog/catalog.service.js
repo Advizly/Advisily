@@ -42,15 +42,14 @@ async function createCatalog(catalog){
   return {catalogId: data.insertId};
 }
 async function getMajorYears(conditions){
-  let sql = "select year from catalogs";
+  let sql = "select catalogId, year from catalogs";
   const {columns, values} = parseConditions(conditions);
 
   if (values.length) sql += ` WHERE ${columns}`;
   const [data, err] = await query(sql, values);
   if (err) throw "Error getting catalogs";
-  let yearsArray = data.map(item => item.year);
 
-  return yearsArray;
+  return data;
 
 }
 
