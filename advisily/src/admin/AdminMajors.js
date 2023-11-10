@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography';
 import { useHistory } from 'react-router-dom'; // Import useHistory
 import adminService from '../services/adminService';
 import useApi from '../hooks/useApi';
+import { Button } from "@mui/material";
 
 function AdminMajors() {
   const { data, request } = useApi(adminService.getAllMajors);
@@ -54,7 +55,12 @@ function AdminMajors() {
         >
           {menuItems}
         </Select>
-        <button onClick={handleMajorSelection}>Go to Catalog</button>
+        <Typography fontSize={25} sx={{ marginTop: 5}}>
+          
+        </Typography>
+        <button className="btn btn-lg" onClick={handleMajorSelection}>Go to Catalog</button>
+        {/* <button className="btn btn-lg"> Previous result</button> */}
+
       </Box>
     </div>
   );

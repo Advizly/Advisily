@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {InputLabel,MenuItem} from "@mui/material"
 import {Select} from "@mui/material"
 import * as React from 'react';
+import { MaterialReactTable } from 'material-react-table';
 import { data } from './makeData.js';
 import { useMemo } from 'react';
 import { Box } from '@mui/material';
@@ -30,7 +31,6 @@ import {
   randomId,
   randomArrayItem,
 } from '@mui/x-data-grid-generator';
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 const roles = ['Market', 'Finance', 'Development'];
 const randomRole = () => {
   return randomArrayItem(roles);
@@ -93,7 +93,11 @@ const initialRows = [
 
 function EditToolbar(props) {
   const { setRows, setRowModesModel } = props;
+  const [showComboBox, setShowComboBox] = useState(false);
 
+  const handleAutocompleteClick = () => {
+    setShowComboBox(true);
+  };
   const handleClick = () => {
     const id = randomId();
     setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
@@ -105,7 +109,7 @@ function EditToolbar(props) {
 
   return (
     <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
+      <Button color="primary" startIcon={<AddIcon />} onClick={handleAutocompleteClick}>
         Add record
       </Button>
     </GridToolbarContainer>
@@ -271,8 +275,6 @@ function EditToolbar(props) {
 
 
 function AdminCatalog() {
-  const {majorId} = useParams();
-  
     const [catalog,setCatalog] = useState(-1);
       const [showComboBox, setShowComboBox] = useState(false);
 
@@ -313,7 +315,7 @@ function AdminCatalog() {
         <Typography fontSize={18} sx = {{marginTop: 4, color: "#757575" }} >Add a New Catalog </Typography>
 
         <Button sx= {{color: "#ef6c00" }} startIcon={<AddIcon />} onClick={handleAddCatalogClick} >
-        Add record
+        Add Catalog Year
       </Button>
         </Box> 
         {showComboBox && <ComboBox />}
@@ -326,19 +328,19 @@ function AdminCatalog() {
     return (
       <Grid>
       <Grid item sm={6}>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#00838f", textAlign : "center"}}>
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
       Semester 2
      </Typography>
       {crudGrid} 
       </Grid>
       <Grid item sm={6}>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#00838f", textAlign : "center"}}>
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
       Semester 2
      </Typography>
     {crudGrid} 
     </Grid>
     <Grid item sm={6}>
-    <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#00838f", textAlign : "center"}}>
+    <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
     Semester 2
    </Typography>
     {crudGrid} 
