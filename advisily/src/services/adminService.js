@@ -9,7 +9,21 @@ export const getAllMajors = async () => {
   };
 
 
+  export const getYears = async (majorId) => {
+    const apiEndpoint = "/catalogs/years";
+    
+    const { data: years } = await http.get(apiEndpoint, {params:{majorId}});
+    return years;
+  };
 
-const adminService = {getAllMajors};
+  export const getCatalogCourses = async (catalogId) => {
+    const apiEndpoint = "/catalogs/plans/courses";
+    
+    const { data: catalogCourses } = await http.get(apiEndpoint, {params:{catalogId}});
+    return catalogCourses;
+  };
+
+
+const adminService = {getAllMajors, getYears, getCatalogCourses};
 
 export default adminService;

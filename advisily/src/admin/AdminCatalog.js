@@ -1,5 +1,5 @@
 import { Navigate, redirect } from 'react-router-dom'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import {InputLabel,MenuItem} from "@mui/material"
 import {Select} from "@mui/material"
 import * as React from 'react';
@@ -7,34 +7,20 @@ import { MaterialReactTable } from 'material-react-table';
 import { data } from './makeData.js';
 import { useMemo } from 'react';
 import { Box } from '@mui/material';
-import { Grid } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import { Height } from '@mui/icons-material';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import CancelIcon from '@mui/icons-material/Close';
+
+import Typography from '@mui/material/Typography';
+
+
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import {
-  GridRowModes,
-  DataGrid,
-  GridToolbarContainer,
-  GridActionsCellItem,
-  GridRowEditStopReasons,
-} from '@mui/x-data-grid';
-import {
-  randomCreatedDate,
-  randomTraderName,
-  randomId,
-  randomArrayItem,
-} from '@mui/x-data-grid-generator';
-const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
+import adminService from '../services/adminService.js';
+
+
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
+import useApi from '../hooks/useApi.js';
+
 
 
 //===============================================================
@@ -67,206 +53,6 @@ const topFilms = [
 
 
 
-//===============================================================
-//                     C R U D    T A B L E 
-//===============================================================
-
-
-const initialRows = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-
-];
-//=======/=======/=======/=======/=======/=======/=======/=======/=======
-
-function EditToolbar(props) {
-  const { setRows, setRowModesModel } = props;
-  const [showComboBox, setShowComboBox] = useState(false);
-
-  const handleAutocompleteClick = () => {
-    setShowComboBox(true);
-  };
-  const handleClick = () => {
-    const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-    }));
-  };
-
-  return (
-    <GridToolbarContainer>
-      <Button color="primary" startIcon={<AddIcon />} onClick={handleAutocompleteClick}>
-        Add record
-      </Button>
-    </GridToolbarContainer>
-  );
-}
-//=======/=======/=======/=======/=======/=======/=======/=======/=======
- function FullFeaturedCrudGrid() {
-  const [rows, setRows] = React.useState(initialRows);
-  const [rowModesModel, setRowModesModel] = React.useState({});
-
-  const handleRowEditStop = (params, event) => {
-    if (params.reason === GridRowEditStopReasons.rowFocusOut) {
-      event.defaultMuiPrevented = true;
-    }
-  };
-
-  const handleEditClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
-  };
-
-  const handleSaveClick = (id) => () => {
-    setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
-  };
-
-  const handleDeleteClick = (id) => () => {
-    setRows(rows.filter((row) => row.id !== id));
-  };
-
-  const handleCancelClick = (id) => () => {
-    setRowModesModel({
-      ...rowModesModel,
-      [id]: { mode: GridRowModes.View, ignoreModifications: true },
-    });
-
-    const editedRow = rows.find((row) => row.id === id);
-    if (editedRow.isNew) {
-      setRows(rows.filter((row) => row.id !== id));
-    }
-  };
-
-  const processRowUpdate = (newRow) => {
-    const updatedRow = { ...newRow, isNew: false };
-    setRows(rows.map((row) => (row.id === newRow.id ? updatedRow : row)));
-    return updatedRow;
-  };
-
-  const handleRowModesModelChange = (newRowModesModel) => {
-    setRowModesModel(newRowModesModel);
-  };
-
-  const columns = [
-    { field: 'name', headerName: 'Name', width: 180, editable: true },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 80,
-      align: 'left',
-      headerAlign: 'left',
-      editable: true,
-    },
-    {
-      field: 'joinDate',
-      headerName: 'Join date',
-      type: 'date',
-      width: 180,
-      editable: true,
-    },
-    {
-      field: 'role',
-      headerName: 'Department',
-      width: 220,
-      editable: true,
-      type: 'singleSelect',
-      valueOptions: ['Market', 'Finance', 'Development'],
-    },
-    {
-      field: 'actions',
-      type: 'actions',
-      headerName: 'Actions',
-      width: 100,
-      cellClassName: 'actions',
-      getActions: ({ id }) => {
-        const isInEditMode = rowModesModel[id]?.mode === GridRowModes.Edit;
-
-        if (isInEditMode) {
-          return [
-            <GridActionsCellItem
-              icon={<SaveIcon />}
-              label="Save"
-              sx={{
-                color: 'primary.main',
-              }}
-              onClick={handleSaveClick(id)}
-            />,
-            <GridActionsCellItem
-              icon={<CancelIcon />}
-              label="Cancel"
-              className="textPrimary"
-              onClick={handleCancelClick(id)}
-              color="inherit"
-            />,
-          ];
-        }
-
-        return [
-          <GridActionsCellItem
-            icon={<EditIcon />}
-            label="Edit"
-            className="textPrimary"
-            onClick={handleEditClick(id)}
-            color="inherit"
-          />,
-          <GridActionsCellItem
-            icon={<DeleteIcon />}
-            label="Delete"
-            onClick={handleDeleteClick(id)}
-            color="inherit"
-          />,
-        ];
-      },
-    },
-  ];
-
-  return (
-    <Box
-      sx={{
-        height: 500,
-        width: '100%',
-        '& .actions': {
-          color: 'text.secondary',
-        },
-        '& .textPrimary': {
-          color: 'text.primary',
-        },
-      }}
-    >
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        editMode="row"
-        rowModesModel={rowModesModel}
-        onRowModesModelChange={handleRowModesModelChange}
-        onRowEditStop={handleRowEditStop}
-        processRowUpdate={processRowUpdate}
-        slots={{
-          toolbar: EditToolbar,
-        }}
-        slotProps={{
-          toolbar: { setRows, setRowModesModel },
-        }}
-      />
-    </Box>
-  );
-}
-
-
 
 //===============================================================
 //                   A D M I N   C A T A L O G 
@@ -274,84 +60,105 @@ function EditToolbar(props) {
 
 
 
-function AdminCatalog() {
-    const [catalog,setCatalog] = useState(-1);
-      const [showComboBox, setShowComboBox] = useState(false);
+function AdminCatalogList() {
+  const history =useHistory();
+  const {majorId} = useParams();
+  const { data, request } = useApi(adminService.getYears);
 
-    const handleChange = (e)=> {
-        setCatalog(e.target.value);
+  useEffect(() => {
+    request(majorId);
+  }, []);
 
-    }
-    const crudGrid = catalog !== -1 ? <FullFeaturedCrudGrid /> : null;
-    const comboBox = <ComboBox />;
-    const handleAddCatalogClick = () => {
-      setShowComboBox(true);
-    };
   
-    if(catalog === -1){
-        return (<div> 
-          <Box textAlign='center'>
-          <Typography fontSize={20} sx = {{marginTop: 10 }} >View Catalogs </Typography>
-          <Typography fontSize={20} sx = {{marginTop: 0}} >__________________ </Typography>
 
-          <InputLabel fontSize ={15}  sx = {{marginTop: 4}} id="demo-simple-select-label">Select Catalog</InputLabel>
+  const [catalog, setCatalog] = useState(-1);
+  const [showComboBox, setShowComboBox] = useState(false);
+
+  const handleChange = (e) => {
+    setCatalog(e.target.value);
+  };
+
+  const handleAddCatalogClick = () => {
+    setShowComboBox(true);
+  };
+
+  const handleCatalogSelection = () => {
+    if (catalog !== -1) {
+      history.push(`/admin/catalog/${catalog}`);
+    }
+  };
+
+  return (
+    <div>
+      <Box textAlign="center">
+        <Typography fontSize={20} sx={{ marginTop: 10 }}>
+          View Catalogs
+        </Typography>
+        <Typography fontSize={20} sx={{ marginTop: 0 }}>
+          __________________
+        </Typography>
+
+        <InputLabel
+          fontSize={15}
+          sx={{ marginTop: 4 }}
+          id="demo-simple-select-label"
+        >
+          Select Catalog
+        </InputLabel>
         <Select
           labelId="demo-simple-select-label"
-          size = "small"
+          size="small"
           id="demo-simple-select"
           value={catalog}
           label="Select Catalog"
-          onChange={handleChange} 
+          onChange={handleChange}
         >
-          <MenuItem value={10}>2019-2020</MenuItem>
-          <MenuItem value={20}>2020-2021</MenuItem>
-          <MenuItem value={30}>2021-2022</MenuItem>
-          <MenuItem value={40}>2022-2023</MenuItem>
+          {data.map((year) => (
+            <MenuItem key={year.catalogId} value={year.catalogId}>
+              {year.year}
+            </MenuItem>
+          ))}
+
           <MenuItem value={-1}>Catalog Year</MenuItem>
-        </Select> 
-        <Typography fontSize={20} sx = {{marginTop: 3}} >__________________ </Typography>
+        </Select>
+        <div
+          style={{
+            marginTop: 2,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Button
+            sx={{ color: "#1976D2", marginRight: 2 }}
+            onClick={handleCatalogSelection}
+          >
+            View Catalog
+          </Button>
+          </div>
 
-        {/* <Typography fontSize={20} sx = {{marginTop: 4,color: "#424242" }} >- or -</Typography> */}
-        <Typography fontSize={18} sx = {{marginTop: 4, color: "#757575" }} >Add a New Catalog </Typography>
+          <Typography fontSize={20} sx={{ marginTop: 3 }}>
+            __________________
+          </Typography>
 
-        <Button sx= {{color: "#ef6c00" }} startIcon={<AddIcon />} onClick={handleAddCatalogClick} >
-        Add Catalog Year
-      </Button>
-        </Box> 
-        {showComboBox && <ComboBox />}
+          <Typography fontSize={18} sx={{ marginTop: 4, color: "#757575" }}>
+            Add a New Catalog
+          </Typography>
 
-        </div>
-        
-        );
-    }
-    else{
-    return (
-      <Grid>
-      <Grid item sm={6}>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
-      Semester 2
-     </Typography>
-      {crudGrid} 
-      </Grid>
-      <Grid item sm={6}>
-      <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
-      Semester 2
-     </Typography>
-    {crudGrid} 
-    </Grid>
-    <Grid item sm={6}>
-    <Typography variant="h6" component="div" sx={{ flexGrow: 1, color:"white",marginTop: 2, marginBottom:3, fontSize: 25, backgroundColor : "#075b81", textAlign : "center"}}>
-    Semester 2
-   </Typography>
-    {crudGrid} 
-  </Grid>
-  </Grid>
-    
-      
-    )
-
+          <Button
+            sx={{ color: "#ef6c00" }}
+            startIcon={<AddIcon />}
+            onClick={handleAddCatalogClick}
+          >
+            Add record
+          </Button>
+      </Box>
+      {showComboBox && <ComboBox />}
+    </div>
+  );
 }
-}
-export default AdminCatalog
+
+export default AdminCatalogList;
+
 
 /*        */

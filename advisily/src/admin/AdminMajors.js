@@ -25,7 +25,7 @@ function AdminMajors() {
   const handleMajorSelection = () => {
     if (major !== -1) {
       // Navigate to the selected major's catalog
-      history.push(`/admin/catalog/${major}`);
+      history.push(`/admin/catalogs/${major}`);
     }
   };
 

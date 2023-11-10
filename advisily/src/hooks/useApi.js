@@ -10,13 +10,11 @@ function useApi(apiFunc, handleResponse) {
     setLoading(true);
     try {
       let result = await apiFunc(...args);
-      console.log("HIII", result)
       if (handleResponse !== undefined) result = handleResponse(result);
       setData(result);
     } catch (err) {
       setError(err);
       setFailedToLoad(false);
-      console.log("JJJOJO")
       console.error("Error in useApi: ", err, apiFunc);
     }
     setLoading(false);
