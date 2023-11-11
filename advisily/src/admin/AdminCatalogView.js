@@ -1,4 +1,3 @@
-// AdminCatalogView.js
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Grid, MenuItem, Select, TableCell, Typography } from '@mui/material';
@@ -9,6 +8,7 @@ import DeleteIcon from '@mui/icons-material/DeleteOutlined';
 import SaveIcon from '@mui/icons-material/Save';
 import CancelIcon from '@mui/icons-material/Close';
 import { Box } from '@mui/material';
+import Autocomplete from '@mui/material/Autocomplete';
 import {
     GridRowModes,
     DataGrid,
