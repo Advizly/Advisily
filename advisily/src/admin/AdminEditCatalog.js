@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Grid, MenuItem, Select, TableCell, Typography } from '@mui/material';
+import { Grid, IconButton, MenuItem, Select, TableCell, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -28,57 +28,17 @@ import CourseForm from './CourseForm';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
   const roles = ['Market', 'Finance', 'Development'];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
+
 
 //===============================================================
 //                     C R U D    T A B L E 
 //===============================================================
 
 
-const initialRows = [
-    {
-      id: randomId(),
-      name: randomTraderName(),
-      age: 25,
-      joinDate: randomCreatedDate(),
-      role: randomRole(),
-    },
-    {
-      id: randomId(),
-      name: randomTraderName(),
-      age: 36,
-      joinDate: randomCreatedDate(),
-      role: randomRole(),
-    },
-  
-  ];
-  //=======/=======/=======/=======/=======/=======/=======/=======/=======
-  
-  function EditToolbar(props) {
-    const { setRows, setRowModesModel } = props;
-  
-    const handleClick = () => {
-      const id = randomId();
-      setRows((oldRows) => [...oldRows, { id, name: '', age: '', isNew: true }]);
-      setRowModesModel((oldModel) => ({
-        ...oldModel,
-        [id]: { mode: GridRowModes.Edit, fieldToFocus: 'name' },
-      }));
-    };
-  
-    return (
-      <GridToolbarContainer>
-        <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-          Add record
-        </Button>
-      </GridToolbarContainer>
-    );
-  }
-  //=======/=======/=======/=======/=======/=======/=======/=======/=======
-  function FullFeaturedCrudGrid({ courseData }) {
-    const [rows, setRows] = React.useState(courseData.map((course) => ({ ...course, id: course.courseId })));
+
+ 
+function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
+  const [rows, setRows] = React.useState(courseData.map((course) => ({ ...course, id: course.courseId })));
     const [rowModesModel, setRowModesModel] = React.useState({});
   
     const handleRowEditStop = (params, event) => {
@@ -90,13 +50,17 @@ const initialRows = [
     const handleEditClick = (id) => () => {
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.Edit } });
     };
-  
+    
     const handleSaveClick = (id) => () => {
       setRowModesModel({ ...rowModesModel, [id]: { mode: GridRowModes.View } });
     };
   
     const handleDeleteClick = (id) => () => {
+      const deletedCourse = rows.find((row) => row.id === id);
       setRows(rows.filter((row) => row.id !== id));
+  
+      // Call the onCourseDelete callback with the courseId of the deleted course
+      onCourseDelete(deletedCourse.courseId);
     };
   
     const handleCancelClick = (id) => () => {
@@ -104,6 +68,8 @@ const initialRows = [
         ...rowModesModel,
         [id]: { mode: GridRowModes.View, ignoreModifications: true },
       });
+
+      
   
       const editedRow = rows.find((row) => row.id === id);
       if (editedRow.isNew) {
@@ -126,6 +92,21 @@ const initialRows = [
       { field: 'courseCode', headerName: 'Course Code', width: 120, editable: true },
       { field: 'courseTitle', headerName: 'Course Title', width: 250, editable: true },
       { field: 'credits', headerName: 'Credits', type: 'number', width: 100, editable: true },
+      {
+        field: 'courseId',
+        headerName: 'Actions',
+        width: 120,
+        cellClassName: 'actions',
+        renderCell: (params) => (
+          <IconButton
+            onClick={handleDeleteClick(params.row.id)}
+            color="inherit"
+            aria-label="delete"
+          >
+            <DeleteIcon style={{ color: 'red' }} />
+          </IconButton>
+        ),
+      },
       //ADD A FIELD FOR REQUISITES
       // Add more columns based on your course data structure
     ];
@@ -161,11 +142,18 @@ const initialRows = [
   function AdminEditCatalog() {
     const { catalogId } = useParams();
     const { data, request } = useApi(adminService.getCatalogCourses);
+    const { request: requestAdd } = useApi(adminService.addCoursetoPlan);
     const [coursesBySemester, setCoursesBySemester] = useState({});
-  
+    const [newCourse, setNewCourse] = useState({});
+    const [removedCourse, setRemovedCourse] = useState({});
+    const { request: requestRemove } = useApi(adminService.removeCourseFromPlan);
+
+
+
+    
     useEffect(() => {
-      request(catalogId);
-    }, [catalogId]);
+      request(catalogId)
+    }, [catalogId, newCourse]);
   
     // Group courses by semester
     useEffect(() => {
@@ -180,20 +168,36 @@ const initialRows = [
   
         return acc;
       }, {});
-  
+
+    
       setCoursesBySemester(coursesBySemester);
-    }, [data]);
+    }, [data, newCourse]);
+
+    useEffect(()=>{
+      requestAdd(newCourse);
+    }, [newCourse])
+
+    useEffect(()=>{
+      requestRemove(removedCourse);
+    }, [removedCourse])
   
     // Function to add a course
     const handleAddCourse = (newCourse) => {
-      // You can send the new course to your API or update the state directly
-      // In this example, we're just updating the state locally
-      const updatedCourses = { ...coursesBySemester };
-      if (!updatedCourses[newCourse.semesterNumber]) {
-        updatedCourses[newCourse.semesterNumber] = [];
-      }
-      updatedCourses[newCourse.semesterNumber].push(newCourse);
-      setCoursesBySemester(updatedCourses);
+      setNewCourse({
+        courseId: newCourse.courseId,
+        catalogId,
+        semesterNumber: newCourse.semesterNumber,
+      });
+          window.location.reload(false);
+
+
+      
+    };
+
+    const handleDeleteCourse = (deletedCourseId) => {
+      const removeCourse = {courseId: deletedCourseId, catalogId: catalogId};
+      setRemovedCourse(removeCourse);
+      // Do something with the deleted courseId
     };
   
     return (
@@ -217,7 +221,7 @@ const initialRows = [
               >
                 Semester {semesterNumber}
               </Typography>
-              <FullFeaturedCrudGrid courseData={courses} />
+              <FullFeaturedCrudGrid courseData={courses} onCourseDelete={handleDeleteCourse} />
             </Grid>
           ))}
         </Grid>

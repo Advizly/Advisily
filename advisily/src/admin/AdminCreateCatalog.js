@@ -23,6 +23,7 @@ function AdminCreateCatalog() {
 
         // Check if the copy request was successful
           history.push(`/admin/editcatalog/${catalogId}`);
+
       } else {
         // Handle the case where no catalog is selected
         console.error('Please select a catalog before copying courses.');

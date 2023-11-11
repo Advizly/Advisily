@@ -15,7 +15,6 @@ export const getCatalogs = async (majorId) => {
 };
 
 export const getCatalogCourses = async (catalogId) => {
-  console.log("calling getCatCourses", catalogId);
   const { data: catCourses } = await http.get(catCourseUrl, {
     params: { catalogId },
   });

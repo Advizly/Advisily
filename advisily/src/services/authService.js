@@ -24,7 +24,6 @@ export const login = async ({ email, password }) => {
   });
   if(user){
     const jwt = user.token;
-    console.log(jwt)
     localStorage.setItem(tokenKey, jwt);
   }
 };

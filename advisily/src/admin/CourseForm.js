@@ -6,19 +6,35 @@ import adminService from '../services/adminService';
 const CourseForm = ({ onAddCourse }) => {
   const [courseId, setCourseId] = useState();
   const [semesterNumber, setSemesterNumber] = useState();
-
+  const [isAddButtonDisabled, setAddButtonDisabled] = useState(true);
 
   const { data, request } = useApi(adminService.getAllCourseNames);
   useEffect(() => {
     request();
   }, []);
 
-
   const handleAddCourse = () => {
     // Perform any additional validation or processing here
     // Call the onAddCourse prop with the course name and semester number
     onAddCourse({ courseId, semesterNumber });
+
+    // Reset form after adding the course
+    setCourseId('');
+    setSemesterNumber('');
+    setAddButtonDisabled(true);
   };
+
+  const validateSemesterNumber = (value) => {
+    // Validate that the semester number is a positive number
+    return /^[1-9]\d*$/.test(value);
+  };
+
+  useEffect(() => {
+    // Enable/disable the "Add Course" button based on validation
+    setAddButtonDisabled(!courseId || !validateSemesterNumber(semesterNumber));
+  }, [courseId, semesterNumber]);
+
+ 
 
   return (
     <div>
@@ -33,8 +49,11 @@ const CourseForm = ({ onAddCourse }) => {
           getOptionLabel={(option) => option.courseTitle} // Specify how to display option labels
           sx={{ width: 300, marginTop: 5 }}
           renderInput={(params) => <TextField {...params} label="Course Name" />}
+          isOptionEqualToValue={(option, value)=>{
+            return option.courseTitle === value.courseTitle;
+          }}
           onChange={(event, value) => {
-            setCourseId(value.courseId); // Set courseName to the selected courseTitle
+            setCourseId(value?.courseId || ''); // Set courseName to the selected courseTitle
           }}
         />
         <TextField
@@ -44,7 +63,7 @@ const CourseForm = ({ onAddCourse }) => {
           onChange={(e) => setSemesterNumber(e.target.value)}
         />
         <Typography fontSize={20} sx={{ marginTop: 2 }}></Typography>
-        <button className="btn btn-primary btn-lg" onClick={handleAddCourse}>
+        <button className="btn btn-primary btn-lg" onClick={handleAddCourse} disabled={isAddButtonDisabled}>
           Add Course
         </button>
       </Grid>

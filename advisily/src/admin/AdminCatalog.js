@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { InputLabel, MenuItem, Select, Button, Box, TextField, Grid } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import Typography from '@mui/material/Typography';
 import adminService from '../services/adminService.js';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
@@ -20,6 +21,7 @@ function AdminCatalogList() {
   const handleChange = (e) => {
     setCatalog(e.target.value);
   };
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const [newCatalog, setNewCatalog] = useState({
     majorId: majorId,
@@ -41,6 +43,8 @@ function AdminCatalogList() {
       // Perform validation
       if (!validateYear(newCatalog.year) || !validatePositiveNumbers(newCatalog)) {
         console.error('Invalid input. Please check the values.');
+        setErrorMessage(`Failed to create catalog`);
+
         // Handle the error or show an error message
         return;
       }
@@ -48,10 +52,10 @@ function AdminCatalogList() {
       // Call the API to create a new catalog
       const response = await adminService.createCatalog(newCatalog);
 
-        console.log('Catalog created successfully:', response);
-        history.push(`/admin/createcatalog/${majorId}/${response.data.catalogId}`);
-      
+      history.push(`/admin/createcatalog/${majorId}/${response.data.catalogId}`);
     } catch (error) {
+      setErrorMessage(`Failed to create catalog.`);
+
       console.error('Error creating catalog:', error.message);
       // Handle the error or show an error message
     }
@@ -60,6 +64,13 @@ function AdminCatalogList() {
   const handleCatalogSelection = () => {
     if (catalog !== -1) {
       history.push(`/admin/catalog/${catalog}`);
+    }
+  };
+
+  const handleEdit = () => {
+    // Redirect to the editcatalog page with the selected catalogId
+    if (catalog !== -1) {
+      history.push(`/admin/editcatalog/${catalog}`);
     }
   };
 
@@ -79,7 +90,7 @@ function AdminCatalogList() {
   const validatePositiveNumbers = (catalog) => {
     // Validate that all numeric fields (except "year") are positive numbers
     const numericFields = Object.keys(catalog).filter(field => field !== 'year');
-    
+
     return numericFields.every(field => catalog[field] >= 0);
   };
 
@@ -128,6 +139,15 @@ function AdminCatalogList() {
           <button className="btn btn-lg" onClick={handleCatalogSelection}>
             Go to Plan
           </button>
+          {catalog !== -1 && (
+            <Button
+              sx={{ color: '#1976D2', marginLeft: 2 }}
+              startIcon={<EditIcon />}
+              onClick={handleEdit}
+            >
+              Edit
+            </Button>
+          )}
         </div>
 
         <Typography fontSize={20} sx={{ marginTop: 3 }}>
@@ -148,7 +168,7 @@ function AdminCatalogList() {
           </Typography>
 
           <Grid container spacing={2} justifyContent="center">
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} sm={4}>
               <TextField
                 fullWidth
                 label="Year (e.g., 2023-2024)"
@@ -160,7 +180,7 @@ function AdminCatalogList() {
                 helperText={!validateYear(newCatalog.year) && "Invalid year format"}
               />
             </Grid>
-            <Grid item xs={12} sm={1}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
                 label="Core"
@@ -170,17 +190,17 @@ function AdminCatalogList() {
                 value={newCatalog.coreCredits}
               />
             </Grid>
-            <Grid item xs={5} sm={2}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
-                label="Concentration Requirment"
+                label="Concentration Requirement"
                 type="number"
                 onChange={handleTextFieldChange}
                 name="concReqCredits"
                 value={newCatalog.concReqCredits}
               />
             </Grid>
-            <Grid item xs={12} sm={1.5}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
                 label="Concentration Elective"
@@ -190,7 +210,7 @@ function AdminCatalogList() {
                 value={newCatalog.concElecCredits}
               />
             </Grid>
-            <Grid item xs={12} sm={1.5}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
                 label="Collateral"
@@ -200,7 +220,7 @@ function AdminCatalogList() {
                 value={newCatalog.collateralCredits}
               />
             </Grid>
-            <Grid item xs={12} sm={1.5}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
                 label="General Elective"
@@ -210,7 +230,7 @@ function AdminCatalogList() {
                 value={newCatalog.generalElecCredits}
               />
             </Grid>
-            <Grid item xs={12} sm={1.5}>
+            <Grid item xs={12} sm={2}>
               <TextField
                 fullWidth
                 label="Engineering Core"
@@ -227,6 +247,12 @@ function AdminCatalogList() {
               Next →{' '}
             </button>
           </div>
+
+          {errorMessage && (
+          <Typography color="error" variant="subtitle1" sx={{ marginTop: 2 }}>
+            {errorMessage}
+          </Typography>
+        )}
         </div>
       )}
     </div>

@@ -27,6 +27,20 @@ export const createCatalog = async (catalog) => {
   }
 }
 
+export const addCoursetoPlan = async (newCourse) => {
+  const courseadded= await http.post('courses/addCourseToPlan', newCourse);
+  
+
+  return courseadded;
+};
+
+export const removeCourseFromPlan = async(removeCourse) =>{
+  const apiEndpoint = "/courses/removeCourseFromPlan";
+
+  await http.delete(apiEndpoint, {data: removeCourse});
+
+}
+
 export const copyCatalog = async (sourceCatalogId, targetCatalogId) => {
   
   const apiEndpoint1 = "/catalogs/copyPlancourses";
@@ -87,6 +101,6 @@ export const getAllMajors = async () => {
   };
 
 
-const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName, createCatalog, copyCatalog};
+const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName, createCatalog, copyCatalog, addCoursetoPlan, removeCourseFromPlan};
 
 export default adminService;
