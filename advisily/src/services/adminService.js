@@ -6,13 +6,48 @@ export const getAllCourseNames = async () => {
   const { data: courses } = await http.get(apiEndpoint);
 
   // Create an empty array to store the course titles
-  const courseTitles = [];
 
-  // Map over the response data and push each course title to the array
-  courses.forEach((course) => {
-    courseTitles.push(course.courseTitle);});
-  return courseTitles;
+  return courses;
 }
+
+export const createCatalog = async (catalog) => {
+  const apiEndpoint = "/catalogs";
+
+  try {
+    const response = await http.post(apiEndpoint, catalog);
+
+    // Check if the request was successful
+      return response; // You can return any relevant data from the response
+    
+      // Handle the error or throw an exception
+    
+  } catch (error) {
+    console.error('Error creating catalog:', error.message);
+    // Handle the error or throw an exception
+  }
+}
+
+export const copyCatalog = async (sourceCatalogId, targetCatalogId) => {
+  
+  const apiEndpoint1 = "/catalogs/copyPlancourses";
+  const apiEndpoint2 = "/catalogs/copyCatcourses";
+
+  try {
+    const response1 = await http.post(apiEndpoint2, {sourceCatalogId, targetCatalogId});
+    const response2 = await http.post(apiEndpoint1, {sourceCatalogId, targetCatalogId});
+
+    // Check if the request was successful
+      return response2; // You can return any relevant data from the response
+    
+      // Handle the error or throw an exception
+    
+  } catch (error) {
+    console.error('Error creating catalog:', error.message);
+    // Handle the error or throw an exception
+  }
+}
+
+
 
 export const getCourseIdByCourseName = async (courseName) =>
 {
@@ -52,6 +87,6 @@ export const getAllMajors = async () => {
   };
 
 
-const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName};
+const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName, createCatalog, copyCatalog};
 
 export default adminService;

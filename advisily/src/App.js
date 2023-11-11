@@ -21,6 +21,7 @@ import useAuth from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminCatalogView from "./admin/AdminCatalogView";
 import AdminCreateCatalog from "./admin/AdminCreateCatalog";
+import AdminEditCatalog from "./admin/AdminEditCatalog";
 // import AdminCreateCatalog from "./admin/AdminCreateCatalog";
 function App() {
   const user = useAuth(true);
@@ -57,8 +58,13 @@ function App() {
                    requiresAdmin = {true}
                 />
                 <ProtectedRoute
-                   path={'/admin/createcatalog'}
+                   path={'/admin/createcatalog/:majorId/:catalogId'}
                    component={AdminCreateCatalog}
+                   requiresAdmin = {true}
+                />
+                <ProtectedRoute
+                   path={'/admin/editcatalog/:catalogId'}
+                   component={AdminEditCatalog}
                    requiresAdmin = {true}
                 />
                 <ProtectedRoute

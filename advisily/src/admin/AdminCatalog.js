@@ -1,53 +1,60 @@
-import {useState, useEffect} from 'react'
-import {InputLabel,MenuItem} from "@mui/material"
-import {Select} from "@mui/material"
-import * as React from 'react';
-import { Box } from '@mui/material';
-import Button from '@mui/material/Button';
+import React, { useState, useEffect } from 'react';
+import { InputLabel, MenuItem, Select, Button, Box, TextField, Grid } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
-import { DataGrid } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
-import {Grid} from '@mui/material'
 import adminService from '../services/adminService.js';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 import useApi from '../hooks/useApi.js';
 
-//===============================================================
-//                   A D M I N   C A T A L O G 
-//===============================================================
-
-
-
 function AdminCatalogList() {
-
-  
-  const history =useHistory();
-  const {majorId} = useParams();
+  const history = useHistory();
+  const { majorId } = useParams();
   const { data, request } = useApi(adminService.getYears);
 
   useEffect(() => {
     request(majorId);
   }, []);
 
-  
-
-  const [catalog, setCatalog] = useState(-1);
   const [showComboBox, setShowComboBox] = useState(false);
+  const [catalog, setCatalog] = useState(-1);
   const handleChange = (e) => {
     setCatalog(e.target.value);
   };
 
+  const [newCatalog, setNewCatalog] = useState({
+    majorId: majorId,
+    year: '',
+    coreCredits: 0,
+    concReqCredits: 0,
+    concElecCredits: 0,
+    collateralCredits: 0,
+    generalElecCredits: 0,
+    engCoreCredits: 0,
+  });
+
   const handleAddCatalogClick = () => {
-   
     setShowComboBox(true);
-
-
   };
 
-  const handleNext = () => {
-         
-    history.push('/admin/createcatalog');
-  
+  const handleNext = async () => {
+    try {
+      // Perform validation
+      if (!validateYear(newCatalog.year) || !validatePositiveNumbers(newCatalog)) {
+        console.error('Invalid input. Please check the values.');
+        // Handle the error or show an error message
+        return;
+      }
+
+      // Call the API to create a new catalog
+      const response = await adminService.createCatalog(newCatalog);
+
+        console.log('Catalog created successfully:', response);
+        history.push(`/admin/createcatalog/${majorId}/${response.data.catalogId}`);
+      
+    } catch (error) {
+      console.error('Error creating catalog:', error.message);
+      // Handle the error or show an error message
+    }
   };
 
   const handleCatalogSelection = () => {
@@ -56,10 +63,30 @@ function AdminCatalogList() {
     }
   };
 
+  const handleTextFieldChange = (e) => {
+    setNewCatalog({
+      ...newCatalog,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const validateYear = (year) => {
+    // Validate that the year is in the format "XXXX-XXXX" where X is a digit
+    const yearRegex = /^\d{4}-\d{4}$/;
+    return yearRegex.test(year);
+  };
+
+  const validatePositiveNumbers = (catalog) => {
+    // Validate that all numeric fields (except "year") are positive numbers
+    const numericFields = Object.keys(catalog).filter(field => field !== 'year');
+    
+    return numericFields.every(field => catalog[field] >= 0);
+  };
+
   return (
     <div>
       <Box textAlign="center">
-        <Typography fontSize={20} sx={{ marginTop:7 }}>
+        <Typography fontSize={20} sx={{ marginTop: 7 }}>
           View Catalogs
         </Typography>
         <Typography fontSize={20} sx={{ marginTop: 0 }}>
@@ -89,60 +116,121 @@ function AdminCatalogList() {
 
           <MenuItem value={-1}>Catalog Year</MenuItem>
         </Select>
-        <Typography fontSize={20} sx={{ marginTop: 3 }}>
-  
-          </Typography>
+        <Typography fontSize={20} sx={{ marginTop: 3 }}></Typography>
         <div
           style={{
             marginTop: 2,
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
           }}
         >
-           
-          <button
-       
-            className="btn btn-lg"
-            onClick={handleCatalogSelection}
-          >
+          <button className="btn btn-lg" onClick={handleCatalogSelection}>
             Go to Plan
           </button>
-          </div>
+        </div>
 
-          <Typography fontSize={20} sx={{ marginTop: 3 }}>
-            __________________
-          </Typography>
-
-          <Typography fontSize={18} sx={{ marginTop: 4, color: "#757575" }}>
+        <Typography fontSize={20} sx={{ marginTop: 3 }}>
+          __________________
+        </Typography>
+        <Button
+          sx={{ color: '#ef6c00', marginTop: 2 }}
+          startIcon={<AddIcon />}
+          onClick={handleAddCatalogClick}
+        >
+          Add record
+        </Button>
+      </Box>
+      {showComboBox && (
+        <div>
+          <Typography fontSize={18} sx={{ marginTop: 4, color: '#757575' }}>
             Add a New Catalog
           </Typography>
 
-          <Button
-            sx={{ color: "#ef6c00" }}
-            startIcon={<AddIcon />}
-            onClick={handleAddCatalogClick}
-          >
-            Add record
-          </Button>
-      </Box>
-      {showComboBox && (<div> <DataGrid hideFooter= 'true' editMode="row" 
-        
-        columns={[{ field:'Catalog Year', width: 130, editable: true, type: 'string', }, {field:'Core Credits', width: 130, editable: true, type: 'number'}, 
-        {field:'Concentration Requirements Credits', width: 290, editable: true, type: 'number'}, {field: 'Collateral Requirements Credits', width: 250, editable: true, type: 'number'},
-        {field: 'General Electives Credits', width: 200, editable: true, type: 'number'}, {field: 'Engineering Core Credits' , width: 200, editable: true, type: 'number'}]}
-        rows={[{ id: 1, values : null },]}/> 
+          <Grid container spacing={2} justifyContent="center">
+            <Grid item xs={12} sm={2}>
+              <TextField
+                fullWidth
+                label="Year (e.g., 2023-2024)"
+                type="text"
+                onChange={handleTextFieldChange}
+                name="year"
+                value={newCatalog.year}
+                error={!validateYear(newCatalog.year)}
+                helperText={!validateYear(newCatalog.year) && "Invalid year format"}
+              />
+            </Grid>
+            <Grid item xs={12} sm={1}>
+              <TextField
+                fullWidth
+                label="Core"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="coreCredits"
+                value={newCatalog.coreCredits}
+              />
+            </Grid>
+            <Grid item xs={5} sm={2}>
+              <TextField
+                fullWidth
+                label="Concentration Requirment"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="concReqCredits"
+                value={newCatalog.concReqCredits}
+              />
+            </Grid>
+            <Grid item xs={12} sm={1.5}>
+              <TextField
+                fullWidth
+                label="Concentration Elective"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="concElecCredits"
+                value={newCatalog.concElecCredits}
+              />
+            </Grid>
+            <Grid item xs={12} sm={1.5}>
+              <TextField
+                fullWidth
+                label="Collateral"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="collateralCredits"
+                value={newCatalog.collateralCredits}
+              />
+            </Grid>
+            <Grid item xs={12} sm={1.5}>
+              <TextField
+                fullWidth
+                label="General Elective"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="generalElecCredits"
+                value={newCatalog.generalElecCredits}
+              />
+            </Grid>
+            <Grid item xs={12} sm={1.5}>
+              <TextField
+                fullWidth
+                label="Engineering Core"
+                type="number"
+                onChange={handleTextFieldChange}
+                name="engCoreCredits"
+                value={newCatalog.engCoreCredits}
+              />
+            </Grid>
+          </Grid>
 
-        <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: '2vh' }}>    
-             <button className="btn btn-primary btn-lg" onClick={handleNext} >Next →  </button> 
-        </Grid ></div>)
-      
-      }
+          <div style={{ marginTop: 10 }}>
+            <button className="btn btn-primary btn-lg" onClick={handleNext}>
+              Next →{' '}
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
 
 export default AdminCatalogList;
-
-
-/*        */

@@ -1,97 +1,106 @@
-import React, {useState} from 'react'
-import { BrowserRouter, Navigate, Route, Routes, redirect, Redirect, Link} from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
-
-import { Autocomplete, Button } from "@mui/material";
-import { Box } from '@mui/material';
-import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
-import TextField from '@mui/material/TextField';
-//import Autocomplete from '@mui/material/Autocomplete';
-import adminService from '../services/adminService.js';
-import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
-import useApi from '../hooks/useApi.js';
-import { useEffect} from 'react'
-import { DataGrid } from '@mui/x-data-grid';
-
-
-//====================================
-
-
-//====================================
+import React, { useEffect, useState } from 'react';
+import { InputLabel, MenuItem, Select, Button, Box } from "@mui/material";
+import { useParams, useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useApi } from '../hooks';
+import adminService from '../services/adminService';
 
 function AdminCreateCatalog() {
-  const history =useHistory();
-  const [catalog,setCatalog] = useState(-1);
-  const [addCourseClicked, setAddCourseClicked] = useState(false);
-  const [courseName, setCourseName] = useState(null);
-  const [courseId, setCourseId] = useState(null);
+  const [copyCatalog, setCopyCatalog] = useState();
+  const [copyLastYear, setCopyLastYear] = useState(false);
+  const history = useHistory(); // Add this line to get the history object
 
-    
+  const handleChange = (e) => {
+    setCopyCatalog(e.target.value);
+  };
+  const { data: courses, request: copyRequest } = useApi(adminService.copyCatalog);
 
-  const {courseTitle} = useParams();
-  const { data, request } = useApi(adminService.getAllCourseNames);
   useEffect(() => {
-    request(courseTitle);
-  }, []);
+    const handleCopyAndRedirect = async () => {
+      // Check if a catalog is selected before proceeding
+      if (copyCatalog) {
+        // Trigger the copy request
+        const copyResponse = await copyRequest(copyCatalog, catalogId);
 
-  console.log(data)
-  console.log(courseName)
-  useEffect(() => {
-    const getCourseId = async () => {
-      if (courseName != null) {
-        const courseId = await adminService.getCourseIdByCourseName(courseName);
-        setCourseId(courseId);
+        // Check if the copy request was successful
+          history.push(`/admin/editcatalog/${catalogId}`);
+      } else {
+        // Handle the case where no catalog is selected
+        console.error('Please select a catalog before copying courses.');
       }
     };
 
-    getCourseId();
-  }, [courseName]);
-  // const getCourseIdByCourseName = (courseName) => {
-  //  adminService.getCourseIdByCourseName(courseName).then((response) => {
-  //     setCourseId(response.data);
-  //   });
-  // };
+    // Check if the button to trigger the copy has been clicked
+    if (copyLastYear) {
+      // Reset the flag
+      setCopyLastYear(false);
 
-  // if (courseName != null )
-  // {getCourseIdByCourseName(courseName)}
-  console.log(courseId)
-  if(!addCourseClicked){
-  return (<div>       
-     <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: '2vh' }}>    
+      // Call the function to copy and redirect
+      handleCopyAndRedirect();
+    }
+  }, [ copyLastYear, history, copyRequest]);
 
-    <Typography fontSize={20} sx={{ marginTop: 10 }}>
-      Add course name and semester number
-    </Typography>
-    <Autocomplete 
-      disablePortal
-      id="combo-box-demo"
-      options={data}
-      sx={{ width: 300, marginTop: 5 }}
-      renderInput={(params) => <TextField {...params} label="Course Name" />}
-      onChange={(event, value) => {
-        setCourseName(value)}}
-    />
-    
-    <TextField sx = {{marginTop: 2}}  label="Semester number" />
-    <Typography fontSize={20} sx={{ marginTop: 2 }}>
-     
-    </Typography>
-    <button  className="btn btn-primary btn-lg" onClick={() => {
-      setAddCourseClicked(true);
-    }} >Add Course</button>
+  const handleCopyLastYear = () => {
+    // Trigger the useEffect logic when the button is clicked
+    setCopyLastYear(true);
+  };
 
-    </Grid>
-    </div>
-    
-  );}
-else if (addCourseClicked){
+  const { majorId, catalogId } = useParams();
+  const { data, request } = useApi(adminService.getYears);
 
-return (<div>       
-  
- </div>
- 
-);
+  useEffect(() => {
+    request(majorId);
+  }, []);
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        minHeight: '70vh', // This will make sure the content is centered vertically
+        padding: '20px', // Add some padding to the box
+      }}
+    >
+      <InputLabel fontSize={15} sx={{ marginTop: 4 }} id="demo-simple-select-label">
+        Select Catalog
+      </InputLabel>
+      <Select
+        labelId="demo-simple-select-label"
+        size="small"
+        id="demo-simple-select"
+        value={copyCatalog}
+        label="Select Catalog"
+        onChange={handleChange}
+      >
+        {/* Map over data to create MenuItem options */}
+        {data.map((year) => (
+          <MenuItem key={year.catalogId} value={year.catalogId}>
+            {year.year}
+          </MenuItem>
+        ))}
+      </Select>
+
+      <Box sx={{ marginTop: 2 }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ marginRight: 2 }}
+          onClick={() => history.push(`/admin/editcatalog/${catalogId}`)}
+        >
+          Add Courses Directly
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={handleCopyLastYear}
+          disabled={!copyCatalog} // Disable the button if no catalog is selected
+        >
+          Copy Courses
+        </Button>
+      </Box>
+    </Box>
+  );
 }
-}
+
 export default AdminCreateCatalog;
