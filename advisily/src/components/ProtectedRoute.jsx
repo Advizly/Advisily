@@ -17,7 +17,7 @@ function ProtectedRoute({
         if (!user) return <Redirect to={{ pathname: "/login" }} />;
         if (requiresAdmin && user && !user.isAdmin)
           return <Redirect to={{ pathname: HOME_ROUTE }} />;
-
+        
         return Component ? <Component {...props} /> : render(props);
       }}
     />

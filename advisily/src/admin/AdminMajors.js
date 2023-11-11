@@ -59,7 +59,6 @@ function AdminMajors() {
           
         </Typography>
         <button className="btn btn-lg" onClick={handleMajorSelection}>Go to Catalog</button>
-        {/* <button className="btn btn-lg"> Previous result</button> */}
 
       </Box>
     </div>

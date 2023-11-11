@@ -1,58 +1,16 @@
-import { Navigate, redirect } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {InputLabel,MenuItem} from "@mui/material"
 import {Select} from "@mui/material"
 import * as React from 'react';
-import { MaterialReactTable } from 'material-react-table';
-import { data } from './makeData.js';
-import { useMemo } from 'react';
 import { Box } from '@mui/material';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
-
+import { DataGrid } from '@mui/x-data-grid';
 import Typography from '@mui/material/Typography';
-
-
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
+import {Grid} from '@mui/material'
 import adminService from '../services/adminService.js';
-
-
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min.js';
 import useApi from '../hooks/useApi.js';
-
-
-
-//===============================================================
-//                   A U T O C O M P L E T E 
-//===============================================================
-
-
-function ComboBox() {
-  return (
-    <Autocomplete
-      disablePortal
-      id="combo-box-demo"
-      options={topFilms}
-      sx={{ width: 300 }}
-      renderInput={(params) => <TextField {...params} label="Movie" />}
-    />
-  );
-}
-
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
-const topFilms = [
-  { label: 'The Shawshank Redemption', year: 1994 },
-
-  { label: 'Forrest Gump', year: 1994 },
- 
-  { label: 'WALL·E', year: 2008 },
-
-  
-];
-
-
-
 
 //===============================================================
 //                   A D M I N   C A T A L O G 
@@ -61,6 +19,8 @@ const topFilms = [
 
 
 function AdminCatalogList() {
+
+  
   const history =useHistory();
   const {majorId} = useParams();
   const { data, request } = useApi(adminService.getYears);
@@ -73,13 +33,21 @@ function AdminCatalogList() {
 
   const [catalog, setCatalog] = useState(-1);
   const [showComboBox, setShowComboBox] = useState(false);
-
   const handleChange = (e) => {
     setCatalog(e.target.value);
   };
 
   const handleAddCatalogClick = () => {
+   
     setShowComboBox(true);
+
+
+  };
+
+  const handleNext = () => {
+         
+    history.push('/admin/createcatalog');
+  
   };
 
   const handleCatalogSelection = () => {
@@ -91,7 +59,7 @@ function AdminCatalogList() {
   return (
     <div>
       <Box textAlign="center">
-        <Typography fontSize={20} sx={{ marginTop: 10 }}>
+        <Typography fontSize={20} sx={{ marginTop:7 }}>
           View Catalogs
         </Typography>
         <Typography fontSize={20} sx={{ marginTop: 0 }}>
@@ -121,6 +89,9 @@ function AdminCatalogList() {
 
           <MenuItem value={-1}>Catalog Year</MenuItem>
         </Select>
+        <Typography fontSize={20} sx={{ marginTop: 3 }}>
+  
+          </Typography>
         <div
           style={{
             marginTop: 2,
@@ -129,12 +100,14 @@ function AdminCatalogList() {
             alignItems: "center",
           }}
         >
-          <Button
-            sx={{ color: "#1976D2", marginRight: 2 }}
+           
+          <button
+       
+            className="btn btn-lg"
             onClick={handleCatalogSelection}
           >
-            View Catalog
-          </Button>
+            Go to Plan
+          </button>
           </div>
 
           <Typography fontSize={20} sx={{ marginTop: 3 }}>
@@ -153,7 +126,18 @@ function AdminCatalogList() {
             Add record
           </Button>
       </Box>
-      {showComboBox && <ComboBox />}
+      {showComboBox && (<div> <DataGrid hideFooter= 'true' editMode="row" 
+        
+        columns={[{ field:'Catalog Year', width: 130, editable: true, type: 'string', }, {field:'Core Credits', width: 130, editable: true, type: 'number'}, 
+        {field:'Concentration Requirements Credits', width: 290, editable: true, type: 'number'}, {field: 'Collateral Requirements Credits', width: 250, editable: true, type: 'number'},
+        {field: 'General Electives Credits', width: 200, editable: true, type: 'number'}, {field: 'Engineering Core Credits' , width: 200, editable: true, type: 'number'}]}
+        rows={[{ id: 1, values : null },]}/> 
+
+        <Grid container spacing={0} direction="column" alignItems="center" justifyContent="center" sx={{ minHeight: '2vh' }}>    
+             <button className="btn btn-primary btn-lg" onClick={handleNext} >Next →  </button> 
+        </Grid ></div>)
+      
+      }
     </div>
   );
 }
