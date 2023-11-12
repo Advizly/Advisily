@@ -144,7 +144,9 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
     const { data, request } = useApi(adminService.getCatalogCourses);
     const { request: requestAdd } = useApi(adminService.addCoursetoPlan);
     const [coursesBySemester, setCoursesBySemester] = useState({});
-    const [newCourse, setNewCourse] = useState({});
+    const [newCoursePlan, setNewCoursePlan] = useState({});
+    const [newCourseCat, setNewCourseCat] = useState({});
+
     const [removedCourse, setRemovedCourse] = useState({});
     const { request: requestRemove } = useApi(adminService.removeCourseFromPlan);
 
@@ -153,7 +155,7 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
     
     useEffect(() => {
       request(catalogId)
-    }, [catalogId, newCourse]);
+    }, [catalogId]);
   
     // Group courses by semester
     useEffect(() => {
@@ -171,22 +173,27 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
 
     
       setCoursesBySemester(coursesBySemester);
-    }, [data, newCourse]);
+    }, [data]);
 
     useEffect(()=>{
-      requestAdd(newCourse);
-    }, [newCourse])
+      requestAdd(newCoursePlan, newCourseCat);
+    }, [newCoursePlan, newCourseCat])
 
     useEffect(()=>{
       requestRemove(removedCourse);
     }, [removedCourse])
   
     // Function to add a course
-    const handleAddCourse = (newCourse) => {
-      setNewCourse({
-        courseId: newCourse.courseId,
+    const handleAddCourse = (newCoursePlan, newCourseCat) => {
+      setNewCoursePlan({
+        courseId: newCoursePlan.courseId,
         catalogId,
-        semesterNumber: newCourse.semesterNumber,
+        semesterNumber: newCoursePlan.semesterNumber,
+      });
+      setNewCourseCat({
+        courseId: newCourseCat.courseId,
+        catalogId,
+        courseTypeId: newCourseCat.courseTypeId,
       });
           window.location.reload(false);
 

@@ -23,7 +23,6 @@ router.get(
 
 router.get(
   "/types",
-  auth,
   requestValidator(schemas.getTypes(), "query"),
   coursesController.getTypes
 )
@@ -35,7 +34,12 @@ router.post(
   requestValidator(schemas.addCourseToPlan(), "body"),
   coursesController.addCourseToPlan
 );
-
+router.post(
+  "/addCourseToCat",
+  auth,
+  requestValidator(schemas.addCourseToCat(), "body"),
+  coursesController.addCourseToCat
+);
 router.get("/distinctPrefixes", coursesController.getDistinctPrefixes);
 
 router.get("/majors", coursesController.getMajors)

@@ -10,7 +10,8 @@ module.exports = {
   getDistinctPrefixes,
   getDistinctCoursesByPrefix,
   getMajors,
-  getCourseByCode
+  getCourseByCode,
+  addCourseToCat
 };
 
 function getMajors(req,res,next){
@@ -78,6 +79,17 @@ function addCourseToPlan(req, res, next) {
 
   coursesService
     .addCourseToPlan(courseId, catalogId, semesterNumber)
+    .then((insertedRows) => res.send(insertedRows))
+    .catch(next);
+}
+
+function addCourseToCat(req, res, next) {
+  const { courseId, catalogId, courseTypeId } = req.body;
+
+  console.log("HELLLOOOO", req.body)
+
+  coursesService
+    .addCourseToCat(courseId, catalogId, courseTypeId)
     .then((insertedRows) => res.send(insertedRows))
     .catch(next);
 }

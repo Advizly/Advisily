@@ -14,7 +14,8 @@ module.exports = {
   getDistinctPrefixes,
   getDistinctCoursesByPrefix,
   getMajors,
-  getCourseByCode
+  getCourseByCode,
+  addCourseToCat
 };
 
   async function getMajors(){
@@ -78,6 +79,19 @@ module.exports = {
   
     if (err) {
       throw new Error("Error adding course to plan.");
+    }
+  
+    return insertedRows;
+  }
+
+  async function addCourseToCat(courseId, catalogId, courseTypeId) {
+    const insertQuery = "INSERT INTO catalogcourses (courseId, catalogId, courseTypeId) VALUES (?, ?, ?)";
+    const values = [courseId, catalogId, courseTypeId];
+  
+    const [insertedRows, err] = await query(insertQuery, values);
+  
+    if (err) {
+      throw new Error("Error adding course to catalog.");
     }
   
     return insertedRows;

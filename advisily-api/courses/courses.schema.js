@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const { ID_SCHEMA, ID_SCHEMA_REQUIRED } = require("../constants/schemas");
 
-module.exports = { createCourse, getTypes, addCourseToPlan, removeCourse, getDistinctCoursesByPrefix, getCourseByCode };
+module.exports = { createCourse, getTypes, addCourseToPlan, removeCourse, getDistinctCoursesByPrefix, getCourseByCode, addCourseToCat };
 
 function getDistinctCoursesByPrefix() {
   return Joi.object({
@@ -42,5 +42,13 @@ function addCourseToPlan() {
     courseId: ID_SCHEMA_REQUIRED,
     catalogId: ID_SCHEMA_REQUIRED,
     semesterNumber: Joi.number().positive().integer().required()
+  });
+}
+
+function addCourseToCat() {
+  return Joi.object({
+    courseId: ID_SCHEMA_REQUIRED,
+    catalogId: ID_SCHEMA_REQUIRED,
+    courseTypeId: Joi.number().positive().integer().required()
   });
 }

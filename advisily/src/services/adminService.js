@@ -27,8 +27,11 @@ export const createCatalog = async (catalog) => {
   }
 }
 
-export const addCoursetoPlan = async (newCourse) => {
-  const courseadded= await http.post('courses/addCourseToPlan', newCourse);
+export const addCoursetoPlan = async (newCoursePlan, newCourseCat) => {
+  console.log("HELLO", newCourseCat);
+  const courseadded= await http.post('courses/addCourseToPlan', newCoursePlan);
+  const courseaddedcat= await http.post('courses/addCourseToCat', newCourseCat);
+
   
 
   return courseadded;
@@ -38,6 +41,14 @@ export const removeCourseFromPlan = async(removeCourse) =>{
   const apiEndpoint = "/courses/removeCourseFromPlan";
 
   await http.delete(apiEndpoint, {data: removeCourse});
+
+}
+
+export const getTypes = async() =>{
+  const apiEndpoint = "/courses/types";
+  const res = await http.get(apiEndpoint);
+  
+  return res;
 
 }
 
@@ -101,6 +112,6 @@ export const getAllMajors = async () => {
   };
 
 
-const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName, createCatalog, copyCatalog, addCoursetoPlan, removeCourseFromPlan};
+const adminService = {getAllMajors, getYears, getCatalogCourses, getAllCourseNames, getCourseIdByCourseName, createCatalog, copyCatalog, addCoursetoPlan, removeCourseFromPlan, getTypes};
 
 export default adminService;
