@@ -21,19 +21,16 @@ router.get(
 );
 router.post(
   "/forgot-password",
-  auth,
   requestValidator(schemas.forgotPassword()),
   controller.forgotPassword
 );
 router.post(
   "/reset-password",
-  auth,
   requestValidator(schemas.resetPassword()),
   controller.resetPassword
 );
 router.post(
   "/validate-reset-token",
-  auth,
   requestValidator(schemas.validateResetToken()),
   controller.validateResetToken
 );
@@ -53,7 +50,6 @@ router.delete(
 
 router.post(
   "/resend-verification",
-  auth,
   requestValidator(schemas.resendVerification()),
   controller.resendVerification
 );
