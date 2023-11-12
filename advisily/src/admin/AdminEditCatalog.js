@@ -222,7 +222,7 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
                   marginTop: 2,
                   marginBottom: 3,
                   fontSize: 25,
-                  backgroundColor: '#00838f',
+                  backgroundColor: '#075b81',
                   textAlign: 'center',
                 }}
               >

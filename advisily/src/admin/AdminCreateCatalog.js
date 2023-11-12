@@ -83,22 +83,22 @@ function AdminCreateCatalog() {
       </Select>
 
       <Box sx={{ marginTop: 2 }}>
-        <Button
-          variant="contained"
-          color="primary"
+        <button
+        
+          className="btn btn-primary btn-lg m-2"
           sx={{ marginRight: 2 }}
           onClick={() => history.push(`/admin/editcatalog/${catalogId}`)}
         >
           Add Courses Directly
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
+        </button>
+        <button
+         className="btn btn-lg"
+        
           onClick={handleCopyLastYear}
           disabled={!copyCatalog} // Disable the button if no catalog is selected
         >
           Copy Courses
-        </Button>
+        </button>
       </Box>
     </Box>
   );

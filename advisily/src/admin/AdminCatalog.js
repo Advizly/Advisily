@@ -141,7 +141,7 @@ function AdminCatalogList() {
           </button>
           {catalog !== -1 && (
             <Button
-              sx={{ color: '#1976D2', marginLeft: 2 }}
+              sx={{ color: '#ef6c00', marginLeft: 2 }}
               startIcon={<EditIcon />}
               onClick={handleEdit}
             >
