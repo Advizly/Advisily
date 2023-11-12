@@ -39,8 +39,10 @@ export const addCoursetoPlan = async (newCoursePlan, newCourseCat) => {
 
 export const removeCourseFromPlan = async(removeCourse) =>{
   const apiEndpoint = "/courses/removeCourseFromPlan";
+  const apiEndpoint2 = "/courses/removeCourseFromCatalog"
 
   await http.delete(apiEndpoint, {data: removeCourse});
+  await http.delete(apiEndpoint2, {data: removeCourse});
 
 }
 
