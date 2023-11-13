@@ -50,11 +50,11 @@ function createCatalog() {
   return Joi.object({
     majorId: ID_SCHEMA_REQUIRED,
     year: Joi.string().regex(/^\d{4}-\d{4}$/).required(),
-    coreCredits: Joi.number().integer().positive().required(),
-    concReqCredits: Joi.number().integer().positive().required(),
-    concElecCredits: Joi.number().integer().positive().required(),
-    collateralCredits: Joi.number().integer().positive().required(),
-    generalElecCredits: Joi.number().integer().positive().required(),
-    engCoreCredits: Joi.number().integer().positive().required()
+    coreCredits: Joi.number().integer().min(0).required(),
+    concReqCredits: Joi.number().integer().min(0).required(),
+    concElecCredits: Joi.number().integer().min(0).required(),
+    collateralCredits: Joi.number().integer().min(0).required(),
+    generalElecCredits: Joi.number().integer().min(0).required(),
+    engCoreCredits: Joi.number().integer().min(0).required()
   });
 }
