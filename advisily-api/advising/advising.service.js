@@ -39,12 +39,20 @@ async function getAllResults() {
       INNER JOIN standings ON standings.standingId=users.standingId\
       ";
 
-    const semesterSql =
-        "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ?";
-    const coursesSql =
+    const semesterSql0 =
+        "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ? and planType=0";
+    const coursesSql0 =
         "SELECT * FROM advisingResultCourses\
          INNER JOIN courses on courses.courseId=advisingResultCourses.courseId\
-         WHERE advisingSessionId = ?";
+         WHERE advisingSessionId = ? and planType=0";
+
+
+    const semesterSql1 =
+         "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ? and planType=1";
+     const coursesSql1 =
+         "SELECT * FROM advisingResultCourses\
+          INNER JOIN courses on courses.courseId=advisingResultCourses.courseId\
+          WHERE advisingSessionId = ? and planType = 1";
     const finishedCoursesSql =
         "SELECT * FROM userCourses\
               INNER JOIN courses on courses.courseId=userCourses.courseId\
@@ -55,19 +63,29 @@ async function getAllResults() {
 
     for (let i = 0; i < results.length; i++) {
         const { advisingSessionId, userId } = results[i];
-        let [courses, err1] = await query(coursesSql, [advisingSessionId]);
-        let [semesters, err2] = await query(semesterSql, [advisingSessionId]);
+        let [courses0, err1] = await query(coursesSql0, [advisingSessionId]);
+        let [semesters0, err2] = await query(semesterSql0, [advisingSessionId]);
+        let [courses1, err4] = await query(coursesSql1, [advisingSessionId]);
+        let [semesters1, err5] = await query(semesterSql1, [advisingSessionId]);
         let [finishedCourses, err3] = await query(finishedCoursesSql, [userId]);
         if (err1 || err2 || err3) throw "Error getting results for all users";
 
-        semesters = semesters.map((semester) => {
-            semester.courses = courses.filter(
+        semesters0 = semesters0.map((semester) => {
+            semester.courses = courses0.filter(
                 (course) => course.semesterNumber === semester.semesterNumber
             );
             return semester;
         });
 
-        results[i].semesters = semesters;
+        semesters1 = semesters1.map((semester) => {
+            semester.courses = courses1.filter(
+                (course) => course.semesterNumber === semester.semesterNumber
+            );
+            return semester;
+        });
+
+        results[i].semesters0 = semesters0;
+        results[i].semesters1 = semesters1;
         results[i].finishedCourses = finishedCourses;
     }
 
@@ -76,7 +94,7 @@ async function getAllResults() {
 
 async function getAdvisedUsers() {
     const sql =
-        "SELECT * from users u INNER JOIN advisingSessions a on u.userId=a.userId  where DATE(sessionDate) > '2023-1-1 00:00:00' ";
+        "SELECT * from users u INNER JOIN advisingSessions a on u.userId=a.userId  where DATE(sessionDate) > '2023-11-1 00:00:00' ";
 
     let [users, err] = await query(sql);
     if (err) throw "Error getting users list";
@@ -203,7 +221,6 @@ async function addAdvisingResults(resultData) {
     let data, err, sql;
     const { resultSemesters: resultSemesters1, isLate: isLate1, resultCourses: resultCourses1, planType: planType1 } = results1
     const { resultSemesters: resultSemesters2, isLate: isLate2, resultCourses: resultCourses2, planType: planType2 } = results2
-
     sql = "INSERT INTO advisingResults SET ?";
     [data, err] = await query(
         sql, { advisingSessionId, isLate: isLate1 },

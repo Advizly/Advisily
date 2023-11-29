@@ -30,10 +30,29 @@ const DownloadAllResults = () => {
     });
   };
   const renderResults = (results) => {
-    if (!results || !results.semesters || !results.semesters.length)
+    if (!results || !results.semesters0 || !results.semesters0.length|| !results.semesters1 || !results.semesters1.length)
       return null;
-
-    const result = results.semesters.map(({ semesterNumber, courses }) => {
+    console.log(results)
+    const result1 = results.semesters0.map(({ semesterNumber, courses }) => {
+      const sortedCourses = sortCourses(courses);
+      let totalCredits;
+      if (sortedCourses.length)
+        totalCredits = sortedCourses
+          .map((c) => (c.credits !== null ? c.credits : 3))
+          .reduce((c1, c2) => c1 + c2, 0);
+      return (
+        <View style={{ marginBottom: 5 }}>
+          <Text style={styles.subtitle}>Semester Number {semesterNumber}</Text>
+          {renderCoursesList(sortedCourses)}
+          <Text style={styles.text}>
+            <Text style={styles.textBold}>Total Credits:</Text>
+            {totalCredits}
+          </Text>
+          <View style={styles.horizontalLine} />
+        </View>
+      );
+    });
+    const result2 = results.semesters1.map(({ semesterNumber, courses }) => {
       const sortedCourses = sortCourses(courses);
       let totalCredits;
       if (sortedCourses.length)
@@ -81,7 +100,10 @@ const DownloadAllResults = () => {
           </>
         )}
         <View style={styles.horizontalLine} />
-        {result}
+        <Text style={styles.title}>Plan Type 1</Text>
+        {result1}
+        <Text style={styles.title}>Plan Type 2</Text>
+        {result2}
       </>
     );
   };
