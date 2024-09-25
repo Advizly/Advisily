@@ -195,22 +195,18 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
         catalogId,
         courseTypeId: newCourseCat.courseTypeId,
       });
-          window.location.reload(false);
+      window.location.reload(false);
 
-
-      
     };
 
     const handleDeleteCourse = (deletedCourseId) => {
       const removeCourse = {courseId: deletedCourseId, catalogId: catalogId};
       setRemovedCourse(removeCourse);
-      // Do something with the deleted courseId
     };
   
     return (
       <div>
         <Grid container spacing={2}>
-          {/* Map over semesters and display FullFeaturedCrudGrid for each semester */}
           {Object.entries(coursesBySemester).map(([semesterNumber, courses]) => (
             <Grid item xs={6} key={semesterNumber}>
               <Typography

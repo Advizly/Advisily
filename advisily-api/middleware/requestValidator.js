@@ -10,6 +10,7 @@ module.exports = function validate(
       stripUnknown: true,
       ...extraOptions,
     };
+    
     const { error, value } = schema.validate(req[property], options);
     if (!error) {
       req.body = value;

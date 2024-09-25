@@ -108,7 +108,6 @@ export const getAllMajors = async () => {
 
   export const getCatalogCourses = async (catalogId) => {
     const apiEndpoint = "/catalogs/plans/courses";
-    
     const { data: catalogCourses } = await http.get(apiEndpoint, {params:{catalogId}});
     return catalogCourses;
   };

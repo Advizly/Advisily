@@ -47,7 +47,9 @@ async function getMajorYears(conditions){
 
   if (values.length) sql += ` WHERE ${columns}`;
   const [data, err] = await query(sql, values);
-  if (err) throw "Error getting catalogs";
+  if (err){
+    throw "Error getting catalogs";
+  } 
 
   return data;
 

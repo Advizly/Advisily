@@ -1,6 +1,8 @@
+const path = require("path");
 require("dotenv").config({
-  path: `${__dirname}/.env.${process.env.NODE_ENV}`,
+  path: path.join(__dirname, `.env.${process.env.NODE_ENV}`),
 });
+
 const config = require("config");
 const express = require("express");
 const app = express();
@@ -39,5 +41,4 @@ app.use("/api/advising", advising);
 app.use("/api/courses", courses);
 
 app.use(errorHandler);
-
 app.listen(port, () => console.log(`App listening on port ${port}....`));

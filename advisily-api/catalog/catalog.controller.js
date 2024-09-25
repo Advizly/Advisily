@@ -50,6 +50,7 @@ function getCatCourses(req, res, next) {
     .catch(next);
 }
 function getYears(req, res, next){
+  console.log("Entered getyears controller");
   catalogService
     .getMajorYears(req.body)
     .then((years)=>res.send(years))
