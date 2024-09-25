@@ -137,11 +137,11 @@ const DownloadAllResults = () => {
 export default DownloadAllResults;
 
 const styles = StyleSheet.create({
-  title: { fontSize: 24, fontWeight: "bold", textAlign: "center" },
-  subtitle: { fontSize: 18, fontWeight: "bold" },
+  title: { fontSize: 12, fontWeight: "bold", textAlign: "center" },
+  subtitle: { fontSize: 8, fontWeight: "bold" },
   body: { paddingTop: 35, paddingBottom: 65, paddingHorizontal: 35 },
-  text: { fontSize: 14, textAlign: "justify", fontFamily: "Times-Roman" },
-  textBold: { fontSize: 14, fontWeight: "bold", textAlign: "justify" },
+  text: { fontSize: 6, textAlign: "justify", fontFamily: "Times-Roman" },
+  textBold: { fontSize: 6, fontWeight: "bold", textAlign: "justify" },
   pageNumber: { position: "absolute", fontSize: 12, bottom: 30, left: 0, right: 0, textAlign: "center", color: "grey" },
   horizontalLine: { height: 1, width: "100%", backgroundColor: "grey", borderWidth: 1, borderColor: "grey", borderRadius: 20 },
   indent: { marginLeft: 10 },

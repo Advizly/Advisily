@@ -37,7 +37,7 @@ async function getAllResults() {
      	INNER JOIN advisily.advisingSessions ON users.userId = advisingSessions.userId\
       INNER JOIN advisingResults ON advisingResults.advisingSessionId = advisingSessions.advisingSessionId\
       INNER JOIN standings ON standings.standingId=users.standingId\
-      ";
+      where DATE(sessionDate) > '2024-04-1 00:00:00'";
 
     const semesterSql0 =
         "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ? and planType=0";
