@@ -85,7 +85,7 @@ module.exports = {
   }
 
   async function addCourseToCat(courseId, catalogId, courseTypeId) {
-    const insertQuery = "INSERT INTO catalogcourses (courseId, catalogId, courseTypeId) VALUES (?, ?, ?)";
+    const insertQuery = "INSERT INTO catalogCourses (courseId, catalogId, courseTypeId) VALUES (?, ?, ?)";
     const values = [courseId, catalogId, courseTypeId];
   
     const [insertedRows, err] = await query(insertQuery, values);

@@ -140,10 +140,8 @@ async function getCatCourses({ catalogId, courseTypeId }) {
     sql += " cc.courseTypeId=?";
     values.push(courseTypeId);
   }
-
   let [catCourses, err] = await query(sql, values);
   if (err) throw "Error getting catalog courses.";
-
   catCourses = addCoursesRequisites(catCourses);
 
   return catCourses;

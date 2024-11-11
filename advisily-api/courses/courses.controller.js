@@ -77,6 +77,7 @@ function getDistinctCoursesByPrefix(req, res, next) {
 function addCourseToPlan(req, res, next) {
   const { courseId, catalogId, semesterNumber } = req.body;
 
+  console.log("HELLLOOOO", req.body)
   coursesService
     .addCourseToPlan(courseId, catalogId, semesterNumber)
     .then((insertedRows) => res.send(insertedRows))
@@ -85,8 +86,8 @@ function addCourseToPlan(req, res, next) {
 
 function addCourseToCat(req, res, next) {
   const { courseId, catalogId, courseTypeId } = req.body;
+  console.log("HELLLOOOO from catalog add", req.body)
 
-  console.log("HELLLOOOO", req.body)
 
   coursesService
     .addCourseToCat(courseId, catalogId, courseTypeId)

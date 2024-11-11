@@ -142,7 +142,8 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
   function AdminEditCatalog() {
     const { catalogId } = useParams();
     const { data, request } = useApi(adminService.getCatalogCourses);
-    const { request: requestAdd } = useApi(adminService.addCoursetoPlan);
+    const { request: requestAddPlan } = useApi(adminService.addCoursetoPlan);
+    const { request: requestAddCat } = useApi(adminService.addCoursetoCat);
     const [coursesBySemester, setCoursesBySemester] = useState({});
     const [newCoursePlan, setNewCoursePlan] = useState({});
     const [newCourseCat, setNewCourseCat] = useState({});
@@ -176,7 +177,8 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
     }, [data]);
 
     useEffect(()=>{
-      requestAdd(newCoursePlan, newCourseCat);
+      requestAddPlan(newCoursePlan);
+      requestAddCat(newCourseCat);
     }, [newCoursePlan, newCourseCat])
 
     useEffect(()=>{
