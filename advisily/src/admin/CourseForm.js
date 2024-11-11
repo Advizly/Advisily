@@ -49,7 +49,7 @@ const CourseForm = ({ onAddCourse }) => {
     <div>
       
       <Modal
-        open={true}
+        open={false}
         onClose={()=>{}}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"

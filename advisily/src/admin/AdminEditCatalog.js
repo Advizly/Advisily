@@ -175,13 +175,13 @@ function FullFeaturedCrudGrid({ courseData, onCourseDelete }) {
       setCoursesBySemester(coursesBySemester);
     }, [data]);
 
-    useEffect(()=>{
-      requestAdd(newCoursePlan, newCourseCat);
-    }, [newCoursePlan, newCourseCat])
+    // useEffect(()=>{
+    //   requestAdd(newCoursePlan, newCourseCat);
+    // }, [newCoursePlan, newCourseCat])
 
-    useEffect(()=>{
-      requestRemove(removedCourse);
-    }, [removedCourse])
+    // useEffect(()=>{
+    //   requestRemove(removedCourse);
+    // }, [removedCourse])
   
     // Function to add a course
     const handleAddCourse = (newCoursePlan, newCourseCat) => {
