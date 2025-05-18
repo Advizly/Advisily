@@ -37,7 +37,7 @@ async function getAllResults() {
      	INNER JOIN advisily.advisingSessions ON users.userId = advisingSessions.userId\
       INNER JOIN advisingResults ON advisingResults.advisingSessionId = advisingSessions.advisingSessionId\
       INNER JOIN standings ON standings.standingId=users.standingId\
-      where DATE(sessionDate) > '2024-04-1 00:00:00'";
+      WHERE DATE(sessionDate) BETWEEN '2024-11-17' AND '2025-02-06'";
 
     const semesterSql0 =
         "SELECT * FROM advisingResultSemesters WHERE advisingSessionId = ? and planType=0";
@@ -60,7 +60,7 @@ async function getAllResults() {
 
     [results, err] = await query(sql);
     if (err) throw "Error getting results for all users";
-
+    console.log("RESULTS BEFORE FOR:", results)
     for (let i = 0; i < results.length; i++) {
         const { advisingSessionId, userId } = results[i];
         let [courses0, err1] = await query(coursesSql0, [advisingSessionId]);

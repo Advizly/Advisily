@@ -1,6 +1,7 @@
 /* Header */
 .app-header {
   justify-content: space-between !important;
+  position: relative; 
 }
 .app-header a {
   color: #fff !important;
@@ -12,11 +13,12 @@
 .app-header .btn a:hover {
   color: var(--clr-primary) !important;
 }
-
 .navbar-item.brand-title {
-  margin-top: 0.8rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
-
 .navbar-brand {
   display: flex;
   align-items: center;
@@ -168,6 +170,7 @@
   display: flex;
   align-items: center;
   gap: 0.5em;
+  margin-bottom: 0; 
 }
 
 .app-footer a {
@@ -200,7 +203,9 @@ To ensure footer stays at the bottom
 
 #brand {
   color: #fff;
-  font-size: 50px;
+  font-size: 47px;
+  position: relative;
+  top: 0.25rem;
 }
 
 /* 
