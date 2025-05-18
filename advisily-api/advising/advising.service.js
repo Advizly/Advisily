@@ -94,7 +94,7 @@ async function getAllResults() {
 
 async function getAdvisedUsers() {
     const sql =
-        "SELECT * from users u INNER JOIN advisingSessions a on u.userId=a.userId  where DATE(sessionDate) > '2024-04-1 00:00:00' ";
+        "SELECT * from users u INNER JOIN advisingSessions a on u.userId=a.userId WHERE DATE(sessionDate) BETWEEN '2024-11-17' AND '2025-02-06' ";
 
     let [users, err] = await query(sql);
     if (err) throw "Error getting users list";
